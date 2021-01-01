@@ -1,7 +1,7 @@
 {
   "name": "finder",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,5 +11,10 @@
     "next": "10.0.4",
     "react": "17.0.1",
     "react-dom": "17.0.1"
-  }
+  },
+  "description": "A web application for finding goods and services online.",
+  "main": "index.js",
+  "repository": "https://github.com/afizsavage/finder",
+  "author": "Afiz Savage <savageafiz9@gmail.com>",
+  "license": "MIT"
 }
