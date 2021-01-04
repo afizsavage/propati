@@ -1,18 +1,14 @@
 import Head from "next/head";
-
+import Layout from "../components/layout";
 export default function Home() {
   return (
     <div>
       <Head>
-        <title>Finder</title>
+        <title>Find</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex justify-center content-center container mx-auto h-screen">
-        <span className="my-auto text-4xl font-semibold text-purple-700">
-          Finder
-        </span>
-      </main>
+      <Layout pageInfo={{ pageName: "index" }}></Layout>
     </div>
   );
 }
