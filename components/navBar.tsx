@@ -1,7 +1,7 @@
 const Navbar = (params) => {
   return (
-    <div>
-      <span>nav</span>
+    <div className="pl-10 py-2">
+      <span className="bold">Logo</span>
     </div>
   );
 };
