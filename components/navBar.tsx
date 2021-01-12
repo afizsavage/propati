@@ -21,9 +21,9 @@ const Navbar = (params) => {
                 aria-hidden="true"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M4 6h16M4 12h16M4 18h16"
                 />
               </svg>
@@ -38,8 +38,8 @@ const Navbar = (params) => {
                 aria-hidden="true"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   strokeWidth="2"
                   d="M6 18L18 6M6 6l12 12"
                 />
@@ -64,25 +64,25 @@ const Navbar = (params) => {
                 {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
                 <a
                   href="home"
-                  className=" text-purple-700 px-3 py-2 text-sm font-medium"
+                  className=" text-gray-700 px-3 py-2 text-sm font-medium"
                 >
                   Home
                 </a>
                 <a
                   href="#"
-                  className="text-purple-700 hover:text-white px-3 py-2  text-sm font-medium"
+                  className="text-gray-700 hover:text-white px-3 py-2  text-sm font-medium"
                 >
                   Buy
                 </a>
                 <a
                   href="#"
-                  className="text-purple-700 hover:text-white px-3 py-2  text-sm font-medium"
+                  className="text-gray-700 hover:text-white px-3 py-2  text-sm font-medium"
                 >
                   Sell
                 </a>
                 <a
                   href="#"
-                  className="text-purple-700 hover:text-white px-3 py-2  text-sm font-medium"
+                  className="text-gray-700 hover:text-white px-3 py-2  text-sm font-medium"
                 >
                   About Us
                 </a>
@@ -93,16 +93,13 @@ const Navbar = (params) => {
             {/* <!-- Profile dropdown --> */}
             <a
               href="#"
-              className="text-gray-300  hover:text-white px-3 py-2 text-sm font-medium"
+              className="text-gray-500  hover:text-white px-3 py-2 text-sm font-medium"
             >
               Sign In
             </a>
             <div className="ml-3 hidden sm:block relative">
               <div>
-                <a
-                  href="#"
-                  className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium "
-                >
+                <a href="#" className="btn-blue">
                   Sign Up
                 </a>
               </div>
