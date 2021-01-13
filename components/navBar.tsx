@@ -1,4 +1,10 @@
-const Navbar = (params) => {
+import React, { useState, FC, ReactElement } from "react";
+
+const Navbar: FC = (params): ReactElement => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const openMenu = (params) => {
+    menuOpen === false ? setMenuOpen(true) : setMenuOpen(false);
+  };
   return (
     <nav className="bg-white py-1">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -6,6 +12,7 @@ const Navbar = (params) => {
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             {/* <!-- Mobile menu button--> */}
             <button
+              onClick={openMenu}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-expanded="false"
             >
@@ -109,7 +116,7 @@ const Navbar = (params) => {
       </div>
 
       {/* <!--Mobile menu, toggle classes based on menu state.Menu open: "block", Menu closed: "hidden"--> */}
-      <div className="hidden sm:hidden">
+      <div className={menuOpen ? "block" : "hidden"}>
         <div className="px-2 pt-2 pb-3 space-y-1">
           {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
           <a
