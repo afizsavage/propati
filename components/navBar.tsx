@@ -13,7 +13,7 @@ const Navbar: FC = (params): ReactElement => {
             {/* <!-- Mobile menu button--> */}
             <button
               onClick={openMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              className="inline-flex items-center justify-center p-2  text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
@@ -69,28 +69,16 @@ const Navbar: FC = (params): ReactElement => {
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
                 {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-                <a
-                  href="home"
-                  className=" text-gray-700 px-3 py-2 text-sm font-medium"
-                >
+                <a href="home" className="navLinks">
                   Home
                 </a>
-                <a
-                  href="#"
-                  className="text-gray-700 hover:text-white px-3 py-2  text-sm font-medium"
-                >
+                <a href="#" className="navLinks">
                   Buy
                 </a>
-                <a
-                  href="#"
-                  className="text-gray-700 hover:text-white px-3 py-2  text-sm font-medium"
-                >
+                <a href="#" className="navLinks">
                   Sell
                 </a>
-                <a
-                  href="#"
-                  className="text-gray-700 hover:text-white px-3 py-2  text-sm font-medium"
-                >
+                <a href="#" className="navLinks">
                   About Us
                 </a>
               </div>
@@ -98,10 +86,7 @@ const Navbar: FC = (params): ReactElement => {
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             {/* <!-- Profile dropdown --> */}
-            <a
-              href="#"
-              className="text-gray-500  hover:text-white px-3 py-2 text-sm font-medium"
-            >
+            <a href="#" className="navLinks">
               Sign In
             </a>
             <div className="ml-3 hidden sm:block relative">
@@ -116,7 +101,7 @@ const Navbar: FC = (params): ReactElement => {
       </div>
 
       {/* <!--Mobile menu, toggle classes based on menu state.Menu open: "block", Menu closed: "hidden"--> */}
-      <div className={menuOpen ? "block" : "hidden"}>
+      <div className={menuOpen ? "block z-10" : "hidden"}>
         <div className="px-2 pt-2 pb-3 space-y-1">
           {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
           <a
