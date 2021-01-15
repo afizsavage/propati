@@ -4,6 +4,11 @@ const Navbar: FC = (params): ReactElement => {
   const [menuOpen, setMenuOpen] = useState(false);
   const openMenu = (params) => {
     menuOpen === false ? setMenuOpen(true) : setMenuOpen(false);
+    let bars = document.getElementById("menuBtn").children;
+    Array.from(bars).forEach((bar) => {
+      bar.classList.toggle("change");
+    });
+    console.log(bars);
   };
   return (
     <nav className="bg-white py-1">
@@ -12,45 +17,14 @@ const Navbar: FC = (params): ReactElement => {
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             {/* <!-- Mobile menu button--> */}
             <button
+              id="menuBtn"
               onClick={openMenu}
-              className="inline-flex items-center justify-center p-2  text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              className="inline-block justify-center p-2  text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-expanded="false"
             >
-              <span className="sr-only">Open main menu</span>
-              {/* <!-- Icon when menu is closed. --> */}
-              {/* <!--Heroicon name: menuMenu open: "hidden", Menu closed: "block"--> */}
-              <svg
-                className="block h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-              {/* <!-- Icon when menu is open. --> */}
-              {/* <!--Heroicon name: xMenu open: "block", Menu closed: "hidden"--> */}
-              <svg
-                className="hidden h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
+              <div className="ar1"></div>
+              <div className="ar2"></div>
+              <div className="ar3"></div>
             </button>
           </div>
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
@@ -86,7 +60,7 @@ const Navbar: FC = (params): ReactElement => {
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             {/* <!-- Profile dropdown --> */}
-            <a href="#" className="navLinks">
+            <a href="#" className="navLinks font-medium">
               Sign In
             </a>
             <div className="ml-3 hidden sm:block relative">
