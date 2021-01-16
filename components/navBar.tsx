@@ -51,9 +51,9 @@ const Navbar: FC = (params): ReactElement => {
                 aria-hidden="true"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M6 18L18 6M6 6l12 12"
                 />
               </svg>
@@ -107,12 +107,12 @@ const Navbar: FC = (params): ReactElement => {
       </div>
 
       {/* <!--Mobile menu, toggle classes based on menu state.Menu open: "block", Menu closed: "hidden"--> */}
-      <div className={menuOpen ? "block z-10" : "hidden"}>
-        <div className="px-2 pt-2 pb-3 space-y-1">
+      <div className={menuOpen ? "block z-10 " : "hidden"}>
+        <div className="px-2">
           {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-          <div className="bg-white flex justify-center items-center rounded-md ">
+          <div className="px-3 py-2  bg-white flex justify-center items-center rounded-md ">
             <input
-              className="w-full mx-4 bg-gray-100 rounded-md px-2 py-2 text-gray-700 leading-tight focus:outline-none "
+              className="w-full py-2.5 px-2 bg-gray-100 rounded-lg text-gray-700 leading-tight focus:outline-none "
               id="search"
               type="text"
               placeholder="Search"
