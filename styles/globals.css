@@ -10,41 +10,4 @@
   .navLinks {
     @apply text-gray-600  hover:text-gray-500 px-3 py-2 text-sm font-semibold;
   }
-
-  .bar1,
-  .bar2,
-  .bar3 {
-    @apply h-1 w-5 bg-gray-800 my-1 transition duration-75 mx-0;
-  }
-
-  .paque .bar2 {
-    @apply opacity-0;
-  }
-
-  .ar1,
-  .ar2,
-  .ar3 {
-    width: 20px;
-    height: 2px;
-    background-color: #333;
-    margin: 4px 0;
-    transition: 0.4s;
-  }
-
-  /* Rotate first bar */
-  .ar1.change {
-    -webkit-transform: rotate(-45deg) translate(-3px, 1px) !important;
-    transform: rotate(45deg) translate(-9px, 6px) !important;
-  }
-
-  /* Fade out the second bar */
-  .ar2.change {
-    opacity: 0 !important;
-  }
-
-  /* Rotate last bar */
-  .ar3.change {
-    -webkit-transform: rotate(45deg) translate(-4px, -4px) !important;
-    transform: rotate(-45deg) translate(-8px, -8px) !important;
-  }
 }
