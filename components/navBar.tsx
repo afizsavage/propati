@@ -9,8 +9,9 @@ const Navbar: FC = (params): ReactElement => {
       bar.classList.toggle("hidden");
     });
   };
+
   return (
-    <nav className="bg-white py-1">
+    <nav role="banner" className="bg-white">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -109,28 +110,25 @@ const Navbar: FC = (params): ReactElement => {
       <div className={menuOpen ? "block z-10" : "hidden"}>
         <div className="px-2 pt-2 pb-3 space-y-1">
           {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-          <a
-            href="#"
-            className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
+          <div className="bg-white flex justify-center items-center rounded-md ">
+            <input
+              className="w-full mx-4 bg-gray-100 rounded-md px-2 py-2 text-gray-700 leading-tight focus:outline-none "
+              id="search"
+              type="text"
+              placeholder="Search"
+            />
+          </div>
+
+          <a href="#" className="mobileNavs">
             Home
           </a>
-          <a
-            href="#"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
+          <a href="#" className="mobileNavs">
             Buy
           </a>
-          <a
-            href="#"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
+          <a href="#" className="mobileNavs">
             Sell
           </a>
-          <a
-            href="#"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
+          <a href="#" className="mobileNavs">
             About Us
           </a>
         </div>
