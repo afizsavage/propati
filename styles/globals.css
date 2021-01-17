@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 @layer components {
-  .btn-blue {
+  .joinBtn {
     @apply py-2 px-4 bg-green-700 bg-center transition duration-700 text-white text-sm font-medium rounded-lg shadow-md hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75;
   }
 
   .navLinks {
-    @apply text-gray-600  hover:text-gray-500 px-3 py-2 text-sm font-semibold;
+    @apply text-gray-600  hover:text-gray-500 px-3 py-2 text-base font-semibold;
   }
   .mobileNavs {
-    @apply text-gray-600 block px-4 py-2 text-base font-medium;
+    @apply text-gray-600 block px-4 py-2 text-lg font-bold;
   }
 }

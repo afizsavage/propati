@@ -12,8 +12,8 @@ const Navbar: FC = (params): ReactElement => {
 
   return (
     <nav role="banner" className="bg-white">
-      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-        <div className="relative flex items-center justify-between h-16">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="relative flex items-center justify-between h-14">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             {/* <!-- Mobile menu button--> */}
             <button
@@ -90,14 +90,14 @@ const Navbar: FC = (params): ReactElement => {
               </div>
             </div>
           </div>
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <div className="absolute inset-y-0 right-0 flex items-center  sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             {/* <!-- Profile dropdown --> */}
-            <a href="#" className="navLinks font-medium">
+            <a href="#" className="p-2 sm:py-2 sm:px-3 navLinks font-medium">
               Sign In
             </a>
             <div className="ml-3 hidden sm:block relative">
               <div>
-                <a href="#" className="btn-blue">
+                <a href="#" className="joinBtn">
                   Sign Up
                 </a>
               </div>
@@ -110,7 +110,7 @@ const Navbar: FC = (params): ReactElement => {
       <div className={menuOpen ? "block z-10 " : "hidden"}>
         <div className="px-2">
           {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-          <div className="px-3 py-2  bg-white flex justify-center items-center rounded-md ">
+          <div className="px-3 pb-2  bg-white flex justify-center items-center rounded-md ">
             <input
               className="w-full py-2.5 px-2 bg-gray-100 rounded-lg text-gray-700 leading-tight focus:outline-none "
               id="search"
