@@ -2,8 +2,7 @@ const Footer = (params) => {
   return (
     <div className=" flex justify-center">
       <span className="">
-        © {new Date().getFullYear()} Finder, Inc. All Right Reserved. Privacy
-        &amp; Terms
+        © {new Date().getFullYear()} Propati, Inc. All Right Reserved.
       </span>
     </div>
   );
