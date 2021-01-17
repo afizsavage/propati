@@ -4,16 +4,16 @@ const Navbar: FC = (params): ReactElement => {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = (params) => {
     menuOpen === false ? setMenuOpen(true) : setMenuOpen(false);
-    let bars = document.getElementById("menuBtn").children;
+    let bars = document.getElementById("menuBtn").querySelectorAll("svg");
     Array.from(bars).forEach((bar) => {
       bar.classList.toggle("hidden");
     });
   };
 
   return (
-    <nav role="banner" className="bg-white">
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="relative flex items-center justify-between h-14">
+    <nav role="banner" className="sticky z-50 top-0 sm:static bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative flex items-center justify-between h-14 sm:h-20">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             {/* <!-- Mobile menu button--> */}
             <button
@@ -34,9 +34,9 @@ const Navbar: FC = (params): ReactElement => {
                 aria-hidden="true"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M4 6h16M4 12h16M4 18h16"
                 />
               </svg>
@@ -107,10 +107,10 @@ const Navbar: FC = (params): ReactElement => {
       </div>
 
       {/* <!--Mobile menu, toggle classes based on menu state.Menu open: "block", Menu closed: "hidden"--> */}
-      <div className={menuOpen ? "block z-10 " : "hidden"}>
+      <div className={menuOpen ? "block z-50 " : "hidden"}>
         <div className="px-2">
           {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-          <div className="px-3 pb-2  bg-white flex justify-center items-center rounded-md ">
+          <div className="px-4 pb-2  bg-white flex justify-center items-center ">
             <input
               className="w-full py-2.5 px-2 bg-gray-100 rounded-lg text-gray-700 leading-tight focus:outline-none "
               id="search"

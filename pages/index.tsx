@@ -10,11 +10,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Layout pageInfo={{ pageName: "index" }}>
-        <span className="my-auto text-4xl font-semibold text-purple-700">
-          Finder
-        </span>
-      </Layout>
+      <Layout pageInfo={{ pageName: "index" }}></Layout>
     </div>
   );
 }
