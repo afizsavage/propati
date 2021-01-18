@@ -4,21 +4,37 @@ import Link from "next/link";
 
 const Footer = (params) => {
   return (
-    <footer className="bg-gray-200 flex px-8 sm:px-20">
-      <div className="flex w-full py-6 text-gray-900 border-gray-500 text-sm font-light justify-center sm:justify-between">
+    <footer className="bg-gray-100 flex flex-col px-8 sm:px-20">
+      <div className="flex flex-row py-7 justify-between">
+        <div>
+          <h3>Company</h3>
+        </div>
+        <div>
+          <h3>For Tenants</h3>
+        </div>
+        <div>
+          {" "}
+          <h3>For Landlords</h3>
+        </div>
+        <div>
+          {" "}
+          <h3>Work With Us</h3>
+        </div>
+      </div>
+      <div className="flex w-full col-span-full py-6 text-gray-900 border-gray-300 border-t text-sm font-light justify-center sm:justify-between">
         <div>
           <span className="block sm:inline">
-            © {new Date().getFullYear()} Propati, Inc. All Right Reserved.
+            © {new Date().getFullYear()} Prɔpati, Inc. All Right Reserved.
           </span>{" "}
           <div className="flex justify-center sm:inline">
             <span>
-              <a className="px-5" href="#">
-                Privacy.
+              <a className="px-5 hover:underline" href="#">
+                Privacy
               </a>
             </span>
             <span>
-              <a className="" href="#">
-                Terms.
+              <a className=" hover:underline" href="#">
+                Terms
               </a>
             </span>
           </div>
