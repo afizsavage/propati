@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import Navbar from "./navBar";
 import Footer from "./footer";
+import Main from "./main";
 
 interface IProps {
   children?: ReactNode;
@@ -10,10 +11,7 @@ interface IProps {
 export default function Layout({ children }: IProps) {
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />{" "}
-      <main className="flex-grow flex justify-center content-center">
-        {children}
-      </main>{" "}
+      <Navbar /> <Main />
       <Footer />
     </div>
   );
