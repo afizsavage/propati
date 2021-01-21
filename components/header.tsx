@@ -1,4 +1,5 @@
 import React, { useState, FC, ReactElement } from "react";
+import Image from "next/image";
 
 const Navbar: FC = (params): ReactElement => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -136,4 +137,20 @@ const Navbar: FC = (params): ReactElement => {
     </nav>
   );
 };
-export default Navbar;
+
+const HeroImage = (params) => {
+  return (
+    <div className="z-40 top-0 h-40 sm:h-40">
+      <Image src="/4391857.jpg" alt="Picture of the author" layout="fill" />
+    </div>
+  );
+};
+
+const Header = (params) => {
+  return (
+    <header className=" bg-cover bg-center h-96 top-0 bg-hero-image w-full">
+      <Navbar />
+    </header>
+  );
+};
+export default Header;

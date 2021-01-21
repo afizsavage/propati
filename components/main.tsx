@@ -1,11 +1,7 @@
 import React from "react";
-import HeroImage from "./heroImage";
+import Header from "./header";
 const Main = () => {
-  return (
-    <main className="flex-grow flex ">
-      <HeroImage />
-    </main>
-  );
+  return <main className="flex-grow flex "></main>;
 };
 
 export default Main;
