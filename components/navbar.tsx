@@ -12,7 +12,7 @@ const Navbar: FC = (params): ReactElement => {
   };
 
   return (
-    <nav role="banner" className="sticky z-50 top-0 sm:static bg-white">
+    <nav role="banner" className="sticky py-2 top-0 z-50 sm:static bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-14 sm:h-20">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -138,19 +138,4 @@ const Navbar: FC = (params): ReactElement => {
   );
 };
 
-const HeroImage = (params) => {
-  return (
-    <div className="z-40 top-0 h-40 sm:h-40">
-      <Image src="/4391857.jpg" alt="Picture of the author" layout="fill" />
-    </div>
-  );
-};
-
-const Header = (params) => {
-  return (
-    <header className=" bg-cover bg-center h-96 top-0 bg-hero-image w-full">
-      <Navbar />
-    </header>
-  );
-};
-export default Header;
+export default Navbar;
