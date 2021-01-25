@@ -12,7 +12,7 @@ const Navbar: FC = (params): ReactElement => {
   };
 
   return (
-    <nav role="banner" className="sticky py-2 top-0 z-50 sm:static bg-white">
+    <nav role="banner" className="sticky top-0 z-50 sm:static bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-14 sm:h-20">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -108,8 +108,8 @@ const Navbar: FC = (params): ReactElement => {
       </div>
 
       {/* <!--Mobile menu, toggle classes based on menu state.Menu open: "block", Menu closed: "hidden"--> */}
-      <div className={menuOpen ? "block z-50 " : "hidden"}>
-        <div className="px-2">
+      <div className={menuOpen ? "block z-50 absolute w-full" : "hidden"}>
+        <div className="px-2 bg-white">
           {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
           <div className="px-4 pb-2  bg-white flex justify-center items-center ">
             <input

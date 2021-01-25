@@ -4,6 +4,7 @@ const Main = () => {
   return (
     <main className="flex flex-grow ">
       <HeroImage />
+      {/* <!-- Container --> */}
     </main>
   );
 };
