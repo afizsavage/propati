@@ -16,7 +16,7 @@ const Footer = (params) => {
             </li>
             <li className="mt-3">
               <Link href="#">
-                <a>FAQ's</a>
+                <a>FAQ</a>
               </Link>
             </li>
           </ul>
