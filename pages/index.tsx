@@ -8,9 +8,18 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Find</title>
         <link rel="icon" href="/favicon.ico" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+          rel="stylesheet"
+        />
       </Head>
-
-      <Layout pageInfo={{ pageName: "index" }}></Layout>
+      <body style={{ fontFamily: "Lato, sans-serif" }}>
+        <Layout pageInfo={{ pageName: "index" }}></Layout>
+      </body>
     </div>
   );
 }
