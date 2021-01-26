@@ -1,9 +1,9 @@
 import React from "react";
-import HeroImage from "./heroImage";
+import HeroSection from "./heroSection";
 const Main = () => {
   return (
     <main className="flex flex-grow ">
-      <HeroImage />
+      <HeroSection />
       {/* <!-- Container --> */}
     </main>
   );
