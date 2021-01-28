@@ -6,6 +6,9 @@ module.exports = {
       backgroundImage: (theme) => ({
         "hero-image": "url('/undraw_at_home_octe.svg')",
       }),
+      height: (theme) => ({
+        "112": "28rem",
+      }),
     },
   },
   variants: {
