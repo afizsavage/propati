@@ -1,6 +1,6 @@
-# Finder
+# Propati
 
-Finder is a web application for finding goods and services online.
+Propati is a web application for finding goods and services online.
 
 ## Project Status
 

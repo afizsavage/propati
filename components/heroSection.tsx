@@ -1,7 +1,7 @@
 const HeroSection = (params) => {
   return (
-    <div className="md:h-97 h-auto bg-gray-100 grid w-full">
-      <div className="grid grid-cols-1 md:grid-cols-2 md:px-12 px-6 ">
+    <div className="md:h-100 h-auto bg-gray-100 grid w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 md:px-16 px-6 ">
         <div className="my-auto">
           <div
             style={{ fontFamily: "Oswald, serif" }}
