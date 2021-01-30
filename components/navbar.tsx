@@ -1,5 +1,4 @@
 import React, { useState, FC, ReactElement } from "react";
-import Image from "next/image";
 
 const Navbar: FC = (params): ReactElement => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -98,7 +97,7 @@ const Navbar: FC = (params): ReactElement => {
             </a>
             <div className="ml-3 hidden sm:block relative">
               <div>
-                <a href="#" className="joinBtn">
+                <a href="#" className="primeBtn">
                   Sign Up
                 </a>
               </div>

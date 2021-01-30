@@ -1,3 +1,5 @@
+const colors = require("tailwindcss/colors");
+
 module.exports = {
   purge: ["./components/**/*.{js,ts,jsx,tsx}", "./pages/**/*.{js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
@@ -8,6 +10,13 @@ module.exports = {
       }),
       height: (theme) => ({
         "100": "30rem",
+      }),
+      colors: (theme) => ({
+        teal: colors.teal,
+      }),
+      fontFamily: (theme) => ({
+        Oswald: ["Oswald", "Georgia", "serif"],
+        Lato: ["Lato", "Arial", "sans-serif"],
       }),
     },
   },

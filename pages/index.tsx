@@ -17,7 +17,7 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
-      <body style={{ fontFamily: "Lato, sans-serif" }}>
+      <body className="font-Lato">
         <Layout pageInfo={{ pageName: "index" }}></Layout>
       </body>
     </div>
