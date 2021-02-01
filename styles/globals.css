@@ -4,7 +4,7 @@
 
 @layer components {
   .primeBtn {
-    @apply py-2 px-4 bg-teal-500 bg-center transition duration-700 text-white text-sm font-medium rounded-lg shadow-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-opacity-75;
+    @apply py-3 px-4 bg-teal-500 bg-center transition duration-700 text-white text-sm font-bold rounded-lg shadow-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-opacity-75;
   }
 
   .navLinks {
