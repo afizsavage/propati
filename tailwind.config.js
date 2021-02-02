@@ -9,13 +9,13 @@ module.exports = {
         "hero-image": "url('/undraw_at_home_octe.svg')",
       }),
       height: (theme) => ({
-        "100": "30rem",
+        100: "30rem",
       }),
       colors: (theme) => ({
         teal: colors.teal,
       }),
       fontFamily: (theme) => ({
-        Oswald: ["Oswald", "Georgia", "serif"],
+        Oswald: ["Georgia", "serif"],
         Lato: ["Lato", "Arial", "sans-serif"],
       }),
     },

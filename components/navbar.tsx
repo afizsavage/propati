@@ -75,17 +75,15 @@ const Navbar: FC = (params): ReactElement => {
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
                 {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-                <a href="home" className="navLinks">
-                  Home
+
+                <a href="#" className="navLinks">
+                  Rent
                 </a>
                 <a href="#" className="navLinks">
                   Buy
                 </a>
                 <a href="#" className="navLinks">
                   Sell
-                </a>
-                <a href="#" className="navLinks">
-                  About Us
                 </a>
               </div>
             </div>
@@ -120,13 +118,10 @@ const Navbar: FC = (params): ReactElement => {
           </div>
 
           <a href="#" className="mobileNavs">
-            Home
+            Rent
           </a>
           <a href="#" className="mobileNavs">
             Buy
-          </a>
-          <a href="#" className="mobileNavs">
-            Sell
           </a>
           <a href="#" className="mobileNavs">
             About Us
