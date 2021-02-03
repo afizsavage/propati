@@ -12,8 +12,8 @@ const Navbar: FC = (params): ReactElement => {
 
   return (
     <nav role="banner" className="sticky top-0 z-50 sm:static bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative flex items-center justify-between h-14 md:h-18">
+      <div className="max-w-7xl mx-auto px-3 lg:px-8">
+        <div className="relative flex items-center justify-between h-14 md:h-18 lg:h-20">
           <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
             {/* <!-- Mobile menu button--> */}
             <button
