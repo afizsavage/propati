@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Footer = (params) => {
   return (
-    <footer className="w-full bg-gray-100 mt-5 flex flex-col px-8 sm:px-20 border-gray-300 border-t md:border-none">
+    <footer className="w-full bg-gray-100 mt-5 flex flex-col px-8 md:px-10 lg:px-20 border-gray-300 border-t md:border-none">
       <div className="flex flex-col md:flex-row py-8 md:py-14 md:justify-between text-left">
         <div className="footerCols">
           <h3 className="font-semibold text-sm">Company</h3>
@@ -70,11 +70,11 @@ const Footer = (params) => {
         </div>
       </div>
       <div className="flex w-full flex-col-reverse lg:flex-row col-span-full py-6 text-gray-900 border-gray-300 border-t text-sm font-light justify-center lg:justify-between">
-        <div className="flex justify-center">
-          <span className="block sm:inline">
+        <div className="flex flex-col lg:flex-row md:pt-4 lg:pt-0">
+          <span className="block sm:inline self-center">
             © {new Date().getFullYear()} Prɔpati, Inc. All Right Reserved.
           </span>{" "}
-          <div className="flex justify-center sm:inline">
+          <div className="self-center sm:inline">
             <span>
               <a className="px-5 hover:underline" href="#">
                 Privacy
