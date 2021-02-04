@@ -69,8 +69,8 @@ const Footer = (params) => {
           </ul>
         </div>
       </div>
-      <div className="flex w-full col-span-full py-6 text-gray-900 border-gray-300 border-t text-sm font-light justify-center sm:justify-between">
-        <div>
+      <div className="flex w-full flex-col-reverse lg:flex-row col-span-full py-6 text-gray-900 border-gray-300 border-t text-sm font-light justify-center lg:justify-between">
+        <div className="flex justify-center">
           <span className="block sm:inline">
             © {new Date().getFullYear()} Prɔpati, Inc. All Right Reserved.
           </span>{" "}
@@ -87,7 +87,7 @@ const Footer = (params) => {
             </span>
           </div>
         </div>
-        <div className="md:flex d- hidden">
+        <div className="md:flex hidden justify-center">
           <span>
             <Link href="#" passHref={true}>
               <ImFacebook className="hover:text-gray-600" size={18} />
