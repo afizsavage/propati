@@ -2,7 +2,7 @@ import Head from "next/head";
 import Layout from "../components/layout";
 export default function Home() {
   return (
-    <div>
+    <>
       <Head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,9 +17,9 @@ export default function Home() {
           rel="stylesheet"
         />
       </Head>
-      <body className="font-Lato">
+      <body className="font-Lato h-full">
         <Layout pageInfo={{ pageName: "index" }}></Layout>
       </body>
-    </div>
+    </>
   );
 }
