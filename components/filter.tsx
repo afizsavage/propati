@@ -1,16 +1,38 @@
-import React, { useState, FC, ReactElement } from "react";
+import React, { useState, FC, ReactElement, useRef, useEffect } from "react";
 
 const DropBtn: FC = (params): ReactElement => {
   const [ddownOpen, setddownOpen] = useState(false);
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
 
   const toggleMenu = (params) => {
     ddownOpen === false ? setddownOpen(true) : setddownOpen(false);
     let btn = document.getElementById("options-menu");
-
     btn.classList.toggle("hidden");
   };
+
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      /**
+       * Alert if clicked on outside of element
+       */
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setddownOpen(false);
+        }
+      }
+
+      // Bind the event listener
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+
   return (
-    <div className="relative inline-block text-left">
+    <div ref={wrapperRef} className="relative inline-block text-left">
       <div>
         <button
           onClick={toggleMenu}
@@ -42,7 +64,7 @@ const DropBtn: FC = (params): ReactElement => {
         id="options-menu"
         className={
           ddownOpen
-            ? " origin-top-left absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
+            ? " origin-top-left absolute left-0 mt-3 w-44 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
             : "hidden"
         }
       >
