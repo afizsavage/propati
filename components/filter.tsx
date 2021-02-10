@@ -52,7 +52,7 @@ const DropdownContainer: FC = (params): ReactElement => {
           {selectedOption || "To Let"}
           {/* Heroicon name: solid/chevron-down */}
           <svg
-            className="-mr-1 ml-2 h-5 w-5"
+            className="-mr-1 ml-2 h-5 w-5 text-gray-500"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor"
@@ -84,7 +84,7 @@ const DropdownContainer: FC = (params): ReactElement => {
         >
           {options.map((option) => (
             <li
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+              className="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 last:border-t-2"
               onClick={onOptionClicked(option)}
               key={Math.random()}
             >
