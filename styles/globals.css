@@ -16,4 +16,7 @@
   .footerCols {
     @apply md:w-1/4 pb-6 mb-6 sm:m-0 sm:p-0 border-gray-300 border-b sm:border-none;
   }
+  .dropBtn {
+    @apply inline-flex justify-center w-full ring-teal-400 ring-opacity-20 rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:border-transparent hover:ring-4 focus:outline-none focus:ring-4 focus:border-transparent active:shadow-none active:border-gray-300;
+  }
 }

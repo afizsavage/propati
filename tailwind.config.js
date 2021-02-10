@@ -21,7 +21,11 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      ringWidth: ["hover", "active"],
+      boxShadow: ["active"],
+      borderColor: ["active"],
+    },
   },
   plugins: [],
 };
