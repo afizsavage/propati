@@ -1,6 +1,7 @@
 import React, { useState, FC, ReactElement, useRef, useEffect } from "react";
 
-const DropBtn: FC = (params): ReactElement => {
+const DropdownContainer: FC = (params): ReactElement => {
+  const [selectedOption, setSelectedOption] = useState(null);
   const [ddownOpen, setddownOpen] = useState(false);
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef);
@@ -31,6 +32,13 @@ const DropBtn: FC = (params): ReactElement => {
     }, [ref]);
   }
 
+  const options = ["To Let", "For Sale", "Goods for Sale"];
+
+  const onOptionClicked = (value) => () => {
+    setSelectedOption(value);
+    setddownOpen(false);
+  };
+
   return (
     <div ref={wrapperRef} className="relative inline-block text-left">
       <div>
@@ -41,7 +49,7 @@ const DropBtn: FC = (params): ReactElement => {
           aria-haspopup="true"
           aria-expanded="true"
         >
-          To Let
+          {selectedOption || "To Let"}
           {/* Heroicon name: solid/chevron-down */}
           <svg
             className="-mr-1 ml-2 h-5 w-5"
@@ -68,27 +76,22 @@ const DropBtn: FC = (params): ReactElement => {
             : "hidden"
         }
       >
-        <div
+        <ul
           className="py-1"
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="options-menu"
         >
-          <a
-            href="#"
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-            role="menuitem"
-          >
-            To Let
-          </a>
-          <a
-            href="#"
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-            role="menuitem"
-          >
-            For Sale
-          </a>
-        </div>
+          {options.map((option) => (
+            <li
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+              onClick={onOptionClicked(option)}
+              key={Math.random()}
+            >
+              {option}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
@@ -98,7 +101,7 @@ const Filter = (params) => {
   return (
     <div className="w-full md:px-8 lg:px-16 px-6 lg:pt-8 lg:relative">
       <div className="flex lg:flex-row lg:items-center lg:justify-between">
-        <DropBtn />
+        <DropdownContainer />
       </div>
     </div>
   );
