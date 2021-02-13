@@ -1,6 +1,15 @@
 import React, { useState, FC, ReactElement, useRef, useEffect } from "react";
+import { Z_BLOCK } from "zlib";
 
-const DropdownContainer: FC = (params): ReactElement => {
+const ListingsFilter: FC = (params): ReactElement => {
+  return (
+    <div className="inline-block w-20">
+      <button type="button" className="filterBtn">Filters</button>
+    </div>
+  );
+};
+
+const ServiceType: FC = (params): ReactElement => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [ddownOpen, setddownOpen] = useState(false);
   const wrapperRef = useRef(null);
@@ -45,7 +54,7 @@ const DropdownContainer: FC = (params): ReactElement => {
         <button
           onClick={toggleMenu}
           type="button"
-          className="dropBtn "
+          className="serviceBtn"
           aria-haspopup="true"
           aria-expanded="true"
         >
@@ -101,7 +110,8 @@ const Filter = (params) => {
   return (
     <div className="w-full md:px-8 lg:px-16 px-6 lg:pt-8 lg:relative">
       <div className="flex lg:flex-row lg:items-center lg:justify-between">
-        <DropdownContainer />
+        <ServiceType />
+        <ListingsFilter />
       </div>
     </div>
   );
