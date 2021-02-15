@@ -1,24 +1,5 @@
 import React, { useState, FC, ReactElement, useRef, useEffect } from "react";
 
-const ListingsFilter: FC = (params): ReactElement => {
-  return (
-    <div className="inline-block w-20">
-      <button type="button" className="filterBtn">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          className="h-5 w-5 text-gray-500 mr-2"
-          viewBox="0 0 16 16"
-          aria-hidden="true"
-        >
-          <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
-        </svg>
-        Filters
-      </button>
-    </div>
-  );
-};
-
 const ServiceType: FC = (params): ReactElement => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [ddownOpen, setddownOpen] = useState(false);
@@ -71,7 +52,7 @@ const ServiceType: FC = (params): ReactElement => {
           {selectedOption || "To Let"}
           {/* Heroicon name: solid/chevron-down */}
           <svg
-            className="-mr-1 ml-2 h-5 w-5 text-gray-500"
+            className="mr-1 ml-4 h-5 w-5 text-gray-500"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor"
@@ -116,6 +97,79 @@ const ServiceType: FC = (params): ReactElement => {
   );
 };
 
+const ListingsFilter: FC = (params): ReactElement => {
+  return (
+    <div className="inline-block ">
+      <button type="button" className="filterBtn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          className="h-5 w-5 text-gray-500 mr-2 font-bold"
+          viewBox="0 0 16 16"
+          aria-hidden="true"
+        >
+          <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+        </svg>
+        Filters
+      </button>
+    </div>
+  );
+};
+
+const ItemsFilter = (params) => {
+  return (
+    <div className="pt-7">
+      <form className="w-full space-y-4 text-gray-700">
+        <div className="flex flex-wrap -mx-2 space-y-4 md:space-y-0">
+          <div className="w-full px-4 md:w-1/5">
+            <label className="block mb-2 text-gray-800 font-bold  " htmlFor="formGridCode_month">
+              Location
+            </label>
+            <input
+              className="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:outline-none bg-gray-100 hover:bg-white hover:ring-4 ring-teal-400 ring-opacity-20"
+              type="text"
+              id="formGridCode_month"
+            />
+          </div>
+          <div className="w-full px-4 md:w-1/5">
+            <label className="block mb-2" htmlFor="formGridCode_year">
+              Bedrooms
+            </label>
+            <input
+              className="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
+              type="text"
+              id="formGridCode_year"
+            />
+          </div>
+          <div className="w-full px-4 md:w-1/5">
+            <label className="block mb-2" htmlFor="formGridCode_cvc">
+              Bathrooms
+            </label>
+            <input
+              className="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
+              type="text"
+              id="formGridCode_cvc"
+            />
+          </div>
+          <div className="w-full px-4 md:w-1/5">
+            <label className="block mb-2" htmlFor="formGridCode_cvc">
+              Residential Type
+            </label>
+            <input
+              className="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
+              type="text"
+              id="formGridCode_cvc"
+            />
+          </div>
+          <div className="w-full px-4 md:w-1/5">
+            
+          </div>
+        </div>
+      </form>
+    </div>
+  );
+};
+
 const Filter = (params) => {
   return (
     <div className="w-full md:px-8 lg:px-16 px-6 lg:pt-8 lg:relative">
@@ -123,6 +177,7 @@ const Filter = (params) => {
         <ServiceType />
         <ListingsFilter />
       </div>
+      <ItemsFilter />
     </div>
   );
 };

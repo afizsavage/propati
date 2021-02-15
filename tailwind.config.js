@@ -25,6 +25,7 @@ module.exports = {
       ringWidth: ["hover", "active"],
       boxShadow: ["active"],
       borderColor: ["active"],
+      backgroundColor: ['active'],
       borderWidth: ["last"],
     },
   },

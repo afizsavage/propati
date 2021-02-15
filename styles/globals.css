@@ -20,6 +20,6 @@
     @apply inline-flex justify-center w-full ring-teal-400 ring-opacity-20 rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-white text-sm font-bold text-gray-500 hover:border-transparent hover:ring-4  focus:outline-none focus:ring-4 focus:border-transparent active:shadow-none active:ring-0 active:border-gray-300;
   }
   .filterBtn {
-    @apply inline-flex justify-center rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-white text-sm font-bold text-gray-500;
+    @apply inline-flex justify-center rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-white text-sm font-bold text-gray-500 focus:outline-none active:border-transparent active:bg-gray-100;
   }
 }
