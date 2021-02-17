@@ -5,7 +5,7 @@ interface Iprops {
   options: Array<string>;
 }
 
-const FilterDropdown: FC<Iprops> = ({ heading, options }): ReactElement => {
+const FilterDropdowns: FC<Iprops> = ({ heading, options }): ReactElement => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [ddownOpen, setddownOpen] = useState(false);
   const wrapperRef = useRef(null);
@@ -247,15 +247,15 @@ const ItemsFilter = (params) => {
               </svg>
             </div>
           </div>
-          <FilterDropdown
+          <FilterDropdowns
             heading={"Bedrooms"}
             options={["1", "2", "3", "4", "5+"]}
           />
-          <FilterDropdown
+          <FilterDropdowns
             heading={"Bathrooms"}
             options={["1", "2", "3", "4", "5+"]}
           />
-          <FilterDropdown
+          <FilterDropdowns
             heading={"Residential Type"}
             options={["Apartment", "Detached", "Terraced", "Cottage", "Room"]}
           />
