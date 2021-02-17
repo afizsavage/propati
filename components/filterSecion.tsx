@@ -1,14 +1,19 @@
 import React, { useState, FC, ReactElement, useRef, useEffect } from "react";
 
-const FilterDropdown: FC = (params): ReactElement => {
+interface Iprops {
+  heading: string;
+  options: Array<string>;
+}
+
+const FilterDropdown: FC<Iprops> = ({ heading, options }): ReactElement => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [ddownOpen, setddownOpen] = useState(false);
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef);
 
-  const toggleMenu = () => {
+  const toggleMenu = (e) => {
     ddownOpen === false ? setddownOpen(true) : setddownOpen(false);
-    let btn = document.getElementById("ddmenu");
+    let btn = e.target.nextSibling;
     btn.classList.toggle("hidden");
   };
 
@@ -32,8 +37,6 @@ const FilterDropdown: FC = (params): ReactElement => {
     }, [ref]);
   }
 
-  const options = ["To Let", "For Sale", "Goods for Sale"];
-
   const onOptionClicked = (value) => () => {
     setSelectedOption(value);
     setddownOpen(false);
@@ -41,11 +44,18 @@ const FilterDropdown: FC = (params): ReactElement => {
 
   return (
     <fieldset ref={wrapperRef} className="w-full px-4 md:w-1/5 ">
-      <label className="text-base block mb-2 text-gray-900 font-bold" htmlFor="formGridCode_year">
-        Bedrooms
+      <label
+        className="text-base block mb-2 text-gray-900 font-bold"
+        htmlFor="formGridCode_year"
+      >
+        {heading}
       </label>
-      <span>
-        <button type="button" onClick={toggleMenu} className="filterBtn w-full hover:text-gray-900 justify-between text-base font-medium">
+      <span className="w-full relative">
+        <button
+          type="button"
+          onClick={toggleMenu}
+          className="filterBtn w-full hover:text-gray-900 justify-between text-base font-medium"
+        >
           {selectedOption || options[0]}
           <svg
             className="h-5 w-5 text-gray-500 text-base"
@@ -65,12 +75,12 @@ const FilterDropdown: FC = (params): ReactElement => {
           id="ddmenu"
           className={
             ddownOpen
-              ? "z-20 absolute mt-3 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
+              ? "z-20 absolute w-full mt-3 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 "
               : "hidden"
           }
         >
           <ul
-            className="py-1 w-52 "
+            className="py-1 "
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="options-menu"
@@ -237,37 +247,18 @@ const ItemsFilter = (params) => {
               </svg>
             </div>
           </div>
-          <div className="w-full px-4 md:w-1/5">
-            <label className="block mb-2" htmlFor="formGridCode_year">
-              Bedrooms
-            </label>
-            <input
-              className="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
-              type="text"
-              id="formGridCode_year"
-            />
-          </div>
-          <div className="w-full px-4 md:w-1/5">
-            <label className="block mb-2" htmlFor="formGridCode_cvc">
-              Bathrooms
-            </label>
-            <input
-              className="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
-              type="text"
-              id="formGridCode_cvc"
-            />
-          </div>
-          <div className="w-full px-4 md:w-1/5">
-            <label className="block mb-2" htmlFor="formGridCode_cvc">
-              Residential Type
-            </label>
-            <input
-              className="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
-              type="text"
-              id="formGridCode_cvc"
-            />
-          </div>
-          <FilterDropdown />
+          <FilterDropdown
+            heading={"Bedrooms"}
+            options={["1", "2", "3", "4", "5+"]}
+          />
+          <FilterDropdown
+            heading={"Bathrooms"}
+            options={["1", "2", "3", "4", "5+"]}
+          />
+          <FilterDropdown
+            heading={"Residential Type"}
+            options={["Apartment", "Detached", "Terraced", "Cottage", "Room"]}
+          />
         </div>
       </form>
     </div>
