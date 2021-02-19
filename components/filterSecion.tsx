@@ -43,7 +43,7 @@ const FilterDropdowns: FC<Iprops> = ({ heading, options }): ReactElement => {
   };
 
   return (
-    <fieldset ref={wrapperRef} className="w-full px-4 md:w-1/5 ">
+    <fieldset ref={wrapperRef} className="w-full px-3 md:w-1/5 ">
       <label
         className="text-base block mb-2 text-gray-900 font-bold"
         htmlFor="formGridCode_year"
@@ -218,12 +218,55 @@ const ListingsFilter: FC = (params): ReactElement => {
   );
 };
 
+const PriceSlider = (params) => {
+  return (
+    <fieldset className="w-full align-middle px-3 md:w-1/5 ">
+      {/* <!-- between two numbers --> */}
+
+      <div className="flex  w-full  items-center h-auto justify-center">
+        <div className="py-1 relative min-w-full">
+          <div className="h-2 bg-gray-200 rounded-full">
+            <div
+              className="absolute h-2 rounded-full bg-teal-500 w-0"
+              style={{ width: "24.1935%", left: "11.2903%" }}
+            ></div>
+            <div
+              className="absolute h-4 flex items-center justify-center w-4 rounded-full bg-white shadow border border-gray-300 -ml-2 top-0 cursor-pointer"
+              unselectable="on"
+              style={{ left: "11.2903%" }}
+            >
+              <div className="relative -mt-2 w-1">
+                <div
+                  className="absolute z-40 opacity-100 bottom-100 mb-2 left-0 min-w-full"
+                  style={{ marginLeft: "-25px" }}
+                ></div>
+              </div>
+            </div>
+            <div
+              className="absolute h-4 flex items-center justify-center w-4 rounded-full bg-white shadow border border-gray-300 -ml-2 top-0 cursor-pointer"
+              unselectable="on"
+              style={{ left: "35.4839%" }}
+            >
+              <div className="relative -mt-2 w-1">
+                <div
+                  className="absolute z-40 opacity-100 bottom-100 mb-2 left-0 min-w-full"
+                  style={{ marginLeft: "-25px" }}
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  );
+};
+
 const ItemsFilter = (params) => {
   return (
     <div className="pt-7">
       <form className="w-full space-y-4 text-gray-700">
         <div className="flex flex-wrap -mx-2 space-y-4 md:space-y-0">
-          <div className="relative w-full px-4 md:w-1/5">
+          <div className="relative w-full px-3 md:w-1/5">
             <label
               className="block mb-2 text-gray-800 font-bold  "
               htmlFor="formGridCode_month"
@@ -259,6 +302,7 @@ const ItemsFilter = (params) => {
             heading={"Residential Type"}
             options={["Apartment", "Detached", "Terraced", "Cottage", "Room"]}
           />
+          <PriceSlider />
         </div>
       </form>
     </div>
