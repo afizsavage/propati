@@ -229,15 +229,13 @@ const PriceSlider = (params) => {
     defaultValue: [100, 500],
   };
 
-  function displayValue() {
-    return value[0] === 100 && value[1] === 500 ? "Price Any " : value;
-  }
-
   return (
     <fieldset className="w-full align-middle px-3 md:w-1/5 ">
       <label htmlFor="">
         {value[0] === 100 && value[1] === 500
           ? "Any Price"
+          : value[0] === 100 && value[1] != 500
+          ? `Up to ${value[1]}`
           : `${value[0]} to ${value[1]} `}
       </label>
       {/* <!-- between two numbers --> */}
