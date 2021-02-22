@@ -13,7 +13,7 @@ const HeroSection = (params) => {
             </a>
           </div>
         </div>
-        <div className="bg-center h-60 md:h-auto md:col-span-4 lg:col-span-1 order-first md:order-2 bg-hero-image bg-contain bg-no-repeat"></div>
+        <div className="bg-center h-80 md:h-auto md:col-span-4 lg:col-span-1 order-first md:order-2 bg-hero-image bg-contain bg-no-repeat"></div>
       </div>
     </div>
   );

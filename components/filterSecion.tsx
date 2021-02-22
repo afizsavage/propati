@@ -1,4 +1,6 @@
 import React, { useState, FC, ReactElement, useRef, useEffect } from "react";
+import Slider, { Range } from "rc-slider";
+import "rc-slider/assets/index.css";
 
 interface Iprops {
   heading: string;
@@ -219,44 +221,27 @@ const ListingsFilter: FC = (params): ReactElement => {
 };
 
 const PriceSlider = (params) => {
+  const [value, setValue] = useState([100, 500]);
+
+  const sliderProps = {
+    min: 100,
+    max: 500,
+    defaultValue: [100, 500],
+  };
+
+  function displayValue() {
+    return value[0] === 100 && value[1] === 500 ? "Price Any " : value;
+  }
+
   return (
     <fieldset className="w-full align-middle px-3 md:w-1/5 ">
+      <label htmlFor="">
+        {value[0] === 100 && value[1] === 500
+          ? "Any Price"
+          : `${value[0]} to ${value[1]} `}
+      </label>
       {/* <!-- between two numbers --> */}
-
-      <div className="flex  w-full  items-center h-auto justify-center">
-        <div className="py-1 relative min-w-full">
-          <div className="h-2 bg-gray-200 rounded-full">
-            <div
-              className="absolute h-2 rounded-full bg-teal-500 w-0"
-              style={{ width: "24.1935%", left: "11.2903%" }}
-            ></div>
-            <div
-              className="absolute h-4 flex items-center justify-center w-4 rounded-full bg-white shadow border border-gray-300 -ml-2 top-0 cursor-pointer"
-              unselectable="on"
-              style={{ left: "11.2903%" }}
-            >
-              <div className="relative -mt-2 w-1">
-                <div
-                  className="absolute z-40 opacity-100 bottom-100 mb-2 left-0 min-w-full"
-                  style={{ marginLeft: "-25px" }}
-                ></div>
-              </div>
-            </div>
-            <div
-              className="absolute h-4 flex items-center justify-center w-4 rounded-full bg-white shadow border border-gray-300 -ml-2 top-0 cursor-pointer"
-              unselectable="on"
-              style={{ left: "35.4839%" }}
-            >
-              <div className="relative -mt-2 w-1">
-                <div
-                  className="absolute z-40 opacity-100 bottom-100 mb-2 left-0 min-w-full"
-                  style={{ marginLeft: "-25px" }}
-                ></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Range value={value} onChange={(val) => setValue(val)} {...sliderProps} />
     </fieldset>
   );
 };
