@@ -1,6 +1,7 @@
 import React, { useState, FC, ReactElement, useRef, useEffect } from "react";
 import Slider, { Range } from "rc-slider";
 import "rc-slider/assets/index.css";
+import { spawn } from "child_process";
 
 interface Iprops {
   heading: string;
@@ -45,7 +46,7 @@ const FilterDropdowns: FC<Iprops> = ({ heading, options }): ReactElement => {
   };
 
   return (
-    <fieldset ref={wrapperRef} className="w-full px-3 md:w-1/5 ">
+    <fieldset ref={wrapperRef} className="w-full px-4 md:w-1/5 ">
       <label
         className="text-base block mb-2 text-gray-900 font-bold"
         htmlFor="formGridCode_year"
@@ -201,6 +202,20 @@ const ServiceType: FC = (params): ReactElement => {
   );
 };
 
+const PropertyType = (params) => {
+  return (
+    <div>
+      <button className="prop-type">Residential</button>
+
+      <button className="prop-type">Residential</button>
+
+      <button className="prop-type">Residential</button>
+
+      <button className="prop-type">Residential</button>
+    </div>
+  );
+};
+
 const ListingsFilter: FC = (params): ReactElement => {
   return (
     <div className="inline-block ">
@@ -230,11 +245,11 @@ const PriceSlider = (params) => {
   };
 
   return (
-    <fieldset className="w-full px-3 md:w-1/5 ">
+    <fieldset className="w-full pl-4 md:w-1/5 ">
       <div className="inline-flex justify-center w-full">
         <label
           htmlFor=""
-          className="mx-auto bg-red-400 text-sm font-semibold py-2 px-4 text-gray-800 rounded-full"
+          className="mx-auto bg-indigo-500 text-base font-bold py-2 px-4 text-gray-100 rounded-full"
         >
           {value[0] === 100 && value[1] === 5000
             ? "Any Price"
@@ -250,35 +265,41 @@ const PriceSlider = (params) => {
   );
 };
 
+const Location = (params) => {
+  return (
+    <fieldset className="relative w-full pr-4 md:w-1/5">
+      <label
+        className="block mb-2 text-gray-800 font-bold  "
+        htmlFor="formGridCode_month"
+      >
+        Location
+      </label>
+      <input
+        className="w-full h-10 px-3 text-base placeholder-gray-600 rounded-lg focus:outline-none bg-gray-100 hover:bg-white hover:ring-4 ring-teal-400 ring-opacity-20"
+        type="text"
+        id="formGridCode_month"
+      />
+      <div className="absolute bottom-3 left-2 flex items-center px-2 pointer-events-none ">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          viewBox="0 0 16 16"
+        >
+          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+        </svg>
+      </div>
+    </fieldset>
+  );
+};
+
 const ItemsFilter = (params) => {
   return (
     <div className="pt-7">
       <form className="w-full space-y-4 text-gray-700">
-        <div className="flex flex-wrap -mx-2 space-y-4 md:space-y-0">
-          <div className="relative w-full px-3 md:w-1/5">
-            <label
-              className="block mb-2 text-gray-800 font-bold  "
-              htmlFor="formGridCode_month"
-            >
-              Location
-            </label>
-            <input
-              className="w-full h-10 px-3 text-base placeholder-gray-600 rounded-lg focus:outline-none bg-gray-100 hover:bg-white hover:ring-4 ring-teal-400 ring-opacity-20"
-              type="text"
-              id="formGridCode_month"
-            />
-            <div className="absolute bottom-3 left-7 flex items-center px-2 pointer-events-none ">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-              </svg>
-            </div>
-          </div>
+        <div className="flex flex-wrap  space-y-4 md:space-y-0">
+          <Location />
           <FilterDropdowns
             heading={"Bedrooms"}
             options={["1", "2", "3", "4", "5+"]}
@@ -303,6 +324,7 @@ const Filter = (params) => {
     <div className="w-full md:px-8 lg:px-16 px-6 lg:pt-8 lg:relative">
       <div className="flex lg:flex-row lg:items-center lg:justify-between">
         <ServiceType />
+        <PropertyType />
         <ListingsFilter />
       </div>
       <ItemsFilter />
