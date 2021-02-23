@@ -221,23 +221,29 @@ const ListingsFilter: FC = (params): ReactElement => {
 };
 
 const PriceSlider = (params) => {
-  const [value, setValue] = useState([100, 500]);
+  const [value, setValue] = useState([100, 5000]);
 
   const sliderProps = {
     min: 100,
-    max: 500,
-    defaultValue: [100, 500],
+    max: 5000,
+    defaultValue: [100, 5000],
   };
 
   return (
-    <fieldset className="w-full align-middle px-3 md:w-1/5 ">
-      <label htmlFor="">
-        {value[0] === 100 && value[1] === 500
-          ? "Any Price"
-          : value[0] === 100 && value[1] != 500
-          ? `Up to ${value[1]}`
-          : `${value[0]} to ${value[1]} `}
-      </label>
+    <fieldset className="w-full px-3 md:w-1/5 ">
+      <div className="inline-flex justify-center w-full">
+        <label
+          htmlFor=""
+          className="mx-auto bg-red-400 text-sm font-semibold py-2 px-4 text-gray-800 rounded-full"
+        >
+          {value[0] === 100 && value[1] === 5000
+            ? "Any Price"
+            : value[0] === 100 && value[1] != 5000
+            ? `Up to $${value[1]}/year`
+            : `$${value[0]} to $${value[1]}/year `}
+        </label>
+      </div>
+
       {/* <!-- between two numbers --> */}
       <Range value={value} onChange={(val) => setValue(val)} {...sliderProps} />
     </fieldset>

@@ -22,4 +22,7 @@
   .Btn {
     @apply inline-flex justify-center rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-white text-sm font-bold text-gray-500 focus:outline-none active:border-transparent active:bg-gray-100;
   }
+  .rc-slider {
+    @apply top-5;
+  }
 }
