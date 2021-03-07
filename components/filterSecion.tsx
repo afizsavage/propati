@@ -1,120 +1,19 @@
 import React, { useState, FC, ReactElement, useRef, useEffect } from "react";
 import Slider, { Range } from "rc-slider";
 import "rc-slider/assets/index.css";
-import { spawn } from "child_process";
-
-interface Iprops {
-  heading: string;
-  options: Array<string>;
-}
-
-const FilterDropdowns: FC<Iprops> = ({ heading, options }): ReactElement => {
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [ddownOpen, setddownOpen] = useState(false);
-  const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef);
-
-  const toggleMenu = (e) => {
-    ddownOpen === false ? setddownOpen(true) : setddownOpen(false);
-    let btn = e.target.nextSibling;
-    btn.classList.toggle("hidden");
-  };
-
-  function useOutsideAlerter(ref) {
-    useEffect(() => {
-      /**
-       * Alert if clicked on outside of element
-       */
-      function handleClickOutside(event) {
-        if (ref.current && !ref.current.contains(event.target)) {
-          setddownOpen(false);
-        }
-      }
-
-      // Bind the event listener
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-        // Unbind the event listener on clean up
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [ref]);
-  }
-
-  const onOptionClicked = (value) => () => {
-    setSelectedOption(value);
-    setddownOpen(false);
-  };
-
-  return (
-    <fieldset ref={wrapperRef} className="w-full px-4 md:w-1/5 ">
-      <label
-        className="text-base block mb-2 text-gray-900 font-bold"
-        htmlFor="formGridCode_year"
-      >
-        {heading}
-      </label>
-      <span className="w-full relative">
-        <button
-          type="button"
-          onClick={toggleMenu}
-          className="filterBtn w-full hover:text-gray-900 justify-between text-base font-medium"
-        >
-          {selectedOption || options[0]}
-          <svg
-            className="h-5 w-5 text-gray-500 text-base"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              fillRule="evenodd"
-              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </button>
-        <div
-          id="ddmenu"
-          className={
-            ddownOpen
-              ? "z-20 absolute w-full mt-3 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 "
-              : "hidden"
-          }
-        >
-          <ul
-            className="py-1 "
-            role="menu"
-            aria-orientation="vertical"
-            aria-labelledby="options-menu"
-            id="ddmenu"
-          >
-            {options.map((option) => (
-              <li
-                className="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900"
-                onClick={onOptionClicked(option)}
-                key={Math.random()}
-              >
-                {option}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </span>
-    </fieldset>
-  );
-};
 
 const ServiceType: FC = (params): ReactElement => {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const options = ["To Let", "For Sale", "Goods for Sale"];
+
+  const [selectedOption, setSelectedOption] = useState(options[0]);
   const [ddownOpen, setddownOpen] = useState(false);
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef);
 
   const toggleMenu = (params) => {
     ddownOpen === false ? setddownOpen(true) : setddownOpen(false);
-    let btn = document.getElementById("options-menu");
-    btn.classList.toggle("hidden");
+    let bton = null || document.getElementById("options-menu");
+    bton.classList.toggle("hidden");
   };
 
   function useOutsideAlerter(ref) {
@@ -136,8 +35,6 @@ const ServiceType: FC = (params): ReactElement => {
       };
     }, [ref]);
   }
-
-  const options = ["To Let", "For Sale", "Goods for Sale"];
 
   const onOptionClicked = (value) => () => {
     setSelectedOption(value);
@@ -202,16 +99,24 @@ const ServiceType: FC = (params): ReactElement => {
   );
 };
 
-const PropertyType = (params) => {
+interface IPropType {
+  name: string;
+}
+
+const PropertyType: FC<IPropType> = ({ name }): ReactElement => {
   return (
     <div>
-      <button className="prop-type">Residential</button>
+      <button className="prop-type active">{name}</button>
+    </div>
+  );
+};
 
-      <button className="prop-type">Residential</button>
-
-      <button className="prop-type">Residential</button>
-
-      <button className="prop-type">Residential</button>
+const PropertyTypeDiv = (params) => {
+  return (
+    <div className="flex justify-center">
+      <PropertyType name={"Residential"} />
+      <PropertyType name={"Commercial"} />
+      <PropertyType name={"Plots"} />
     </div>
   );
 };
@@ -232,6 +137,109 @@ const ListingsFilter: FC = (params): ReactElement => {
         Filters
       </button>
     </div>
+  );
+};
+
+interface Iprops {
+  heading: string;
+  options: Array<string>;
+}
+
+const FilterDropdowns: FC<Iprops> = ({ heading, options }): ReactElement => {
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [ddownOpen, setddownOpen] = useState(false);
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
+
+  const toggleServiceMenu = (e) => {
+    ddownOpen === false ? setddownOpen(true) : setddownOpen(false);
+    let btn = e.target.nextSibling;
+    btn.classList.toggle("hidden");
+  };
+
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      /**
+       * Alert if clicked on outside of element
+       */
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setddownOpen(false);
+        }
+      }
+
+      // Bind the event listener
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+
+  const onOptionClicked = (value) => () => {
+    setSelectedOption(value);
+    setddownOpen(false);
+    console.log(value);
+  };
+
+  return (
+    <fieldset ref={wrapperRef} className="w-full px-3 md:w-1/5 ">
+      <label
+        className="text-base block mb-2 text-gray-900 font-bold"
+        htmlFor="formGridCode_year"
+      >
+        {heading}
+      </label>
+      <span className="w-full relative">
+        <button
+          type="button"
+          onClick={toggleServiceMenu}
+          className="filterBtn w-full hover:text-gray-900 justify-between text-base font-medium"
+        >
+          {selectedOption || options[0]}
+          <svg
+            className="h-5 w-5 text-gray-500 text-base"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fillRule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </button>
+        <div
+          id="ddmenu"
+          className={
+            ddownOpen
+              ? "z-20 absolute w-full mt-3 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 "
+              : "hidden"
+          }
+        >
+          <ul
+            className="py-1 "
+            role="menu"
+            aria-orientation="vertical"
+            aria-labelledby="options-menu"
+            id="ddmenu"
+          >
+            {options.map((option) => (
+              <li
+                className="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900"
+                onClick={onOptionClicked(option)}
+                key={Math.random()}
+              >
+                {option}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </span>
+    </fieldset>
   );
 };
 
@@ -275,7 +283,7 @@ const Location = (params) => {
         Location
       </label>
       <input
-        className="w-full h-10 px-3 text-base placeholder-gray-600 rounded-lg focus:outline-none bg-gray-100 hover:bg-white hover:ring-4 ring-teal-400 ring-opacity-20"
+        className="w-full h-10 pl-11 pr-3 text-base placeholder-gray-600 rounded-lg focus:outline-none bg-gray-100 hover:bg-white hover:ring-4 ring-teal-400 ring-opacity-20"
         type="text"
         id="formGridCode_month"
       />
@@ -298,7 +306,7 @@ const ItemsFilter = (params) => {
   return (
     <div className="pt-7">
       <form className="w-full space-y-4 text-gray-700">
-        <div className="flex flex-wrap  space-y-4 md:space-y-0">
+        <div className="flex flex-wrap space-y-4 md:space-y-0">
           <Location />
           <FilterDropdowns
             heading={"Bedrooms"}
@@ -324,7 +332,7 @@ const Filter = (params) => {
     <div className="w-full md:px-8 lg:px-16 px-6 lg:pt-8 lg:relative">
       <div className="flex lg:flex-row lg:items-center lg:justify-between">
         <ServiceType />
-        <PropertyType />
+        <PropertyTypeDiv />
         <ListingsFilter />
       </div>
       <ItemsFilter />
