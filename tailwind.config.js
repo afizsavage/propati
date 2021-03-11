@@ -1,6 +1,22 @@
 const colors = require("tailwindcss/colors");
+const plugin = require("tailwindcss/plugin");
 
 module.exports = {
+  plugins: [
+    plugin(function ({ addComponents }) {
+      const buttons = {
+        ".activePropType": {
+          backgroundColor: "#3490dc",
+          color: "#fff",
+          fontWeight: "700",
+        },
+      };
+
+      addComponents(buttons, {
+        variants: ["first"],
+      });
+    }),
+  ],
   purge: ["./components/**/*.{js,ts,jsx,tsx}", "./pages/**/*.{js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -25,9 +41,10 @@ module.exports = {
       ringWidth: ["hover", "active"],
       boxShadow: ["active"],
       borderColor: ["active"],
-      backgroundColor: ['active'],
+      backgroundColor: ["active", "first"],
       borderWidth: ["last"],
+      textColor: ["first"],
+      fontWeight: ["first"],
     },
   },
-  plugins: [],
 };

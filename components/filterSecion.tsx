@@ -2,10 +2,16 @@ import React, { useState, FC, ReactElement, useRef, useEffect } from "react";
 import Slider, { Range } from "rc-slider";
 import "rc-slider/assets/index.css";
 
-const ServiceType: FC = (params): ReactElement => {
-  const options = ["To Let", "For Sale", "Goods for Sale"];
-
-  const [selectedOption, setSelectedOption] = useState(options[0]);
+interface sTProps {
+  serviceType: any;
+  options: Array<string>;
+  onOptionsClicked: any;
+}
+const ServiceTypeBtn: FC<sTProps> = ({
+  serviceType,
+  options,
+  onOptionsClicked,
+}): ReactElement => {
   const [ddownOpen, setddownOpen] = useState(false);
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef);
@@ -15,6 +21,10 @@ const ServiceType: FC = (params): ReactElement => {
     let bton = null || document.getElementById("options-menu");
     bton.classList.toggle("hidden");
   };
+
+  useEffect(() => {
+    setddownOpen(false);
+  }, [options]);
 
   function useOutsideAlerter(ref) {
     useEffect(() => {
@@ -36,11 +46,6 @@ const ServiceType: FC = (params): ReactElement => {
     }, [ref]);
   }
 
-  const onOptionClicked = (value) => () => {
-    setSelectedOption(value);
-    setddownOpen(false);
-  };
-
   return (
     <div ref={wrapperRef} className="relative inline-block text-left">
       <div>
@@ -51,7 +56,7 @@ const ServiceType: FC = (params): ReactElement => {
           aria-haspopup="true"
           aria-expanded="true"
         >
-          {selectedOption || "To Let"}
+          {serviceType}
           {/* Heroicon name: solid/chevron-down */}
           <svg
             className="mr-1 ml-4 h-5 w-5 text-gray-500"
@@ -87,7 +92,7 @@ const ServiceType: FC = (params): ReactElement => {
           {options.map((option) => (
             <li
               className="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 last:border-t-2"
-              onClick={onOptionClicked(option)}
+              onClick={onOptionsClicked(option)}
               key={Math.random()}
             >
               {option}
@@ -104,16 +109,12 @@ interface IPropType {
 }
 
 const PropertyType: FC<IPropType> = ({ name }): ReactElement => {
-  return (
-    <div>
-      <button className="prop-type active">{name}</button>
-    </div>
-  );
+  return <button className="prop-type first:activePropType">{name}</button>;
 };
 
 const PropertyTypeDiv = (params) => {
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center ">
       <PropertyType name={"Residential"} />
       <PropertyType name={"Commercial"} />
       <PropertyType name={"Plots"} />
@@ -328,10 +329,21 @@ const ItemsFilter = (params) => {
 };
 
 const Filter = (params) => {
+  const options = ["To Let", "For Sale", "Goods for Sale"];
+  const [serviceType, setServiceType] = useState(options[0]);
+
+  const selectOption = (value) => () => {
+    setServiceType(value);
+  };
+
   return (
     <div className="w-full md:px-8 lg:px-16 px-6 lg:pt-8 lg:relative">
       <div className="flex lg:flex-row lg:items-center lg:justify-between">
-        <ServiceType />
+        <ServiceTypeBtn
+          options={options}
+          serviceType={serviceType}
+          onOptionsClicked={selectOption}
+        />
         <PropertyTypeDiv />
         <ListingsFilter />
       </div>
