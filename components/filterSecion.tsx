@@ -4,13 +4,13 @@ import "rc-slider/assets/index.css";
 
 interface sTProps {
   serviceType: any;
-  options: Array<string>;
-  onOptionsClicked: any;
+  ServiceOptions: Array<string>;
+  onServiceOptionsClicked: any;
 }
 const ServiceTypeBtn: FC<sTProps> = ({
   serviceType,
-  options,
-  onOptionsClicked,
+  ServiceOptions,
+  onServiceOptionsClicked,
 }): ReactElement => {
   const [ddownOpen, setddownOpen] = useState(false);
   const wrapperRef = useRef(null);
@@ -18,7 +18,7 @@ const ServiceTypeBtn: FC<sTProps> = ({
 
   const toggleMenu = (params) => {
     ddownOpen === false ? setddownOpen(true) : setddownOpen(false);
-    let bton = null || document.getElementById("options-menu");
+    let bton = null || document.getElementById("ServiceOptions-menu");
     bton.classList.toggle("hidden");
   };
 
@@ -72,7 +72,7 @@ const ServiceTypeBtn: FC<sTProps> = ({
 
       {/* Dropdown panel, show/hide based on dropdown state */}
       <div
-        id="options-menu"
+        id="ServiceOptions-menu"
         className={
           ddownOpen
             ? "z-20 origin-top-left absolute left-0 mt-3 w-44 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
@@ -84,12 +84,12 @@ const ServiceTypeBtn: FC<sTProps> = ({
           className="py-1 "
           role="menu"
           aria-orientation="vertical"
-          aria-labelledby="options-menu"
+          aria-labelledby="ServiceOptions-menu"
         >
-          {options.map((option) => (
+          {ServiceOptions.map((option) => (
             <li
               className="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 last:border-t-2"
-              onClick={onOptionsClicked(option)}
+              onClick={onServiceOptionsClicked(option)}
               key={Math.random()}
             >
               {option}
@@ -119,7 +119,7 @@ const PropertyTypeDiv = (params) => {
   );
 };
 
-const ListingsFilter: FC = (params): ReactElement => {
+const FilterBtn: FC = (params): ReactElement => {
   return (
     <div className="inline-block ">
       <button type="button" className="filterBtn">
@@ -140,10 +140,13 @@ const ListingsFilter: FC = (params): ReactElement => {
 
 interface Iprops {
   heading: string;
-  options: Array<string>;
+  ServiceOptions: Array<string>;
 }
 
-const FilterDropdowns: FC<Iprops> = ({ heading, options }): ReactElement => {
+const FilterDropdowns: FC<Iprops> = ({
+  heading,
+  ServiceOptions,
+}): ReactElement => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [ddownOpen, setddownOpen] = useState(false);
   const wrapperRef = useRef(null);
@@ -195,7 +198,7 @@ const FilterDropdowns: FC<Iprops> = ({ heading, options }): ReactElement => {
           onClick={toggleServiceMenu}
           className="filterBtn w-full hover:text-gray-900 justify-between text-base font-medium"
         >
-          {selectedOption || options[0]}
+          {selectedOption || ServiceOptions[0]}
           <svg
             className="h-5 w-5 text-gray-500 text-base"
             xmlns="http://www.w3.org/2000/svg"
@@ -222,10 +225,10 @@ const FilterDropdowns: FC<Iprops> = ({ heading, options }): ReactElement => {
             className="py-1 "
             role="menu"
             aria-orientation="vertical"
-            aria-labelledby="options-menu"
+            aria-labelledby="ServiceOptions-menu"
             id="ddmenu"
           >
-            {options.map((option) => (
+            {ServiceOptions.map((option) => (
               <li
                 className="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900"
                 onClick={onOptionClicked(option)}
@@ -271,14 +274,14 @@ const PriceSlider = (params) => {
   );
 };
 
-const Location = (params) => {
+const FilterSearch = ({ searchLabel }) => {
   return (
     <fieldset className="relative w-full pr-4 md:w-1/5">
       <label
         className="block mb-2 text-gray-800 font-bold  "
         htmlFor="formGridCode_month"
       >
-        Location
+        {searchLabel}
       </label>
       <input
         className="w-full h-10 pl-11 pr-3 text-base placeholder-gray-600 rounded-lg focus:outline-none bg-gray-100 hover:bg-white hover:ring-4 ring-teal-400 ring-opacity-20"
@@ -300,23 +303,29 @@ const Location = (params) => {
   );
 };
 
-const ItemsFilter = (params) => {
+const FilterRealEstate = (params) => {
   return (
     <div className="pt-7">
       <form className="w-full space-y-4 text-gray-700">
         <div className="flex flex-wrap space-y-4 md:space-y-0">
-          <Location />
+          <FilterSearch searchLabel={"Location"} />
           <FilterDropdowns
             heading={"Bedrooms"}
-            options={["1", "2", "3", "4", "5+"]}
+            ServiceOptions={["1", "2", "3", "4", "5+"]}
           />
           <FilterDropdowns
             heading={"Bathrooms"}
-            options={["1", "2", "3", "4", "5+"]}
+            ServiceOptions={["1", "2", "3", "4", "5+"]}
           />
           <FilterDropdowns
             heading={"Residential Type"}
-            options={["Apartment", "Detached", "Terraced", "Cottage", "Room"]}
+            ServiceOptions={[
+              "Apartment",
+              "Detached",
+              "Terraced",
+              "Cottage",
+              "Room",
+            ]}
           />
           <PriceSlider />
         </div>
@@ -325,27 +334,99 @@ const ItemsFilter = (params) => {
   );
 };
 
-const Filter = (params) => {
-  const options = ["To Let", "For Sale", "Goods for Sale"];
-  const [serviceType, setServiceType] = useState(options[0]);
+const FilterGoods = (params) => {
+  return (
+    <div className="pt-7">
+      <form className="w-full space-y-4 text-gray-700">
+        <div className="flex flex-wrap space-y-4 md:space-y-0">
+          <FilterSearch searchLabel={"Products"} />
+          <FilterDropdowns
+            heading={"Bedrooms"}
+            ServiceOptions={["1", "2", "3", "4", "5+"]}
+          />
+          <FilterDropdowns
+            heading={"Bathrooms"}
+            ServiceOptions={["1", "2", "3", "4", "5+"]}
+          />
+          <FilterDropdowns
+            heading={"Residential Type"}
+            ServiceOptions={[
+              "Apartment",
+              "Detached",
+              "Terraced",
+              "Cottage",
+              "Room",
+            ]}
+          />
+          <PriceSlider />
+        </div>
+      </form>
+    </div>
+  );
+};
 
-  const selectOption = (value) => () => {
-    setServiceType(value);
-  };
-
+const RealEstateFilter = ({
+  ServiceOptions,
+  serviceType,
+  selectServiceOptions,
+}) => {
   return (
     <div className="w-full md:px-8 lg:px-16 px-6 lg:pt-8 lg:relative">
       <div className="flex lg:flex-row lg:items-center lg:justify-between">
         <ServiceTypeBtn
-          options={options}
+          ServiceOptions={ServiceOptions}
           serviceType={serviceType}
-          onOptionsClicked={selectOption}
+          onServiceOptionsClicked={selectServiceOptions}
         />
         <PropertyTypeDiv />
-        <ListingsFilter />
+        <FilterBtn />
       </div>
-      <ItemsFilter />
+      <FilterRealEstate />
     </div>
+  );
+};
+
+const GoodsFilter = ({ ServiceOptions, serviceType, selectServiceOptions }) => {
+  return (
+    <div className="w-full md:px-8 lg:px-16 px-6 lg:pt-8 lg:relative">
+      <div className="flex lg:flex-row lg:items-center lg:justify-between">
+        <ServiceTypeBtn
+          ServiceOptions={ServiceOptions}
+          serviceType={serviceType}
+          onServiceOptionsClicked={selectServiceOptions}
+        />
+        <PropertyTypeDiv />
+        <FilterBtn />
+      </div>
+      <FilterGoods />
+    </div>
+  );
+};
+
+const Filter = (params) => {
+  const ServiceOptions = ["To Let", "For Sale", "Goods for Sale"];
+  const [serviceType, setServiceType] = useState(ServiceOptions[0]);
+  const [itemCategory, setItemCategory] = useState(null);
+
+  const selectServiceOptions = (value) => () => {
+    setServiceType(value);
+  };
+
+  if (serviceType === ServiceOptions[2]) {
+    return (
+      <GoodsFilter
+        serviceType={serviceType}
+        ServiceOptions={ServiceOptions}
+        selectServiceOptions={selectServiceOptions}
+      />
+    );
+  }
+  return (
+    <RealEstateFilter
+      serviceType={serviceType}
+      ServiceOptions={ServiceOptions}
+      selectServiceOptions={selectServiceOptions}
+    />
   );
 };
 
