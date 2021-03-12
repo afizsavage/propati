@@ -22,10 +22,6 @@ const ServiceTypeBtn: FC<sTProps> = ({
     bton.classList.toggle("hidden");
   };
 
-  useEffect(() => {
-    setddownOpen(false);
-  }, [options]);
-
   function useOutsideAlerter(ref) {
     useEffect(() => {
       /**
@@ -84,6 +80,7 @@ const ServiceTypeBtn: FC<sTProps> = ({
         }
       >
         <ul
+          onClick={() => setddownOpen(false)}
           className="py-1 "
           role="menu"
           aria-orientation="vertical"
