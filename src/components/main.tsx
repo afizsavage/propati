@@ -1,6 +1,6 @@
 import React from "react";
 import HeroSection from "./heroSection";
-import Filter from "./filterSecion";
+import Filter from "./listings/filter";
 const Main = () => {
   return (
     <main className="flex flex-grow flex-col">
