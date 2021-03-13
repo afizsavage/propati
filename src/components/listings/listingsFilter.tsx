@@ -2,7 +2,7 @@ import React, { useState, FC, ReactElement, useRef, useEffect } from "react";
 import Slider, { Range } from "rc-slider";
 import "rc-slider/assets/index.css";
 
-interface sTProps {
+export interface sTProps {
   serviceType: any;
   ServiceOptions: Array<string>;
   onServiceOptionsClicked: any;
@@ -403,15 +403,7 @@ const GoodsFilter = ({ ServiceOptions, serviceType, selectServiceOptions }) => {
   );
 };
 
-const Filter = (params) => {
-  const ServiceOptions = ["To Let", "For Sale", "Goods for Sale"];
-  const [serviceType, setServiceType] = useState(ServiceOptions[0]);
-  const [itemCategory, setItemCategory] = useState(null);
-
-  const selectServiceOptions = (value) => () => {
-    setServiceType(value);
-  };
-
+const Filter = ({ ServiceOptions, serviceType, selectServiceOptions }) => {
   if (serviceType === ServiceOptions[2]) {
     return (
       <GoodsFilter

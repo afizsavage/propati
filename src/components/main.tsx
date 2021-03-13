@@ -1,11 +1,11 @@
 import React from "react";
 import HeroSection from "./heroSection";
-import Filter from "./listings/filter";
+import Listings from "./listings/";
 const Main = () => {
   return (
     <main className="flex flex-grow flex-col">
       <HeroSection />
-      <Filter />
+      <Listings />
       {/* <!-- Container --> */}
     </main>
   );

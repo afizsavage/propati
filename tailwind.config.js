@@ -41,10 +41,8 @@ module.exports = {
       ringWidth: ["hover", "active"],
       boxShadow: ["active"],
       borderColor: ["active"],
-      backgroundColor: ["active", "first"],
+      backgroundColor: ["active"],
       borderWidth: ["last"],
-      textColor: ["first"],
-      fontWeight: ["first"],
     },
   },
 };
