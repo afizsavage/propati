@@ -2,16 +2,14 @@ import React, { useState, FC, ReactElement, useRef, useEffect } from "react";
 import Slider, { Range } from "rc-slider";
 import "rc-slider/assets/index.css";
 
-export interface sTProps {
-  serviceType: any;
-  ServiceOptions: Array<string>;
-  onServiceOptionsClicked: any;
+interface FilterProps {
+  serviceType?: any;
+  ServiceOptions?: Array<string>;
+  onServiceOptionsClicked?: any;
+  selectServiceOptions?: any;
 }
-const ServiceTypeBtn: FC<sTProps> = ({
-  serviceType,
-  ServiceOptions,
-  onServiceOptionsClicked,
-}): ReactElement => {
+
+const ServiceTypeBtn = (soProps: FilterProps) => {
   const [ddownOpen, setddownOpen] = useState(false);
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef);
@@ -52,7 +50,7 @@ const ServiceTypeBtn: FC<sTProps> = ({
           aria-haspopup="true"
           aria-expanded="true"
         >
-          {serviceType}
+          {soProps.serviceType}
           {/* Heroicon name: solid/chevron-down */}
           <svg
             className="mr-1 ml-4 h-5 w-5 text-gray-500"
@@ -86,10 +84,10 @@ const ServiceTypeBtn: FC<sTProps> = ({
           aria-orientation="vertical"
           aria-labelledby="ServiceOptions-menu"
         >
-          {ServiceOptions.map((option) => (
+          {soProps.ServiceOptions.map((option) => (
             <li
               className="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 last:border-t-2"
-              onClick={onServiceOptionsClicked(option)}
+              onClick={soProps.onServiceOptionsClicked(option)}
               key={Math.random()}
             >
               {option}
@@ -105,16 +103,28 @@ interface IPropType {
   name: string;
 }
 
-const PropertyType: FC<IPropType> = ({ name }): ReactElement => {
-  return <button className="prop-type first:activePropType">{name}</button>;
-};
+const PropertyCategory = (cProps: { categoryOptions: Array<string> }) => {
+  const [itemCategory, setItemCategory] = useState(cProps.categoryOptions[0]);
 
-const PropertyTypeDiv = (params) => {
+  const selectItemCategory = (value) => () => {
+    setItemCategory(value);
+  };
+
   return (
     <div className="flex justify-center ">
-      <PropertyType name={"Residential"} />
-      <PropertyType name={"Commercial"} />
-      <PropertyType name={"Plots"} />
+      <ul className="inline-flex">
+        {cProps.categoryOptions.map((category) => (
+          <li
+            onClick={selectItemCategory(category)}
+            className={
+              itemCategory === category ? "categoryBtnActive" : " categoryBtn"
+            }
+            key={Math.random()}
+          >
+            {category}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
@@ -143,10 +153,7 @@ interface Iprops {
   ServiceOptions: Array<string>;
 }
 
-const FilterDropdowns: FC<Iprops> = ({
-  heading,
-  ServiceOptions,
-}): ReactElement => {
+const FilterDropdowns = (fddProps: Iprops) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [ddownOpen, setddownOpen] = useState(false);
   const wrapperRef = useRef(null);
@@ -190,7 +197,7 @@ const FilterDropdowns: FC<Iprops> = ({
         className="text-base block mb-2 text-gray-900 font-bold"
         htmlFor="formGridCode_year"
       >
-        {heading}
+        {fddProps.heading}
       </label>
       <span className="w-full relative">
         <button
@@ -198,7 +205,7 @@ const FilterDropdowns: FC<Iprops> = ({
           onClick={toggleServiceMenu}
           className="filterBtn w-full hover:text-gray-900 justify-between text-base font-medium"
         >
-          {selectedOption || ServiceOptions[0]}
+          {selectedOption}
           <svg
             className="h-5 w-5 text-gray-500 text-base"
             xmlns="http://www.w3.org/2000/svg"
@@ -228,7 +235,7 @@ const FilterDropdowns: FC<Iprops> = ({
             aria-labelledby="ServiceOptions-menu"
             id="ddmenu"
           >
-            {ServiceOptions.map((option) => (
+            {fddProps.ServiceOptions.map((option) => (
               <li
                 className="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900"
                 onClick={onOptionClicked(option)}
@@ -365,20 +372,18 @@ const FilterGoods = (params) => {
   );
 };
 
-const RealEstateFilter = ({
-  ServiceOptions,
-  serviceType,
-  selectServiceOptions,
-}) => {
+const RealEstateFilter = (rsProps: FilterProps) => {
   return (
     <div className="w-full md:px-8 lg:px-16 px-6 lg:pt-8 lg:relative">
       <div className="flex lg:flex-row lg:items-center lg:justify-between">
         <ServiceTypeBtn
-          ServiceOptions={ServiceOptions}
-          serviceType={serviceType}
-          onServiceOptionsClicked={selectServiceOptions}
+          ServiceOptions={rsProps.ServiceOptions}
+          serviceType={rsProps.serviceType}
+          onServiceOptionsClicked={rsProps.selectServiceOptions}
         />
-        <PropertyTypeDiv />
+        <PropertyCategory
+          categoryOptions={["Residential", "Commercial", "Land/Plot"]}
+        />
         <FilterBtn />
       </div>
       <FilterRealEstate />
@@ -386,16 +391,25 @@ const RealEstateFilter = ({
   );
 };
 
-const GoodsFilter = ({ ServiceOptions, serviceType, selectServiceOptions }) => {
+const GoodsFilter = (gfProps: FilterProps) => {
   return (
     <div className="w-full md:px-8 lg:px-16 px-6 lg:pt-8 lg:relative">
       <div className="flex lg:flex-row lg:items-center lg:justify-between">
         <ServiceTypeBtn
-          ServiceOptions={ServiceOptions}
-          serviceType={serviceType}
-          onServiceOptionsClicked={selectServiceOptions}
+          ServiceOptions={gfProps.ServiceOptions}
+          serviceType={gfProps.serviceType}
+          onServiceOptionsClicked={gfProps.selectServiceOptions}
         />
-        <PropertyTypeDiv />
+        <PropertyCategory
+          categoryOptions={[
+            "Electronics",
+            "Fashion",
+            "Accesories",
+            "Art  Craft;",
+            "Toys and Games",
+            "Home and Kitchen",
+          ]}
+        />
         <FilterBtn />
       </div>
       <FilterGoods />
@@ -403,21 +417,21 @@ const GoodsFilter = ({ ServiceOptions, serviceType, selectServiceOptions }) => {
   );
 };
 
-const Filter = ({ ServiceOptions, serviceType, selectServiceOptions }) => {
-  if (serviceType === ServiceOptions[2]) {
+const Filter = (fsProps: FilterProps) => {
+  if (fsProps.serviceType === fsProps.ServiceOptions[2]) {
     return (
       <GoodsFilter
-        serviceType={serviceType}
-        ServiceOptions={ServiceOptions}
-        selectServiceOptions={selectServiceOptions}
+        serviceType={fsProps.serviceType}
+        ServiceOptions={fsProps.ServiceOptions}
+        selectServiceOptions={fsProps.selectServiceOptions}
       />
     );
   }
   return (
     <RealEstateFilter
-      serviceType={serviceType}
-      ServiceOptions={ServiceOptions}
-      selectServiceOptions={selectServiceOptions}
+      serviceType={fsProps.serviceType}
+      ServiceOptions={fsProps.ServiceOptions}
+      selectServiceOptions={fsProps.selectServiceOptions}
     />
   );
 };

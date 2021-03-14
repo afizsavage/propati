@@ -1,10 +1,9 @@
 import React, { useState, FC, ReactElement, useRef, useEffect } from "react";
-import Filter, { sTProps } from "./listingsFilter";
+import Filter from "./listingsFilter";
 
-const Listings: FC<sTProps> = (params): ReactElement => {
+const Listings: FC = (params): ReactElement => {
   const ServiceOptions = ["To Let", "For Sale", "Goods for Sale"];
   const [serviceType, setServiceType] = useState(ServiceOptions[0]);
-  const [itemCategory, setItemCategory] = useState(null);
 
   const selectServiceOptions = (value) => () => {
     setServiceType(value);

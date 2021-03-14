@@ -27,4 +27,10 @@
   .rc-slider {
     @apply top-5;
   }
+  .categoryBtn {
+    @apply mr-1 cursor-pointer py-2 px-3 rounded-lg text-gray-600 focus:outline-none hover:text-black;
+  }
+  .categoryBtnActive {
+    @apply mr-1 bg-gray-200 cursor-pointer py-2 px-3 rounded-lg text-black focus:outline-none;
+  }
 }

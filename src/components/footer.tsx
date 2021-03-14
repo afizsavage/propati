@@ -90,17 +90,26 @@ const Footer = (params) => {
         <div className="md:flex hidden justify-center">
           <span>
             <Link href="#">
-              <ImFacebook className="hover:text-gray-600" size={18} />
+              <ImFacebook
+                className="cursor-pointer hover:text-gray-600"
+                size={18}
+              />
             </Link>
           </span>
           <span className="px-6">
-            <Link href="#" >
-              <ImTwitter className="hover:text-gray-600" size={18} />
+            <Link href="#">
+              <ImTwitter
+                className="cursor-pointer hover:text-gray-600"
+                size={18}
+              />
             </Link>
           </span>
           <span>
-            <Link href="#" >
-              <ImInstagram className="hover:text-gray-600" size={18} />
+            <Link href="#">
+              <ImInstagram
+                className="cursor-pointer hover:text-gray-600"
+                size={18}
+              />
             </Link>
           </span>
         </div>
