@@ -1,4 +1,4 @@
-import React, { useState, FC, ReactElement, useRef, useEffect } from "react";
+import React, { useState, FC, ReactElement } from "react";
 import Filter from "./listingsFilter";
 
 const Listings: FC = (params): ReactElement => {
