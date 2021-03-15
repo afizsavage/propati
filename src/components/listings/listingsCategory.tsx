@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 
-const PropertyCategory = (cProps: { categoryOptions: Array<string> }) => {
-  const [itemCategory, setItemCategory] = useState(cProps.categoryOptions[0]);
+interface CategoryProps {
+  itemCategory: string;
+  categoryOptions: Array<string>;
+  selectCategory(x: String): () => void;
+}
 
-  const selectItemCategory = (value) => () => {
-    setItemCategory(value);
-  };
-
+const PropertyCategory = (cProps: CategoryProps) => {
   return (
     <div className="flex justify-center ">
       <ul className="inline-flex">
         {cProps.categoryOptions.map((category) => (
           <li
-            onClick={selectItemCategory(category)}
+            onClick={cProps.selectCategory(category)}
             className={
-              itemCategory === category ? "categoryBtnActive" : " categoryBtn"
+              cProps.itemCategory === category
+                ? "categoryBtnActive"
+                : " categoryBtn"
             }
             key={Math.random()}
           >

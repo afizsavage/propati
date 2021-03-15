@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 import FilterDropdowns from "./filterDropdowns";
 import FilterSearch from "./filterSearch";
 import ServiceTypeBtn from "./serviceBtn";
@@ -43,6 +45,20 @@ const FilterGoods = (params) => {
 };
 
 const GoodsFilter = (gfProps: GoodsProps) => {
+  const categoryOptions = [
+    "Electronics",
+    "Fashion",
+    "Accesories",
+    "Art & Craft",
+    "Toys and Games",
+    "Home and Kitchen",
+  ];
+  const [itemCategory, setItemCategory] = useState(categoryOptions[0]);
+
+  const selectItemCategory = (value) => () => {
+    setItemCategory(value);
+  };
+
   return (
     <div className="w-full md:px-8 lg:px-16 px-6 lg:pt-8 lg:relative">
       <div className="flex lg:flex-row lg:items-center lg:justify-between">
@@ -52,14 +68,9 @@ const GoodsFilter = (gfProps: GoodsProps) => {
           onServiceOptionsClicked={gfProps.selectServiceOptions}
         />
         <PropertyCategory
-          categoryOptions={[
-            "Electronics",
-            "Fashion",
-            "Accesories",
-            "Art & Craft",
-            "Toys and Games",
-            "Home and Kitchen",
-          ]}
+          categoryOptions={categoryOptions}
+          itemCategory={itemCategory}
+          selectCategory={selectItemCategory}
         />
         <FilterBtn />
       </div>
