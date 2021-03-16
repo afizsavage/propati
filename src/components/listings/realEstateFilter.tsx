@@ -21,7 +21,7 @@ interface FreProps {
 const FilterRealEstate = (resprops: FreProps) => {
   if (resprops.estateCategory === resprops.categoryOptions[0]) {
     return (
-      <div className="pt-7">
+      <div className="pt-8">
         <form className="w-full space-y-4 text-gray-700">
           <div className="flex flex-wrap space-y-4 md:space-y-0">
             <FilterSearch searchLabel={"Location"} />
@@ -43,13 +43,56 @@ const FilterRealEstate = (resprops: FreProps) => {
                 "Room",
               ]}
             />
+            <FilterDropdowns
+              heading={" Price"}
+              ServiceOptions={[
+                "Apartment",
+                "Detached",
+                "Terraced",
+                "Cottage",
+                "Room",
+              ]}
+            />
+          </div>
+        </form>
+      </div>
+    );
+  } else if (resprops.estateCategory === resprops.categoryOptions[1]) {
+    return (
+      <div className="pt-8">
+        <form className="w-full space-y-4 text-gray-700">
+          <div className="flex flex-wrap justify-center space-y-4 md:space-y-0">
+            <FilterSearch searchLabel={"Location"} />
+
+            <FilterDropdowns
+              heading={"Commercial Type"}
+              ServiceOptions={["Offices", "Stores", "Shops", "Warehouses"]}
+            />
             <PriceSlider />
           </div>
         </form>
       </div>
     );
+  } else {
+    return (
+      <div className="pt-8">
+        <form className="w-full space-y-4 text-gray-700">
+          <div className="flex flex-wrap justify-center space-y-4 md:space-y-0">
+            <FilterSearch searchLabel={"Location"} />
+
+            <FilterDropdowns
+              heading={"Plot size"}
+              ServiceOptions={["Offices", "Stores", "Shops", "Warehouses"]}
+            />
+            <FilterDropdowns
+              heading={"Plot size"}
+              ServiceOptions={["Offices", "Stores", "Shops", "Warehouses"]}
+            />
+          </div>
+        </form>
+      </div>
+    );
   }
-  return <div className="flex"></div>;
 };
 
 const RealEstateFilter = (rsProps: RealEstateProps) => {
