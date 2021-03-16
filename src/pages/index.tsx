@@ -1,5 +1,9 @@
+import { ApolloClient, InMemoryCache } from "@apollo/client";
 import Head from "next/head";
 import Layout from "../components/layout";
+import { ApolloProvider } from "@apollo/client";
+import { useQuery, gql } from "@apollo/client";
+
 export default function Home() {
   return (
     <>
@@ -18,7 +22,7 @@ export default function Home() {
         />
       </Head>
       <body className="font-Lato h-full">
-        <Layout pageInfo={{ pageName: "index" }}></Layout>
+        <Layout pageInfo={{ pageName: "index" }} />
       </body>
     </>
   );

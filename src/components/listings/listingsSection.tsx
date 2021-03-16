@@ -1,5 +1,7 @@
 import React, { useState, FC, ReactElement } from "react";
+import { useQuery, gql } from "@apollo/client";
 import Filter from "./listingsFilter";
+import ItemsSection from "./itemSection";
 
 const Listings: FC = (params): ReactElement => {
   const ServiceOptions = ["To Let", "For Sale", "Goods for Sale"];
@@ -16,7 +18,7 @@ const Listings: FC = (params): ReactElement => {
         ServiceOptions={ServiceOptions}
         selectServiceOptions={selectServiceOptions}
       />
-      <div className="flex"></div>
+      <ItemsSection />
     </>
   );
 };
