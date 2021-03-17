@@ -21,7 +21,7 @@ const Cards = () => {
         return (
           <li
             key={id}
-            className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3"
+            className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-5 lg:w-1/3"
           >
             {/* <!-- Article --> */}
             <article className="overflow-hidden rounded-lg shadow-lg">
@@ -83,7 +83,7 @@ function ItemsSection() {
   return (
     <div className="w-full py-8">
       <div className="w-full">
-        <ol className="px-16 w-full flex flex-wrap ">
+        <ol className="px-11 w-full flex flex-wrap ">
           <Cards />
         </ol>
       </div>
