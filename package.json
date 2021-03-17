@@ -16,7 +16,7 @@
     "rc-slider": "^9.7.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-icons": "^4.1.0"
+    "react-icons": "^4.2.0"
   },
   "description": "A web application for finding goods and services online.",
   "main": "index.js",

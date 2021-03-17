@@ -1,8 +1,5 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
 import Head from "next/head";
 import Layout from "../components/layout";
-import { ApolloProvider } from "@apollo/client";
-import { useQuery, gql } from "@apollo/client";
 
 export default function Home() {
   return (
@@ -12,6 +9,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Propati</title>
         <link rel="icon" href="/favicon.ico" />
+
         <link
           href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
           rel="stylesheet"
