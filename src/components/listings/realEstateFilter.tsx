@@ -5,7 +5,6 @@ import FilterSearch from "./filterSearch";
 import ServiceTypeBtn from "./serviceBtn";
 import PropertyCategory from "./listingsCategory";
 import FilterBtn from "./filterBtn";
-import PriceSlider from "./priceSlider";
 
 interface RealEstateProps {
   serviceType: string;
@@ -68,7 +67,16 @@ const FilterRealEstate = (resprops: FreProps) => {
               heading={"Commercial Type"}
               ServiceOptions={["Offices", "Stores", "Shops", "Warehouses"]}
             />
-            <PriceSlider />
+            <FilterDropdowns
+              heading={" Price"}
+              ServiceOptions={[
+                "Apartment",
+                "Detached",
+                "Terraced",
+                "Cottage",
+                "Room",
+              ]}
+            />
           </div>
         </form>
       </div>
@@ -85,7 +93,7 @@ const FilterRealEstate = (resprops: FreProps) => {
               ServiceOptions={["Offices", "Stores", "Shops", "Warehouses"]}
             />
             <FilterDropdowns
-              heading={"Plot size"}
+              heading={"Price"}
               ServiceOptions={["Offices", "Stores", "Shops", "Warehouses"]}
             />
           </div>
