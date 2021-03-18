@@ -112,19 +112,19 @@ const RealEstateFilter = (rsProps: RealEstateProps) => {
   };
 
   return (
-    <div className="w-full md:px-8 lg:px-16 px-6 lg:pt-8 lg:relative">
-      <div className="flex lg:flex-row lg:items-center lg:justify-between">
+    <div className="w-full pt-4 pb-3 md:px-8 lg:px-16 px-6 lg:pt-8 lg:relative">
+      <div className="flex lg:flex-row lg:items-center justify-between flex-wrap">
         <ServiceTypeBtn
           ServiceOptions={rsProps.ServiceOptions}
           serviceType={rsProps.serviceType}
           onServiceOptionsClicked={rsProps.selectServiceOptions}
         />
+        <FilterBtn />
         <PropertyCategory
           categoryOptions={categoryOptions}
           itemCategory={itemCategory}
           selectCategory={selectItemCategory}
         />
-        <FilterBtn />
       </div>
       <FilterRealEstate
         categoryOptions={categoryOptions}

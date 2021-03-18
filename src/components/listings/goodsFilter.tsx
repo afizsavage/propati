@@ -15,7 +15,7 @@ interface GoodsProps {
 
 const FilterGoods = (params) => {
   return (
-    <div className="pt-7">
+    <div className="pt-8">
       <form className="w-full space-y-4 text-gray-700">
         <div className="flex flex-wrap space-y-4 md:space-y-0">
           <FilterSearch searchLabel={"Products"} />
@@ -37,7 +37,16 @@ const FilterGoods = (params) => {
               "Room",
             ]}
           />
-          <PriceSlider />
+          <FilterDropdowns
+            heading={"Price"}
+            ServiceOptions={[
+              "Apartment",
+              "Detached",
+              "Terraced",
+              "Cottage",
+              "Room",
+            ]}
+          />
         </div>
       </form>
     </div>
@@ -60,19 +69,19 @@ const GoodsFilter = (gfProps: GoodsProps) => {
   };
 
   return (
-    <div className="w-full md:px-8 lg:px-16 px-6 lg:pt-8 lg:relative">
-      <div className="flex lg:flex-row lg:items-center lg:justify-between">
+    <div className="w-full pt-4 pb-3 md:px-8 lg:px-16 px-6 lg:pt-8 lg:relative">
+      <div className="flex lg:flex-row lg:items-center justify-between flex-wrap">
         <ServiceTypeBtn
           ServiceOptions={gfProps.ServiceOptions}
           serviceType={gfProps.serviceType}
           onServiceOptionsClicked={gfProps.selectServiceOptions}
         />
+        <FilterBtn />
         <PropertyCategory
           categoryOptions={categoryOptions}
           itemCategory={itemCategory}
           selectCategory={selectItemCategory}
         />
-        <FilterBtn />
       </div>
       <FilterGoods />
     </div>

@@ -81,7 +81,7 @@ function ItemsSection() {
   if (error) return <p>Error :(</p>;
 
   return (
-    <div className="w-full py-8">
+    <div className="w-full pb-8 pt-1">
       <div className="w-full">
         <ol className="px-11 w-full flex flex-wrap ">
           <Cards />

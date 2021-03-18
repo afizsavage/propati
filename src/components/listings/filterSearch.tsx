@@ -1,7 +1,7 @@
 import { ImSearch } from "react-icons/im";
 const FilterSearch = ({ searchLabel }) => {
   return (
-    <fieldset className="relative w-full pr-4 md:w-1/5">
+    <fieldset className="relative w-full  md:w-1/5">
       <label
         className="block mb-2 text-gray-800 font-bold  "
         htmlFor="formGridCode_month"

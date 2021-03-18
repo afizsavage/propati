@@ -8,7 +8,7 @@ interface CategoryProps {
 
 const PropertyCategory = (cProps: CategoryProps) => {
   return (
-    <div className="flex justify-center ">
+    <div className="lg:flex lg:justify-center ">
       <ul className="inline-flex">
         {cProps.categoryOptions.map((category) => (
           <li

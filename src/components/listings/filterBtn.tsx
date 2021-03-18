@@ -1,6 +1,6 @@
 const FilterBtn = (params) => {
   return (
-    <div className="inline-block ">
+    <div className="inline-block lg:order-last">
       <button type="button" className="filterBtn">
         <svg
           xmlns="http://www.w3.org/2000/svg"
