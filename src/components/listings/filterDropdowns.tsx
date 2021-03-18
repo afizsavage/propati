@@ -44,7 +44,7 @@ const FilterDropdowns = (fddProps: DropdownProps) => {
   };
 
   return (
-    <fieldset ref={wrapperRef} className="w-full pl-6 md:w-1/5 ">
+    <fieldset ref={wrapperRef} className="w-full lg:pl-6 md:w-1/5 ">
       <label
         className="text-base block mb-2 text-gray-900 font-bold"
         htmlFor="formGridCode_year"

@@ -10,19 +10,21 @@ const PropertyCategory = (cProps: CategoryProps) => {
   return (
     <div className="lg:flex lg:justify-center ">
       <ul className="inline-flex">
-        {cProps.categoryOptions.map((category) => (
-          <li
-            onClick={cProps.selectCategory(category)}
-            className={
-              cProps.itemCategory === category
-                ? "categoryBtnActive"
-                : " categoryBtn"
-            }
-            key={Math.random()}
-          >
-            {category}
-          </li>
-        ))}
+        <li>
+          {cProps.categoryOptions.map((category) => (
+            <button
+              onClick={cProps.selectCategory(category)}
+              className={
+                cProps.itemCategory === category
+                  ? "categoryBtnActive"
+                  : " categoryBtn"
+              }
+              key={Math.random()}
+            >
+              {category}
+            </button>
+          ))}
+        </li>
       </ul>
     </div>
   );
