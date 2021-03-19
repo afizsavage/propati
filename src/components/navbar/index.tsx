@@ -15,7 +15,11 @@ const AuthButtons = ({ href, children }) => {
     router.push(href);
   };
   return (
-    <a href={href} className="navlinks" onClick={handleClick}>
+    <a
+      href={href}
+      className="p-2 sm:py-2 sm:px-3 navLinks font-medium"
+      onClick={handleClick}
+    >
       {children}
     </a>
   );
@@ -110,13 +114,11 @@ const Navbar: FC = (params): ReactElement => {
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center  sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            {/* <!-- Profile dropdown --> */}
             <AuthButtons href={"auth"} children={"Sign In"} />
-            <div className="ml-3 hidden lg:block relative">
+            <div className="ml-3 lg:ml-0 hidden lg:block relative">
               <div>
-                <a href="#" className="primeBtn">
-                  Sign Up
-                </a>
+                <span>|</span>
+                <AuthButtons href={"auth/sign-up"} children={"Sign Up"} />
               </div>
             </div>
           </div>

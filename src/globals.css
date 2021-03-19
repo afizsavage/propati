@@ -33,4 +33,7 @@
   .categoryBtnActive {
     @apply mr-1 bg-gray-200 cursor-pointer py-2 px-3 rounded-lg text-black focus:outline-none;
   }
+  .input-container {
+    @apply mb-2;
+  }
 }
