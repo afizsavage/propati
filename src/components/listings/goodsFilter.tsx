@@ -5,7 +5,6 @@ import FilterSearch from "./filterSearch";
 import ServiceTypeBtn from "./serviceBtn";
 import PropertyCategory from "./listingsCategory";
 import FilterBtn from "./filterBtn";
-import PriceSlider from "./priceSlider";
 
 interface GoodsProps {
   serviceType?: any;

@@ -1,4 +1,25 @@
 import React, { useState, FC, ReactElement } from "react";
+import { useRouter } from "next/router";
+
+interface AuthProps {
+  href: string;
+  onClick(x: String): () => void;
+  ref: any;
+}
+
+const AuthButtons = ({ href, children }) => {
+  const router = useRouter();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    router.push(href);
+  };
+  return (
+    <a href={href} className="navlinks" onClick={handleClick}>
+      {children}
+    </a>
+  );
+};
 
 const Navbar: FC = (params): ReactElement => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -90,9 +111,7 @@ const Navbar: FC = (params): ReactElement => {
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center  sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             {/* <!-- Profile dropdown --> */}
-            <a href="#" className="p-2 sm:py-2 sm:px-3 navLinks font-medium">
-              Sign In
-            </a>
+            <AuthButtons href={"auth"} children={"Sign In"} />
             <div className="ml-3 hidden lg:block relative">
               <div>
                 <a href="#" className="primeBtn">
