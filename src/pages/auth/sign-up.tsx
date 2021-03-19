@@ -1,4 +1,7 @@
+import React, { useState, FC, ReactElement } from "react";
+
 const SignUp = (params) => {
+  const [serviceType, setServiceType] = useState(null);
   return (
     <div className="w-screen h-screen">
       <div className="w-full flex">
@@ -7,37 +10,35 @@ const SignUp = (params) => {
             <div className="p-8">
               <div className="w-full input-container">
                 <input
-                  type="email"
-                  className="border-solid border w-full rounded px-3 py-2"
-                  placeholder="Email"
+                  type="text"
+                  className="auth-input"
+                  placeholder="First Name"
+                />
+              </div>
+              <div className="w-full input-container ">
+                <input
+                  type="text"
+                  className="auth-input"
+                  placeholder="Last Name"
                 />
               </div>
               <div className="w-full input-container ">
                 <input
                   type="email"
-                  className="border-solid border w-full rounded px-3 py-2"
+                  className="auth-input"
                   placeholder="Email"
                 />
               </div>
               <div className="w-full input-container ">
                 <input
-                  type="email"
-                  className="border-solid border w-full rounded px-3 py-2"
-                  placeholder="Email"
-                />
-              </div>
-              <div className="w-full input-container ">
-                <input
-                  type="email"
-                  className="border-solid border w-full rounded px-3 py-2"
-                  placeholder="Email"
+                  type="password"
+                  className="auth-input"
+                  placeholder="Password"
                 />
               </div>
             </div>
 
-            <button className="bg-teal-500 text-white px-3 py-2 rounded w-full mt-4">
-              Sign Up
-            </button>
+            <button className="auth-submit">Sign Up</button>
           </form>
         </div>
       </div>

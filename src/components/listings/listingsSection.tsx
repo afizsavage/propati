@@ -1,5 +1,4 @@
 import React, { useState, FC, ReactElement } from "react";
-import { useQuery, gql } from "@apollo/client";
 import Filter from "./listingsFilter";
 import ItemsSection from "./itemSection";
 

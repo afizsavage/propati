@@ -36,4 +36,10 @@
   .input-container {
     @apply mb-2;
   }
+  .auth-input {
+    @apply border-b w-full rounded focus:outline-none py-2;
+  }
+  .auth-submit {
+    @apply bg-teal-600 hover:bg-teal-700 text-2xl font-semibold text-white px-3 py-4 rounded-b-lg w-full mt-4;
+  }
 }
