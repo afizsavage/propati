@@ -40,9 +40,12 @@
     @apply border-b placeholder-gray-500 w-full rounded focus:outline-none py-2;
   }
   .auth-submit-btn {
-    @apply bg-teal-600 hover:bg-teal-700 text-2xl font-semibold text-white px-3 py-4 rounded-b-lg w-full mt-4;
+    @apply transition duration-300 ease-in transition-colors bg-teal-600 hover:bg-teal-700 text-2xl font-semibold text-white px-3 py-4 rounded-b-lg w-full mt-4;
   }
   .auth-close-btn {
-    @apply text-gray-400 hover:text-white fixed right-10 px-2 py-2 bg-white rounded-full shadow hover:bg-teal-600;
+    @apply text-gray-400 top-1 -right-0 hover:text-white fixed right-4 focus:outline-none  px-2 py-2 lg:top-8 lg:bg-white lg:rounded-full lg:right-10 lg:shadow lg:hover:bg-teal-600 transition duration-300 ease-in transition-colors;
+  }
+  .auth-links {
+    @apply transition-all duration-700  ease-in-out text-teal-600 hover:underline;
   }
 }
