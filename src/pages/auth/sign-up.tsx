@@ -3,19 +3,28 @@ import { IoMdClose } from "react-icons/io";
 import { useForm } from "react-hook-form";
 import { CUser } from "../../interfaces/";
 import { useMutation } from "@apollo/client";
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 import CreateUser from "../../graphql/mutations";
 
 const SignUp = () => {
   const { register, handleSubmit } = useForm<CUser>();
   const [createUser] = useMutation(CreateUser);
+  const router = useRouter();
 
-  const onSubmit = (data: any, e: any) => {
+  const onSubmit = async (data: any, e: any) => {
     e.preventDefault();
 
-    const { firstName, lastname, email, password } = data;
-    console.log(data.email);
+    const { firstName, lastName, email, password } = data;
+
+    createUser({
+      variables: {
+        firstname: firstName,
+        lastname: lastName,
+        email: email,
+        password: password,
+      },
+    });
   };
 
   return (
@@ -32,7 +41,7 @@ const SignUp = () => {
             <div className="p-8">
               <div className="w-full input-container">
                 <input
-                  name="firstname"
+                  name="firstName"
                   type="text"
                   className="auth-input"
                   placeholder="First Name"
@@ -41,7 +50,7 @@ const SignUp = () => {
               </div>
               <div className="w-full input-container ">
                 <input
-                  name="lastname"
+                  name="lastName"
                   type="text"
                   className="auth-input"
                   placeholder="Last Name"
