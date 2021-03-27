@@ -1,18 +1,13 @@
+import WithApollo from "../lib/ withApollo";
 import "../globals.css";
 import { ApolloProvider } from "@apollo/client";
-import { ApolloClient, InMemoryCache } from "@apollo/client";
 
-const client = new ApolloClient({
-  uri: "https://api.spacex.land/graphql/",
-  cache: new InMemoryCache(),
-});
-
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, apolloClient }) {
   return (
-    <ApolloProvider client={client}>
+    <ApolloProvider client={apolloClient}>
       <Component {...pageProps} />
     </ApolloProvider>
   );
 }
 
-export default MyApp;
+export default WithApollo(MyApp);
