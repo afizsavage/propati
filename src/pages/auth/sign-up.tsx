@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { useForm } from "react-hook-form";
-import { CUser } from "../../interfaces/";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-import CreateUser from "../../graphql/mutations";
+import { CUser } from "../../interfaces/";
+import { CreateUser } from "../../graphql/mutations";
 import SocialAuth from "../../components/auth/socialAuth";
 
 const SignUp = () => {

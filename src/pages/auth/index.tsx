@@ -1,10 +1,36 @@
 import React, { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { useMutation } from "@apollo/client";
+import { useRouter } from "next/router";
 
+import { AUser } from "../../interfaces/";
+import { RegisterUser } from "../../graphql/mutations";
 import SocialAuth from "../../components/auth/socialAuth";
 
 const SignIn = (params) => {
+  const { register, handleSubmit } = useForm<AUser>();
+  const [registerUser] = useMutation(RegisterUser);
+  const router = useRouter();
+
+  const onSubmit = async (data: any, e: any) => {
+    e.preventDefault();
+
+    const { email, password } = data;
+
+    registerUser({
+      variables: {
+        email: email,
+        password: password,
+      },
+    })
+      .then((params) => {
+        router.push("/");
+      })
+      .catch((params) => alert("some error"));
+  };
+
   return (
     <div className="bg-gray-100 pt-9 flex flex-col min-h-screen h-full w-screen">
       <button className="auth-close-btn">
@@ -15,7 +41,7 @@ const SignIn = (params) => {
       </header>
       <div className="flex flex-grow flex-col">
         <div className="auth-card">
-          <form id="signupForm" className="">
+          <form id="signupForm" className="" onSubmit={handleSubmit(onSubmit)}>
             <div className="p-8">
               <SocialAuth btnText={"Log in with Google"} />
               <div className="w-full text-center text-gray-400 py-4 text-sm">
@@ -24,21 +50,27 @@ const SignIn = (params) => {
               </div>
               <div className="w-full input-container ">
                 <input
+                  name="email"
                   type="email"
                   className="auth-input"
                   placeholder="Email"
+                  ref={register}
                 />
               </div>
               <div className="w-full input-container ">
                 <input
+                  name="password"
                   type="password"
                   className="auth-input"
                   placeholder="Password"
+                  ref={register}
                 />
               </div>
             </div>
 
-            <button className="auth-submit-btn">Sign Up</button>
+            <button type="submit" className="auth-submit-btn">
+              Sign Up
+            </button>
           </form>
         </div>
         <div className="self-center sm:inline text-sm text-gray-400 mt-2">

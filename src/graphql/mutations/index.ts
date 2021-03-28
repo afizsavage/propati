@@ -1,3 +1,4 @@
 import CreateUser from "./createuser";
+import RegisterUser from "./signin";
 
-export default CreateUser;
+export { CreateUser, RegisterUser };
