@@ -18,7 +18,7 @@ interface IOptions {
 
 function create (initialState : any, { getToken }: IOptions) {
     const httpLink = createHttpLink({
-        uri: 'https://seamply-graphql-sx4hvhyeva-uc.a.run.app/api',
+        uri: 'https://propati-backend-service-wn7qviq5da-uc.a.run.app/propati/v1/api',
         // credentials: 'include'
     })
 

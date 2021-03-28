@@ -14,7 +14,9 @@ const CreateUser = gql`
         email: $email
         password: $password
       }
-    )
+    ) {
+      id
+    }
   }
 `;
 
