@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import Link from "next/link";
 
+import SocialAuth from "../../components/auth/socialAuth";
+
 const SignIn = (params) => {
   return (
     <div className="bg-gray-100 pt-9 flex flex-col min-h-screen h-full w-screen">
@@ -12,9 +14,14 @@ const SignIn = (params) => {
         <h1 className="font-lato  text-5xl font-bold ">Sign In</h1>
       </header>
       <div className="flex flex-grow flex-col">
-        <div className="shadow-2xl rounded mx-auto bg-white w-full md:w-1/3 border-solid border-t-4 border-teal-500 p-0 my-2">
+        <div className="auth-card">
           <form id="signupForm" className="">
             <div className="p-8">
+              <SocialAuth btnText={"Log in with Google"} />
+              <div className="w-full text-center text-gray-400 py-4 text-sm">
+                {" "}
+                or with email
+              </div>
               <div className="w-full input-container ">
                 <input
                   type="email"
@@ -36,7 +43,10 @@ const SignIn = (params) => {
         </div>
         <div className="self-center sm:inline text-sm text-gray-400 mt-2">
           <span className="transition duration-300 ease-in">
-            Don't have Prɔpati account? <a className="auth-links">Sign Up</a>
+            Don't have Prɔpati account?{" "}
+            <Link href="/auth/sign-up">
+              <a className="auth-links">Sign Up</a>
+            </Link>
           </span>
         </div>
       </div>

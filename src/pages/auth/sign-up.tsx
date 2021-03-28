@@ -4,8 +4,10 @@ import { useForm } from "react-hook-form";
 import { CUser } from "../../interfaces/";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 import CreateUser from "../../graphql/mutations";
+import SocialAuth from "../../components/auth/socialAuth";
 
 const SignUp = () => {
   const { register, handleSubmit } = useForm<CUser>();
@@ -24,7 +26,11 @@ const SignUp = () => {
         email: email,
         password: password,
       },
-    });
+    })
+      .then((params) => {
+        router.push("/");
+      })
+      .catch((params) => alert("some error"));
   };
 
   return (
@@ -36,9 +42,14 @@ const SignUp = () => {
         <h1 className="font-lato  text-5xl font-bold ">Sign Up</h1>
       </header>
       <div className="flex flex-grow flex-col">
-        <div className="shadow-2xl rounded mx-auto bg-white w-full md:w-1/3 border-solid border-t-4 border-teal-500 p-0 my-2">
+        <div className="auth-card">
           <form id="signupForm" className="" onSubmit={handleSubmit(onSubmit)}>
             <div className="p-8">
+              <SocialAuth btnText={"Sign up with Google"} />
+              <div className="w-full text-center text-gray-400 py-4 text-sm">
+                {" "}
+                or with email
+              </div>
               <div className="w-full input-container">
                 <input
                   name="firstName"
@@ -84,7 +95,10 @@ const SignUp = () => {
         </div>
         <div className="self-center sm:inline text-sm text-gray-400 mt-2">
           <span className="transition duration-300 ease-in">
-            Already have Prɔpati account? <a className="auth-links">Log in</a>
+            Already have Prɔpati account?{" "}
+            <Link href="/auth">
+              <a className="auth-links">Log in</a>
+            </Link>
           </span>
         </div>
       </div>
