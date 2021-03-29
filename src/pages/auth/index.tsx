@@ -1,17 +1,16 @@
-import React, { useState } from "react";
-import { IoMdClose } from "react-icons/io";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 
+import CloseBtn from "../../components/auth/closebtn";
 import { AUser } from "../../interfaces/";
 import { RegisterUser } from "../../graphql/mutations";
 import SocialAuth from "../../components/auth/socialAuth";
 
 const SignIn = (params) => {
   const { register, handleSubmit } = useForm<AUser>();
-  const [registerUser] = useMutation(RegisterUser);
+  const [registerUser, { loading, error }] = useMutation(RegisterUser);
   const router = useRouter();
 
   const onSubmit = async (data: any, e: any) => {
@@ -31,11 +30,12 @@ const SignIn = (params) => {
       .catch((params) => alert("some error"));
   };
 
+  if (loading) return <p>loading</p>;
+  if (error) return <p>An error occurred</p>;
+
   return (
     <div className="bg-gray-100 pt-9 flex flex-col min-h-screen h-full w-screen">
-      <button className="auth-close-btn">
-        <IoMdClose className="text-3xl " />
-      </button>
+      <CloseBtn />
       <header className="hidden lg:flex w-full text-gray-800 justify-center py-5 my-1">
         <h1 className="font-lato  text-5xl font-bold ">Sign In</h1>
       </header>
@@ -68,7 +68,27 @@ const SignIn = (params) => {
               </div>
             </div>
 
-            <button type="submit" className="auth-submit-btn">
+            <button type="submit" className="auth-submit-btn ">
+              <svg
+                className="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline"
+                fill="none"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                  className="opacity-25"
+                />
+              </svg>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
               Sign Up
             </button>
           </form>

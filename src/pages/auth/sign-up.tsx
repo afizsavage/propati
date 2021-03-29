@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { IoMdClose } from "react-icons/io";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
+import CloseBtn from "../../components/auth/closebtn";
 import { CUser } from "../../interfaces/";
 import { CreateUser } from "../../graphql/mutations";
 import SocialAuth from "../../components/auth/socialAuth";
@@ -35,9 +34,7 @@ const SignUp = () => {
 
   return (
     <div className="bg-gray-100 pt-9 flex flex-col min-h-screen h-full w-screen">
-      <button className="auth-close-btn">
-        <IoMdClose className="text-3xl " />
-      </button>
+      <CloseBtn />
       <header className="hidden lg:flex w-full text-gray-800 justify-center py-5 my-1">
         <h1 className="font-lato  text-5xl font-bold ">Sign Up</h1>
       </header>
@@ -88,8 +85,31 @@ const SignUp = () => {
               </div>
             </div>
 
-            <button type="submit" className="auth-submit-btn">
-              Sign Up
+            <button
+              type="button"
+              className="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-teal-300 hover:bg-rose-500 focus:border-rose-700 active:bg-rose-700 transition z-30 ease-in-out duration-150 cursor-not-allowed"
+            >
+              <svg
+                className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+              Processing
             </button>
           </form>
         </div>
