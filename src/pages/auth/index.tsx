@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 
-import {CloseBtn} from "../../components/auth/";
+import { CloseBtn } from "../../components/auth/";
 import { AUser } from "../../interfaces/";
 import { LoginUser } from "../../graphql/mutations";
 import SocialAuth from "../../components/auth/socialAuth";
@@ -24,14 +24,11 @@ const SignIn = (params) => {
         email: email,
         password: password,
       },
-    })
-      .then((params) => {
-        router.push("/");
-      })
-      .catch((params) => alert("some error"));
+    }).then((params) => {
+      router.push("/");
+    });
   };
 
-  if (loading) return <p>loading</p>;
   if (error) return <p>An error occurred</p>;
 
   return (
@@ -68,7 +65,7 @@ const SignIn = (params) => {
                 />
               </div>
             </div>
-            <SubmitBtn btnText="Sign In" />
+            <SubmitBtn btnText="Sign In" loading={loading} />
           </form>
         </div>
         <div className="self-center sm:inline text-sm text-gray-400 mt-2">

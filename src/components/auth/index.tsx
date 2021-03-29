@@ -2,11 +2,13 @@ import { IoMdClose } from "react-icons/io";
 import { useRouter } from "next/router";
 
 // Auth forms submit btn
-export const SubmitBtn = ({ btnText }) => {
+export const SubmitBtn = ({ btnText, loading }) => {
   return (
     <button type="submit" className="authSubmitBtn ">
       <svg
-        className=" animate-spin my-auto h-6 w-6 text-white"
+        className={
+          loading ? "animate-spin my-auto h-6 w-6 text-white" : "hidden"
+        }
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
@@ -25,7 +27,7 @@ export const SubmitBtn = ({ btnText }) => {
           d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
         ></path>
       </svg>
-      {btnText}
+      <span className={loading ? "hidden" : "static"}>{btnText}</span>
     </button>
   );
 };
@@ -40,6 +42,3 @@ export const CloseBtn = (params) => {
     </button>
   );
 };
-
-
-

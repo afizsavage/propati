@@ -42,9 +42,6 @@
   .auth-input {
     @apply border-b placeholder-gray-500 w-full rounded focus:outline-none py-2;
   }
-  .auth-submit-btn {
-    @apply duration-300 ease-in transition bg-teal-600 hover:bg-teal-700 text-2xl font-semibold text-white px-3 py-4 rounded-b-lg w-full;
-  }
   .authSubmitBtn {
     @apply inline-flex justify-center  duration-300 ease-in transition bg-teal-600 hover:bg-teal-700 text-2xl font-semibold text-white px-3 py-4 rounded-b-lg w-full;
   }

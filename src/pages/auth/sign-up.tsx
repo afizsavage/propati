@@ -3,7 +3,7 @@ import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-import {CloseBtn} from "../../components/auth";
+import { CloseBtn } from "../../components/auth";
 import { CUser } from "../../interfaces/";
 import { CreateUser } from "../../graphql/mutations";
 import SocialAuth from "../../components/auth/socialAuth";
@@ -11,7 +11,7 @@ import { SubmitBtn } from "../../components/auth";
 
 const SignUp = () => {
   const { register, handleSubmit } = useForm<CUser>();
-  const [createUser] = useMutation(CreateUser);
+  const [createUser, { loading, error }] = useMutation(CreateUser);
   const router = useRouter();
 
   const onSubmit = async (data: any, e: any) => {
@@ -26,12 +26,12 @@ const SignUp = () => {
         email: email,
         password: password,
       },
-    })
-      .then((params) => {
-        router.push("/");
-      })
-      .catch((params) => alert("some error"));
+    }).then((params) => {
+      router.push("/");
+    });
   };
+
+  if (error) return <p>An error occurred</p>;
 
   return (
     <div className="bg-gray-100 pt-9 flex flex-col min-h-screen h-auto w-screen">
@@ -86,7 +86,7 @@ const SignUp = () => {
               </div>
             </div>
 
-            <SubmitBtn btnText="Sign up" />
+            <SubmitBtn loading={loading} btnText="Sign up" />
           </form>
         </div>
         <div className="self-center sm:inline text-sm text-gray-400 mt-2">
