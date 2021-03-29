@@ -45,8 +45,11 @@
   .auth-submit-btn {
     @apply duration-300 ease-in transition bg-teal-600 hover:bg-teal-700 text-2xl font-semibold text-white px-3 py-4 rounded-b-lg w-full;
   }
+  .authSubmitBtn {
+    @apply inline-flex justify-center  duration-300 ease-in transition bg-teal-600 hover:bg-teal-700 text-2xl font-semibold text-white px-3 py-4 rounded-b-lg w-full;
+  }
   .auth-close-btn {
-    @apply text-gray-400 top-1 -right-0 hover:text-white fixed right-4 focus:outline-none  px-2 py-2 lg:top-8 lg:bg-white lg:rounded-full lg:right-10 lg:shadow lg:hover:bg-teal-600  duration-300 ease-in transition-colors;
+    @apply text-gray-400 top-1 hover:text-white fixed right-4 focus:outline-none  px-2 py-2 lg:top-8 lg:bg-white lg:rounded-full lg:right-10 lg:shadow lg:hover:bg-teal-600  duration-300 ease-in transition-colors;
   }
   .auth-links {
     @apply transition-all duration-700  ease-in-out text-teal-600 hover:underline;
