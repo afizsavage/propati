@@ -33,6 +33,9 @@
   .categoryBtnActive {
     @apply mr-1 bg-gray-200 cursor-pointer py-2 px-3 rounded-lg text-black focus:outline-none;
   }
+  .auth-layout {
+    @apply bg-gray-100 pt-9 flex flex-col min-h-screen h-auto w-screen;
+  }
   .auth-card {
     @apply shadow-2xl rounded mx-auto bg-white w-full md:w-1/3 border-solid border-t-4 border-teal-500 p-0 my-2;
   }
@@ -43,7 +46,7 @@
     @apply border-b placeholder-gray-500 w-full rounded focus:outline-none py-2;
   }
   .authSubmitBtn {
-    @apply inline-flex justify-center  duration-300 ease-in transition bg-teal-600 hover:bg-teal-700 text-2xl font-semibold text-white px-3 py-4 rounded-b-lg w-full;
+    @apply inline-flex justify-center  duration-300 ease-in transition bg-teal-600 hover:bg-teal-700 text-2xl font-semibold text-white px-3 h-14 rounded-b-lg w-full;
   }
   .auth-close-btn {
     @apply text-gray-400 top-1 hover:text-white fixed right-4 focus:outline-none  px-2 py-2 lg:top-8 lg:bg-white lg:rounded-full lg:right-10 lg:shadow lg:hover:bg-teal-600  duration-300 ease-in transition-colors;
