@@ -9,3 +9,8 @@ export interface AUser {
   email: string;
   password: string;
 }
+
+export interface OAuthP {
+  btnText: string;
+  btnIcon: any;
+}

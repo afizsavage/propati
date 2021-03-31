@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { FcGoogle } from "react-icons/fc";
 
 import { CUser } from "../../interfaces/";
 import { CreateUser } from "../../graphql/mutations";
@@ -44,7 +45,10 @@ const SignUp = () => {
               onSubmit={handleSubmit(onSubmit)}
             >
               <div className="p-8">
-                <SocialAuth btnText={"Sign up with Google"} />
+                <SocialAuth
+                  btnIcon={<FcGoogle />}
+                  btnText={"Sign up with Google"}
+                />
                 <div className="w-full text-center text-gray-400 py-4 text-sm">
                   {" "}
                   or with email

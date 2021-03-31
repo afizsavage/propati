@@ -2,6 +2,8 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
+import { FcGoogle } from "react-icons/fc";
+import localForage from "localforage";
 
 import { AUser } from "../../interfaces/";
 import { LoginUser } from "../../graphql/mutations";
@@ -11,21 +13,25 @@ import AuthLayout from "../../components/auth/layout";
 
 const SignIn = (params) => {
   const { register, handleSubmit } = useForm<AUser>();
-  const [loginUser, { loading, error }] = useMutation(LoginUser);
   const router = useRouter();
 
-  const onSubmit = async (data: any, e: any) => {
+  const [loginUser, { loading, error }] = useMutation(LoginUser, {
+    onCompleted({ signIn }) {
+      localForage.setItem("userToken", signIn.token);
+      router.push("/");
+    },
+  });
+
+  const onSubmit = async (payload: any, e: any) => {
     e.preventDefault();
 
-    const { email, password } = data;
+    const { email, password } = payload;
 
     loginUser({
       variables: {
         email: email,
         password: password,
       },
-    }).then((params) => {
-      router.push("/");
     });
   };
 
@@ -42,7 +48,10 @@ const SignIn = (params) => {
               onSubmit={handleSubmit(onSubmit)}
             >
               <div className="p-8">
-                <SocialAuth btnText={"Log in with Google"} />
+                <SocialAuth
+                  btnIcon={<FcGoogle />}
+                  btnText={"Log in with Google"}
+                />
                 <div className="w-full text-center text-gray-400 py-4 text-sm">
                   {" "}
                   or with email

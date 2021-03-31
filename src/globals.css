@@ -55,6 +55,6 @@
     @apply transition-all duration-700  ease-in-out text-teal-600 hover:underline;
   }
   .social-auth-btn {
-    @apply relative py-1 border rounded-lg w-full focus:outline-none;
+    @apply inline-flex border justify-evenly py-1 rounded-lg w-full focus:outline-none;
   }
 }
