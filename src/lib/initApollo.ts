@@ -32,7 +32,7 @@ function create(initialState: any, { getToken }: IOptions) {
   // return the authorization token when making any request
   const authLink = setContext((_, { headers }) => {
     // get the token
-    const token = localForage.getItem("userToken");
+    let token = getToken();
     return {
       headers: {
         ...headers,
