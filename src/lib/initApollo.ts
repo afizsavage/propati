@@ -32,13 +32,22 @@ function create(initialState: any, { getToken }: IOptions) {
   // return the authorization token when making any request
   const authLink = setContext((_, { headers }) => {
     // get the token
-    let token = getToken();
-    return {
-      headers: {
-        ...headers,
-        authorization: token ? token : "",
-      },
-    };
+
+    function getToken() {
+      return localForage
+        .getItem("userToken")
+        .then((value) => {
+          return {
+            headers: {
+              ...headers,
+              authorization: value ? value : "",
+            },
+          };
+        })
+        .catch((error) => {}); // handle errors;
+    }
+
+    return getToken();
   });
 
   return new ApolloClient({

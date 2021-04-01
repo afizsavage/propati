@@ -90,5 +90,3 @@ function ItemsSection() {
     </div>
   );
 }
-
-export default ItemsSection;

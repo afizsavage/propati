@@ -33,12 +33,7 @@ const withApp = (App: any) => {
         {},
         {
           getToken: () => {
-            return localForage
-              .getItem("userToken")
-              .then((value) => {
-                return value;
-              })
-              .catch((error) => {}); // handle errors;
+            localForage.getItem("userToken");
           },
         }
       );
