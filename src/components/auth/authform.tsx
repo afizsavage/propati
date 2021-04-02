@@ -1,4 +1,3 @@
-import { IoMdClose } from "react-icons/io";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
@@ -34,17 +33,6 @@ const SubmitBtn = ({ btnText, loading }) => {
         ></path>
       </svg>
       <span className={loading ? "hidden" : "my-auto static"}>{btnText}</span>
-    </button>
-  );
-};
-
-// auth page close button 'redirect user to landing page'
-const CloseBtn = (params) => {
-  const router = useRouter();
-
-  return (
-    <button onClick={() => router.push("/")} className="auth-close-btn">
-      <IoMdClose className="text-3xl " />
     </button>
   );
 };
@@ -164,8 +152,14 @@ export const AuthForm = ({ onSubmit, loading }) => {
                 placeholder={"Enter Password"}
                 register={register}
               />
+              <div className="mt-4 inline-flex justify-end w-full">
+                <Link href="/auth/sign-up">
+                  <a className="auth-links">Forgot your password?</a>
+                </Link>
+              </div>
             </div>
-            <SubmitBtn loading={loading} btnText="Sign up" />
+
+            <SubmitBtn loading={loading} btnText="Sign In" />
           </form>
         </div>
         <AuthOption page={page} />

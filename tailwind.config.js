@@ -45,7 +45,7 @@ module.exports = {
       boxShadow: ["active"],
       borderColor: ["active"],
       backgroundColor: ["active"],
-      borderWidth: ["last"],
+      borderWidth: ["last", "hover"],
     },
   },
 };
