@@ -37,13 +37,16 @@ module.exports = {
         Oswald: ["Georgia", "serif"],
         Lato: ["Lato", "Arial", "sans-serif"],
       }),
+      zIndex: {
+        "-1": "-1",
+      },
     },
   },
   variants: {
     extend: {
       ringWidth: ["hover", "active"],
       boxShadow: ["active"],
-      borderColor: ["active"],
+      borderColor: ["active", "responsive", "hover", "focus", "focus-within"],
       backgroundColor: ["active"],
       borderWidth: ["last", "hover"],
     },

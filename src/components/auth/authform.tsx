@@ -39,14 +39,17 @@ const SubmitBtn = ({ btnText, loading }) => {
 
 const InputField = ({ register, placeholder, type, name }) => {
   return (
-    <div className="w-full input-container">
+    <div className="input-container">
       <input
         name={name}
         type={type}
-        className="auth-input"
+        className="auth-input text-xl focus:border-teal-700 border-b-2 border-gray-400 appearance-none bg-transparent w-full text-gray-700 focus:outline-none"
         placeholder={placeholder}
         ref={register}
       />
+      <label htmlFor={name} className="auth-label">
+        {name}
+      </label>
     </div>
   );
 };
@@ -84,7 +87,10 @@ export const AuthForm = ({ onSubmit, loading }) => {
   if (page === "/auth/sign-up") {
     return (
       <div className="flex flex-grow flex-col">
-        <div className="auth-card">
+        <div
+          className="auth-card 
+        "
+        >
           <form id="signupForm" className="" onSubmit={handleSubmit(onSubmit)}>
             <div className="p-8">
               <SocialAuth
@@ -98,25 +104,25 @@ export const AuthForm = ({ onSubmit, loading }) => {
               <InputField
                 name={"firstName"}
                 type={"text"}
-                placeholder={"Enter First Name"}
+                placeholder={""}
                 register={register}
               />
               <InputField
                 name={"lastName"}
                 type={"text"}
-                placeholder={"Enter Last Name"}
+                placeholder={""}
                 register={register}
               />
               <InputField
                 name={"email"}
                 type={"email"}
-                placeholder={"Enter Email"}
+                placeholder={""}
                 register={register}
               />
               <InputField
                 name={"password"}
                 type={"password"}
-                placeholder={"Enter Password"}
+                placeholder={""}
                 register={register}
               />
             </div>
@@ -129,7 +135,10 @@ export const AuthForm = ({ onSubmit, loading }) => {
   } else {
     return (
       <div className="flex flex-grow flex-col">
-        <div className="auth-card">
+        <div
+          className="auth-card 
+        "
+        >
           <form id="signupForm" className="" onSubmit={handleSubmit(onSubmit)}>
             <div className="p-8">
               <SocialAuth
@@ -143,13 +152,13 @@ export const AuthForm = ({ onSubmit, loading }) => {
               <InputField
                 name={"email"}
                 type={"email"}
-                placeholder={"Enter Email"}
+                placeholder={""}
                 register={register}
               />
               <InputField
                 name={"password"}
                 type={"password"}
-                placeholder={"Enter Password"}
+                placeholder={""}
                 register={register}
               />
               <div className="mt-4 inline-flex justify-end w-full">
