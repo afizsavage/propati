@@ -55,21 +55,17 @@
     @apply inline-flex border justify-evenly py-1 rounded-lg w-full focus:outline-none;
   }
   input:focus-within ~ label {
-    @apply transform scale-75 -translate-y-6 text-blue-500;
+    @apply transform origin-top-left scale-75 -translate-y-6 capitalize;
   }
   input:focus-within ~ label,
   input:not(:placeholder-shown) ~ label {
-    @apply transform scale-75 -translate-y-6;
-  }
-
-  input:focus-within ~ label {
-    @apply text-blue-500;
+    @apply transform origin-top-left scale-75 -translate-y-6;
   }
   .auth-label {
-    @apply static inline-block text-gray-300 text-base transition-all duration-300 ease-in  z-10;
+    @apply static capitalize inline-block text-gray-400 text-lg transition-all duration-300 ease-in z-10;
   }
   .auth-input {
-    @apply absolute inline-block p-0 bg-transparent focus:outline-none z-20 text-black bottom-0;
+    @apply text-lg focus:border-teal-700 border-b border-opacity-50 appearance-none  border-gray-400 absolute inline-block p-0 bg-transparent w-full focus:outline-none z-20 text-black bottom-0;
   }
 }
 
@@ -77,7 +73,6 @@ input[type="text"]:focus ~ label,
 input[type="email"]:focus ~ label,
 input[type="password"]:focus ~ label {
   top: -60px;
-  color: #2c7a7b;
 }
 
 input[type="text"]:valid ~ label,

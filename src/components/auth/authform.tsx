@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 
-import { CUser } from "../../interfaces/";
+import { CUser, InProps } from "../../interfaces/";
 import SocialAuth from "../../components/auth/socialAuth";
 
 // Auth forms submit btn
@@ -37,18 +37,18 @@ const SubmitBtn = ({ btnText, loading }) => {
   );
 };
 
-const InputField = ({ register, placeholder, type, name }) => {
+const InputField = ({ register, placeholder, type, name, label }) => {
   return (
     <div className="input-container">
       <input
         name={name}
         type={type}
-        className="auth-input text-xl focus:border-teal-700 border-b-2 border-gray-400 appearance-none bg-transparent w-full text-gray-700 focus:outline-none"
+        className="auth-input"
         placeholder={placeholder}
         ref={register}
       />
       <label htmlFor={name} className="auth-label">
-        {name}
+        {label}
       </label>
     </div>
   );
@@ -106,24 +106,28 @@ export const AuthForm = ({ onSubmit, loading }) => {
                 type={"text"}
                 placeholder={""}
                 register={register}
+                label={"First Name"}
               />
               <InputField
                 name={"lastName"}
                 type={"text"}
                 placeholder={""}
                 register={register}
+                label={"Last Name"}
               />
               <InputField
                 name={"email"}
                 type={"email"}
                 placeholder={""}
                 register={register}
+                label={"Email"}
               />
               <InputField
                 name={"password"}
                 type={"password"}
                 placeholder={""}
                 register={register}
+                label={"Password"}
               />
             </div>
             <SubmitBtn loading={loading} btnText="Sign up" />
@@ -154,12 +158,14 @@ export const AuthForm = ({ onSubmit, loading }) => {
                 type={"email"}
                 placeholder={""}
                 register={register}
+                label={"Email"}
               />
               <InputField
                 name={"password"}
                 type={"password"}
                 placeholder={""}
                 register={register}
+                label={"Password"}
               />
               <div className="mt-4 inline-flex justify-end w-full">
                 <Link href="/auth/sign-up">

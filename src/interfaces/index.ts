@@ -14,3 +14,11 @@ export interface OAuthP {
   btnText: string;
   btnIcon: any;
 }
+
+export interface InProps {
+  register: any;
+  placeholder: string;
+  type: string;
+  name: string;
+  label: string;
+}
