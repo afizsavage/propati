@@ -46,6 +46,7 @@ const InputField = ({ register, placeholder, type, name, label }) => {
         className="auth-input"
         placeholder={placeholder}
         ref={register}
+        required
       />
       <label htmlFor={name} className="auth-label">
         {label}
@@ -104,28 +105,28 @@ export const AuthForm = ({ onSubmit, loading }) => {
               <InputField
                 name={"firstName"}
                 type={"text"}
-                placeholder={""}
+                placeholder={"First Name "}
                 register={register}
                 label={"First Name"}
               />
               <InputField
                 name={"lastName"}
                 type={"text"}
-                placeholder={""}
+                placeholder={"Last Name "}
                 register={register}
                 label={"Last Name"}
               />
               <InputField
                 name={"email"}
                 type={"email"}
-                placeholder={""}
+                placeholder={"Email "}
                 register={register}
                 label={"Email"}
               />
               <InputField
                 name={"password"}
                 type={"password"}
-                placeholder={""}
+                placeholder={"Password "}
                 register={register}
                 label={"Password"}
               />
@@ -156,14 +157,14 @@ export const AuthForm = ({ onSubmit, loading }) => {
               <InputField
                 name={"email"}
                 type={"email"}
-                placeholder={""}
+                placeholder={"Email "}
                 register={register}
                 label={"Email"}
               />
               <InputField
                 name={"password"}
                 type={"password"}
-                placeholder={""}
+                placeholder={"Password "}
                 register={register}
                 label={"Password"}
               />
