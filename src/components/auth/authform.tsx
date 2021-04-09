@@ -37,18 +37,20 @@ const SubmitBtn = ({ btnText, loading }) => {
   );
 };
 
-const InputField = ({ register, placeholder, type, name, label }) => {
+const InputField = ({ register, placeholder, type, name, label, errors }) => {
   return (
     <div className="input-container">
       <input
         name={name}
         type={type}
-        className="auth-input"
+        className={"auth-input " + (!errors ? "" : "border-red-500")}
         placeholder={placeholder}
         ref={register}
-        required
       />
-      <label htmlFor={name} className="auth-label">
+      <label
+        htmlFor={name}
+        className={"auth-label " + (!errors ? "" : "text-red-500 ")}
+      >
         {label}
       </label>
     </div>
@@ -82,9 +84,43 @@ const AuthOption = ({ page }) => {
 };
 
 export const AuthForm = ({ onSubmit, loading }) => {
-  const { register, handleSubmit } = useForm<CUser>();
+  const { register, errors, handleSubmit } = useForm<CUser>({
+    mode: "all",
+  });
+
   const router = useRouter();
   const page = router.pathname;
+
+  const registerOptions = {
+    firstName: { required: "Enter First Name" },
+    lastName: { required: "Enter Last Name" },
+    email: {
+      required: "Enter Email",
+      pattern: {
+        value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+        message: "Invalid Email address",
+      },
+    },
+    password: {
+      required: "Enter Password ",
+      minLength: {
+        value: 6,
+        message: "Password must have at least 6 characters",
+      },
+    },
+  };
+
+  const loginOptions = {
+    email: { required: "Enter Email" },
+    password: {
+      required: "Enter Password ",
+      minLength: {
+        value: 6,
+        message: "Password must have at least 6 characters",
+      },
+    },
+  };
+
   if (page === "/auth/sign-up") {
     return (
       <div className="flex flex-grow flex-col">
@@ -106,29 +142,36 @@ export const AuthForm = ({ onSubmit, loading }) => {
                 name={"firstName"}
                 type={"text"}
                 placeholder={"First Name "}
-                register={register}
-                label={"First Name"}
+                register={register(registerOptions.firstName)}
+                label={
+                  errors.firstName ? errors.firstName.message : "First Name"
+                }
+                errors={errors.firstName}
               />
+
               <InputField
                 name={"lastName"}
                 type={"text"}
                 placeholder={"Last Name "}
-                register={register}
-                label={"Last Name"}
+                register={register(registerOptions.lastName)}
+                label={errors.lastName ? errors.lastName.message : "Last Name"}
+                errors={errors.lastName}
               />
               <InputField
                 name={"email"}
                 type={"email"}
                 placeholder={"Email "}
-                register={register}
-                label={"Email"}
+                register={register(registerOptions.email)}
+                label={errors.email ? errors.email.message : "Email"}
+                errors={errors.email}
               />
               <InputField
                 name={"password"}
                 type={"password"}
                 placeholder={"Password "}
-                register={register}
-                label={"Password"}
+                register={register(registerOptions.password)}
+                label={errors.password ? errors.password.message : "Password"}
+                errors={errors.password}
               />
             </div>
             <SubmitBtn loading={loading} btnText="Sign up" />
@@ -158,15 +201,17 @@ export const AuthForm = ({ onSubmit, loading }) => {
                 name={"email"}
                 type={"email"}
                 placeholder={"Email "}
-                register={register}
-                label={"Email"}
+                register={register(loginOptions.email)}
+                label={errors.email ? errors.email.message : "Email"}
+                errors={errors.email}
               />
               <InputField
                 name={"password"}
                 type={"password"}
                 placeholder={"Password "}
-                register={register}
-                label={"Password"}
+                register={register(loginOptions.password)}
+                label={errors.password ? errors.password.message : "Password"}
+                errors={errors.password}
               />
               <div className="mt-4 inline-flex justify-end w-full">
                 <Link href="/auth/sign-up">
