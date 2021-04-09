@@ -21,4 +21,5 @@ export interface InProps {
   type: string;
   name: string;
   label: string;
+  errors: any;
 }

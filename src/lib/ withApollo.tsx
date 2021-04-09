@@ -95,7 +95,6 @@ const withApp = (App: any) => {
           return localForage
             .getItem("userToken")
             .then((value) => {
-              console.log(value);
               return value;
             })
             .catch((error) => {}); // handle errors;

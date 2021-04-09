@@ -37,21 +37,21 @@ const SubmitBtn = ({ btnText, loading }) => {
   );
 };
 
-const InputField = ({ register, placeholder, type, name, label, errors }) => {
+const InputField = (p: InProps) => {
   return (
     <div className="input-container">
       <input
-        name={name}
-        type={type}
-        className={"auth-input " + (!errors ? "" : "border-red-500")}
-        placeholder={placeholder}
-        ref={register}
+        name={p.name}
+        type={p.type}
+        className={"auth-input " + (!p.errors ? "" : "border-red-500")}
+        placeholder={p.placeholder}
+        ref={p.register}
       />
       <label
-        htmlFor={name}
-        className={"auth-label " + (!errors ? "" : "text-red-500 ")}
+        htmlFor={p.name}
+        className={"auth-label " + (!p.errors ? "" : "text-red-500 ")}
       >
-        {label}
+        {p.label}
       </label>
     </div>
   );
@@ -92,12 +92,24 @@ export const AuthForm = ({ onSubmit, loading }) => {
   const page = router.pathname;
 
   const registerOptions = {
-    firstName: { required: "Enter First Name" },
-    lastName: { required: "Enter Last Name" },
+    firstName: {
+      required: "Enter First Name",
+      minLength: {
+        value: 2,
+        message: "First Name must have at least 2 characters",
+      },
+    },
+    lastName: {
+      required: "Enter Last Name",
+      minLength: {
+        value: 2,
+        message: "Last Name must have at least 2 characters",
+      },
+    },
     email: {
       required: "Enter Email",
       pattern: {
-        value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+        value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
         message: "Invalid Email address",
       },
     },
@@ -111,13 +123,15 @@ export const AuthForm = ({ onSubmit, loading }) => {
   };
 
   const loginOptions = {
-    email: { required: "Enter Email" },
+    email: {
+      required: "Enter Email",
+      pattern: {
+        value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+        message: "Invalid Email address",
+      },
+    },
     password: {
       required: "Enter Password ",
-      minLength: {
-        value: 6,
-        message: "Password must have at least 6 characters",
-      },
     },
   };
 
