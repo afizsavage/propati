@@ -62,9 +62,9 @@
     @apply transform scale-75 -translate-y-6;
   }
   .auth-label {
-    @apply origin-top-left w-full inline-block text-gray-400 text-lg transition-all duration-300 ease-in z-10 min-w-max;
+    @apply origin-top-left w-full inline-block text-gray-400 text-lg transition-all duration-200 ease-in z-10 min-w-max;
   }
   .auth-input {
-    @apply text-lg text-gray-800 focus:border-teal-700 border-b border-opacity-50 appearance-none transition-colors duration-300 ease-in border-gray-400 absolute inline-block p-0 bg-transparent w-full focus:outline-none z-20 text-black bottom-0 placeholder-gray-500 placeholder-opacity-0;
+    @apply text-lg text-gray-800 focus:border-teal-700 border-b border-opacity-50 appearance-none transition-colors duration-200 ease-in border-gray-400 absolute inline-block p-0 bg-transparent w-full focus:outline-none z-20  bottom-0 placeholder-gray-500 placeholder-opacity-0;
   }
 }

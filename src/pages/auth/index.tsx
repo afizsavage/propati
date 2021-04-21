@@ -5,13 +5,17 @@ import localForage from "localforage";
 import { LoginUser } from "../../graphql/mutations";
 import AuthLayout from "../../components/auth";
 import { AuthForm } from "../../components/auth/authform";
+import { setAccessToken } from "../../lib/tokenKeeper";
 
 const SignIn = (params) => {
   const router = useRouter();
 
   const [loginUser, { loading, error }] = useMutation(LoginUser, {
-    onCompleted({ signIn }) {
-      localForage.setItem("userToken", signIn.token);
+    onCompleted({ response }) {
+      if (response && response.accessToken) {
+        setAccessToken(response);
+      }
+      // localForage.setItem("userToken", signIn.accessToken);
       router.push("/");
     },
   });
