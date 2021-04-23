@@ -6,7 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { CUser, InProps } from "../../interfaces/";
 import SocialAuth from "../../components/auth/socialAuth";
 
-// Auth forms submit btn
+// Auth forms submit button
 const SubmitBtn = ({ btnText, loading }) => {
   return (
     <button type="submit" className="authSubmitBtn ">
@@ -57,33 +57,27 @@ const InputField = (p: InProps) => {
   );
 };
 
-const AuthOption = ({ page }) => {
-  if (page === "/auth/sign-up") {
-    return (
-      <div className="self-center sm:inline text-sm text-gray-400 mt-2">
-        <span className="transition duration-300 ease-in">
-          Already have Prɔpati account?{" "}
-          <Link href="/auth">
-            <a className="auth-links">Log in</a>
-          </Link>
-        </span>
-      </div>
-    );
-  } else {
-    return (
-      <div className="self-center sm:inline text-sm text-gray-400 mt-2">
-        <span className="transition duration-300 ease-in">
-          Don't have Prɔpati account?{" "}
-          <Link href="/auth/sign-up">
-            <a className="auth-links">Sign up</a>
-          </Link>
-        </span>
-      </div>
-    );
+// Chose between Login and Register form
+const AuthOption = ({ page, authType }) => {
+  {
+    page !== "/auth" ? (authType = "Log in") : (authType = "Sign up");
   }
+
+  return (
+    <div className="self-center sm:inline text-sm text-gray-400 mt-2">
+      <span className="transition duration-300 ease-in">
+        {page !== "/auth"
+          ? "Already have Prɔpati account?" + " "
+          : "Dont't have Prɔpati account?" + " "}
+        <Link href={page !== "/auth" ? "/auth" : "/auth/sign-up"}>
+          <a className="auth-links">{authType}</a>
+        </Link>
+      </span>
+    </div>
+  );
 };
 
-export const AuthForm = ({ onSubmit, loading }) => {
+const AuthForm = ({ onSubmit, loading }) => {
   const { register, errors, handleSubmit } = useForm<CUser>({
     mode: "all",
   });
@@ -191,7 +185,7 @@ export const AuthForm = ({ onSubmit, loading }) => {
             <SubmitBtn loading={loading} btnText="Sign up" />
           </form>
         </div>
-        <AuthOption page={page} />
+        <AuthOption authType page={page} />
       </div>
     );
   } else {
@@ -237,8 +231,10 @@ export const AuthForm = ({ onSubmit, loading }) => {
             <SubmitBtn loading={loading} btnText="Sign In" />
           </form>
         </div>
-        <AuthOption page={page} />
+        <AuthOption authType page={page} />
       </div>
     );
   }
 };
+
+export default AuthForm;

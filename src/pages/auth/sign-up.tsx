@@ -2,8 +2,7 @@ import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 
 import { CreateUser } from "../../graphql/mutations";
-import AuthLayout from "../../components/auth";
-import { AuthForm } from "../../components/auth/authform";
+import { AuthForm, AuthLayout } from "../../components/auth/";
 
 const SignUp = () => {
   const [createUser, { loading, error }] = useMutation(CreateUser);

@@ -3,8 +3,7 @@ import { useRouter } from "next/router";
 import localForage from "localforage";
 
 import { LoginUser } from "../../graphql/mutations";
-import AuthLayout from "../../components/auth";
-import { AuthForm } from "../../components/auth/authform";
+import { AuthForm, AuthLayout } from "../../components/auth/";
 import { setAccessToken } from "../../lib/tokenKeeper";
 
 const SignIn = (params) => {
