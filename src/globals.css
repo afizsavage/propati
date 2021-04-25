@@ -3,44 +3,11 @@
 @tailwind utilities;
 
 @layer components {
-  .primeBtn {
-    @apply py-3 px-4 bg-teal-500 bg-center transition duration-700 text-white text-sm font-bold rounded-lg shadow-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-opacity-75;
+  .auth-label {
+    @apply origin-top-left w-full inline-block text-gray-400 text-lg transition-all duration-200 ease-in z-10 min-w-max;
   }
-  .navLinks {
-    @apply text-gray-600  hover:text-gray-500 px-3 py-2 text-base font-semibold font-Oswald;
-  }
-  .mobileNavs {
-    @apply text-gray-600 block px-4 py-2 text-lg font-bold;
-  }
-  .footerCols {
-    @apply md:w-1/4 pb-6 mb-6 sm:m-0 sm:p-0 border-gray-300 border-b sm:border-none;
-  }
-  .filterBtn {
-    @apply inline-flex justify-center w-full ring-teal-400 ring-opacity-20 rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-white text-sm font-bold text-gray-500 hover:border-transparent hover:ring-4  focus:outline-none focus:ring-4 focus:border-transparent active:shadow-none active:ring-0 active:border-gray-300;
-  }
-  .Btn {
-    @apply inline-flex justify-center rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-white text-sm font-bold text-gray-500 focus:outline-none active:border-transparent active:bg-gray-100;
-  }
-  .prop-type {
-    @apply py-2 px-3 rounded-lg text-gray-600 focus:outline-none;
-  }
-  .rc-slider {
-    @apply top-5;
-  }
-  .categoryBtn {
-    @apply mr-1 cursor-pointer py-2 px-3 rounded-lg text-gray-600 focus:outline-none hover:text-black;
-  }
-  .categoryBtnActive {
-    @apply mr-1 bg-gray-200 cursor-pointer py-2 px-3 rounded-lg text-black focus:outline-none;
-  }
-  .auth-layout {
-    @apply bg-gray-100 pt-9 font-Lato flex flex-col min-h-screen h-auto w-screen;
-  }
-  .auth-card {
-    @apply shadow-2xl rounded rounded-b-lg mx-auto bg-white w-full md:w-1/3 border-solid border-t-4 border-teal-500 p-0 my-2;
-  }
-  .input-container {
-    @apply mt-6 relative w-full font-normal;
+  .auth-input {
+    @apply text-lg text-gray-800 focus:border-teal-700 border-b border-opacity-50 appearance-none transition-colors duration-200 ease-in border-gray-400 absolute inline-block p-0 bg-transparent w-full focus:outline-none z-20  bottom-0 placeholder-gray-500 placeholder-opacity-0;
   }
   .authSubmitBtn {
     @apply inline-flex justify-center  duration-300 ease-in transition bg-teal-600 hover:bg-teal-700 text-2xl font-semibold text-white px-3 h-14 rounded-b-lg w-full focus:outline-none;
@@ -51,8 +18,29 @@
   .auth-links {
     @apply transition-all border-0 border-teal-600 hover:border-b duration-200 text-sm ease-out text-teal-600;
   }
-  .social-auth-btn {
-    @apply inline-flex border justify-evenly py-1 rounded-lg w-full focus:outline-none;
+  .auth-layout {
+    @apply bg-gray-100 pt-9 font-Lato flex flex-col min-h-screen h-auto w-screen;
+  }
+  .auth-card {
+    @apply shadow-2xl rounded rounded-b-lg mx-auto bg-white w-full md:w-1/3 border-solid border-t-4 border-teal-500 p-0 my-2;
+  }
+  .Btn {
+    @apply inline-flex justify-center rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-white text-sm font-bold text-gray-500 focus:outline-none active:border-transparent active:bg-gray-100;
+  }
+  .categoryBtnActive {
+    @apply mr-1 bg-gray-200 cursor-pointer py-2 px-3 rounded-lg text-black focus:outline-none;
+  }
+  .categoryBtn {
+    @apply mr-1 cursor-pointer py-2 px-3 rounded-lg text-gray-600 focus:outline-none hover:text-black;
+  }
+  .dropdownMenu {
+    @apply z-20 text-gray-900 absolute mt-3 w-60 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5;
+  }
+  .footerCols {
+    @apply md:w-1/4 pb-6 mb-6 sm:m-0 sm:p-0 border-gray-300 border-b sm:border-none;
+  }
+  .filterBtn {
+    @apply inline-flex justify-center w-full ring-teal-400 ring-opacity-20 rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-white text-sm font-bold text-gray-500 hover:border-transparent hover:ring-4  focus:outline-none focus:ring-4 focus:border-transparent active:shadow-none active:ring-0 active:border-gray-300;
   }
   input:focus-within ~ label {
     @apply transform  scale-75 -translate-y-6;
@@ -61,10 +49,25 @@
   input:not(:placeholder-shown) ~ label {
     @apply transform scale-75 -translate-y-6;
   }
-  .auth-label {
-    @apply origin-top-left w-full inline-block text-gray-400 text-lg transition-all duration-200 ease-in z-10 min-w-max;
+  .input-container {
+    @apply mt-6 relative w-full font-normal;
   }
-  .auth-input {
-    @apply text-lg text-gray-800 focus:border-teal-700 border-b border-opacity-50 appearance-none transition-colors duration-200 ease-in border-gray-400 absolute inline-block p-0 bg-transparent w-full focus:outline-none z-20  bottom-0 placeholder-gray-500 placeholder-opacity-0;
+  .mobileNavs {
+    @apply text-gray-600 block px-4 py-2 text-lg font-bold;
+  }
+  .navLinks {
+    @apply text-gray-600  hover:text-gray-500 px-3 py-2 text-base font-semibold font-Oswald;
+  }
+  .primeBtn {
+    @apply py-3 px-4 bg-teal-500 bg-center transition duration-700 text-white text-sm font-bold rounded-lg shadow-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-opacity-75;
+  }
+  .prop-type {
+    @apply py-2 px-3 rounded-lg text-gray-600 focus:outline-none;
+  }
+  .rc-slider {
+    @apply top-5;
+  }
+  .social-auth-btn {
+    @apply inline-flex border justify-evenly py-1 rounded-lg w-full focus:outline-none;
   }
 }
