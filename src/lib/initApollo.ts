@@ -9,7 +9,6 @@ import fetch from "isomorphic-unfetch";
 import localForage from "localforage";
 
 import { isBrowser } from "./isBrowser";
-// import { NormalizedCacheObject } from '@apollo/react-hooks';
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | null = null;
 
@@ -18,11 +17,7 @@ if (!isBrowser) {
   (global as any).fetch = fetch;
 }
 
-interface IOptions {
-  getToken: any;
-}
-
-function create(initialState: any, { getToken }: IOptions) {
+function create(initialState: any) {
   const httpLink = createHttpLink({
     uri:
       "https://propati-backend-service-wn7qviq5da-uc.a.run.app/propati/v1/api",
@@ -58,14 +53,14 @@ function create(initialState: any, { getToken }: IOptions) {
   });
 }
 
-export default function initApollo(initialState: any, options: IOptions) {
+export default function initApollo(initialState: any) {
   if (!isBrowser) {
-    return create(initialState, options);
+    return create(initialState);
   }
 
   // Reuse client on the client-side
   if (!apolloClient) {
-    apolloClient = create(initialState, options);
+    apolloClient = create(initialState);
   }
 
   return apolloClient;

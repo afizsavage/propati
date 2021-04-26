@@ -1,6 +1,5 @@
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import localForage from "localforage";
 
 import { LoginUser } from "../../graphql/mutations";
 import { AuthForm, AuthLayout } from "../../components/auth/";
@@ -13,8 +12,8 @@ const SignIn = (params) => {
     onCompleted({ response }) {
       if (response && response.accessToken) {
         setAccessToken(response);
+        // redirect to the main page
       }
-      // localForage.setItem("userToken", signIn.accessToken);
       router.push("/");
     },
   });

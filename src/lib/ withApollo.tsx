@@ -6,16 +6,7 @@ import React from "react";
 import { getDataFromTree } from "react-apollo";
 import { isBrowser } from "./isBrowser";
 import initApollo from "./initApollo";
-import localForage from "localforage";
 import { client } from "./initRefreshToken"
-
-function parseCookies(ctx?: any, req?: any, options = {}) {
-  // let tok = cookie.parse(req ? req.headers.cookie || '' : document.cookie, options)
-  return cookie.parse(
-    req ? req.headers.cookie || "" : document.cookie,
-    options
-  );
-}
 
 const withApp = (App: any) => {
   return class WithData extends React.Component {
@@ -32,11 +23,6 @@ const withApp = (App: any) => {
       } = ctx;
       const apollo = initApollo(
         {},
-        {
-          getToken: () => {
-            localForage.getItem("userToken");
-          },
-        }
       );
 
       ctx.ctx.apolloClient = apollo;
@@ -89,20 +75,6 @@ const withApp = (App: any) => {
 
     constructor(props: any) {
       super(props);
-      // `getDataFromTree` renders the component first, the client is passed off as a property.
-      // After that rendering is done using Next's normal rendering pipeline
-      // this.apolloClient: any = client;
-      
-      // initApollo(props.apolloState, {
-      //   getToken: () => {
-      //     return localForage
-      //       .getItem("userToken")
-      //       .then((value) => {
-      //         return value;
-      //       })
-      //       .catch((error) => {}); // handle errors;
-      //   },
-      // });
     }
 
     render() {
