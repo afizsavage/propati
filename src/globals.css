@@ -34,7 +34,7 @@
     @apply mr-1 cursor-pointer py-2 px-3 rounded-lg text-gray-600 focus:outline-none hover:text-black;
   }
   .dropdownMenu {
-    @apply z-20 text-gray-900 absolute mt-3 w-60 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5;
+    @apply z-20 text-gray-700 absolute mt-3 w-60 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5;
   }
   .footerCols {
     @apply md:w-1/4 pb-6 mb-6 sm:m-0 sm:p-0 border-gray-300 border-b sm:border-none;
@@ -70,4 +70,8 @@
   .social-auth-btn {
     @apply inline-flex border justify-evenly py-1 rounded-lg w-full focus:outline-none;
   }
+}
+
+.userList:nth-child(-n + 3) {
+  font-weight: bolder;
 }

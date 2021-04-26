@@ -5,7 +5,7 @@ interface DropdownProps {
   customStyle?: string;
   handleOptionClick: any;
   label?: string;
-  optionsList: Array<string>;
+  listItems: any;
 }
 
 const Dropdown = (dProps: DropdownProps) => {
@@ -47,7 +47,10 @@ const Dropdown = (dProps: DropdownProps) => {
   };
 
   return (
-    <fieldset ref={wrapperRef} className="w-full lg:pl-6 md:w-1/5 ">
+    <fieldset
+      ref={wrapperRef}
+      className="w-full lg:pl-6 md:w-1/5 cursor-pointer "
+    >
       {dProps.label && (
         <label
           className="text-base block mb-2 text-gray-900 font-bold"
@@ -67,25 +70,19 @@ const Dropdown = (dProps: DropdownProps) => {
         <div
           id="ddmenu"
           className={
-            ddownOpen ? "dropdownMenu " + dProps.customStyle : "hidden"
+            ddownOpen
+              ? "dropdownMenu overflow-hidden " + dProps.customStyle
+              : "hidden"
           }
         >
           <ul
-            className="py-1 text-base"
+            className="py-1 "
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="ServiceOptions-menu"
             id="ddmenu"
           >
-            {dProps.optionsList.map((option) => (
-              <li
-                className="block px-4 py-2  text-gray-500 hover:bg-gray-100 hover:text-gray-900"
-                onClick={onOptionClicked(option)}
-                key={Math.random()}
-              >
-                {option}
-              </li>
-            ))}
+            {dProps.listItems}
           </ul>
         </div>
       </span>
