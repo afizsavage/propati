@@ -1,9 +1,15 @@
+import Link from "next/link";
 import React from "react";
 import { BiMenu } from "react-icons/bi";
 import { BiLogOut } from "react-icons/bi";
 import Dropdown from "../dropDown";
 
 import AuthButtons from "./authLinks";
+
+type TUserOptions = {
+  title: string,
+  hyperLink: string
+}
 
 const UserPill = (params) => {
   return (
@@ -29,14 +35,36 @@ const Authenticate = (params) => {
   </>;
 };
 
-const userOptions = [
-  "Messages",
-  "Properties",
-  "Pay Rent",
-  "Switch to Landord",
-  "Account Settings",
-  "Help",
-  "Logout",
+// user dropdown options
+const userOptions: Array<TUserOptions> = [
+  {  // itemValue => 0
+    title: "Messages",
+    hyperLink: "#"
+  },            
+  { // itemValue => 1
+    title: "Properties",
+    hyperLink: "#"
+  },           
+  { // itemValue => 2
+    title: "Pay Rent",
+    hyperLink: "#"
+  },
+  { // itemValue => 3
+    title: "Switch to Landord",
+    hyperLink: "#"
+  },
+  { // itemValue => 4
+    title: "Account Settings",
+    hyperLink: "/account/settings"
+  },
+  { // itemValue => 5
+    title: "Help",
+    hyperLink: "#"
+  },
+  { // itemValue => 6
+    title: "Logout",
+    hyperLink: "#"
+  },
 ];
 
 const ListItems = () => {
@@ -44,14 +72,9 @@ const ListItems = () => {
     <>
       {" "}
       {userOptions.map((option, icon: any) => (
-        <li
-          className="block px-4 py-2 hover:bg-gray-100 userList"
-          onClick={() => console.log("clicked")}
-          key={userOptions.indexOf(option)}
-        >
-          {option}
-          {/* {option === "Messages" ? (icon = [<BiLogOut />, option]) : option} */}
-        </li>
+        <Link href={option.hyperLink}>
+          <a className="block px-4 py-2 hover:bg-gray-100 userList">{option.title}</a>
+        </Link>
       ))}
     </>
   );
