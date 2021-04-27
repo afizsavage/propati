@@ -27,7 +27,19 @@ const AccountSettings = () => {
       {/* main container */}
       <div className="bg-gray-200 min-h-screen">
         <div className="static bg-blue-500 h-72">
-          <h1>banner</h1>
+          
+          <div className="absolute right-4 mt-4">
+            <button 
+              onClick={handleInputTrigger}
+              className="bg-green-500 inline-flex rounded w-40 h-10 -ml-20 p-2 text-center text-white cursor-pointer">
+              <svg aria-hidden="true" data-prefix="far" data-icon="camera" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="svg-inline--fa fa-camera fa-w-16 fa-7x w-6 h-6 mx-auto text-white"><path fill="currentColor" d="M342.7 144H464v288H48V144h121.3l24-64h125.5l23.9 64zM324.3 32h-131c-20 0-37.9 12.4-44.9 31.1L136 96H48c-26.5 0-48 21.5-48 48v288c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V144c0-26.5-21.5-48-48-48h-88l-14.3-38c-5.8-15.7-20.7-26-37.4-26zM256 408c-66.2 0-120-53.8-120-120s53.8-120 120-120 120 53.8 120 120-53.8 120-120 120zm0-192c-39.7 0-72 32.3-72 72s32.3 72 72 72 72-32.3 72-72-32.3-72-72-72z"></path>
+              </svg>
+              Change Cover
+              {/* profile pic file input */}
+              {/* <input type="file" name="profile_pic" className="hidden" 
+              ref={hiddenFileInput} onChange={changeHandler} /> */}
+            </button>
+          </div>
 
           <div className="absolute mt-44 min-w-full">
             <div className="flex space-x-10 mx-20">
