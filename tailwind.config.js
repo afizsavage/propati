@@ -29,6 +29,7 @@ module.exports = {
       }),
       height: (theme) => ({
         100: "30rem",
+        cardLeft: '100%'
       }),
       colors: (theme) => ({
         teal: colors.teal,

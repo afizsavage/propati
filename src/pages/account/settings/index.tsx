@@ -46,9 +46,8 @@ const AccountSettings = () => {
   return (
     <div className="flex flex-col min-h-screen h-full">
       <Navbar />
-      {/* bg-gradient-to-r from-green-500 via-green-400 to-green-300 */}
       {/* main container */}
-      <div className="bg-gray-200 min-h-screen">
+      <div className="bg-gray-100 h-screen mb-20">
         <div className="static h-72 w-full"
         style={{  
           backgroundImage: "url(" + "/images/default_cover_pic_2.jpg" + ")",
@@ -73,7 +72,7 @@ const AccountSettings = () => {
             <div className="flex space-x-10 mx-20">
 
               {/* left card */}
-              <div className="bg-white w-3/12 rounded-md p-4 h-auto">
+              <div className="bg-white w-3/12 rounded-md p-4 h-cardLeft">
                 <div className="rounded-full relative h-44 w-44 -mt-2 mx-auto">
                   <img
                     className="bg-contain text-center rounded-full h-44 w-44" 
@@ -121,7 +120,7 @@ const AccountSettings = () => {
               </div>
 
               {/* right card */}
-              <div className="bg-white w-9/12 rounded-md p-4 h-auto">
+              <div className="bg-white w-9/12 rounded-md p-4 min-h-96">
                 <div>
                   {/* for small devices tabs */}
                   <div className="sm:hidden">
@@ -247,6 +246,11 @@ const AccountSettings = () => {
                                 </div>
                               </div>
                             </div>
+                            <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                              <button type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                                Save
+                              </button>
+                            </div>
                           </form>
                         </div>
                       </div>
@@ -256,7 +260,89 @@ const AccountSettings = () => {
                     :activeTab === 2?
                     // {/* notification settings form */}
                     <>
-                    <h1>notificaions</h1>
+                    <div className="mt-10 sm:mt-0">
+                        <div className="md:grid md:grid-cols-3 md:gap-6">
+                          <div className="md:col-span-1">
+                            <div className="p-4 sm:px-0">
+                              <h3 className="text-lg font-medium leading-6 text-gray-900">Notifications</h3>
+                              <p className="mt-1 text-sm text-gray-600">
+                                Decide which communications you'd like to receive and how.
+                              </p>
+                            </div>
+                          </div>
+                          <div className="mt-5 md:mt-0 md:col-span-2">
+                            <form action="#" method="POST">
+                              <div className="shadow overflow-hidden sm:rounded-md">
+                                <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
+                                  <fieldset>
+                                    <legend className="text-base font-medium text-gray-900">By Email</legend>
+                                    <div className="mt-4 space-y-4">
+                                      <div className="flex items-start">
+                                        <div className="flex items-center h-5">
+                                          <input id="comments" name="comments" type="checkbox" className="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300 rounded" />
+                                        </div>
+                                        <div className="ml-3 text-sm">
+                                          <label htmlFor="comments" className="font-medium text-gray-700">Comments</label>
+                                          <p className="text-gray-500">Get notified when someones posts a comment on a posting.</p>
+                                        </div>
+                                      </div>
+                                      <div className="flex items-start">
+                                        <div className="flex items-center h-5">
+                                          <input id="candidates" name="candidates" type="checkbox" className="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300 rounded" />
+                                        </div>
+                                        <div className="ml-3 text-sm">
+                                          <label htmlFor="candidates" className="font-medium text-gray-700">Candidates</label>
+                                          <p className="text-gray-500">Get notified when a candidate applies for a job.</p>
+                                        </div>
+                                      </div>
+                                      <div className="flex items-start">
+                                        <div className="flex items-center h-5">
+                                          <input id="offers" name="offers" type="checkbox" className="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300 rounded" />
+                                        </div>
+                                        <div className="ml-3 text-sm">
+                                          <label htmlFor="offers" className="font-medium text-gray-700">Offers</label>
+                                          <p className="text-gray-500">Get notified when a candidate accepts or rejects an offer.</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </fieldset>
+                                  <fieldset>
+                                    <div>
+                                      <legend className="text-base font-medium text-gray-900">Push Notifications</legend>
+                                      <p className="text-sm text-gray-500">These are delivered via SMS to your mobile phone.</p>
+                                    </div>
+                                    <div className="mt-4 space-y-4">
+                                      <div className="flex items-center">
+                                        <input id="push_everything" name="push_notifications" type="radio" className="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300" />
+                                        <label htmlFor="push_everything" className="ml-3 block text-sm font-medium text-gray-700">
+                                          Everything
+                                        </label>
+                                      </div>
+                                      <div className="flex items-center">
+                                        <input id="push_email" name="push_notifications" type="radio" className="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300" />
+                                        <label htmlFor="push_email" className="ml-3 block text-sm font-medium text-gray-700">
+                                          Same as email
+                                        </label>
+                                      </div>
+                                      <div className="flex items-center">
+                                        <input id="push_nothing" name="push_notifications" type="radio" className="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300" />
+                                        <label htmlFor="push_nothing" className="ml-3 block text-sm font-medium text-gray-700">
+                                          No push notifications
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </fieldset>
+                                </div>
+                                <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                                  <button type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                                    Save
+                                  </button>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
                     </>
                     : 
                     // {/* account settings form */}
@@ -337,89 +423,3 @@ const AccountSettings = () => {
 
 export default AccountSettings
 
-
-
-
-                      {/* <div class="mt-10 sm:mt-0">
-                        <div class="md:grid md:grid-cols-3 md:gap-6">
-                          <div class="md:col-span-1">
-                            <div class="px-4 sm:px-0">
-                              <h3 class="text-lg font-medium leading-6 text-gray-900">Notifications</h3>
-                              <p class="mt-1 text-sm text-gray-600">
-                                Decide which communications you'd like to receive and how.
-                              </p>
-                            </div>
-                          </div>
-                          <div class="mt-5 md:mt-0 md:col-span-2">
-                            <form action="#" method="POST">
-                              <div class="shadow overflow-hidden sm:rounded-md">
-                                <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
-                                  <fieldset>
-                                    <legend class="text-base font-medium text-gray-900">By Email</legend>
-                                    <div class="mt-4 space-y-4">
-                                      <div class="flex items-start">
-                                        <div class="flex items-center h-5">
-                                          <input id="comments" name="comments" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                        </div>
-                                        <div class="ml-3 text-sm">
-                                          <label for="comments" class="font-medium text-gray-700">Comments</label>
-                                          <p class="text-gray-500">Get notified when someones posts a comment on a posting.</p>
-                                        </div>
-                                      </div>
-                                      <div class="flex items-start">
-                                        <div class="flex items-center h-5">
-                                          <input id="candidates" name="candidates" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                        </div>
-                                        <div class="ml-3 text-sm">
-                                          <label for="candidates" class="font-medium text-gray-700">Candidates</label>
-                                          <p class="text-gray-500">Get notified when a candidate applies for a job.</p>
-                                        </div>
-                                      </div>
-                                      <div class="flex items-start">
-                                        <div class="flex items-center h-5">
-                                          <input id="offers" name="offers" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
-                                        </div>
-                                        <div class="ml-3 text-sm">
-                                          <label for="offers" class="font-medium text-gray-700">Offers</label>
-                                          <p class="text-gray-500">Get notified when a candidate accepts or rejects an offer.</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </fieldset>
-                                  <fieldset>
-                                    <div>
-                                      <legend class="text-base font-medium text-gray-900">Push Notifications</legend>
-                                      <p class="text-sm text-gray-500">These are delivered via SMS to your mobile phone.</p>
-                                    </div>
-                                    <div class="mt-4 space-y-4">
-                                      <div class="flex items-center">
-                                        <input id="push_everything" name="push_notifications" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
-                                        <label for="push_everything" class="ml-3 block text-sm font-medium text-gray-700">
-                                          Everything
-                                        </label>
-                                      </div>
-                                      <div class="flex items-center">
-                                        <input id="push_email" name="push_notifications" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
-                                        <label for="push_email" class="ml-3 block text-sm font-medium text-gray-700">
-                                          Same as email
-                                        </label>
-                                      </div>
-                                      <div class="flex items-center">
-                                        <input id="push_nothing" name="push_notifications" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300">
-                                        <label for="push_nothing" class="ml-3 block text-sm font-medium text-gray-700">
-                                          No push notifications
-                                        </label>
-                                      </div>
-                                    </div>
-                                  </fieldset>
-                                </div>
-                                <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                                  <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                    Save
-                                  </button>
-                                </div>
-                              </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div> */}
