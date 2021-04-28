@@ -6,42 +6,70 @@ import { Navbar } from "../../../components/navbar";
 
 const AccountSettings = () => {
 
+  const url = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' %3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' x2='0' y1='0' y2='1'%3E%3Cstop offset='0' stop-color='%2380F'/%3E%3Cstop offset='1' stop-color='%23f40'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpattern id='b' width='24' height='24' patternUnits='userSpaceOnUse'%3E%3Ccircle fill='%23ffffff' cx='12' cy='12' r='12'/%3E%3C/pattern%3E%3Crect width='100%25' height='100%25' fill='url(%23a)'/%3E%3Crect width='100%25' height='100%25' fill='url(%23b)' fill-opacity='0.1'/%3E%3C/svg%3E";
+
   const hiddenFileInput = React.useRef(null);
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [profilePic, setProfilePic] = useState(null);
+  const [coverPic, setCoverPic] = useState(url);
+  const [initiator, setInitiator] = useState<number>();
+  const [activeTab, setActiveTab] = useState<number>(0);
 	const [isFilePicked, setIsFilePicked] = useState(false);
 
+  const activeTabStyle: string = "border-green-500 text-green-600 hover:text-gray-700  whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm cursor-pointer";
+  const inactiveTabStyle: string = "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm cursor-pointer";
+
   // handle the hidden input field trigger
-  const handleInputTrigger = event => {
+  const handleInputTrigger = (value: number) => {
+    setInitiator(value)
     hiddenFileInput.current.click();
   };
 
   // handles the 
 	const changeHandler = (event: any) => {
-		setSelectedFile(URL.createObjectURL(event.target.files[0]));
+    // cover pic is caller 0
+    if(initiator === 0) {
+      setCoverPic(URL.createObjectURL(event.target.files[0]));
+    }
+
+    // profile pic is caller 1
+    if (initiator === 1) {
+      setProfilePic(URL.createObjectURL(event.target.files[0]));
+    }
+		
 	};
+
+  // handle tabs 
+  const changeTabHandler = (value: number) => {
+    setActiveTab(value);
+  }
 
   return (
     <div className="flex flex-col min-h-screen h-full">
       <Navbar />
-
+      {/* bg-gradient-to-r from-green-500 via-green-400 to-green-300 */}
       {/* main container */}
       <div className="bg-gray-200 min-h-screen">
-        <div className="static bg-blue-500 h-72">
-          
-          <div className="absolute right-4 mt-4">
+        <div className="static h-72 w-full"
+        style={{  
+          backgroundImage: "url(" + "/images/default_cover_pic_2.jpg" + ")",
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          objectFit: 'contain'
+        }}
+        >
             <button 
-              onClick={handleInputTrigger}
-              className="bg-green-500 inline-flex rounded w-40 h-10 -ml-20 p-2 text-center text-white cursor-pointer">
+              onClick={() => handleInputTrigger(0)}
+              className="absolute right-20 mt-6 bg-green-600 hover:bg-green-700 inline-flex rounded w-40 h-10 p-2 text-center text-white cursor-pointer">
               <svg aria-hidden="true" data-prefix="far" data-icon="camera" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="svg-inline--fa fa-camera fa-w-16 fa-7x w-6 h-6 mx-auto text-white"><path fill="currentColor" d="M342.7 144H464v288H48V144h121.3l24-64h125.5l23.9 64zM324.3 32h-131c-20 0-37.9 12.4-44.9 31.1L136 96H48c-26.5 0-48 21.5-48 48v288c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V144c0-26.5-21.5-48-48-48h-88l-14.3-38c-5.8-15.7-20.7-26-37.4-26zM256 408c-66.2 0-120-53.8-120-120s53.8-120 120-120 120 53.8 120 120-53.8 120-120 120zm0-192c-39.7 0-72 32.3-72 72s32.3 72 72 72 72-32.3 72-72-32.3-72-72-72z"></path>
               </svg>
               Change Cover
-              {/* profile pic file input */}
-              {/* <input type="file" name="profile_pic" className="hidden" 
-              ref={hiddenFileInput} onChange={changeHandler} /> */}
+              {/* cover pic file input */}
+              <input type="file" name="cover_pic" className="hidden" 
+              ref={hiddenFileInput} onChange={() => changeHandler} />
             </button>
-          </div>
 
-          <div className="absolute mt-44 min-w-full">
+          <div className="absolute mt-52 min-w-full">
             <div className="flex space-x-10 mx-20">
 
               {/* left card */}
@@ -49,16 +77,16 @@ const AccountSettings = () => {
                 <div className="rounded-full relative h-44 w-44 -mt-2 mx-auto">
                   <img
                     className="bg-contain text-center rounded-full h-44 w-44" 
-                    src={!selectedFile ? "/images/user-male.png" : selectedFile}
+                    src={!profilePic ? "/images/user-male.png" : profilePic}
                     alt="user-profile-pic"/>
                   <div 
-                    onClick={handleInputTrigger}
-                    className="absolute bg-green-500 -ml-10 bottom-0 right-4 inset-y-25 rounded-full h-10 w-10 content-center cursor-pointer">
+                    onClick={() => handleInputTrigger(1)}
+                    className="absolute bg-green-500 hover:bg-green-600 -ml-10 bottom-0 right-4 inset-y-25 rounded-full h-10 w-10 content-center cursor-pointer">
                     <svg aria-hidden="true" data-prefix="far" data-icon="camera" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="svg-inline--fa fa-camera fa-w-16 fa-7x w-6 h-6 mx-auto my-2 text-white"><path fill="currentColor" d="M342.7 144H464v288H48V144h121.3l24-64h125.5l23.9 64zM324.3 32h-131c-20 0-37.9 12.4-44.9 31.1L136 96H48c-26.5 0-48 21.5-48 48v288c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V144c0-26.5-21.5-48-48-48h-88l-14.3-38c-5.8-15.7-20.7-26-37.4-26zM256 408c-66.2 0-120-53.8-120-120s53.8-120 120-120 120 53.8 120 120-53.8 120-120 120zm0-192c-39.7 0-72 32.3-72 72s32.3 72 72 72 72-32.3 72-72-32.3-72-72-72z"></path>
                     </svg>
                     {/* profile pic file input */}
                     <input type="file" name="profile_pic" className="hidden" 
-                    ref={hiddenFileInput} onChange={changeHandler} />
+                    ref={hiddenFileInput} onChange={() => changeHandler(1)} />
                   </div>
                 </div>
 
@@ -98,7 +126,7 @@ const AccountSettings = () => {
                   {/* for small devices tabs */}
                   <div className="sm:hidden">
                     <label htmlFor="tabs" className="sr-only">Select a tab</label>
-                    <select id="tabs" name="tabs" className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                    <select id="tabs" name="tabs" className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-green-500 sm:text-sm rounded-md">
                       <option selected>My Account</option>
 
                       <option>Billing</option>
@@ -112,15 +140,21 @@ const AccountSettings = () => {
                   <div className="hidden sm:block">
                     <div className="border-b border-gray-200">
                       <nav className="-mb-px flex space-x-8" aria-label="Tabs">
-                        <a href="#" className="border-green-500 text-green-600 hover:text-gray-700  whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm" aria-current="page">
+                        <a 
+                          onClick={() => changeTabHandler(0)} 
+                          className={activeTab === 0? activeTabStyle : inactiveTabStyle}>
                           My Account
                         </a>
 
-                        <a href="#" className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                        <a 
+                          onClick={() => changeTabHandler(1)} 
+                          className={activeTab === 1? activeTabStyle : inactiveTabStyle}>
                           Billing
                         </a>
 
-                        <a href="#" className="border-transparent text-gray-500 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                        <a 
+                          onClick={() => changeTabHandler(2)} 
+                          className={activeTab === 2? activeTabStyle : inactiveTabStyle}>
                           Notifications
                         </a>
                       </nav>
@@ -129,9 +163,74 @@ const AccountSettings = () => {
 
                   {/* tab content */}
                   <div className="mt-5 md:mt-0 md:col-span-2">
+
+                    {activeTab === 1? 
+                    // {/* billing settings form */}
+                    <>
+                      {/* cards */}
+                      <div className="flex space-x-20 p-4">
+                        {/* card 1 */}
+                        <div className="bg-black h-80 w-1/2 rounded-md p-8">
+                          <div className="flex justify-between text-center">
+                            <span className="h-12 w-20">
+                            <svg 
+                            className="-mt-1 mx-auto bg-yellow-200 rounded-md h-12 w-20"
+                            clip-rule="evenodd" fill-rule="evenodd" viewBox="0 0 560 400" xmlns="http://www.w3.org/2000/svg"><path d="m286.87 176.71c-.228 17.993 16.036 28.034 28.287 34.004 12.588 6.126 16.816 10.054 16.768 15.531-.096 8.384-10.042 12.083-19.35 12.227-16.24.252-25.681-4.384-33.188-7.891l-5.849 27.373c7.531 3.472 21.476 6.499 35.938 6.631 33.944 0 56.152-16.756 56.273-42.736.132-32.971-45.607-34.797-45.295-49.535.108-4.468 4.372-9.237 13.717-10.45 4.624-.612 17.392-1.081 31.866 5.585l5.681-26.484c-7.783-2.835-17.789-5.55-30.244-5.55-31.95 0-54.423 16.984-54.604 41.295m139.44-39.013c-6.198 0-11.423 3.616-13.753 9.165l-48.49 115.777h33.92l6.75-18.654h41.451l3.916 18.654h29.896l-26.089-124.942zm4.744 33.752 9.789 46.916h-26.809zm-185.31-33.752-26.737 124.942h32.322l26.725-124.942zm-47.817 0-33.644 85.04-13.609-72.308c-1.597-8.071-7.903-12.732-14.906-12.732h-54.999l-.769 3.628c11.291 2.45 24.119 6.402 31.89 10.63 4.756 2.582 6.114 4.84 7.675 10.978l25.776 99.706h34.161l52.369-124.942z" fill="#1a1f71"/></svg>
+                            </span>
+                            <span className="bg-green-500 text-white font-semibold rounded-md p-3 h-12 w-24">Active</span>
+                          </div>
+                          <div className="pt-8 text-white w-full">
+                            <img className="w-14" src="/images/card_chip.png" alt="card_chip"/>
+                            <p className="flex-1 pt-2 text-3xl font-semibold tracking-widest">4358 - 7421 - 9256 - 6682</p>
+                          </div>
+                          <div className="flex pt-8 text-white w-full">
+                            <div className="w-1/2">
+                              <h5 className="font-light text-md">NAME</h5>
+                              <p className="font-semibold tracking-widest">John Doe</p>
+                            </div>
+                            <div className="w-1/2">
+                              <h5 className="font-light text-md">EXPIRY DATE</h5>
+                                <p className="font-semibold tracking-widest">11/23</p>
+                              </div>
+                          </div>                 
+                        </div>
+
+                        {/* card 2 */}
+                        <div className="bg-indigo-600 h-80 w-1/2 rounded-md p-8">
+                          <div className="flex justify-between text-center">
+                            <span className="h-12 w-20">
+                              <img src="/images/master_card.png" alt="master-card-pic" />
+                            </span>
+                            <span className="bg-gray-400 text-white font-semibold rounded-md p-3 h-12 w-24">Inactive</span>
+                          </div>
+                          <div className="pt-8 text-white w-full">
+                            <img className="w-14" src="/images/card_chip.png" alt="card_chip"/>
+                            <p className="flex-1 pt-2 text-3xl font-semibold tracking-widest">5399 - 7421 - 9256 - 6682</p>
+                          </div>
+                          <div className="flex pt-8 text-white w-full">
+                            <div className="w-1/2">
+                              <h5 className="font-light text-md">NAME</h5>
+                              <p className="font-semibold tracking-widest">John Doe</p>
+                            </div>
+                            <div className="w-1/2">
+                              <h5 className="font-light text-md">EXPIRY DATE</h5>
+                                <p className="font-semibold tracking-widest">11/23</p>
+                              </div>
+                          </div>                 
+                        </div>
+                      </div>
+                    </>
+
+                    :activeTab === 2?
+                    // {/* notification settings form */}
+                    <>
+                    <h1>notificaions</h1>
+                    </>
+                    : 
+                    // {/* account settings form */}
+                    <>
                     <form action="#" method="POST">
                       <div className="px-4 py-5 bg-white sm:p-6">
-
                         <div className="grid grid-cols-6 gap-6">
                           <div className="col-span-6 sm:col-span-3">
                             <label htmlFor="first_name" className="block text-sm font-medium text-gray-700">First name</label>
@@ -176,9 +275,37 @@ const AccountSettings = () => {
                             <label htmlFor="city" className="block text-sm font-medium text-gray-700">City</label>
                             <input type="text" name="city" id="city" autoComplete="city" className="mt-2 p-4 border block w-full h-12 shadow-sm sm:text-sm border-gray-300 rounded-md focus:outline-none focus:border-green-500" />
                           </div>
-
                         </div>
                       </div>
+
+                      <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                        <button type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700">
+                          Update
+                        </button>
+                      </div>
+                    </form>
+                    </>
+                    }
+                  </div>
+                  {/* end of tab content */}
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* end of main container */}
+
+      <Footer />
+    </div>
+  );
+}
+
+export default AccountSettings
+
+
 
 
                       {/* <div class="mt-10 sm:mt-0">
@@ -264,28 +391,3 @@ const AccountSettings = () => {
                           </div>
                         </div>
                       </div> */}
-
-                      <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                        <button type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700">
-                          Update
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                  {/* end of tab content */}
-
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* end of main container */}
-
-      <Footer />
-    </div>
-  );
-}
-
-export default AccountSettings
