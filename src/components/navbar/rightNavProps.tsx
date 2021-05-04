@@ -7,13 +7,13 @@ import Dropdown from "../dropDown";
 import AuthButtons from "./authLinks";
 
 type TUserOptions = {
-  title: string,
-  hyperLink: string
-}
+  title: string;
+  hyperLink: string;
+};
 
 const UserPill = (params) => {
   return (
-    <div className="bg-red-200 py-1 px-2 rounded-full inline-flex hover:shadow-md">
+    <div className="bg-red-200 py-1 px-2 rounded-full inline-flex hover:shadow-md font-Lato">
       <BiMenu className="my-auto mr-2 text-xl text-gray-700" />
       <div className="text-white font-semibold rounded-full w-8 h-8 flex justify-center items-center justify-center bg-blue-600">
         AS
@@ -37,33 +37,40 @@ const Authenticate = (params) => {
 
 // user dropdown options
 const userOptions: Array<TUserOptions> = [
-  {  // itemValue => 0
+  {
+    // itemValue => 0
     title: "Messages",
-    hyperLink: "#"
-  },            
-  { // itemValue => 1
+    hyperLink: "#",
+  },
+  {
+    // itemValue => 1
     title: "Properties",
-    hyperLink: "#"
-  },           
-  { // itemValue => 2
+    hyperLink: "#",
+  },
+  {
+    // itemValue => 2
     title: "Pay Rent",
-    hyperLink: "#"
+    hyperLink: "#",
   },
-  { // itemValue => 3
+  {
+    // itemValue => 3
     title: "Switch to Landord",
-    hyperLink: "#"
+    hyperLink: "#",
   },
-  { // itemValue => 4
+  {
+    // itemValue => 4
     title: "Account Settings",
-    hyperLink: "/account/settings"
+    hyperLink: "/account/settings",
   },
-  { // itemValue => 5
+  {
+    // itemValue => 5
     title: "Help",
-    hyperLink: "#"
+    hyperLink: "#",
   },
-  { // itemValue => 6
+  {
+    // itemValue => 6
     title: "Logout",
-    hyperLink: "#"
+    hyperLink: "#",
   },
 ];
 
@@ -73,7 +80,9 @@ const ListItems = () => {
       {" "}
       {userOptions.map((option, icon: any) => (
         <Link href={option.hyperLink}>
-          <a className="block px-4 py-2 hover:bg-gray-100 userList">{option.title}</a>
+          <a className="block px-4 py-2 hover:bg-gray-100 userList">
+            {option.title}
+          </a>
         </Link>
       ))}
     </>

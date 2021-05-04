@@ -1,5 +1,4 @@
 import { ApolloClient, NormalizedCacheObject } from "apollo-boost";
-import cookie from "cookie";
 import Head from "next/head";
 import PropTypes from "prop-types";
 import React from "react";

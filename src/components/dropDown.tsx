@@ -49,7 +49,7 @@ const Dropdown = (dProps: DropdownProps) => {
   return (
     <fieldset
       ref={wrapperRef}
-      className="w-full lg:pl-6 md:w-1/5 cursor-pointer "
+      className="w-full lg:pl-6 md:w-1/5 cursor-pointer font-Lato"
     >
       {dProps.label && (
         <label
