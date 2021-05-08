@@ -52,10 +52,10 @@ const ApplyForm = (params) => {
 const ListingHeading = (params) => {
   return (
     <section className="flex-col font-Lato pt-6">
-      <h2 className="text-2xl text-gray-700 font-semibold mb-2 ">
+      <h1 className="text-3xl text-gray-700 font-semibold mb-2 ">
         {" "}
-        3 Beds, 2 Baths w/AC and WIFI{" "}
-      </h2>
+        Residential Rental at Spur Road{" "}
+      </h1>
 
       <div className="flex justify-between">
         <span>
@@ -81,6 +81,60 @@ const ListingHeading = (params) => {
   );
 };
 
+const ListingDescription = (params) => {
+  return (
+    <div className="border-t">
+      <h2 className="text-2xl font-semibold text-gray-800 mb-5 mt-10 ">
+        Description
+      </h2>
+      <div className="text-base text-gray-700 ">
+        <p>
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
+          ab illo inventore veritatis et quasi architecto beatae vitae dicta
+          sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+          aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
+          qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
+          dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
+          quia non numquam eius modi tempora incidunt ut labore et dolore magnam{" "}
+          Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
+          suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis
+          autem vel eum iure reprehenderit qui in ea voluptate velit esse quam
+          nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo
+          voluptas nulla pariatur. aliquam quaerat voluptatem.{" "}
+        </p>
+      </div>
+    </div>
+  );
+};
+
+const ammenities: Array<any> = [
+  { title: "Cat Allowed", icon: "i" },
+  { title: "Smoking Allowed", icon: "i" },
+  { title: "Tap Water", icon: "i" },
+  { title: "Water Tank", icon: "i" },
+  { title: "Street View", icon: "i" },
+  { title: "Parking View", icon: "i" },
+  { title: "Air Conditioning", icon: "i" },
+  { title: "Security Personel", icon: "i" },
+];
+
+const Ammenities = (params) => {
+  return (
+    <div className="w-full py-10 border-t border-b my-10">
+      <h2 className="text-2xl font-semibold text-gray-800 mb-5 ">Ammenities</h2>
+      <div>
+        {" "}
+        <ul className=" text-gray-700 font-light grid grid-cols-2 ">
+          {ammenities.map((amenity) => (
+            <li className="my-2">{amenity.title}</li>
+          ))}
+        </ul>{" "}
+      </div>
+    </div>
+  );
+};
+
 const Item = (props) => {
   return (
     <>
@@ -88,16 +142,22 @@ const Item = (props) => {
       <main className="flex flex-col flex-grow w-full md:px-8 lg:px-16 px-6">
         <ListingHeading />
         <div className="flex w-full pt-5">
-          <ImageSlider />
+          <div className="w-2/3">
+            <div className="flex-col ">
+              <ImageSlider />
+              <div className="flex-col mb-8">
+                <h2 className="text-2xl font-semibold text-gray-700 mb-1">
+                  Apartment
+                </h2>
+                <span className="text-gray-700">
+                  3 Beds. 2 Baths. 50 m<sup>2</sup>
+                </span>
+              </div>
+              <ListingDescription />
+              <Ammenities />
+            </div>
+          </div>
           <ApplyForm />
-        </div>
-        <div className="flex-col">
-          <h3 className="text-2xl font-semibold text-gray-700 mb-1">
-            Apartment
-          </h3>
-          <span className="text-gray-700">
-            3 Beds. 2 Baths. 50 m<sup>2</sup>
-          </span>
         </div>
       </main>
       <Footer />

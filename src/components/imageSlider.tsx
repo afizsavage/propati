@@ -3,7 +3,7 @@ import "react-multi-carousel/lib/styles.css";
 
 const ImageSlider = () => {
   return (
-    <div className="flex flex-col items-center relative w-2/3 h-full">
+    <div className="flex flex-col items-center relative w-full h-full">
       <div
         className="h-96 w-full bg-white rounded-2xl overflow-x-hidden flex snap-x"
         // style={{ height: "50vh" }}
