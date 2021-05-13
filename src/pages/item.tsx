@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { AiOutlineHeart } from "react-icons/ai";
 import { IoShareOutline } from "react-icons/io5";
+import { IoLogoOctocat } from "react-icons/io";
+import { FaSmoking } from "react-icons/fa";
+import { GiWaterTank, GiTap, GiSecurityGate } from "react-icons/gi";
+import { RiTempColdLine, RiParkingBoxLine } from "react-icons/ri";
+import { GrFormView } from "react-icons/gr";
 
 import Footer from "../components/footer";
 import { Navbar } from "../components/navbar";
@@ -82,52 +87,71 @@ const ListingHeading = (params) => {
 };
 
 const ListingDescription = (params) => {
+  const [readMore, setReadMore] = useState(false);
+
   return (
     <div className="border-t">
       <h2 className="text-2xl font-semibold text-gray-800 mb-5 mt-10 ">
         Description
       </h2>
-      <div className="text-base text-gray-700 ">
+      <div className="text-lg text-gray-700 ">
         <p>
           Sed ut perspiciatis unde omnis iste natus error sit voluptatem
           accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
           ab illo inventore veritatis et quasi architecto beatae vitae dicta
           sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
           aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
-          qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
-          dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
-          quia non numquam eius modi tempora incidunt ut labore et dolore magnam{" "}
-          Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-          suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis
-          autem vel eum iure reprehenderit qui in ea voluptate velit esse quam
-          nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo
-          voluptas nulla pariatur. aliquam quaerat voluptatem.{" "}
+          qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem
+          ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non
+          numquam
+          <a
+            className={readMore ? "hidden" : "inline cursor-pointer"}
+            onClick={(e) => {
+              e.preventDefault;
+              setReadMore(true);
+            }}
+          >
+            ...<span className="text-teal-500 underline">readmore</span>
+          </a>
+          <span className={readMore ? "inline" : "hidden"}>
+            eius modi tempora incidunt ut labore et dolore magnam Ut enim ad
+            minima veniam, quis nostrum exercitationem ullam corporis suscipit
+            laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
+            vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil
+            molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas
+            nulla pariatur. aliquam quaerat voluptatem
+          </span>
         </p>
       </div>
     </div>
   );
 };
 
-const ammenities: Array<any> = [
-  { title: "Cat Allowed", icon: "i" },
-  { title: "Smoking Allowed", icon: "i" },
-  { title: "Tap Water", icon: "i" },
-  { title: "Water Tank", icon: "i" },
-  { title: "Street View", icon: "i" },
-  { title: "Parking View", icon: "i" },
-  { title: "Air Conditioning", icon: "i" },
-  { title: "Security Personel", icon: "i" },
+const amenities: Array<any> = [
+  { title: "Cat Allowed", icon: <IoLogoOctocat /> },
+  { title: "Smoking Allowed", icon: <FaSmoking /> },
+  { title: "Tap Water", icon: <GiTap /> },
+  { title: "Water Tank", icon: <GiWaterTank /> },
+  { title: "Street View", icon: <GrFormView /> },
+  { title: "Parking Spot", icon: <RiParkingBoxLine /> },
+  { title: "Air Conditioning", icon: <RiTempColdLine /> },
+  { title: "Security Personel", icon: <GiSecurityGate /> },
 ];
 
-const Ammenities = (params) => {
+const Amenities = (params) => {
   return (
     <div className="w-full py-10 border-t border-b my-10">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-5 ">Ammenities</h2>
+      <h2 className="text-2xl font-semibold text-gray-800 mb-5 ">Amenities</h2>
       <div>
         {" "}
-        <ul className=" text-gray-700 font-light grid grid-cols-2 ">
-          {ammenities.map((amenity) => (
-            <li className="my-2">{amenity.title}</li>
+        <ul className=" text-gray-800 font-light grid grid-cols-2 ">
+          {amenities.map((amenity) => (
+            <li className="my-2 inline-flex align-middle items-center">
+              <span className="text-xl inline-block mr-4 p-0">
+                {amenity.icon}
+              </span>
+              {amenity.title}
+            </li>
           ))}
         </ul>{" "}
       </div>
@@ -154,7 +178,7 @@ const Item = (props) => {
                 </span>
               </div>
               <ListingDescription />
-              <Ammenities />
+              <Amenities />
             </div>
           </div>
           <ApplyForm />
