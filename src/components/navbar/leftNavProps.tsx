@@ -22,7 +22,7 @@ const LeftNavProps = (props) => {
             Home
           </a>
 
-          <a href="item" className="navLinks">
+          <a href="apartments" className="navLinks">
             Rent
           </a>
           <a href="#" className="navLinks">

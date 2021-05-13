@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { AiOutlineHeart } from "react-icons/ai";
 import { IoShareOutline } from "react-icons/io5";
+import { IoLogoOctocat } from "react-icons/io";
+import { FaSmoking } from "react-icons/fa";
+import { GiWaterTank, GiTap, GiSecurityGate } from "react-icons/gi";
+import { RiTempColdLine, RiParkingBoxLine } from "react-icons/ri";
+import { GrFormView } from "react-icons/gr";
 
 import Footer from "../components/footer";
 import { Navbar } from "../components/navbar";
-import ImageSlider from "../components/imageSlider";
+import ImageSlider from "../components/property/propertyImages";
 import { SubmitBtn } from "../components/auth";
+import { Location, ListingDescription } from "../components/property";
 
 const LHButton = ({ title, icon }) => {
   return (
@@ -21,7 +27,7 @@ const ApplyForm = (params) => {
   return (
     <div className="flex flex-grow flex-col  ">
       <div
-        className="auth-card my-0 w-2/3 sticky top-5 
+        className="auth-card my-0 w-2/3 sticky top-5 border-purple-500
         "
       >
         <form
@@ -29,20 +35,25 @@ const ApplyForm = (params) => {
           className=""
           onSubmit={() => console.log("clicked")}
         >
-          <div className="p-8">
-            <div className="w-full text-center text-gray-400 py-4 text-sm">
+          <div className="px-8 pt-8">
+            <div className="w-full text-center font-medium text-gray-400 text-sm">
               {" "}
-              or with email
+              <span>Yearly Price </span>
             </div>
 
-            <div className="mt-4 inline-flex justify-end w-full">
-              <Link href="/auth/sign-up">
-                <a className="auth-links">Forgot your password?</a>
-              </Link>
+            <div className="mt-2 inline-flex justify-center text-2xl text-gray-700 font-semibold w-full">
+              <span>$1,200</span>
             </div>
           </div>
+          <div className="w-full text-xs font-semibold py-2 inline-flex justify-center mt-5 bg-gray-100">
+            <span className="text-center">Currently Available</span>
+          </div>
 
-          <SubmitBtn btnText="Apply" loading={null} />
+          <SubmitBtn
+            btnText="Apply"
+            loading={null}
+            style="bg-purple-500 hover:bg-purple-600"
+          />
         </form>
       </div>
     </div>
@@ -81,58 +92,42 @@ const ListingHeading = (params) => {
   );
 };
 
-const ListingDescription = (params) => {
-  return (
-    <div className="border-t">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-5 mt-10 ">
-        Description
-      </h2>
-      <div className="text-base text-gray-700 ">
-        <p>
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
-          ab illo inventore veritatis et quasi architecto beatae vitae dicta
-          sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-          aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
-          qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
-          dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
-          quia non numquam eius modi tempora incidunt ut labore et dolore magnam{" "}
-          Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-          suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis
-          autem vel eum iure reprehenderit qui in ea voluptate velit esse quam
-          nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo
-          voluptas nulla pariatur. aliquam quaerat voluptatem.{" "}
-        </p>
-      </div>
-    </div>
-  );
-};
-
-const ammenities: Array<any> = [
-  { title: "Cat Allowed", icon: "i" },
-  { title: "Smoking Allowed", icon: "i" },
-  { title: "Tap Water", icon: "i" },
-  { title: "Water Tank", icon: "i" },
-  { title: "Street View", icon: "i" },
-  { title: "Parking View", icon: "i" },
-  { title: "Air Conditioning", icon: "i" },
-  { title: "Security Personel", icon: "i" },
+const amenities: Array<any> = [
+  { title: "Cat Allowed", icon: <IoLogoOctocat /> },
+  { title: "Smoking Allowed", icon: <FaSmoking /> },
+  { title: "Tap Water", icon: <GiTap /> },
+  { title: "Water Tank", icon: <GiWaterTank /> },
+  { title: "Street View", icon: <GrFormView /> },
+  { title: "Parking Spot", icon: <RiParkingBoxLine /> },
+  { title: "Air Conditioning", icon: <RiTempColdLine /> },
+  { title: "Security Personel", icon: <GiSecurityGate /> },
 ];
 
-const Ammenities = (params) => {
+const Amenities = (params) => {
   return (
     <div className="w-full py-10 border-t border-b my-10">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-5 ">Ammenities</h2>
+      <h2 className="text-2xl font-semibold text-gray-800 mb-5 ">Amenities</h2>
       <div>
         {" "}
-        <ul className=" text-gray-700 font-light grid grid-cols-2 ">
-          {ammenities.map((amenity) => (
-            <li className="my-2">{amenity.title}</li>
+        <ul className=" text-gray-800 font-light grid grid-cols-2 ">
+          {amenities.map((amenity) => (
+            <li className="my-2 inline-flex align-middle items-center">
+              <span className="text-xl inline-block mr-4 p-0">
+                {amenity.icon}
+              </span>
+              {amenity.title}
+            </li>
           ))}
         </ul>{" "}
       </div>
     </div>
   );
+};
+
+const location = {
+  address: "8 Spur Road, Freetown",
+  lat: 8.471644482274344,
+  lng: -13.270381673488407,
 };
 
 const Item = (props) => {
@@ -154,11 +149,12 @@ const Item = (props) => {
                 </span>
               </div>
               <ListingDescription />
-              <Ammenities />
+              <Amenities />
             </div>
           </div>
           <ApplyForm />
         </div>
+        <Location location={location} zoomLevel={15} />
       </main>
       <Footer />
     </>

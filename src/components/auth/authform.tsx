@@ -154,7 +154,7 @@ const AuthForm = ({ onSubmit, loading }) => {
                 errors={errors.password}
               />
             </div>
-            <SubmitBtn loading={loading} btnText="Sign up" />
+            <SubmitBtn style loading={loading} btnText="Sign up" />
           </form>
         </div>
         <AuthOption authType page={page} />
@@ -200,7 +200,7 @@ const AuthForm = ({ onSubmit, loading }) => {
               </div>
             </div>
 
-            <SubmitBtn loading={loading} btnText="Sign In" />
+            <SubmitBtn style loading={loading} btnText="Sign In" />
           </form>
         </div>
         <AuthOption authType page={page} />

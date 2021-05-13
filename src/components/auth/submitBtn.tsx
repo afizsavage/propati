@@ -1,6 +1,6 @@
-const SubmitBtn = ({ btnText, loading }) => {
+const SubmitBtn = ({ btnText, loading, style }) => {
   return (
-    <button type="submit" className="authSubmitBtn ">
+    <button type="submit" className={"authSubmitBtn  " + style}>
       <svg
         className={
           loading ? "animate-spin my-auto h-6 w-6 text-white" : "hidden"
