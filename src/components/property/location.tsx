@@ -10,18 +10,32 @@ const LocationPin = ({ text, lat, lng }) => (
   </div>
 );
 
+const defaultMapOptions = {
+  streetViewControl: true,
+  fullscreenControl: false,
+  streetViewControlOptions: {
+    position: 3,
+  },
+  zoomControlOptions: {
+    position: 3,
+  },
+};
+
 const PropertyLocation = ({ location, zoomLevel }) => {
   return (
-    <div className="map ">
+    <div className="map mb-12 ">
       <h2 className="text-2xl font-semibold text-gray-800 mb-5 mt-10 ">
         Location
       </h2>
 
-      <div className="w-100" style={{ height: "50vh" }}>
+      <div className="w-100" style={{ height: "70vh" }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyD0NxdGbmSHZWWI1T5zYP6nCq_bxX2t110" }}
           defaultCenter={location}
           defaultZoom={zoomLevel}
+          options={{
+            ...defaultMapOptions,
+          }}
         >
           <LocationPin
             lat={location.lat}
