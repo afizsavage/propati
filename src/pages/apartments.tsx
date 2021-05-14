@@ -25,7 +25,7 @@ const LHButton = ({ title, icon }) => {
 
 const ApplyForm = (params) => {
   return (
-    <div className="flex flex-grow flex-col my-1">
+    <div className="flex flex-grow flex-col">
       <div
         className="auth-card my-0 w-2/3 sticky top-28 border-purple-500
         "
@@ -123,9 +123,22 @@ const location = {
 const Contact = (params) => {
   return (
     <div className="w-full">
-      <h2 className="text-2xl font-semibold text-gray-800 mb-5 mt-10">
+      <h3 className="text-xl font-semibold text-gray-800 mb-5 mt-10">
         Contact Information
-      </h2>
+      </h3>
+      <div className="flex ">
+        <div className="mr-24">
+          <span className="block text-base font-light text-gray-900 ">
+            Velma Davies
+          </span>
+          <span className="block mt-3 text-gray-600 ">+23276078637</span>
+        </div>
+        <span className="h-full flex">
+          <button className="py-2 hover:bg-gray-100 px-7 text-teal-500 border-teal-500 border rounded ">
+            Contact
+          </button>
+        </span>
+      </div>
     </div>
   );
 };
@@ -156,7 +169,7 @@ const Item = (props) => {
         </div>
         <Location location={location} zoomLevel={15} />
         <Contact />
-        <div>
+        <div className="pt-7">
           <span>
             <LHButton
               icon={<AiOutlineHeart className="inline mr-1 " />}
