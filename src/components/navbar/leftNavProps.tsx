@@ -4,22 +4,23 @@ const LeftNavProps = (props) => {
   return (
     <div className="flex-1 flex items-center justify-center lg:items-stretch lg:justify-start">
       <div className="flex-shrink-0 flex items-center">
-        <img
-          className="block lg:hidden h-8 w-auto"
-          src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-          alt="Workflow"
-        />
-        <img
-          className="hidden lg:block h-8 w-auto"
-          src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-          alt="Workflow"
-        />
+        <a href="/">
+          <img
+            className="block lg:hidden h-8 w-auto"
+            src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+            alt="Workflow"
+          />
+        </a>
+        <a href="/">
+          <img
+            className="hidden lg:block h-8 w-auto"
+            src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
+            alt="Workflow"
+          />
+        </a>
       </div>
       <div className="hidden lg:block sm:ml-6">
         <div className="flex space-x-4">
-          <a href="/" className="navLinks">
-            Home
-          </a>
           {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
 
           <a href="apartments" className="navLinks">

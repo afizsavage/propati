@@ -11,8 +11,11 @@ import { GrFormView } from "react-icons/gr";
 import Footer from "../components/footer";
 import { Navbar } from "../components/navbar";
 import ImageSlider from "../components/property/propertyImages";
-import { SubmitBtn } from "../components/auth";
-import { Location, ListingDescription } from "../components/property";
+import {
+  Location,
+  ListingDescription,
+  ApplyCard,
+} from "../components/property";
 
 const LHButton = ({ title, icon }) => {
   return (
@@ -20,43 +23,6 @@ const LHButton = ({ title, icon }) => {
       {icon}
       {title}
     </button>
-  );
-};
-
-const ApplyForm = (params) => {
-  return (
-    <div className="flex flex-grow flex-col">
-      <div
-        className="auth-card my-0 w-2/3 sticky top-28 border-purple-500
-        "
-      >
-        <form
-          id="signupForm"
-          className=""
-          onSubmit={() => console.log("clicked")}
-        >
-          <div className="px-8 pt-8">
-            <div className="w-full text-center font-medium text-gray-400 text-sm">
-              {" "}
-              <span>Yearly Rate</span>
-            </div>
-
-            <div className="mt-2 inline-flex justify-center text-2xl text-gray-700 font-semibold w-full">
-              <span>$1,200</span>
-            </div>
-          </div>
-          <div className="w-full text-xs font-semibold py-2 inline-flex justify-center mt-5 bg-gray-100">
-            <span className="text-center">Currently Available</span>
-          </div>
-
-          <SubmitBtn
-            btnText="Apply"
-            loading={null}
-            style={" bg-purple-500 hover:bg-purple-600"}
-          />
-        </form>
-      </div>
-    </div>
   );
 };
 
@@ -102,9 +68,7 @@ const Amenities = (params) => {
         <ul className=" text-gray-800 font-light grid grid-cols-2 ">
           {amenities.map((amenity) => (
             <li className="my-2 inline-flex align-middle items-center">
-              <span className="text-xl inline-block mr-4 p-0">
-                {amenity.icon}
-              </span>
+              <span className="text-xl inline-mr-4 p-0">{amenity.icon}</span>
               {amenity.title}
             </li>
           ))}
@@ -122,22 +86,24 @@ const location = {
 
 const Contact = (params) => {
   return (
-    <div className="w-full">
-      <h3 className="text-xl font-semibold text-gray-800 mb-5 mt-10">
-        Contact Information
-      </h3>
-      <div className="flex ">
-        <div className="mr-24">
+    <div className="w-full flex justify-center ">
+      <div className="w-4/5 border-gray-300 border-l-4 border h-28 rounded-l-md rounded-r-md flex flex-row justify-between px-7 ">
+        <div className="flex flex-col justify-center">
+          <h3 className="text-xl font-semibold text-gray-800 ">
+            Contact Information
+          </h3>
+        </div>
+        <div className="flex flex-col justify-center">
           <span className="block text-base font-light text-gray-900 ">
             Velma Davies
           </span>
           <span className="block mt-3 text-gray-600 ">+23276078637</span>
         </div>
-        <span className="h-full flex">
-          <button className="py-2 hover:bg-gray-100 px-7 text-teal-500 border-teal-500 border rounded ">
+        <div className="flex flex-col justify-center">
+          <button className=" py-1 hover:bg-gray-100 px-7 text-teal-500 border-teal-500 border rounded ">
             Contact
           </button>
-        </span>
+        </div>
       </div>
     </div>
   );
@@ -150,7 +116,7 @@ const Item = (props) => {
       <main className="flex flex-col flex-grow w-full md:px-8 lg:px-16 px-6">
         <ListingHeading />
         <div className="flex w-full pt-5">
-          <div className="w-2/3">
+          <div className="w-3/4">
             <div className="flex-col ">
               <ImageSlider />
               <div className="flex-col mb-8">
@@ -163,23 +129,23 @@ const Item = (props) => {
               </div>
               <ListingDescription />
               <Amenities />
+              <Location location={location} zoomLevel={15} />
+              <Contact />
+              <div className="pt-7">
+                <span>
+                  <LHButton
+                    icon={<AiOutlineHeart className="inline mr-1 " />}
+                    title={"Save"}
+                  />
+                  <LHButton
+                    icon={<IoShareOutline className="inline mr-1 " />}
+                    title="Share"
+                  />
+                </span>
+              </div>
             </div>
           </div>
-          <ApplyForm />
-        </div>
-        <Location location={location} zoomLevel={15} />
-        <Contact />
-        <div className="pt-7">
-          <span>
-            <LHButton
-              icon={<AiOutlineHeart className="inline mr-1 " />}
-              title={"Save"}
-            />
-            <LHButton
-              icon={<IoShareOutline className="inline mr-1 " />}
-              title="Share"
-            />
-          </span>
+          <ApplyCard />
         </div>
       </main>
       <Footer />
