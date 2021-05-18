@@ -10,7 +10,7 @@ import { GrFormView } from "react-icons/gr";
 
 import Footer from "../components/footer";
 import { Navbar } from "../components/navbar";
-import ImageSlider from "../components/property/propertyImages";
+import ImageSlider from "../components/property/imageSlider";
 import {
   Location,
   ListingDescription,
