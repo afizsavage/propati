@@ -74,19 +74,19 @@ const Cards = () => {
   );
 };
 
-function ItemsSection() {
-  const { loading, error, data } = useQuery(GetLaunches);
+// function ItemsSection() {
+//   const { loading, error, data } = useQuery(GetLaunches);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+//   if (loading) return <p>Loading...</p>;
+//   if (error) return <p>Error :(</p>;
 
-  return (
-    <div className="w-full pb-8 pt-1">
-      <div className="w-full">
-        <ol className="px-6 lg:px-11 w-full flex flex-wrap ">
-          <Cards />
-        </ol>
-      </div>
-    </div>
-  );
-}
+//   return (
+//     <div className="w-full pb-8 pt-1">
+//       <div className="w-full">
+//         <ol className="px-6 lg:px-11 w-full flex flex-wrap ">
+//           <Cards />
+//         </ol>
+//       </div>
+//     </div>
+//   );
+// }

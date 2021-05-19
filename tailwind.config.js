@@ -26,6 +26,7 @@ module.exports = {
     extend: {
       backgroundImage: (theme) => ({
         "hero-image": "url('/undraw_at_home_octe.svg')",
+        "item-under": "url('/images/17545.png')",
       }),
       height: (theme) => ({
         100: "30rem",
