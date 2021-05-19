@@ -39,7 +39,7 @@ const Authenticate = (params) => {
 const userOptions: Array<TUserOptions> = [
   {  // itemValue => 0
     title: "Messages",
-    hyperLink: "#"
+    hyperLink: "/messages/"
   },            
   { // itemValue => 1
     title: "Properties",
