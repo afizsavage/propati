@@ -1,6 +1,7 @@
 // messages page
 import {useState} from 'react'
 import { Navbar } from "../../components/navbar";
+import InboxCard from "../../components/inboxCard";
 
 const Messages = () => {
 
@@ -20,8 +21,8 @@ const Messages = () => {
   return (
     <div className="">
       <Navbar />
-      <div className="flex border border-t-gray-200 bg-red-400 w-full h-full fixed box-content">
-        <div className="w-1/4 bg-blue-200 h-full left">
+      <div className="flex border border-t-gray-200 bg-red-400 w-full h-full fixed">
+        <div className="w-1/4 bg-blue-200">
           <div className="flex space-x-4 bg-red-200 h-24 p-5">
             {!isSearchTrigger? 
               <div 
@@ -51,104 +52,22 @@ const Messages = () => {
           <div className="flex items-center pl-3 text-xl bg-yellow-400 h-16">
             Inbox
           </div>
-          <div className="bg-gray-500 h-full box-content overflow-auto">
-            <div className="flex space-x-3 bg-blue-300 h-40 p-2">
-              <div className="flex w-2/12 justify-center items-center bg-green-400 h-16 rounded-full text-xl">P</div>
-              <div className="w-10/12 bg-pink-700 p-2">
-                <div className="flex justify-between">
-                  <div>John Doe</div>
-                  <div>09:47 AM</div>
-                </div>
-                <div className="">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                  Temporibus alias id laborum doloremque facere ...
-                </div>
-                <div className="flex justify-between items-end">
-                  <div className="bg-yellow-200 rounded p-1">Buyer</div>
-                  <div>09:47 AM</div>
-                </div>
-              </div>
-            </div>
-            {/* -------------- */}
-            <div className="flex space-x-3 bg-gray-600 h-40 p-2">
-              <div className="flex w-2/12 justify-center items-center bg-green-400 h-16 rounded-full text-xl">P</div>
-              <div className="w-10/12 bg-pink-700 p-2">
-                <div className="flex justify-between">
-                  <div>John Doe</div>
-                  <div>09:47 AM</div>
-                </div>
-                <div className="">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                  Temporibus alias id laborum doloremque facere ...
-                </div>
-                <div className="flex justify-between items-end">
-                  <div className="bg-yellow-200 rounded p-1">Buyer</div>
-                  <div>09:47 AM</div>
-                </div>
-              </div>
-            </div>
-            {/* -------------- */}
-            <div className="flex space-x-3 bg-red-100 h-40 p-2">
-              <div className="flex w-2/12 justify-center items-center bg-green-400 h-16 rounded-full text-xl">P</div>
-              <div className="w-10/12 bg-pink-700 p-2">
-                <div className="flex justify-between">
-                  <div>John Doe</div>
-                  <div>09:47 AM</div>
-                </div>
-                <div className="">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                  Temporibus alias id laborum doloremque facere ...
-                </div>
-                <div className="flex justify-between items-end">
-                  <div className="bg-yellow-200 rounded p-1">Buyer</div>
-                  <div>09:47 AM</div>
-                </div>
-              </div>
-            </div>
-            {/* -------------- */}
-            <div className="flex space-x-3 bg-red-300 h-40 p-2">
-              <div className="flex w-2/12 justify-center items-center bg-green-400 h-16 rounded-full text-xl">P</div>
-              <div className="w-10/12 bg-pink-700 p-2">
-                <div className="flex justify-between">
-                  <div>John Doe</div>
-                  <div>09:47 AM</div>
-                </div>
-                <div className="">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                  Temporibus alias id laborum doloremque facere ...
-                </div>
-                <div className="flex justify-between items-end">
-                  <div className="bg-yellow-200 rounded p-1">Buyer</div>
-                  <div>09:47 AM</div>
-                </div>
-              </div>
-            </div>
-            {/* -------------- */}
-            <div className="flex space-x-3 bg-indigo-400 h-40 p-2">
-              <div className="flex w-2/12 justify-center items-center bg-green-400 h-16 rounded-full text-xl">P</div>
-              <div className="w-10/12 bg-pink-700 p-2">
-                <div className="flex justify-between">
-                  <div>John Doe</div>
-                  <div>09:47 AM</div>
-                </div>
-                <div className="">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                  Temporibus alias id laborum doloremque facere ...
-                </div>
-                <div className="flex justify-between items-end">
-                  <div className="bg-yellow-200 rounded p-1">Buyer</div>
-                  <div>09:47 AM</div>
-                </div>
-              </div>
+          <div className="h-inboxContainer p-2">
+            <div className="bg-transparent overflow-y-scroll h-full">
+              <InboxCard />
+              <InboxCard />
+              <InboxCard />
+              <InboxCard />
+              <InboxCard /> 
             </div>
           </div>
         </div>
-        {/* <div className="w-2/4 bg-teal-200 h-full">
-
+        <div className="w-2/4 bg-teal-200 h-full">
+            
         </div>
         <div className="w-1/4 bg-yellow-200 h-full">
 
-        </div> */}
+        </div>
       </div>
     </div>
   )
