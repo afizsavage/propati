@@ -79,20 +79,6 @@
   }
 }
 
-.userList:nth-child(-n + 3) {
-  font-weight: bolder;
-}
-
-.snap-x {
-  scroll-snap-type: x mandatory;
-
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-}
-.snap-start {
-  scroll-snap-align: start;
-}
-
 .map-h2 {
   text-transform: uppercase;
   font-size: 1rem;
@@ -118,4 +104,21 @@
   .pin-icon {
     font-size: 10vw;
   }
+}
+
+.react-multiple-carousel__arrow {
+  z-index: 30 !important;
+}
+.userList:nth-child(-n + 3) {
+  font-weight: bolder;
+}
+
+.snap-x {
+  scroll-snap-type: x mandatory;
+
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+.snap-start {
+  scroll-snap-align: start;
 }

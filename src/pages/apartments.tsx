@@ -4,7 +4,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { IoShareOutline } from "react-icons/io5";
 import { IoLogoOctocat } from "react-icons/io";
 import { FaSmoking } from "react-icons/fa";
-import { GiWaterTank, GiTap, GiSecurityGate } from "react-icons/gi";
+import { GiWaterTank, GiTap, GiSecurityGate, GiSofa } from "react-icons/gi";
 import { RiTempColdLine, RiParkingBoxLine } from "react-icons/ri";
 import { GrFormView } from "react-icons/gr";
 
@@ -15,6 +15,7 @@ import {
   Location,
   ListingDescription,
   ApplyCard,
+  SimilarItems,
 } from "../components/property";
 
 const LHButton = ({ title, icon }) => {
@@ -49,7 +50,7 @@ const ListingHeading = (params) => {
 };
 
 const amenities: Array<any> = [
-  { title: "Cat Allowed", icon: <IoLogoOctocat /> },
+  { title: "Furnished", icon: <GiSofa /> },
   { title: "Smoking Allowed", icon: <FaSmoking /> },
   { title: "Tap Water", icon: <GiTap /> },
   { title: "Water Tank", icon: <GiWaterTank /> },
@@ -68,7 +69,7 @@ const Amenities = (params) => {
         <ul className=" text-gray-800 font-light grid grid-cols-2 ">
           {amenities.map((amenity) => (
             <li className="my-2 inline-flex align-middle items-center">
-              <span className="text-xl inline-mr-4 p-0">{amenity.icon}</span>
+              <span className="text-xl inline mr-4 p-0">{amenity.icon}</span>
               {amenity.title}
             </li>
           ))}
@@ -86,7 +87,7 @@ const location = {
 
 const Contact = (params) => {
   return (
-    <div className="w-full flex justify-center ">
+    <div className="w-full flex  ">
       <div className="w-4/5 border-gray-300 border-l-4 border h-28 rounded-l-md rounded-r-md flex flex-row justify-between px-7 ">
         <div className="flex flex-col justify-center">
           <h3 className="text-xl font-semibold text-gray-800 ">
@@ -113,40 +114,43 @@ const Item = (props) => {
   return (
     <>
       <Navbar />
-      <main className="flex flex-col flex-grow w-full md:px-8 lg:px-16 px-6">
-        <ListingHeading />
-        <div className="flex w-full pt-5">
-          <div className="w-3/4">
-            <div className="flex-col ">
-              <ImageSlider />
-              <div className="flex-col mb-8">
-                <h2 className="text-2xl font-semibold text-gray-700 mb-1">
-                  Apartment
-                </h2>
-                <span className="text-gray-700">
-                  3 Beds. 2 Baths. 50 m<sup>2</sup>
-                </span>
-              </div>
-              <ListingDescription />
-              <Amenities />
-              <Location location={location} zoomLevel={15} />
-              <Contact />
-              <div className="pt-7">
-                <span>
-                  <LHButton
-                    icon={<AiOutlineHeart className="inline mr-1 " />}
-                    title={"Save"}
-                  />
-                  <LHButton
-                    icon={<IoShareOutline className="inline mr-1 " />}
-                    title="Share"
-                  />
-                </span>
+      <main className="flex flex-col flex-grow w-full">
+        <div className="md:px-8 lg:px-16 px-6 w-full">
+          <ListingHeading />
+          <div className="flex w-full pt-5">
+            <div className="w-3/4">
+              <div className="flex-col ">
+                <ImageSlider />
+                <div className="flex-col mb-8 pt-10">
+                  <h2 className="text-2xl font-semibold text-gray-700 mb-1">
+                    Apartment
+                  </h2>
+                  <span className="text-gray-700">
+                    3 Beds. 2 Baths. 50 m<sup>2</sup>
+                  </span>
+                </div>
+                <ListingDescription />
+                <Amenities />
+                <Location location={location} zoomLevel={15} />
+                <Contact />
+                <div className="pt-7">
+                  <span>
+                    <LHButton
+                      icon={<AiOutlineHeart className="inline mr-1 " />}
+                      title={"Save"}
+                    />
+                    <LHButton
+                      icon={<IoShareOutline className="inline mr-1 " />}
+                      title="Share"
+                    />
+                  </span>
+                </div>
               </div>
             </div>
+            <ApplyCard />
           </div>
-          <ApplyCard />
         </div>
+        <SimilarItems />
       </main>
       <Footer />
     </>

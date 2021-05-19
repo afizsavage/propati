@@ -7,15 +7,15 @@ const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
-    items: 5,
+    items: 1,
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 3,
+    items: 1,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 2,
+    items: 1,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
@@ -23,71 +23,54 @@ const responsive = {
   },
 };
 
+const CustomRightArrow = () => {
+  // onMove means if dragging or swiping in progress.
+  return <button className="bg-black text-white">1</button>;
+};
+
 const ImageSlider = () => {
   return (
-    <div className=" w-full bg-white rounded-2xl h-auto">
-      <Carousel className="w-full h-auto" responsive={responsive}>
-        <div className="h-96 w-96">
+    <div className=" w-ful pt-2 z-30 bg-white rounded h-auto">
+      <Carousel
+        responsive={responsive}
+        infinite={true}
+        autoPlay={true}
+        autoPlaySpeed={3000}
+      >
+        <div style={{ width: "866px", height: "350px" }}>
           {" "}
-          {/* <img
-            className="h-96 w-96 "
-            src="https://picsum.photos/200/300"
+          <img
+            src="https://a0.muscache.com/im/pictures/2ca6a25b-6bd7-4918-8ae8-0f094202fabf.jpg?im_w=960"
             alt=""
-          /> */}
-          <Image
-            src="https://picsum.photos/"
-            alt="Pic"
-            width={200}
-            height={300}
+            width="866px"
+            height="350px"
+          />
+        </div>
+        <div style={{ width: "866px", height: "350px" }}>
+          {" "}
+          <img
+            style={{ width: "866px", height: "350px" }}
+            src="https://a0.muscache.com/im/pictures/3305c723-4529-407c-ac5d-b7926d22d243.jpg?im_w=1200"
+            alt=""
+          />
+        </div>
+        <div style={{ width: "866px", height: "350px" }}>
+          {" "}
+          <img
+            style={{ width: "866px", height: "350px" }}
+            src="https://a0.muscache.com/im/pictures/miso/Hosting-37506231/original/240d2f06-c865-4025-a24c-0a0ce49c2c08.jpeg?im_w=960"
+            alt=""
+          />
+        </div>
+        <div style={{ width: "866px", height: "350px" }}>
+          {" "}
+          <img
+            style={{ width: "866px", height: "350px" }}
+            src="https://a0.muscache.com/im/pictures/0ac677e5-a6e8-4ccb-bcad-a1c07c87ba91.jpg?im_w=960"
+            alt=""
           />
         </div>
       </Carousel>
-      {/* <div
-          className="snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-blue-600"
-          id="slide-1"
-        >
-          Slide 1
-        </div>
-        <div
-          className="snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-green-600"
-          id="slide-2"
-        >
-          Slide 2
-        </div>
-        <div
-          className="snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-red-600"
-          id="slide-3"
-        >
-          Slide 3
-        </div>
-        <div
-          className="snap-start w-full h-full flex items-center justify-center text-white text-4xl font-bold flex-shrink-0 bg-yellow-600"
-          id="slide-4"
-        >
-          Slide 4
-        </div>
-      </div>
-
-      <div className="flex mt-8">
-        <a
-          className=" w-10 mr-1 h-10 text-gray-700 rounded-full bg-black flex justify-center items-center"
-          href="#slide-1"
-        />
-
-        <a
-          className="w-8 mr-1 h-3 text-gray-700 rounded-full bg-white flex justify-center items-center"
-          href="#slide-2"
-        />
-
-        <a
-          className="w-3 mr-1 h-3 text-gray-700 rounded-full bg-white flex justify-center items-center"
-          href="#slide-3"
-        />
-
-        <a
-          className="w-3 mr-1 h-3 text-gray-700 rounded-full bg-white flex justify-center items-center"
-          href="#slide-4"
-        /> */}
     </div>
   );
 };
