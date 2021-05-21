@@ -9,21 +9,33 @@ const items: Array<any> = [
     itemName: "Nice and Quiet Apartment",
     imageSrc: "https://picsum.photos/345/180/?random",
     itemLocation: "10 Hill Cot Rd, Freetown, Sierra Leone",
+    itemPrice: "1,500",
+    beds: 2,
+    baths: 2,
   },
   {
     itemName: "Detached building in a Secure Compound",
     imageSrc: "https://picsum.photos/345/180/?random",
     itemLocation: "20 Spur Loop, Freetown, Sierra Leone",
+    itemPrice: "1,300",
+    beds: 2,
+    baths: 2,
   },
   {
     itemName: "Comfy Apartment, Accessible Area ",
     imageSrc: "https://picsum.photos/345/180/?random",
     itemLocation: "6B Pipeline, Juba, Freetown, Sierra Leone",
+    itemPrice: "1,200",
+    beds: 2,
+    baths: 1,
   },
   {
     itemName: "Spacious Apartment at Juba",
     imageSrc: "https://picsum.photos/345/180/?random",
     itemLocation: "6,7 Signal Hill Rd, Freetown, Sierra Leone",
+    itemPrice: "1,900",
+    beds: 4,
+    baths: 3,
   },
 ];
 
@@ -36,7 +48,12 @@ const ItemCard = () => {
             <a href="">
               {/* <!-- Article --> */}
               <article className="w-full overflow-hidden rounded-b-md rounded-t-lg bg-white shadow-lg">
-                <div className="rounded-md">
+                <div className="rounded-md relative w-full">
+                  <div className="absolute top-5 w-full px-5">
+                    <span className="rounded-full py-1 px-2 bg-red-400 font-bold text-base text-white ">
+                      {"$" + item.itemPrice}
+                    </span>
+                  </div>
                   <img
                     style={{ height: "180px" }}
                     alt="Placeholder"
@@ -69,11 +86,13 @@ const ItemCard = () => {
                 <footer className="flex justify-start leading-none p-2 md:p-4 text-gray-500 font-normal text-sm">
                   <span className="inline mr-3">
                     {" "}
-                    <IoBedOutline className="inline text-lg " /> 3 Beds
+                    <IoBedOutline className="inline text-lg " /> {item.beds}{" "}
+                    Beds
                   </span>
                   <span className="inline">
                     {" "}
-                    <BiBath className="inline text-lg leading-none " /> 2 Baths
+                    <BiBath className="inline text-lg leading-none " />{" "}
+                    {item.baths} Baths
                   </span>
                 </footer>
               </article>
