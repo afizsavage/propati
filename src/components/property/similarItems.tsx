@@ -1,5 +1,5 @@
 import React from "react";
-import { ItemCard } from "../listings";
+import { ItemCard } from "../utils";
 
 const SimilarItems = () => {
   return (

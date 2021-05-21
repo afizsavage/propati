@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { AiOutlineHeart } from "react-icons/ai";
 import { IoShareOutline } from "react-icons/io5";
-import { IoLogoOctocat } from "react-icons/io";
 import { FaSmoking } from "react-icons/fa";
 import { GiWaterTank, GiTap, GiSecurityGate, GiSofa } from "react-icons/gi";
 import { RiTempColdLine, RiParkingBoxLine } from "react-icons/ri";
 import { GrFormView } from "react-icons/gr";
 
-import Footer from "../components/footer";
+import { Footer } from "../components/utils";
 import { Navbar } from "../components/navbar";
 import ImageSlider from "../components/property/imageSlider";
 import {
@@ -18,11 +17,16 @@ import {
   SimilarItems,
 } from "../components/property";
 
-const LHButton = ({ title, icon }) => {
+interface ABProps {
+  icon: any;
+  title: string;
+}
+
+const AcitivityBtn = (props: ABProps) => {
   return (
     <button className="py-1 px-2 underline text-sm hover:bg-gray-100 rounded-lg text-gray-700 font-semibold focus:outline-none">
-      {icon}
-      {title}
+      {props.icon}
+      {props.title}
     </button>
   );
 };
@@ -135,11 +139,11 @@ const Item = (props) => {
                 <Contact />
                 <div className="pt-7">
                   <span>
-                    <LHButton
+                    <AcitivityBtn
                       icon={<AiOutlineHeart className="inline mr-1 " />}
                       title={"Save"}
                     />
-                    <LHButton
+                    <AcitivityBtn
                       icon={<IoShareOutline className="inline mr-1 " />}
                       title="Share"
                     />

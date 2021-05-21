@@ -30,7 +30,7 @@ module.exports = {
       }),
       height: (theme) => ({
         100: "30rem",
-        cardLeft: '100%'
+        cardLeft: "100%",
       }),
       colors: (theme) => ({
         teal: colors.teal,
@@ -49,7 +49,7 @@ module.exports = {
       ringWidth: ["hover", "active"],
       boxShadow: ["active"],
       borderColor: ["active", "responsive", "hover", "focus", "focus-within"],
-      backgroundColor: ["active"],
+      backgroundColor: ["active", "hover"],
       borderWidth: ["last", "hover"],
     },
   },

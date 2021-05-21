@@ -5,9 +5,10 @@ interface DropdownProps {
   customStyle?: string;
   handleOptionClick: any;
   label?: string;
-  listItems: any;
+  listItems: Array<any>;
 }
 
+// a reuseable dropdown component
 const Dropdown = (dProps: DropdownProps) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [ddownOpen, setddownOpen] = useState(false);
@@ -82,7 +83,9 @@ const Dropdown = (dProps: DropdownProps) => {
             aria-labelledby="ServiceOptions-menu"
             id="ddmenu"
           >
-            {dProps.listItems}
+            {dProps.listItems.map((item) => {
+              return <li className="userList">{item}</li>;
+            })}
           </ul>
         </div>
       </span>

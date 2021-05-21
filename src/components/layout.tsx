@@ -1,5 +1,5 @@
 import { Navbar } from "./navbar";
-import Footer from "./footer";
+import { Footer } from "./utils";
 import Main from "./main";
 
 export default function Layout(pageInfo: any) {
