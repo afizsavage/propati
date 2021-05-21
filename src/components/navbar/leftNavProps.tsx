@@ -33,9 +33,6 @@ const LeftNavProps = (props) => {
           <a href="#" className="navLinks">
             Buy
           </a>
-          <a href="#" className="navLinks">
-            Sell
-          </a>
         </div>
       </div>
     </div>

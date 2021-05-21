@@ -1,7 +1,6 @@
 import Link from "next/link";
 import React from "react";
 import { BiMenu } from "react-icons/bi";
-import { BiLogOut } from "react-icons/bi";
 import Dropdown from "../dropDown";
 
 import AuthButtons from "./authLinks";
@@ -11,6 +10,7 @@ type TUserOptions = {
   hyperLink: string;
 };
 
+// user and account settings button
 const UserPill = (params) => {
   return (
     <div className="bg-red-200 py-1 px-2 rounded-full inline-flex hover:shadow-md font-Lato">
@@ -74,7 +74,7 @@ const userOptions: Array<TUserOptions> = [
   },
 ];
 
-const ListItems = () => {
+const UserOptionsList = () => {
   return (
     <>
       {" "}
@@ -89,14 +89,28 @@ const ListItems = () => {
   );
 };
 
+// create property button
+const AddPropertyBtn = (params) => {
+  return (
+    <div>
+      {" "}
+      <Link href="/property">
+        <a>Add Property </a>
+      </Link>{" "}
+    </div>
+  );
+};
+
+// right side of the navigation bar components
 const RightNavProps = (props) => {
   return (
     <div className="absolute inset-y-0 right-0 flex items-center  sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+      <AddPropertyBtn />
       <Dropdown
         button={<UserPill />}
         customStyle="rounded-xl right-0 origin-top-left"
         handleOptionClick={() => console.log("clicked")}
-        listItems={<ListItems />}
+        listItems={<UserOptionsList />}
       />
     </div>
   );
