@@ -3,7 +3,7 @@ import React from "react";
 import { BiMenu } from "react-icons/bi";
 import { DropDown as UserButton } from "../utils/";
 
-import AuthButtons from "./authLinks";
+// import AuthButtons from "./authLinks";
 
 type TUserOptions = {
   title: string;
@@ -20,19 +20,6 @@ const UserPill = (params) => {
       </div>
     </div>
   );
-};
-
-const Authenticate = (params) => {
-  <>
-    {" "}
-    <AuthButtons href={"auth"} children={"Sign In"} />
-    <div className="ml-3 lg:ml-0 hidden lg:block relative text-base">
-      <div>
-        <span>|</span>
-        <AuthButtons href={"auth/sign-up"} children={"Sign Up"} />
-      </div>
-    </div>
-  </>;
 };
 
 // user dropdown options
@@ -74,24 +61,19 @@ const userOptions: Array<TUserOptions> = [
   },
 ];
 
-// const UserOptionsList = () => {
-//   return (
-//     <>
-//       {" "}
-//       {userOptions.map((option) => (
-//         <Link href={option.hyperLink}>
-//           <a className="block px-4 py-2 hover:bg-gray-100 ">{option.title}</a>
-//         </Link>
-//       ))}
-//     </>
-//   );
-// };
+// craete a JSX link component
+const UserOptionsList = (option) => {
+  return (
+    <>
+      <Link href={option.hyperLink}>
+        <a className="block px-4 py-2 hover:bg-gray-100 ">{option.title}</a>
+      </Link>
+    </>
+  );
+};
 
-const options = [
-  <Link href={userOptions[0].hyperLink}>
-    <a className="block px-4 py-2 hover:bg-gray-100 ">{userOptions[0].title}</a>
-  </Link>,
-];
+// return an array of the JSX link component
+let options = userOptions.map(UserOptionsList);
 
 // create property button
 const AddPropertyBtn = (params) => {
@@ -121,5 +103,18 @@ const RightNavProps = (props) => {
     </div>
   );
 };
+
+// const Authenticate = (params) => {
+//   <>
+//     {" "}
+//     <AuthButtons href={"auth"} children={"Sign In"} />
+//     <div className="ml-3 lg:ml-0 hidden lg:block relative text-base">
+//       <div>
+//         <span>|</span>
+//         <AuthButtons href={"auth/sign-up"} children={"Sign Up"} />
+//       </div>
+//     </div>
+//   </>;
+// };
 
 export default RightNavProps;
