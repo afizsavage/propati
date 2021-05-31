@@ -27,10 +27,9 @@ const userOptions: Array<TUserOptions> = [
   {
     // itemValue => 0
     title: "Messages",
-    hyperLink: "#",
-  },
-  {
-    // itemValue => 1
+    hyperLink: "/messages/"
+  },            
+  { // itemValue => 1
     title: "Properties",
     hyperLink: "#",
   },
