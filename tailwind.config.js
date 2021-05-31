@@ -30,7 +30,8 @@ module.exports = {
       height: (theme) => ({
         100: "30rem",
         cardLeft: '100%',
-        inboxContainer: '68%'
+        inboxContainer: '68%',
+        topContainer: '10.4%'
       }),
       colors: (theme) => ({
         teal: colors.teal,

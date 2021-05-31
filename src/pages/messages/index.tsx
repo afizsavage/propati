@@ -31,7 +31,8 @@ const Messages = () => {
     <div className="">
       <Navbar />
       <div className="flex border border-t-gray-200 bg-gray-200 w-full h-full fixed">
-        <div className="w-1/4 bg-blue-200">
+        <div className="w-1/4">
+          {/* compose button, search field*/}
           <div className="flex space-x-4 bg-gray-200 h-24 p-5">
             {!isSearchTrigger? 
               <div 
@@ -57,6 +58,7 @@ const Messages = () => {
                 </span>
               </div>
           </div>
+          {/* navigations tabs */}
           <div className="flex space-x-1 box-content bg-gray-200 h-16 border-t-2 border-b-2 border-gray-300">
             <div onClick={() => handleMailNavChange(0)} 
               className={ navIndex === 0? activeMailNav : inactiveMailNav }>
@@ -85,6 +87,7 @@ const Messages = () => {
             navIndex === 2? "Drafts Messages" : "Deleted Messages"
             }
           </div>
+          {/* breif mail card section */}
           <div className="h-inboxContainer p-2">
             <div className="bg-transparent overflow-y-scroll h-full">
               {navIndex === 0?
@@ -123,9 +126,29 @@ const Messages = () => {
             </div>
           </div>
         </div>
+        {/* center panel */}
         <div className="w-2/4 bg-teal-200 h-full">
-            
+          <div className="flex space-x-4 bg-gray-100 h-topContainer p-5 border border-b-2 border-gray-300">
+            <div className="w-4/6">
+              <p className="text-lg font-semibold pb-1 tracking-wider text-gray-700">Hi! I'm interested in your property</p>
+              <span className="text-gray-500">Created 3 mins ago</span>
+            </div>
+            <div className="w-2/6">
+              <div className="flex border border-3 border-gray-400 p-3 rounded-full h-full justify-between items-center">
+                <div className="flex space-x-3">
+                  <span className="rounded-full">
+                    <img src="/images/user-male-2.png" alt="chat-user" className="w-10" />
+                  </span>
+                  <span className="flex items-center text-md">Ashim Rabbi</span>
+                </div>
+                <div>
+                  <svg aria-hidden="true" data-prefix="far" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="svg-inline--fa fa-chevron-down fa-w-14 fa-7x w-4 text-gray-500"><path fill="currentColor" d="M441.9 167.3l-19.8-19.8c-4.7-4.7-12.3-4.7-17 0L224 328.2 42.9 147.5c-4.7-4.7-12.3-4.7-17 0L6.1 167.3c-4.7 4.7-4.7 12.3 0 17l209.4 209.4c4.7 4.7 12.3 4.7 17 0l209.4-209.4c4.7-4.7 4.7-12.3 0-17z"></path></svg>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        {/* right panel */}
         <div className="w-1/4 bg-yellow-200 h-full">
 
         </div>
