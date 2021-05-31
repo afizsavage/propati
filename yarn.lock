@@ -306,6 +306,13 @@
   resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.3.tgz"
   integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
 
+"@types/react-hooks-helper@^1.6.3":
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/@types/react-hooks-helper/-/react-hooks-helper-1.6.3.tgz#55f62afed26714a348d57f3230165bda76d442e4"
+  integrity sha512-WNemo2fNM/H6uP2TyMt+id+GYvjjmfPpNDHl/vP7SRNmoswCJG0wLc8K9/rlpDott2Fo9qNqJW6dXbpmCDmPhQ==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@^17.0.0":
   version "17.0.0"
   resolved "https://registry.npmjs.org/@types/react/-/react-17.0.0.tgz"
@@ -3762,6 +3769,11 @@ react-hook-form@^6.15.5:
   version "6.15.5"
   resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-6.15.5.tgz"
   integrity sha512-so2jEPYKdVk1olMo+HQ9D9n1hVzaPPFO4wsjgSeZ964R7q7CHsYRbVF0PGBi83FcycA5482WHflasdwLIUVENg==
+
+react-hooks-helper@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/react-hooks-helper/-/react-hooks-helper-1.6.0.tgz#d4105f8745471600b38dc450260d513553c883b1"
+  integrity sha512-DlyWQ99tgwyDdJfTihCXT6AftYymxhA2LS60vBCTOpclmjPxqDwDTLjVK0kbIc3XsgJvxkanW8TwHE0jrIB8hA==
 
 react-icons@^4.2.0:
   version "4.2.0"

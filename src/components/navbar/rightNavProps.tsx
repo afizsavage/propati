@@ -3,7 +3,7 @@ import React from "react";
 import { BiMenu } from "react-icons/bi";
 import { DropDown as UserButton } from "../utils/";
 
-// import AuthButtons from "./authLinks";
+import AuthButtons from "./authLinks";
 
 type TUserOptions = {
   title: string;
@@ -15,7 +15,7 @@ const UserPill = (params) => {
   return (
     <div className="bg-teal-400 py-1 px-2 rounded-full inline-flex hover:shadow-md font-Lato">
       <BiMenu className="my-auto mr-2 text-xl text-gray-700" />
-      <div className="text-white font-semibold rounded-full w-8 h-8 flex justify-center items-center justify-center bg-blue-600">
+      <div className="text-white font-semibold rounded-full w-8 h-8 flex justify-center items-center bg-blue-600">
         AS
       </div>
     </div>
@@ -78,16 +78,31 @@ let options = userOptions.map(UserOptionsList);
 // create property button
 const AddPropertyBtn = (params) => {
   return (
-    <div>
+    <div className="mr-5 inline w-auto my-auto ">
       {" "}
       <Link href="/property">
-        <a className="bg-teal-400 py-2 font-bold leading-6 text-black text-sm px-2 rounded-full inline-flex font-Lato hover:shadow-md">
-          Add Property{" "}
+        <a className="bg-white hover:bg-teal-400 text-sm font-bold rounded-full font-Lato w-auto h-10 px-3 flex justify-center items-center">
+          Add Property
         </a>
       </Link>{" "}
     </div>
   );
 };
+
+// const Authenticate = (params) => {
+//   return (
+//     <>
+//       {" "}
+//       <AuthButtons href={"auth"} children={"Sign In"} />
+//       <div className="ml-3 lg:ml-0 hidden lg:block relative text-base">
+//         <div>
+//           <span>|</span>
+//           <AuthButtons href={"auth/sign-up"} children={"Sign Up"} />
+//         </div>
+//       </div>
+//     </>
+//   );
+// };
 
 // right side of the navigation bar components
 const RightNavProps = (props) => {
@@ -103,18 +118,5 @@ const RightNavProps = (props) => {
     </div>
   );
 };
-
-// const Authenticate = (params) => {
-//   <>
-//     {" "}
-//     <AuthButtons href={"auth"} children={"Sign In"} />
-//     <div className="ml-3 lg:ml-0 hidden lg:block relative text-base">
-//       <div>
-//         <span>|</span>
-//         <AuthButtons href={"auth/sign-up"} children={"Sign Up"} />
-//       </div>
-//     </div>
-//   </>;
-// };
 
 export default RightNavProps;

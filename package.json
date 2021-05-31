@@ -29,6 +29,7 @@
     "react-cookie": "^4.0.3",
     "react-dom": "17.0.1",
     "react-hook-form": "^6.15.5",
+    "react-hooks-helper": "^1.6.0",
     "react-icons": "^4.2.0"
   },
   "resolutions": {
@@ -43,6 +44,7 @@
     "@types/google-map-react": "^2.1.0",
     "@types/node": "^14.14.19",
     "@types/react": "^17.0.0",
+    "@types/react-hooks-helper": "^1.6.3",
     "react-lines-ellipsis": "^0.14.1",
     "react-multi-carousel": "^2.6.2",
     "tailwindcss": "^2.0.2",
