@@ -3,7 +3,7 @@ import React from "react";
 import { BiMenu } from "react-icons/bi";
 import { DropDown as UserButton } from "../utils/";
 
-// import AuthButtons from "./authLinks";
+import AuthButtons from "./authLinks";
 
 type TUserOptions = {
   title: string;
@@ -89,32 +89,36 @@ const AddPropertyBtn = (params) => {
   );
 };
 
+const Authenticate = (params) => {
+  return (
+    <>
+      {" "}
+      <AuthButtons href={"auth"} children={"Sign In"} />
+      <div className="ml-3 lg:ml-0 hidden lg:block relative text-base">
+        <div>
+          <span>|</span>
+          <AuthButtons href={"auth/sign-up"} children={"Sign Up"} />
+        </div>
+      </div>
+    </>
+  );
+};
+
 // right side of the navigation bar components
 const RightNavProps = (props) => {
   return (
     <div className="absolute inset-y-0 right-0 flex items-center  sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-      <AddPropertyBtn />
+      {/* <AddPropertyBtn />
       <UserButton
         button={<UserPill />}
         customStyle="rounded-xl right-0 origin-top-left"
         handleOptionClick={() => console.log("clicked")}
         listItems={options}
-      />
+      /> */}
+
+      <Authenticate />
     </div>
   );
 };
-
-// const Authenticate = (params) => {
-//   <>
-//     {" "}
-//     <AuthButtons href={"auth"} children={"Sign In"} />
-//     <div className="ml-3 lg:ml-0 hidden lg:block relative text-base">
-//       <div>
-//         <span>|</span>
-//         <AuthButtons href={"auth/sign-up"} children={"Sign Up"} />
-//       </div>
-//     </div>
-//   </>;
-// };
 
 export default RightNavProps;

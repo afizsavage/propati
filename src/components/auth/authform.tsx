@@ -18,6 +18,8 @@ export const InputField = (p: InProps) => {
         className={"auth-input " + (!p.errors ? "" : "border-red-500")}
         placeholder={p.placeholder}
         ref={p.register}
+        onChange={p.onChange}
+        value={p.value}
       />
       <label
         htmlFor={p.name}
@@ -75,8 +77,7 @@ const AuthForm = ({ onSubmit, loading }) => {
     email: {
       required: "Enter Email",
       pattern: {
-        value:
-          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+        value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
         message: "Invalid Email address",
       },
     },
@@ -93,8 +94,7 @@ const AuthForm = ({ onSubmit, loading }) => {
     email: {
       required: "Enter Email",
       pattern: {
-        value:
-          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+        value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
         message: "Invalid Email address",
       },
     },

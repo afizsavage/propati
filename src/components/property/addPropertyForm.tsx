@@ -1,43 +1,94 @@
 import React from "react";
-import { useStep } from "react-hooks-helper";
-import { useForm } from "react-hook-form";
-import { CUser, InProps } from "../../interfaces/";
+import { useStep, useForm } from "react-hooks-helper";
+// import { useForm } from "react-hook-form";
+import { AddPropertyProps, InProps } from "../../interfaces/";
 
 import { InputField } from "../auth/authform";
+import { SubmitBtn } from "../auth";
 
 type StepsObject = {
   id: any;
 };
 
 const steps: Array<StepsObject> = [
-  { id: "names" },
   { id: "address" },
+  { id: "propertyType" },
   { id: "submit" },
 ];
 
 const defaultData = {
-  firstName: "Jane",
-  lastName: "Doe",
-  nickName: "Jan",
   address: "200 South Main St",
+  propertyType: "Anytown",
 };
 
-const Lastname = ({ navigation }) => {
+const ItemForm = ({ label, children, type = "text", ...otherProps }) => (
+  <div>
+    {type === "text" ? (
+      <>
+        <label>{label}</label>
+        <input type={type} {...otherProps} />
+      </>
+    ) : (
+      <>
+        <label />
+        <input type={type} {...otherProps} />
+        {label}
+      </>
+    )}
+  </div>
+);
+
+const Address = ({ navigation, setForm, formData }) => {
+  const { address } = formData;
+
   const { previous, next } = navigation;
-  const { register, errors, handleSubmit } = useForm<CUser>({
-    mode: "all",
-  });
+
+  return (
+    <div className="pl-9 pr-11">
+      <h3 className="font-Lato text-3xl text-gray-600 mb-5">
+        Hi! Let's get started creating your property.
+      </h3>
+      <span className="text-sm font-semibold text-gray-500">STEP 1</span>
+      {/* <ItemForm
+        label="Address"
+        name="address"
+        value={address}
+        onChange={setForm}
+        children
+      /> */}
+      <InputField
+        name="address"
+        placeholder="Enter Address"
+        type="text"
+        value={address}
+        onChange={setForm}
+      />
+      <div>
+        <button
+          className="bg-teal-600 rounded px-3 py-2 text-sm font-bold text-white mt-3"
+          onClick={next}
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const PropertyType = ({ setForm, formData, navigation }) => {
+  const { propertyType } = formData;
+  const { previous, next } = navigation;
 
   return (
     <div className="">
       <span>step 2</span>
-      <InputField
-        name={"lastName"}
-        type={"text"}
-        placeholder={"Last Name "}
-        register={register(registerOptions.lastName)}
-        label={errors.lastName ? errors.lastName.message : "Last Name"}
-        errors={errors.lastName}
+
+      <ItemForm
+        label="PropertyType"
+        name="propertyType"
+        value={propertyType}
+        onChange={setForm}
+        children
       />
       <div>
         <button onClick={previous}>Previous</button>
@@ -47,104 +98,45 @@ const Lastname = ({ navigation }) => {
   );
 };
 
-const registerOptions = {
-  firstName: {
-    required: "Enter First Name",
-    minLength: {
-      value: 2,
-      message: "First Name must have at least 2 characters",
-    },
-  },
-  lastName: {
-    required: "Enter Last Name",
-    minLength: {
-      value: 2,
-      message: "Last Name must have at least 2 characters",
-    },
-  },
-  email: {
-    required: "Enter Email",
-    pattern: {
-      value:
-        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-      message: "Invalid Email address",
-    },
-  },
-  password: {
-    required: "Enter Password ",
-    minLength: {
-      value: 6,
-      message: "Password must have at least 6 characters",
-    },
-  },
+const onSubmit = async (payload: any, e: any) => {
+  e.preventDefault();
+
+  const { address, propertyType } = payload;
+
+  console.log(address, propertyType);
 };
 
-const Names = ({ navigation }) => {
-  const { previous, next } = navigation;
-  const { register, errors, handleSubmit } = useForm<CUser>({
-    mode: "all",
-  });
+const Submit = ({ navigation, formData }) => {
+  const { propertyType, address } = formData;
 
-  return (
-    <div className="">
-      <span>step 1</span>
-      <InputField
-        name={"firstName"}
-        type={"text"}
-        placeholder={"First Name "}
-        register={register(registerOptions.firstName)}
-        label={errors.firstName ? errors.firstName.message : "First Name"}
-        errors={errors.firstName}
-      />
-      <div>
-        <button onClick={next}>Next</button>
-      </div>
-    </div>
-  );
-};
-
-const Submit = ({ navigation }) => {
   const { go } = navigation;
   return (
     <div>
       <h3>Thank you for submitting. We will b</h3>
-      <button type="submit">Add property</button>
+      <button type="submit" onClick={() => console.log(address)}>
+        Add property
+      </button>
     </div>
   );
 };
 
-const AddForm = () => {
+const AddPropertyForm = () => {
+  const [formData, setForm] = useForm(defaultData);
   const { step, navigation } = useStep({ initialStep: 0, steps });
   const { id } = step;
 
-  const props = { navigation };
+  const props = { formData, setForm, navigation };
 
   switch (id) {
-    case "names":
-      return <Names {...props} />;
     case "address":
-      return <Lastname {...props} />;
+      return <Address {...props} />;
+    case "propertyType":
+      return <PropertyType {...props} />;
     case "submit":
       return <Submit {...props} />;
     default:
       return null;
   }
-};
-
-const AddPropertyForm = (params) => {
-  const { register, errors, handleSubmit } = useForm<CUser>({
-    mode: "all",
-  });
-  return (
-    <div>
-      <form
-        action=""
-        onSubmit={handleSubmit(() => console.log(registerOptions.firstName))}
-      >
-        <AddForm />
-      </form>
-    </div>
-  );
 };
 
 export default AddPropertyForm;

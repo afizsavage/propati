@@ -16,10 +16,17 @@ export interface OAuthP {
 }
 
 export interface InProps {
-  register: any;
+  register?: any;
   placeholder: string;
   type: string;
   name: string;
-  label: string;
-  errors: any;
+  label?: string;
+  errors?: any;
+  onChange?: any;
+  value?: number | string;
+}
+
+export interface AddPropertyProps {
+  address: string;
+  propertyType: string;
 }
