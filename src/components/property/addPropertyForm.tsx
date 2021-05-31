@@ -5,6 +5,7 @@ import { AddPropertyProps, InProps } from "../../interfaces/";
 
 import { InputField } from "../auth/authform";
 import { SubmitBtn } from "../auth";
+import Dropdown from "../utils/dropDown";
 
 type StepsObject = {
   id: any;
@@ -17,59 +18,58 @@ const steps: Array<StepsObject> = [
 ];
 
 const defaultData = {
-  address: "200 South Main St",
+  address: "",
+  unit: "",
   propertyType: "Anytown",
 };
 
-const ItemForm = ({ label, children, type = "text", ...otherProps }) => (
-  <div>
-    {type === "text" ? (
-      <>
-        <label>{label}</label>
-        <input type={type} {...otherProps} />
-      </>
-    ) : (
-      <>
-        <label />
-        <input type={type} {...otherProps} />
-        {label}
-      </>
-    )}
-  </div>
-);
-
 const Address = ({ navigation, setForm, formData }) => {
-  const { address } = formData;
+  const { address, unit } = formData;
 
   const { previous, next } = navigation;
 
   return (
-    <div className="pl-9 pr-11">
-      <h3 className="font-Lato text-3xl text-gray-600 mb-5">
-        Hi! Let's get started creating your property.
-      </h3>
-      <span className="text-sm font-semibold text-gray-500">STEP 1</span>
-      {/* <ItemForm
-        label="Address"
-        name="address"
-        value={address}
-        onChange={setForm}
-        children
-      /> */}
-      <InputField
-        name="address"
-        placeholder="Enter Address"
-        type="text"
-        value={address}
-        onChange={setForm}
-      />
-      <div>
-        <button
-          className="bg-teal-600 rounded px-3 py-2 text-sm font-bold text-white mt-3"
-          onClick={next}
-        >
-          Next
-        </button>
+    <div className="w-2/3 mt-16 mx-auto">
+      <div className="font-Lato text-3xl text-gray-600 mb-5">
+        <h3>Hi! Let's get started creating your property.</h3>
+      </div>
+      <div className="w-4/5">
+        <span className="text-sm font-semibold text-gray-500">STEP 1</span>
+
+        <InputField
+          name="address"
+          placeholder="Address"
+          type="text"
+          customStyle="placeholder-black"
+          value={address}
+          onChange={setForm}
+        />
+        <InputField
+          name="unit"
+          placeholder="Unit# (optional)"
+          type="text"
+          customStyle="placeholder-black"
+          value={unit}
+          onChange={setForm}
+        />
+        <div>
+          <button
+            className="bg-teal-600 rounded px-3 py-2 text-sm font-bold text-white mt-3"
+            onClick={next}
+          >
+            Continue
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const UserPill = (params) => {
+  return (
+    <div className="bg-white w-full inline-flex font-Lato  ">
+      <div className="input-container">
+        <span className="w-full inline-flex ">Select property type</span>
       </div>
     </div>
   );
@@ -80,19 +80,37 @@ const PropertyType = ({ setForm, formData, navigation }) => {
   const { previous, next } = navigation;
 
   return (
-    <div className="">
-      <span>step 2</span>
+    <div className="w-2/3 mx-auto h-screen overflow-hidden relative ">
+      <div className="mt-16 h-full">
+        <div className="font-Lato font-bold text-2xl text-gray-600 mb-5">
+          <h3>Select your property type</h3>
+        </div>
+        <div className="w-4/5 h-full">
+          <span className="text-sm font-semibold text-gray-500">STEP 2</span>
 
-      <ItemForm
-        label="PropertyType"
-        name="propertyType"
-        value={propertyType}
-        onChange={setForm}
-        children
-      />
-      <div>
-        <button onClick={previous}>Previous</button>
-        <button onClick={next}>Next</button>
+          <Dropdown
+            button={<UserPill />}
+            handleOptionClick={() => console.log("clicked")}
+            listItems={["one", "two"]}
+            customStyle="w-full"
+          />
+          <div className="absolute  py-5 w-full bottom-0">
+            <div className="flex inline-flex justify-between w-full">
+              <button
+                className="bg-teal-600 rounded px-3 py-2 text-sm font-bold text-white mt-3"
+                onClick={previous}
+              >
+                Previous
+              </button>
+              <button
+                className="bg-teal-600 rounded px-3 py-2 text-sm font-bold text-white mt-3"
+                onClick={next}
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

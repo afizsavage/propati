@@ -15,7 +15,7 @@ export const InputField = (p: InProps) => {
       <input
         name={p.name}
         type={p.type}
-        className={"auth-input " + (!p.errors ? "" : "border-red-500")}
+        className={"auth-input " + p.customStyle + (!p.errors ? "" : "border-red-500")}
         placeholder={p.placeholder}
         ref={p.register}
         onChange={p.onChange}

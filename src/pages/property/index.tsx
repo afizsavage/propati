@@ -5,7 +5,7 @@ const Property = () => {
   return (
     <div className="flex flex-col flex-grow ">
       <div className="flex w-full flex-row">
-        <div className="w-3/5 h-auto pt-20 lg:px-16 px-6 py-10 ">
+        <div className="w-3/5 h-auto px-3">
           <AddPropertyForm />
         </div>
         <div className="w-2/5">

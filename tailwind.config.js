@@ -51,6 +51,7 @@ module.exports = {
       borderColor: ["active", "responsive", "hover", "focus", "focus-within"],
       backgroundColor: ["active", "hover"],
       borderWidth: ["last", "hover"],
+      backgroundOpacity: ["hover"],
     },
   },
 };

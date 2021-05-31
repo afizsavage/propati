@@ -24,6 +24,7 @@ export interface InProps {
   errors?: any;
   onChange?: any;
   value?: number | string;
+  customStyle?: string 
 }
 
 export interface AddPropertyProps {

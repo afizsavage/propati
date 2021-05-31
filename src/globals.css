@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 @layer components {
+  .auth-card {
+    @apply shadow-2xl rounded rounded-b-lg mx-auto bg-white w-full md:w-1/3 border-solid border-t-4 border-teal-500 p-0 my-2;
+  }
+  .auth-close-btn {
+    @apply text-gray-400 top-1 hover:text-white fixed right-4 focus:outline-none  px-2 py-2 lg:top-8 lg:bg-white lg:rounded-full lg:right-10 lg:shadow lg:hover:bg-teal-600  duration-300 ease-in transition-colors;
+  }
   .auth-label {
     @apply origin-top-left w-full inline-block text-gray-400 text-lg transition-all duration-200 ease-in z-10 min-w-max;
   }
@@ -12,17 +18,11 @@
   .authSubmitBtn {
     @apply inline-flex justify-center  duration-300 ease-in transition bg-teal-600 hover:bg-teal-700 text-2xl font-semibold text-white px-3 h-14 rounded-b-lg w-full focus:outline-none;
   }
-  .auth-close-btn {
-    @apply text-gray-400 top-1 hover:text-white fixed right-4 focus:outline-none  px-2 py-2 lg:top-8 lg:bg-white lg:rounded-full lg:right-10 lg:shadow lg:hover:bg-teal-600  duration-300 ease-in transition-colors;
-  }
   .auth-links {
     @apply transition-all border-0 border-teal-600 hover:border-b duration-200 text-sm ease-out text-teal-600;
   }
   .auth-layout {
     @apply bg-gray-100 pt-9 font-Lato flex flex-col min-h-screen h-auto w-screen;
-  }
-  .auth-card {
-    @apply shadow-2xl rounded rounded-b-lg mx-auto bg-white w-full md:w-1/3 border-solid border-t-4 border-teal-500 p-0 my-2;
   }
   .Btn {
     @apply inline-flex justify-center rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-white text-sm font-bold text-gray-500 focus:outline-none active:border-transparent active:bg-gray-100;
