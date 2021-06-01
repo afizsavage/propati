@@ -7,7 +7,7 @@ const ToggleSection = () => {
         <div className="w-full flex flex-col">
           <div className="w-full flex justify-center">
             {" "}
-            <div className="w-1/3 bg-gray-100 px-2 py-2 flex inline-flex h-14 rounded-full">
+            <div className="lg:w-1/3 w-full  bg-gray-100 px-1 lg:px-2 lg:py-2 py-1 flex inline-flex h-12 lg:h-14 rounded-full">
               <span className="w-1/2">
                 {" "}
                 <button className="bg-white w-full h-full rounded-full text-bold shadow-md focus:outline-none">
