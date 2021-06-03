@@ -68,11 +68,32 @@ export const Tabs: React.FC<TsProps> = ({ children }) => {
     </div>
   );
 };
+const Aands = (params) => {
+  return (
+    <div className="w-full flex flex-row ">
+      <div className="w-1/2">
+        <div className="w-full pr-28">
+          <h2 className="text-teal-700  text-xl tracking-wider font-semibold mb-6">
+            Access
+          </h2>
+          <div>
+            <h3 className="font-LatoBold break-words text-gray-900 leading-tight text-4xl">
+              Browse hundreds of properties in your city
+            </h3>
+          </div>
+        </div>
+      </div>{" "}
+      <div className="w-1/2">2</div>
+    </div>
+  );
+};
 
-const AppTab = (params) => {
+const AppTab = () => {
   return (
     <Tabs>
-      <Tab title="For Tenants">Tenants</Tab>
+      <Tab title="For Tenants">
+        <Aands />
+      </Tab>
       <Tab title="For Landlords ">Landlords</Tab>
     </Tabs>
   );

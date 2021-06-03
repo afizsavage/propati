@@ -18,6 +18,12 @@ export default function Home() {
           href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
           rel="stylesheet"
         />
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap"
+          rel="stylesheet "
+        />
       </Head>
       <body className="font-Lato h-full">
         <Layout pageInfo={{ pageName: "index" }} />
