@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 
 interface DropdownProps {
-  button: any;
+  buttonText: any;
   customStyle?: string;
-  handleOptionClick: any;
+  handleOptionClick?: any;
   label?: string;
   listItems: Array<any>;
+  changeBtnText: boolean;
 }
 
 // a reuseable dropdown component
@@ -44,7 +45,6 @@ const Dropdown = (dProps: DropdownProps) => {
   const onOptionClicked = (value) => () => {
     setSelectedOption(value);
     setddownOpen(false);
-    console.log(value);
   };
 
   return (
@@ -63,7 +63,9 @@ const Dropdown = (dProps: DropdownProps) => {
           onClick={toggleServiceMenu}
           className="focus:outline-none"
         >
-          {dProps.button}
+          {dProps.changeBtnText === true && selectedOption !== null
+            ? selectedOption
+            : dProps.buttonText}
         </button>
         <div
           id="ddmenu"
@@ -81,7 +83,15 @@ const Dropdown = (dProps: DropdownProps) => {
             id="ddmenu"
           >
             {dProps.listItems.map((item) => {
-              return <li className="userList">{item}</li>;
+              return (
+                <li
+                  className="userList"
+                  onClick={onOptionClicked(item)}
+                  key={Math.random()}
+                >
+                  {item}
+                </li>
+              );
             })}
           </ul>
         </div>

@@ -69,7 +69,7 @@ const UserPill = (params) => {
   return (
     <div className="bg-white w-full inline-flex font-Lato  ">
       <div className="input-container">
-        <span className="w-full inline-flex ">Select property type</span>
+        <span className="w-full inline-flex ">Select </span>
       </div>
     </div>
   );
@@ -80,19 +80,18 @@ const PropertyType = ({ setForm, formData, navigation }) => {
   const { previous, next } = navigation;
 
   return (
-    <div className="w-2/3 mx-auto h-screen overflow-hidden relative ">
+    <div className="w-full h-screen overflow-hidden relative ">
       <div className="mt-16 h-full">
         <div className="font-Lato font-bold text-2xl text-gray-600 mb-5">
           <h3>Select your property type</h3>
         </div>
         <div className="w-4/5 h-full">
           <span className="text-sm font-semibold text-gray-500">STEP 2</span>
-
           <Dropdown
-            button={<UserPill />}
-            handleOptionClick={() => console.log("clicked")}
+            buttonText={"Select One"}
             listItems={["one", "two"]}
             customStyle="w-full"
+            changeBtnText={true}
           />
           <div className="absolute  py-5 w-full bottom-0">
             <div className="flex inline-flex justify-between w-full">
