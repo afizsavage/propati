@@ -37,6 +37,9 @@ module.exports = {
       colors: (theme) => ({
         teal: colors.teal,
       }),
+      fontSize: {
+        "4xl": "2.50rem",
+      },
       fontFamily: (theme) => ({
         Oswald: ["Georgia", "serif"],
         Lato: ["Lato", "Arial", "sans-serif"],

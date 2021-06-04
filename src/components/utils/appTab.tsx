@@ -72,14 +72,22 @@ const Aands = (params) => {
   return (
     <div className="w-full flex flex-row ">
       <div className="w-1/2">
-        <div className="w-full pr-28">
+        <div className="w-full -bottom-14 pt-24 pr-28">
           <h2 className="text-teal-700  text-xl tracking-wider font-semibold mb-6">
             Access
           </h2>
           <div>
-            <h3 className="font-LatoBold break-words text-gray-900 leading-tight text-4xl">
+            <h3 className="font-Lato font-black font-normal break-words text-gray-900 leading-tight text-4xl">
               Browse hundreds of properties in your city
             </h3>
+          </div>
+          <div className="text-base text-gray-700 mt-5">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
           </div>
         </div>
       </div>{" "}
