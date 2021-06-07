@@ -6,6 +6,7 @@ import { AddPropertyProps, InProps } from "../../interfaces/";
 import { InputField } from "../auth/authform";
 import { SubmitBtn } from "../auth";
 import Dropdown from "../utils/dropDown";
+import { spawn } from "child_process";
 
 type StepsObject = {
   id: any;
@@ -65,51 +66,44 @@ const Address = ({ navigation, setForm, formData }) => {
   );
 };
 
-const UserPill = (params) => {
-  return (
-    <div className="bg-white w-full inline-flex font-Lato  ">
-      <div className="input-container">
-        <span className="w-full inline-flex ">Select </span>
-      </div>
-    </div>
-  );
-};
-
 const PropertyType = ({ setForm, formData, navigation }) => {
   const { propertyType } = formData;
   const { previous, next } = navigation;
 
   return (
-    <div className="w-full h-screen overflow-hidden relative ">
-      <div className="mt-16 h-full">
-        <div className="font-Lato font-bold text-2xl text-gray-600 mb-5">
-          <h3>Select your property type</h3>
-        </div>
-        <div className="w-4/5 h-full">
-          <span className="text-sm font-semibold text-gray-500">STEP 2</span>
-          <Dropdown
-            buttonText={"Select One"}
-            listItems={["one", "two"]}
-            customStyle="w-full"
-            changeBtnText={true}
-          />
-          <div className="absolute  py-5 w-full bottom-0">
-            <div className="flex inline-flex justify-between w-full">
-              <button
-                className="bg-teal-600 rounded px-3 py-2 text-sm font-bold text-white mt-3"
-                onClick={previous}
-              >
-                Previous
-              </button>
-              <button
-                className="bg-teal-600 rounded px-3 py-2 text-sm font-bold text-white mt-3"
-                onClick={next}
-              >
-                Next
-              </button>
+    <div className="w-screen h-screen overflow-hidden  ">
+      <div className=" w-9/12 mx-auto flex flex-row h-full">
+        <div className="w-3/5 mt-16 px-7 h-full relative">
+          <div className="font-Lato font-bold text-2xl text-gray-600 mb-5">
+            <h3>Select your property type</h3>
+          </div>
+          <div className="w-full h-full ">
+            <span className="text-sm font-semibold text-gray-500">STEP 2</span>
+            <Dropdown
+              buttonText={"Select One"}
+              listItems={["one", "two"]}
+              styleContent="w-full"
+              changeBtnText={true}
+            />
+            <div className="py-5 w-full bottom-14 pr-14 absolute">
+              <span className="w-full inline-flex justify-between top-0 ">
+                <button
+                  className="bg-teal-600 rounded px-3 py-2 text-sm font-bold text-white mt-3"
+                  onClick={previous}
+                >
+                  Previous
+                </button>
+                <button
+                  className="bg-teal-600 rounded px-3 py-2 text-sm font-bold text-white mt-3"
+                  onClick={next}
+                >
+                  Next
+                </button>
+              </span>
             </div>
           </div>
         </div>
+        <div className="w-2/5"></div>
       </div>
     </div>
   );

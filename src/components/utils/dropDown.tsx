@@ -2,7 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 
 interface DropdownProps {
   buttonText: any;
-  customStyle?: string;
+  styleContent?: string;
+  styleButton?: string;
   handleOptionClick?: any;
   label?: string;
   listItems: Array<any>;
@@ -57,11 +58,11 @@ const Dropdown = (dProps: DropdownProps) => {
           {dProps.label}
         </label>
       )}
-      <span className="w-full relative">
+      <div className="w-full relative">
         <button
           type="button"
           onClick={toggleServiceMenu}
-          className="focus:outline-none"
+          className={"focus:outline-none w-full " + dProps.styleButton}
         >
           {dProps.changeBtnText === true && selectedOption !== null
             ? selectedOption
@@ -71,7 +72,7 @@ const Dropdown = (dProps: DropdownProps) => {
           id="ddmenu"
           className={
             ddownOpen
-              ? "dropdownMenu overflow-hidden " + dProps.customStyle
+              ? "dropdownMenu overflow-hidden " + dProps.styleContent
               : "hidden"
           }
         >
@@ -95,7 +96,7 @@ const Dropdown = (dProps: DropdownProps) => {
             })}
           </ul>
         </div>
-      </span>
+      </div>
     </div>
   );
 };

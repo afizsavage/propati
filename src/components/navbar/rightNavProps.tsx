@@ -111,10 +111,11 @@ const RightNavProps = (props) => {
       <AddPropertyBtn />
       <UserButton
         buttonText={<UserPill />}
-        customStyle="rounded-xl right-0 origin-top-left"
+        styleContent="rounded-xl right-0 origin-top-left"
         listItems={options}
         changeBtnText={false}
       />
+      {/* <Authenticate /> */}
     </div>
   );
 };
