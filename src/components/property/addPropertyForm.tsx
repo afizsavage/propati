@@ -95,7 +95,7 @@ const PropertyType = ({ setForm, formData, navigation }) => {
             customStyle="w-full"
           />
           <div className="absolute  py-5 w-full bottom-0">
-            <div className="flex inline-flex justify-between w-full">
+            <div className="inline-flex justify-between w-full">
               <button
                 className="bg-teal-600 rounded px-3 py-2 text-sm font-bold text-white mt-3"
                 onClick={previous}

@@ -52,7 +52,7 @@ export const Tabs: React.FC<TsProps> = ({ children }) => {
   return (
     <div className="w-full flex flex-col">
       <div className="w-full flex justify-center">
-        <ul className="lg:w-1/3 w-full  bg-gray-100 px-1 lg:px-2 lg:py-2 py-1 flex inline-flex h-12 lg:h-14 rounded-full">
+        <ul className="lg:w-1/3 w-full  bg-gray-100 px-1 lg:px-2 lg:py-2 py-1  inline-flex h-12 lg:h-14 rounded-full">
           {children.map((item, index) => (
             <TabTitle
               selectedTab={selectedTab}
@@ -68,43 +68,65 @@ export const Tabs: React.FC<TsProps> = ({ children }) => {
     </div>
   );
 };
-const Aands = (params) => {
+
+const TabContent = ({ heading, heading1, descriptionParagraph, order }) => {
   return (
-    <div className="w-full flex flex-row ">
-      <div className="w-1/2">
-        <div className="w-full -bottom-14 pt-24 pr-28">
-          <h2 className="text-teal-700  text-xl tracking-wider font-semibold mb-6">
-            Access
+    <div className="w-full flex flex-col lg:flex-row ">
+      <div className={"w-full lg:w-1/2 " + order}>
+        <div className="w-full -bottom-14 pt-24 lg:pr-28">
+          <h2 className="text-teal-700 text-center lg:text-left  text-xl tracking-wider font-semibold mb-2 lg:mb-6">
+            {heading}
           </h2>
           <div>
-            <h3 className="font-Lato font-black font-normal break-words text-gray-900 leading-tight text-4xl">
-              Browse hundreds of properties in your city
+            <h3 className="font-Lato font-black break-words text-center lg:text-left  text-gray-900 leading-tight text-4xl">
+              {heading1}
             </h3>
           </div>
-          <div className="text-base text-gray-700 mt-5">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
-            </p>
+          <div className="text-base text-gray-700 mt-2 lg:mt-5 text-center lg:text-left">
+            <p>{descriptionParagraph}</p>
           </div>
         </div>
       </div>{" "}
-      <div className="w-1/2">2</div>
+      <div className="w-full lg:w-1/2">2</div>
     </div>
   );
 };
 
-const AppTab = () => {
+const ServiceTab = () => {
   return (
     <Tabs>
       <Tab title="For Tenants">
-        <Aands />
+        <TabContent
+          heading="Access"
+          heading1="Browse hundreds of properties in your city"
+          descriptionParagraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat."
+          order
+        />
+        <TabContent
+          heading="Ease"
+          heading1="Apply and pay for your next home or office online"
+          descriptionParagraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat."
+          order="order-last"
+        />
+        <TabContent
+          heading="Access"
+          heading1="Browse hundreds of properties in your city"
+          descriptionParagraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat."
+          order
+        />
       </Tab>
       <Tab title="For Landlords ">Landlords</Tab>
     </Tabs>
   );
 };
 
-export default AppTab;
+export default ServiceTab;

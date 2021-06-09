@@ -3,7 +3,7 @@ import React from "react";
 const MobileNav = ({ menuOpen }) => {
   return (
     <div className={menuOpen ? "block z-50 absolute w-full" : "hidden"}>
-      <div className="px-2 bg-white">
+      <div className="px-2 w-full bg-white">
         {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
         <div className="px-4 pb-2  bg-white flex justify-center items-center ">
           <input
