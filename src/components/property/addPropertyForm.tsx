@@ -66,6 +66,16 @@ const Address = ({ navigation, setForm, formData }) => {
   );
 };
 
+const DropdownItem = ({ name, content }) => {
+  return (
+    <>
+      {" "}
+      <span className="">{name}</span>
+      <div className="itemContent">{content}</div>
+    </>
+  );
+};
+
 const PropertyType = ({ setForm, formData, navigation }) => {
   const { propertyType } = formData;
   const { previous, next } = navigation;
@@ -81,9 +91,13 @@ const PropertyType = ({ setForm, formData, navigation }) => {
             <span className="text-sm font-semibold text-gray-500">STEP 2</span>
             <Dropdown
               buttonText={"Select One"}
-              listItems={["one", "two"]}
-              styleContent="w-full"
               changeBtnText={true}
+              listItems={[
+                <DropdownItem content={<p>Res</p>} name="Residential" />,
+                <DropdownItem content={<p>Res</p>} name="Commercial" />,
+              ]}
+              styleButton="w-full auth-input static text-left"
+              styleContent="w-full"
             />
             <div className="py-5 w-full bottom-14 pr-14 absolute">
               <span className="w-full inline-flex justify-between top-0 ">
@@ -109,14 +123,6 @@ const PropertyType = ({ setForm, formData, navigation }) => {
   );
 };
 
-const onSubmit = async (payload: any, e: any) => {
-  e.preventDefault();
-
-  const { address, propertyType } = payload;
-
-  console.log(address, propertyType);
-};
-
 const Submit = ({ navigation, formData }) => {
   const { propertyType, address } = formData;
 
@@ -131,7 +137,7 @@ const Submit = ({ navigation, formData }) => {
   );
 };
 
-const AddPropertyForm = () => {
+const CreatePropertForm = () => {
   const [formData, setForm] = useForm(defaultData);
   const { step, navigation } = useStep({ initialStep: 0, steps });
   const { id } = step;
@@ -150,4 +156,4 @@ const AddPropertyForm = () => {
   }
 };
 
-export default AddPropertyForm;
+export default CreatePropertForm;

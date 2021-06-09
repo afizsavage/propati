@@ -16,6 +16,16 @@ export interface CUser {
   email: string;
   password: string;
 }
+
+export interface DropdownProps {
+  buttonText: any;
+  styleContent?: string;
+  styleButton?: string;
+  handleOptionClick?: any;
+  label?: string;
+  listItems: Array<any>;
+  changeBtnText: boolean;
+}
 export interface FCProps {
   heading: string;
   listitems: Array<any>;

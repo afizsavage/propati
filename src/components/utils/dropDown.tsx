@@ -1,33 +1,22 @@
 import React, { useState, useRef, useEffect } from "react";
+import { DropdownProps } from "../../interfaces";
 
-interface DropdownProps {
-  buttonText: any;
-  styleContent?: string;
-  styleButton?: string;
-  handleOptionClick?: any;
-  label?: string;
-  listItems: Array<any>;
-  changeBtnText: boolean;
-}
-
-// a reuseable dropdown component
-const Dropdown = (dProps: DropdownProps) => {
+// reuseable dropdown component
+const Dropdown = (Props: DropdownProps) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [ddownOpen, setddownOpen] = useState(false);
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef);
 
-  const toggleServiceMenu = (e) => {
+  const toggleOpenNClose = (e) => {
     ddownOpen === false ? setddownOpen(true) : setddownOpen(false);
     let listItems = document.getElementById("ddmenu");
     listItems.classList.toggle("hidden");
   };
 
+  // close dropdown menu if a click event register anywhere else on the screen
   function useOutsideAlerter(ref) {
     useEffect(() => {
-      /**
-       * Alert if clicked on outside of element
-       */
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
           setddownOpen(false);
@@ -43,6 +32,7 @@ const Dropdown = (dProps: DropdownProps) => {
     }, [ref]);
   }
 
+  // close dropdown and set selectedOption state as the list item clicked on
   const onOptionClicked = (value) => () => {
     setSelectedOption(value);
     setddownOpen(false);
@@ -50,29 +40,21 @@ const Dropdown = (dProps: DropdownProps) => {
 
   return (
     <div ref={wrapperRef} className="w-auto cursor-pointer font-Lato">
-      {dProps.label && (
-        <label
-          className="text-base block mb-2 text-gray-900 font-bold"
-          htmlFor="formGridCode_year"
-        >
-          {dProps.label}
-        </label>
-      )}
       <div className="w-full relative">
         <button
           type="button"
-          onClick={toggleServiceMenu}
-          className={"focus:outline-none w-full " + dProps.styleButton}
+          onClick={toggleOpenNClose}
+          className={"focus:outline-none w-full " + Props.styleButton}
         >
-          {dProps.changeBtnText === true && selectedOption !== null
+          {Props.changeBtnText === true && selectedOption !== null
             ? selectedOption
-            : dProps.buttonText}
+            : Props.buttonText}
         </button>
         <div
           id="ddmenu"
           className={
             ddownOpen
-              ? "dropdownMenu overflow-hidden " + dProps.styleContent
+              ? "dropdownMenu overflow-hidden " + Props.styleContent
               : "hidden"
           }
         >
@@ -83,7 +65,7 @@ const Dropdown = (dProps: DropdownProps) => {
             aria-labelledby="ServiceOptions-menu"
             id="ddmenu"
           >
-            {dProps.listItems.map((item) => {
+            {Props.listItems.map((item) => {
               return (
                 <li
                   className="userList"
