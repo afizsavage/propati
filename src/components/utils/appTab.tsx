@@ -1,9 +1,10 @@
 import React, { ReactElement, useCallback, useState } from "react";
 
+import { ServicesProps } from "../../interfaces";
+
 type TProps = {
   title: string;
 };
-
 type TTProps = {
   title: string;
   index: number;
@@ -69,25 +70,25 @@ export const Tabs: React.FC<TsProps> = ({ children }) => {
   );
 };
 
-const TabContent = ({ heading, heading1, descriptionParagraph, order }) => {
+const TabContent = (props: ServicesProps) => {
   return (
     <div className="w-full flex flex-col lg:flex-row ">
-      <div className={"w-full lg:w-1/2 " + order}>
+      <div className={"w-full lg:w-1/2 " + props.order}>
         <div className="w-full -bottom-14 pt-24 lg:pr-28">
           <h2 className="text-teal-700 text-center lg:text-left  text-xl tracking-wider font-semibold mb-2 lg:mb-6">
-            {heading}
+            {props.heading}
           </h2>
           <div>
             <h3 className="font-Lato font-black break-words text-center lg:text-left  text-gray-900 leading-tight text-4xl">
-              {heading1}
+              {props.heading1}
             </h3>
           </div>
           <div className="text-base text-gray-700 mt-2 lg:mt-5 text-center lg:text-left">
-            <p>{descriptionParagraph}</p>
+            <p>{props.descriptionParagraph}</p>
           </div>
         </div>
       </div>{" "}
-      <div className="w-full lg:w-1/2">2</div>
+      <div className="w-full lg:w-1/2"></div>
     </div>
   );
 };
@@ -103,11 +104,10 @@ const ServiceTab = () => {
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat."
-          order
         />
         <TabContent
-          heading="Ease"
-          heading1="Apply and pay for your next home or office online"
+          heading="Comfort"
+          heading1="Request live or virtual tours online"
           descriptionParagraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -115,13 +115,12 @@ const ServiceTab = () => {
           order="order-last"
         />
         <TabContent
-          heading="Access"
-          heading1="Browse hundreds of properties in your city"
+          heading="Ease"
+          heading1="Apply for your next home or office online"
           descriptionParagraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat."
-          order
         />
       </Tab>
       <Tab title="For Landlords ">Landlords</Tab>
