@@ -6,6 +6,7 @@ import { AddPropertyProps, InProps } from "../../interfaces/";
 import { InputField } from "../auth/authform";
 import { SubmitBtn } from "../auth";
 import Dropdown from "../utils/dropDown";
+import { spawn } from "child_process";
 
 type StepsObject = {
   id: any;
@@ -65,13 +66,13 @@ const Address = ({ navigation, setForm, formData }) => {
   );
 };
 
-const UserPill = (params) => {
+const DropdownItem = ({ name, content }) => {
   return (
-    <div className="bg-white w-full inline-flex font-Lato  ">
-      <div className="input-container">
-        <span className="w-full inline-flex ">Select property type</span>
-      </div>
-    </div>
+    <>
+      {" "}
+      <span className="">{name}</span>
+      <div className="itemContent">{content}</div>
+    </>
   );
 };
 
@@ -80,48 +81,46 @@ const PropertyType = ({ setForm, formData, navigation }) => {
   const { previous, next } = navigation;
 
   return (
-    <div className="w-2/3 mx-auto h-screen overflow-hidden relative ">
-      <div className="mt-16 h-full">
-        <div className="font-Lato font-bold text-2xl text-gray-600 mb-5">
-          <h3>Select your property type</h3>
-        </div>
-        <div className="w-4/5 h-full">
-          <span className="text-sm font-semibold text-gray-500">STEP 2</span>
-
-          <Dropdown
-            button={<UserPill />}
-            handleOptionClick={() => console.log("clicked")}
-            listItems={["one", "two"]}
-            customStyle="w-full"
-          />
-          <div className="absolute  py-5 w-full bottom-0">
-            <div className="inline-flex justify-between w-full">
-              <button
-                className="bg-teal-600 rounded px-3 py-2 text-sm font-bold text-white mt-3"
-                onClick={previous}
-              >
-                Previous
-              </button>
-              <button
-                className="bg-teal-600 rounded px-3 py-2 text-sm font-bold text-white mt-3"
-                onClick={next}
-              >
-                Next
-              </button>
+    <div className="w-screen h-screen overflow-hidden  ">
+      <div className=" w-9/12 mx-auto flex flex-row h-full">
+        <div className="w-3/5 mt-16 px-7 h-full relative">
+          <div className="font-Lato font-bold text-2xl text-gray-600 mb-5">
+            <h3>Select your property type</h3>
+          </div>
+          <div className="w-full h-full ">
+            <span className="text-sm font-semibold text-gray-500">STEP 2</span>
+            <Dropdown
+              buttonText={"Select One"}
+              changeBtnText={true}
+              listItems={[
+                <DropdownItem content={<p>Res</p>} name="Residential" />,
+                <DropdownItem content={<p>Res</p>} name="Commercial" />,
+              ]}
+              styleButton="w-full auth-input static text-left"
+              styleContent="w-full"
+            />
+            <div className="py-5 w-full bottom-14 pr-14 absolute">
+              <span className="w-full inline-flex justify-between top-0 ">
+                <button
+                  className="bg-teal-600 rounded px-3 py-2 text-sm font-bold text-white mt-3"
+                  onClick={previous}
+                >
+                  Previous
+                </button>
+                <button
+                  className="bg-teal-600 rounded px-3 py-2 text-sm font-bold text-white mt-3"
+                  onClick={next}
+                >
+                  Next
+                </button>
+              </span>
             </div>
           </div>
         </div>
+        <div className="w-2/5"></div>
       </div>
     </div>
   );
-};
-
-const onSubmit = async (payload: any, e: any) => {
-  e.preventDefault();
-
-  const { address, propertyType } = payload;
-
-  console.log(address, propertyType);
 };
 
 const Submit = ({ navigation, formData }) => {
@@ -138,7 +137,7 @@ const Submit = ({ navigation, formData }) => {
   );
 };
 
-const AddPropertyForm = () => {
+const CreatePropertForm = () => {
   const [formData, setForm] = useForm(defaultData);
   const { step, navigation } = useStep({ initialStep: 0, steps });
   const { id } = step;
@@ -157,4 +156,4 @@ const AddPropertyForm = () => {
   }
 };
 
-export default AddPropertyForm;
+export default CreatePropertForm;

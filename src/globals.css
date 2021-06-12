@@ -122,3 +122,7 @@
 .snap-start {
   scroll-snap-align: start;
 }
+
+button > .itemContent {
+  display: none;
+}

@@ -27,9 +27,10 @@ const userOptions: Array<TUserOptions> = [
   {
     // itemValue => 0
     title: "Messages",
-    hyperLink: "/messages/"
-  },            
-  { // itemValue => 1
+    hyperLink: "/messages/",
+  },
+  {
+    // itemValue => 1
     title: "Properties",
     hyperLink: "#",
   },
@@ -109,11 +110,12 @@ const RightNavProps = (props) => {
     <div className="absolute inset-y-0 right-0 flex items-center  sm:static sm:inset-auto sm:ml-6 sm:pr-0">
       <AddPropertyBtn />
       <UserButton
-        button={<UserPill />}
-        customStyle="rounded-xl right-0 origin-top-left"
-        handleOptionClick={() => console.log("clicked")}
+        buttonText={<UserPill />}
+        styleContent="rounded-xl right-0 origin-top-left"
         listItems={options}
+        changeBtnText={false}
       />
+      {/* <Authenticate /> */}
     </div>
   );
 };
