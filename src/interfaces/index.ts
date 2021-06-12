@@ -45,3 +45,10 @@ export interface SocialIconsP {
   link: string;
   icon: any;
 }
+
+export interface ServicesProps {
+  heading: string;
+  heading1: string;
+  descriptionParagraph: string;
+  order?: string;
+}

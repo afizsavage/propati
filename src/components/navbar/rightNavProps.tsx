@@ -13,7 +13,7 @@ type TUserOptions = {
 // user and account settings button
 const UserPill = (params) => {
   return (
-    <div className="bg-teal-400 py-1 px-2 rounded-full inline-flex hover:shadow-md font-Lato">
+    <div className="hidden bg-teal-400 py-1 px-2 rounded-full md:inline-flex hover:shadow-md font-Lato">
       <BiMenu className="my-auto mr-2 text-xl text-gray-700" />
       <div className="text-white font-semibold rounded-full w-8 h-8 flex justify-center items-center bg-blue-600">
         AS
@@ -78,7 +78,7 @@ let options = userOptions.map(UserOptionsList);
 // create property button
 const AddPropertyBtn = (params) => {
   return (
-    <div className="mr-5 inline w-auto my-auto ">
+    <div className="mr-5 hidden md:inline w-auto my-auto ">
       {" "}
       <Link href="/property">
         <a className="bg-white hover:bg-teal-400 text-sm font-bold rounded-full font-Lato w-auto h-10 px-3 flex justify-center items-center">
@@ -89,20 +89,20 @@ const AddPropertyBtn = (params) => {
   );
 };
 
-// const Authenticate = (params) => {
-//   return (
-//     <>
-//       {" "}
-//       <AuthButtons href={"auth"} children={"Sign In"} />
-//       <div className="ml-3 lg:ml-0 hidden lg:block relative text-base">
-//         <div>
-//           <span>|</span>
-//           <AuthButtons href={"auth/sign-up"} children={"Sign Up"} />
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
+const Authenticate = (params) => {
+  return (
+    <>
+      {" "}
+      <AuthButtons href={"auth"} children={"Sign In"} />
+      <div className="ml-3 lg:ml-0 hidden lg:block relative text-base">
+        <div>
+          <span>|</span>
+          <AuthButtons href={"auth/sign-up"} children={"Sign Up"} />
+        </div>
+      </div>
+    </>
+  );
+};
 
 // right side of the navigation bar components
 const RightNavProps = (props) => {

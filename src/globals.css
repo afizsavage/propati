@@ -79,14 +79,6 @@
   }
 }
 
-.map-h2 {
-  text-transform: uppercase;
-  font-size: 1rem;
-  padding: 20px;
-  padding-left: 10px;
-  text-align: center;
-}
-
 @media screen and (min-width: 799px) {
   .google-map {
     height: 80vh;
@@ -104,6 +96,14 @@
   .pin-icon {
     font-size: 10vw;
   }
+}
+
+.map-h2 {
+  text-transform: uppercase;
+  font-size: 1rem;
+  padding: 20px;
+  padding-left: 10px;
+  text-align: center;
 }
 
 .react-multiple-carousel__arrow {
@@ -125,4 +125,18 @@
 
 button > .itemContent {
   display: none;
+}
+
+button,
+textarea,
+input,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
