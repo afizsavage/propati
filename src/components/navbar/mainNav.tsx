@@ -13,7 +13,7 @@ const Navbar = (params) => {
       role="banner"
       className="sticky top-0 z-50 bg-white md:px-8 lg:px-16  w-full border-white border-transparent border-b shadow"
     >
-      <div className="mx-auto w-full">
+      <div className="lg:mx-auto w-full mx-3">
         <div className="relative flex items-center justify-between h-14 md:h-18 lg:h-20 w-full">
           <ToggleMobileNav menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           <LeftNavProps />

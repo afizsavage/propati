@@ -126,7 +126,28 @@ const ServiceTab = () => {
               nisi ut aliquip ex ea commodo consequat."
         />
       </Tab>
-      <Tab title="For Landlords ">Landlords</Tab>
+      <Tab title="For Landlords ">
+        {" "}
+        <TabContent
+          heading="Ease"
+          padding="lg:pr-28"
+          heading1="Add a property with just a few clicks"
+          descriptionParagraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat."
+        />
+        <TabContent
+          heading="Comfort"
+          padding="lg:pl-28"
+          heading1="Schedule tours online"
+          descriptionParagraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat."
+          order="order-last"
+        />
+      </Tab>
     </Tabs>
   );
 };
