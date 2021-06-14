@@ -41,4 +41,5 @@ export interface ServicesProps {
   heading1: string;
   descriptionParagraph: string;
   order?: string;
+  padding: string;
 }
