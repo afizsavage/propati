@@ -60,7 +60,7 @@
     @apply mt-6 relative w-full font-normal;
   }
   .mobileNavs {
-    @apply text-gray-500 block py-2 text-lg font-Lato font-semibold;
+    @apply text-gray-500 block py-2 text-lg font-Lato font-medium;
   }
   .navLinks {
     @apply text-gray-600  hover:text-gray-500 px-3 py-2 text-base font-semibold font-Oswald;
