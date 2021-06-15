@@ -74,7 +74,7 @@ const TabContent = (props: ServicesProps) => {
   return (
     <div className="w-full flex flex-col lg:flex-row ">
       <div className={"w-full lg:w-1/2 " + props.order}>
-        <div className="w-full -bottom-14 pt-24 lg:pr-28">
+        <div className={"w-full -bottom-14 pt-24 " + props.padding}>
           <h2 className="text-teal-700 text-center lg:text-left  text-xl tracking-wider font-semibold mb-2 lg:mb-6">
             {props.heading}
           </h2>
@@ -99,6 +99,7 @@ const ServiceTab = () => {
       <Tab title="For Tenants">
         <TabContent
           heading="Access"
+          padding="lg:pr-28"
           heading1="Browse hundreds of properties in your city"
           descriptionParagraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -107,6 +108,7 @@ const ServiceTab = () => {
         />
         <TabContent
           heading="Comfort"
+          padding="lg:pl-28"
           heading1="Request live or virtual tours online"
           descriptionParagraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -116,6 +118,7 @@ const ServiceTab = () => {
         />
         <TabContent
           heading="Ease"
+          padding="lg:pr-28"
           heading1="Apply for your next home or office online"
           descriptionParagraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -123,7 +126,28 @@ const ServiceTab = () => {
               nisi ut aliquip ex ea commodo consequat."
         />
       </Tab>
-      <Tab title="For Landlords ">Landlords</Tab>
+      <Tab title="For Landlords ">
+        {" "}
+        <TabContent
+          heading="Ease"
+          padding="lg:pr-28"
+          heading1="Add a property with just a few clicks"
+          descriptionParagraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat."
+        />
+        <TabContent
+          heading="Comfort"
+          padding="lg:pl-28"
+          heading1="Schedule tours online"
+          descriptionParagraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat."
+          order="order-last"
+        />
+      </Tab>
     </Tabs>
   );
 };

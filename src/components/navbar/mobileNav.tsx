@@ -1,30 +1,30 @@
 import React from "react";
+import Link from "next/link";
 
 const MobileNav = ({ menuOpen }) => {
   return (
-    <div className={menuOpen ? "block z-50 absolute w-full" : "hidden"}>
-      <div className="px-2 w-full bg-white">
-        {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-        <div className="px-4 pb-2  bg-white flex justify-center items-center ">
-          <input
-            className="w-full py-2.5 px-2 bg-gray-100 rounded-lg text-gray-700 leading-tight focus:outline-none "
-            id="search"
-            type="text"
-            placeholder="Search"
-          />
-        </div>
-
-        <a href="#" className="mobileNavs">
-          Rent
-        </a>
-        <a href="#" className="mobileNavs">
-          Buy
-        </a>
-        <a href="#" className="mobileNavs">
-          About Us
-        </a>
-      </div>
-      <div />
+    <div
+      className={
+        menuOpen
+          ? "bg-white block z-50 absolute w-full px-6 pb-28 pt-6 border-t border-opacity-50 border-gray-200  "
+          : "hidden"
+      }
+    >
+      <nav>
+        <ul>
+          <li className="mobileNavs">
+            <Link href="#">
+              <a>Rent</a>
+            </Link>
+          </li>
+          <li className="mobileNavs">
+            <Link href="#">
+              <a>Buy</a>
+            </Link>{" "}
+          </li>
+        </ul>
+      </nav>
+      <ul></ul>
     </div>
   );
 };
