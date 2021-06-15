@@ -1,8 +1,9 @@
 import Link from "next/link";
 import React from "react";
-import { BiMenu } from "react-icons/bi";
-import { DropDown as UserButton } from "../utils/";
+import { BiMenu, BiSearch } from "react-icons/bi";
+import { GrSearch } from "react-icons/gr";
 
+import { DropDown as UserButton } from "../utils/";
 import AuthButtons from "./authLinks";
 
 type TUserOptions = {
@@ -116,6 +117,13 @@ const RightNavProps = (props) => {
         listItems={options}
       />
       {/* <Authenticate /> */}
+      <div className=" md:hidden block absolute inset-y-0 right-0 flex items-center ">
+        <div className="w-10 h-10 flex flex-col items-center justify-center">
+          <span className="h-6 w-6">
+            <BiSearch className="block h-full w-full text-gray-500" />
+          </span>
+        </div>
+      </div>
     </div>
   );
 };
