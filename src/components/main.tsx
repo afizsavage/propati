@@ -1,13 +1,14 @@
 import React from "react";
+
 import HeroSection from "./heroSection";
 import { ToggleSection } from "./landing";
-import Listings from "./listings/";
-import TabComp from "./utils/tabComp";
+import CategoriesSection from "./landing/categoriesSection";
 
 const Main = () => {
   return (
     <main className="flex flex-grow flex-col">
       <HeroSection />
+      <CategoriesSection />
       <ToggleSection />
     </main>
   );

@@ -271,6 +271,11 @@
   resolved "https://registry.npmjs.org/@opentelemetry/context-base/-/context-base-0.14.0.tgz"
   integrity sha512-sDOAZcYwynHFTbLo6n8kIbLiVF3a3BLkrmehJUyEbT9F+Smbi47kLGS2gG2g0fjBLR/Lr1InPD7kXL7FaTqEkw==
 
+"@tailwindcss/aspect-ratio@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/aspect-ratio/-/aspect-ratio-0.2.1.tgz#a7ce776688b8218d9559a6918f0bccc58f0f16dd"
+  integrity sha512-aDFi80aHQ3JM3symJ5iKU70lm151ugIGFCI0yRZGpyjgQSDS+Fbe93QwypC1tCEllQE8p0S7TUu20ih1b9IKLA==
+
 "@types/cookie@^0.3.3":
   version "0.3.3"
   resolved "https://registry.npmjs.org/@types/cookie/-/cookie-0.3.3.tgz"

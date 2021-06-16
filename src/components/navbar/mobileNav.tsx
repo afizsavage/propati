@@ -32,7 +32,7 @@ const MobileNav = ({ menuOpen }) => {
     >
       <nav>
         <ul>
-          <Navlinks link="#" title="Rent" />
+          <Navlinks link="/apartments" title="Rent" />
           <Navlinks link="#" title="Buy" />
         </ul>
       </nav>
@@ -49,11 +49,11 @@ const MobileNav = ({ menuOpen }) => {
             </div>
           }
         />
-        <Userlinks link="#" title="Messages" />
+        <Userlinks link="/messages/" title="Messages" />
         <Userlinks link="#" title="Properties" />
         <Userlinks link="#" title="Pay Rent" />
         <Userlinks link="#" title="Switch to Landlord" />
-        <Userlinks link="#" title="Account Settings" />
+        <Userlinks link="/account/settings" title="Account Settings" />
         <Userlinks link="#" title="Help" />
         <Userlinks link="#" title="Logout" />
       </ul>

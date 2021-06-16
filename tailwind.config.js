@@ -16,6 +16,7 @@ module.exports = {
         variants: ["first"],
       });
     }),
+    require("@tailwindcss/aspect-ratio"),
   ],
   purge: [
     "./src/components/**/*.{js,ts,jsx,tsx}",

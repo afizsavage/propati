@@ -15,7 +15,7 @@ export default function Home() {
           rel="stylesheet"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Lato&family=Lato:wght@900"
+          href="https://fonts.googleapis.com/css2?family=Lato:wght@100..900"
           rel="stylesheet "
         />
       </Head>
