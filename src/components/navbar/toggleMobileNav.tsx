@@ -3,6 +3,8 @@ import React from "react";
 const ToggleMobileNav = ({ menuOpen, setMenuOpen }) => {
   const toggleMenu = (params) => {
     menuOpen === false ? setMenuOpen(true) : setMenuOpen(false);
+    let body = document.body;
+    body.classList.toggle("overflow-hidden");
     // let bars = document.getElementById("menuBtn").querySelectorAll("svg");
     // Array.from(bars).forEach((bar) => {
     //   bar.classList.toggle("hidden");

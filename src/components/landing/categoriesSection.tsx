@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-const CategoryCards = ({ category }) => {
+const CategoryCards = ({ category, image }) => {
   return (
     <Link href="#">
       <a className="w-full overflow-hidden  lg:w-1/4">
@@ -15,7 +15,7 @@ const CategoryCards = ({ category }) => {
             src="/images/land.jpg"
             alt="Picture of the author"
           /> */}
-          <img src="/images/land.jpg" className="h-full" />
+          <img src={image} className="h-full" />
         </div>
         <span className="font-semibold  bg-transparent font-Lato text-xl text-gray-800 ">
           {category}
@@ -36,10 +36,19 @@ function CategoriesSection() {
           Our Listing Categories
         </h3>
         <div className="flex w-full flex-col lg:flex-row justify-between space-y-4 lg:space-y-0 lg:space-x-5 mt-7">
-          <CategoryCards category="Residentials" />
-          <CategoryCards category="Commercials" />
-          <CategoryCards category="Industrials" />
-          <CategoryCards category="Lands" />
+          <CategoryCards
+            image="/images/residential.jpg"
+            category="Residentials"
+          />
+          <CategoryCards
+            image="/images/commercial.jpg"
+            category="Commercials"
+          />
+          <CategoryCards
+            image="/images/industrial.jpg"
+            category="Industrials"
+          />
+          <CategoryCards image="/images/land.jpg" category="Lands" />
         </div>
       </div>
     </section>
