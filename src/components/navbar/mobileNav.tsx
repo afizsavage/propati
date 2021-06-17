@@ -26,7 +26,7 @@ const MobileNav = ({ menuOpen }) => {
     <div
       className={
         menuOpen
-          ? "bg-white block z-50 absolute w-full px-6 pb-28 pt-6 border-t border-opacity-50 border-gray-200  "
+          ? " bg-black fixed h-full bg-white top-14 overflow-y-scroll z-50 w-full px-6 pb-5 pt-6 border-t border-opacity-50 border-gray-200  "
           : "hidden"
       }
     >
