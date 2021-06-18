@@ -1,1 +1,1 @@
-export { default } from "./listingsSection";
+export { default as CardSection } from "./cardSection";

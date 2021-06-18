@@ -33,7 +33,7 @@ const MobileNav = ({ menuOpen }) => {
       <nav>
         <ul>
           <Navlinks link="/apartments" title="Rent" />
-          <Navlinks link="#" title="Buy" />
+          <Navlinks link="/listings/listings-buy" title="Buy" />
         </ul>
       </nav>
       <hr className="mt-6 mb-6" />
