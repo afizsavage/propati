@@ -1,4 +1,5 @@
 import React from "react";
+
 import { AiOutlineHeart } from "react-icons/ai";
 import { IoBedOutline } from "react-icons/io5";
 import { BiBath } from "react-icons/bi";
@@ -38,6 +39,68 @@ const items: Array<any> = [
     baths: 3,
   },
 ];
+
+interface ICards {
+  itemName: string;
+  imageSrc: string;
+  itemLocation: string;
+  itemPrice: string;
+  beds: number;
+  baths: number;
+}
+
+export const Card = (props: ICards) => {
+  return (
+    <article className="w-72 overflow-hidden rounded-b-md rounded-t-lg bg-white shadow-lg">
+      <div className="rounded-md relative w-full">
+        <div className="absolute top-5 w-full px-5">
+          <span className="rounded-full py-1 px-2 bg-red-400 font-bold text-base text-white ">
+            {"$" + props.itemPrice}
+          </span>
+        </div>
+        <img
+          style={{ height: "180px" }}
+          alt="Placeholder"
+          src={props.imageSrc}
+          width={345}
+          height={300}
+        />
+      </div>
+      <header className="w-full leading-tight p-2 md:p-4">
+        <div className="w-full  text-sm text-gray-900 font-bold">
+          <LinesEllipsis
+            text={props.itemName}
+            maxLine="1"
+            ellipsis="..."
+            trimRight
+            basedOn="letters"
+          />
+        </div>
+        <div className="w-full text-gray-500 text-sm mt-3 font-medium">
+          <LinesEllipsis
+            text={props.itemLocation}
+            maxLine="1"
+            ellipsis="..."
+            trimRight
+            basedOn="letters"
+          />
+        </div>
+        {/* <h1 className="text-lg">{item.itemName}</h1> */}
+      </header>
+      <footer className="flex justify-start leading-none p-2 md:p-4 text-gray-500 font-normal text-sm">
+        <span className="inline mr-3">
+          {" "}
+          <IoBedOutline className="inline text-lg " /> {props.beds} Beds
+        </span>
+        <span className="inline">
+          {" "}
+          <BiBath className="inline text-lg leading-none " /> {props.baths}{" "}
+          Baths
+        </span>
+      </footer>
+    </article>
+  );
+};
 
 const ItemCard = () => {
   return (
