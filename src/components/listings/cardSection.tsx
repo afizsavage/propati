@@ -1,4 +1,6 @@
 import React from "react";
+import Link from "next/link";
+
 import { ItemCard } from "../utils";
 import { Card } from "../utils/itemCard";
 
@@ -35,22 +37,60 @@ const items: Array<any> = [
     beds: 4,
     baths: 3,
   },
+  {
+    itemName: "Comfy Apartment, Accessible Area ",
+    imageSrc: "https://picsum.photos/345/180/?random",
+    itemLocation: "6B Pipeline, Juba, Freetown, Sierra Leone",
+    itemPrice: "1,200",
+    beds: 2,
+    baths: 1,
+  },
+  {
+    itemName: "Spacious Apartment at Juba",
+    imageSrc: "https://picsum.photos/345/180/?random",
+    itemLocation: "6,7 Signal Hill Rd, Freetown, Sierra Leone",
+    itemPrice: "1,900",
+    beds: 4,
+    baths: 3,
+  },
+  {
+    itemName: "Comfy Apartment, Accessible Area ",
+    imageSrc: "https://picsum.photos/345/180/?random",
+    itemLocation: "6B Pipeline, Juba, Freetown, Sierra Leone",
+    itemPrice: "1,200",
+    beds: 2,
+    baths: 1,
+  },
+  {
+    itemName: "Spacious Apartment at Juba",
+    imageSrc: "https://picsum.photos/345/180/?random",
+    itemLocation: "6,7 Signal Hill Rd, Freetown, Sierra Leone",
+    itemPrice: "1,900",
+    beds: 4,
+    baths: 3,
+  },
 ];
 
 const CardSection = () => {
   return (
-    <section className="h-screen w-1/2">
-      <div className="w-full h-full flex flex-wrap">
+    <section className="overflow-y-scroll h-screen col-span-9 lg:col-span-5">
+      <div className="w-full h-full md:pl-4 flex flex-row flex-wrap ">
         {items.map((item) => {
           return (
-            <Card
-              baths={item.baths}
-              beds={item.beds}
-              imageSrc={item.imageSrc}
-              itemLocation={item.itemLocation}
-              itemName={item.itemName}
-              itemPrice={item.itemPrice}
-            />
+            <div className="md:px-3 md:mt-6 mx-auto md:mx-0 last:pb-40">
+              <Link href="">
+                <a>
+                  <Card
+                    baths={item.baths}
+                    beds={item.beds}
+                    imageSrc={item.imageSrc}
+                    itemLocation={item.itemLocation}
+                    itemName={item.itemName}
+                    itemPrice={item.itemPrice}
+                  />
+                </a>
+              </Link>
+            </div>
           );
         })}
       </div>

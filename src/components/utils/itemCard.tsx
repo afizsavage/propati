@@ -51,7 +51,7 @@ interface ICards {
 
 export const Card = (props: ICards) => {
   return (
-    <article className="w-72 overflow-hidden rounded-b-md rounded-t-lg bg-white shadow-lg">
+    <article className="w-72 h-80 overflow-hidden rounded-b-md rounded-t-lg bg-white shadow-lg">
       <div className="rounded-md relative w-full">
         <div className="absolute top-5 w-full px-5">
           <span className="rounded-full py-1 px-2 bg-red-400 font-bold text-base text-white ">
