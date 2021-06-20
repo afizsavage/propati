@@ -29,8 +29,10 @@ const Map = ({ location, zoomLevel }) => {
           bootstrapURLKeys={{ key: "AIzaSyD0NxdGbmSHZWWI1T5zYP6nCq_bxX2t110" }}
           defaultCenter={location}
           defaultZoom={zoomLevel}
+          yesIWantToUseGoogleMapApiInternals={true}
           options={{
             ...defaultMapOptions,
+            keyboardShortcuts: false,
           }}
         >
           <LocationPin

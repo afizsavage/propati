@@ -1,7 +1,8 @@
 import React from "react";
 import Link from "next/link";
+import { FaSortAmountDown } from "react-icons/fa";
 
-import { ItemCard } from "../utils";
+import { DropDown, ItemCard } from "../utils";
 import { Card } from "../utils/itemCard";
 
 const items: Array<any> = [
@@ -71,10 +72,45 @@ const items: Array<any> = [
   },
 ];
 
+const SortOption = ({ title }) => {
+  return (
+    <span className="text-sm font-thin inline-block text-gray-900 px-5">
+      {title}
+    </span>
+  );
+};
+
 const CardSection = () => {
   return (
-    <section className="overflow-y-scroll h-screen col-span-9 lg:col-span-5">
-      <div className="w-full h-full md:pl-4 flex flex-row flex-wrap ">
+    <section className="overflow-y-hidden h-screen col-span-9 lg:col-span-5">
+      <div className="w-full px-9 py-4 flex bg-white align-middle justify-between ">
+        <div>
+          <span>1</span>
+        </div>
+        <div className="inline-flex">
+          <span className="text-gray-500 mr-3">
+            {" "}
+            <FaSortAmountDown className="inline text-gray-400 cursor-text" />{" "}
+            Sort by :
+          </span>
+          <span>
+            <DropDown
+              buttonText={"button"}
+              changeBtnText={true}
+              listItems={[
+                <SortOption title="Best Match" />,
+                <SortOption title="Most Recent" />,
+                <SortOption title="Price: Low to high" />,
+                <SortOption title="Price: High to low" />,
+              ]}
+              autoSelectOption={true}
+              menuId="sortBtn"
+              styleContent=" rounded-sm right-0 origin-top-left"
+            />
+          </span>
+        </div>
+      </div>
+      <div className="w-full overflow-y-scroll px-2 md:pr-0 h-full md:pl-4 flex flex-row flex-wrap ">
         {items.map((item) => {
           return (
             <div className="md:px-3 md:mt-6 mx-auto md:mx-0 last:pb-40">

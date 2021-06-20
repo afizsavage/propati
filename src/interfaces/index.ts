@@ -25,6 +25,8 @@ export interface DropdownProps {
   label?: string;
   listItems: Array<any>;
   changeBtnText: boolean;
+  menuId: string;
+  autoSelectOption?: boolean;
 }
 export interface FCProps {
   heading: string;

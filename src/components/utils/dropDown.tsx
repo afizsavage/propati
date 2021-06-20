@@ -10,8 +10,8 @@ const Dropdown = (Props: DropdownProps) => {
 
   const toggleOpenNClose = (e) => {
     ddownOpen === false ? setddownOpen(true) : setddownOpen(false);
-    let listItems = document.getElementById("ddmenu");
-    listItems.classList.toggle("hidden");
+    let menuWrapper = document.getElementById(Props.menuId);
+    menuWrapper.classList.toggle("hidden");
   };
 
   // close dropdown menu if a click event register anywhere else on the screen
@@ -23,6 +23,13 @@ const Dropdown = (Props: DropdownProps) => {
         }
       }
 
+      function autoSelect() {
+        if (Props.autoSelectOption === true) {
+          setSelectedOption(Props.listItems[0]);
+        }
+      }
+
+      autoSelect();
       // Bind the event listener
       document.addEventListener("mousedown", handleClickOutside);
       return () => {
@@ -51,7 +58,7 @@ const Dropdown = (Props: DropdownProps) => {
             : Props.buttonText}
         </button>
         <div
-          id="ddmenu"
+          id={Props.menuId}
           className={
             ddownOpen
               ? "dropdownMenu overflow-hidden " + Props.styleContent

@@ -51,22 +51,24 @@ interface ICards {
 
 export const Card = (props: ICards) => {
   return (
-    <article className="w-72 h-80 overflow-hidden rounded-b-md rounded-t-lg bg-white shadow-lg">
-      <div className="rounded-md relative w-full">
+    <article className="w-full md:w-72 h-80 pt-2 pt-4 overflow-hidden rounded-b-md rounded-t-lg bg-white shadow-lg">
+      <div className="rounded-md relative w-full px-4">
         <div className="absolute top-5 w-full px-5">
           <span className="rounded-full py-1 px-2 bg-red-400 font-bold text-base text-white ">
             {"$" + props.itemPrice}
           </span>
         </div>
-        <img
-          style={{ height: "180px" }}
-          alt="Placeholder"
-          src={props.imageSrc}
-          width={345}
-          height={300}
-        />
+        <div className=" rounded-lg overflow-hidden ">
+          <img
+            style={{ height: "180px" }}
+            alt="Placeholder"
+            src={props.imageSrc}
+            width={345}
+            height={300}
+          />
+        </div>
       </div>
-      <header className="w-full leading-tight p-2 md:p-4">
+      <header className="w-full leading-tight p-y p-4">
         <div className="w-full  text-sm text-gray-900 font-bold">
           <LinesEllipsis
             text={props.itemName}
@@ -87,7 +89,7 @@ export const Card = (props: ICards) => {
         </div>
         {/* <h1 className="text-lg">{item.itemName}</h1> */}
       </header>
-      <footer className="flex justify-start leading-none p-2 md:p-4 text-gray-500 font-normal text-sm">
+      <footer className="flex justify-start leading-none py-2 px-4 text-gray-500 font-normal text-sm">
         <span className="inline mr-3">
           {" "}
           <IoBedOutline className="inline text-lg " /> {props.beds} Beds

@@ -115,6 +115,7 @@ const RightNavProps = (props) => {
         styleContent="rounded-xl right-0 origin-top-left"
         listItems={options}
         changeBtnText={false}
+        menuId="userBtn"
       />
       {/* <Authenticate /> */}
       <div className=" md:hidden block absolute inset-y-0 right-0 flex items-center ">

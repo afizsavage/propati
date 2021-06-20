@@ -92,6 +92,7 @@ const PropertyType = ({ setForm, formData, navigation }) => {
             <Dropdown
               buttonText={"Select One"}
               changeBtnText={true}
+              menuId="estateType"
               listItems={[
                 <DropdownItem content={<p>Res</p>} name="Residential" />,
                 <DropdownItem content={<p>Res</p>} name="Commercial" />,
