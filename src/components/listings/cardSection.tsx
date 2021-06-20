@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { FaSortAmountDown } from "react-icons/fa";
+import { AiOutlineDown, AiFillCaretDown } from "react-icons/ai";
 
 import { DropDown, ItemCard } from "../utils";
 import { Card } from "../utils/itemCard";
@@ -74,8 +75,15 @@ const items: Array<any> = [
 
 const SortOption = ({ title }) => {
   return (
-    <span className="text-sm font-thin inline-block text-gray-900 px-5">
+    <span
+      id="sortOption"
+      className="hover:bg-gray-100 px-5 text-sm py-3 w-40 font-thin inline-block align-text-top "
+    >
       {title}
+      <AiFillCaretDown
+        id="sort"
+        className="text-lg ml-2 text-teal-600 font-bold inline"
+      />
     </span>
   );
 };
@@ -88,10 +96,10 @@ const CardSection = () => {
           <span>1</span>
         </div>
         <div className="inline-flex">
-          <span className="text-gray-500 mr-3">
+          <span className="text-gray-600">
             {" "}
-            <FaSortAmountDown className="inline text-gray-400 cursor-text" />{" "}
-            Sort by :
+            <FaSortAmountDown className="inline text-gray-500 cursor-text" />{" "}
+            Sort by:
           </span>
           <span>
             <DropDown
@@ -105,7 +113,8 @@ const CardSection = () => {
               ]}
               autoSelectOption={true}
               menuId="sortBtn"
-              styleContent=" rounded-sm right-0 origin-top-left"
+              styleButton="text-gray-500 py-0 "
+              styleContent="w-40 rounded-sm right-0 origin-top-left"
             />
           </span>
         </div>

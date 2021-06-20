@@ -79,6 +79,18 @@
   }
 }
 
+li > span #sort {
+  display: none;
+}
+
+button > #sortOption {
+  padding: 0;
+}
+
+button > #sortOption:hover {
+  background: #fff;
+}
+
 @media screen and (min-width: 799px) {
   .google-map {
     height: 80vh;
