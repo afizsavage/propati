@@ -59,6 +59,7 @@ module.exports = {
       borderWidth: ["last", "hover"],
       backgroundOpacity: ["hover"],
       padding: ["last"],
+      textColor: ["active"],
     },
   },
 };

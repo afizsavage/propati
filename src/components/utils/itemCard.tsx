@@ -1,5 +1,4 @@
 import React from "react";
-
 import { AiOutlineHeart } from "react-icons/ai";
 import { IoBedOutline } from "react-icons/io5";
 import { BiBath } from "react-icons/bi";
