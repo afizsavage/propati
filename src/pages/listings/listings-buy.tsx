@@ -1,5 +1,5 @@
-import React from "react";
-import { CardSection, MapViewSection } from "../../components/listings";
+import React, { useState } from "react";
+import ListingsWrapper from "../../components/listings/listingsWrapper";
 import { Navbar } from "../../components/navbar";
 
 const ListingsBuy = () => {
@@ -7,10 +7,7 @@ const ListingsBuy = () => {
     <div className="flex flex-col max-h-screen h-full overflow-y-hidden ">
       <Navbar />
       <main className="flex flex-col h-full overflow-y-hidden flex-grow w-full ">
-        <div className="w-full h-full overflow-hidden grid grid-cols-9">
-          <CardSection />
-          <MapViewSection />
-        </div>
+        <ListingsWrapper />
       </main>
     </div>
   );

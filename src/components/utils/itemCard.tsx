@@ -53,7 +53,7 @@ export const Card = (props: ICards) => {
     <article className="w-full md:w-72 h-80 pt-2 pt-4 overflow-hidden rounded-b-md rounded-t-lg bg-white shadow-lg">
       <div className="rounded-md relative w-full px-4">
         <div className="absolute top-5 w-full px-5">
-          <span className="rounded-full py-1 px-2 bg-red-400 font-bold text-base text-white ">
+          <span className="rounded-full py-1 px-2 bg-red-400 font-bold text-lg text-white ">
             {"$" + props.itemPrice}
           </span>
         </div>

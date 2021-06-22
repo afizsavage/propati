@@ -21,10 +21,13 @@ const LocationPin = ({ text, lat, lng }) => (
   </div>
 );
 
-const Map = ({ location, zoomLevel }) => {
+const MapViewSection = ({ location, zoomLevel, mapView }) => {
   return (
-    <section className="  hidden md:block h-full overflow-y-hidden overflow-hidden col-span-4">
-      <div className="w-100" style={{ height: "91vh" }}>
+    <section className={!mapView ? " mapSection " : "col-span-9 block"}>
+      <div
+        className="w-screen overflow-hidden h-screen md:w-full"
+        style={{ height: "91vh" }}
+      >
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyD0NxdGbmSHZWWI1T5zYP6nCq_bxX2t110" }}
           defaultCenter={location}
@@ -46,14 +49,8 @@ const Map = ({ location, zoomLevel }) => {
   );
 };
 
-const location = {
-  address: "8 Spur Road, Freetown",
-  lat: 8.471644482274344,
-  lng: -13.270381673488407,
-};
-
-const MapViewSection = () => {
-  return <Map location={location} zoomLevel={15} />;
-};
+// const MapViewSection = () => {
+//   return <Map location={location} zoomLevel={15} />;
+// };
 
 export default MapViewSection;

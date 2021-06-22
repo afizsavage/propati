@@ -27,6 +27,12 @@
   .Btn {
     @apply inline-flex justify-center rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-white text-sm font-bold text-gray-500 focus:outline-none active:border-transparent active:bg-gray-100;
   }
+  .cardSection {
+    @apply overflow-y-scroll flex flex-col md:overflow-y-hidden h-screen col-span-9 lg:col-span-5;
+  }
+  .cardsWrapper {
+    @apply w-full md:overflow-y-scroll px-2 md:pr-0 h-full md:pl-4 flex flex-row flex-wrap;
+  }
   .categoryBtnActive {
     @apply mr-1 bg-gray-200 cursor-pointer py-2 px-3 rounded-lg text-black focus:outline-none;
   }
@@ -60,7 +66,10 @@
     @apply mt-6 relative w-full font-normal;
   }
   .mobileNavs {
-    @apply text-gray-500 block py-3 text-lg font-Lato font-medium;
+    @apply text-gray-500 block py-3 text-lg font-Lato font-bold;
+  }
+  .mapSection {
+    @apply hidden md:block h-full overflow-y-hidden overflow-hidden col-span-4;
   }
   .navLinks {
     @apply text-gray-600  hover:text-teal-600 px-3 py-2 text-base font-semibold font-Lato;

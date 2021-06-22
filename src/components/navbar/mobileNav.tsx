@@ -1,11 +1,16 @@
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Navlinks = ({ link, title }) => {
+  const router = useRouter();
+
   return (
     <li className="mobileNavs">
       <Link href={link}>
-        <a>{title}</a>
+        <a className={router.pathname == link ? " text-teal-600" : ""}>
+          {title}
+        </a>
       </Link>
     </li>
   );
@@ -13,7 +18,7 @@ const Navlinks = ({ link, title }) => {
 
 const Userlinks = ({ link, title }) => {
   return (
-    <li className="mobileNavs text-base">
+    <li className="mobileNavs text-base font-medium last:mb-14">
       <Link href={link}>
         <a>{title}</a>
       </Link>
@@ -26,7 +31,7 @@ const MobileNav = ({ menuOpen }) => {
     <div
       className={
         menuOpen
-          ? " bg-black fixed h-full bg-white top-14 overflow-y-scroll z-50 w-full px-6 pb-48 pt-6 border-t border-opacity-50 border-gray-200  "
+          ? "  fixed h-full bg-white top-14 overflow-y-scroll z-50 w-full px-6 pb-10  border-t border-opacity-50 border-gray-200  "
           : "hidden"
       }
     >
@@ -36,8 +41,8 @@ const MobileNav = ({ menuOpen }) => {
           <Navlinks link="/listings/listings-buy" title="Buy" />
         </ul>
       </nav>
-      <hr className="mt-6 mb-6" />
-      <ul>
+      <hr className="mt-3 mb-3" />
+      <ul className="">
         <Userlinks
           link="#"
           title={
