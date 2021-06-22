@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { AiFillCaretDown } from "react-icons/ai";
-import { FaMapMarkerAlt } from "react-icons/fa";
+import { AiFillCaretDown, AiOutlineUnorderedList } from "react-icons/ai";
+import { FaMapMarkerAlt, FaRegListAlt } from "react-icons/fa";
 import { RiEqualizerFill } from "react-icons/ri";
+import { IoList } from "react-icons/io5";
+import { GrList } from "react-icons/gr";
+import { BsListUl } from "react-icons/bs";
 import LinesEllipsis from "react-lines-ellipsis";
 
 import { DropDown, ItemCard } from "../utils";
@@ -99,7 +102,7 @@ const ListingsWrapper = () => {
   let sumOfProperties = items.length;
   const [mapView, setmapView] = useState(false);
 
-  const showMap = (params) => {
+  const toggleMapView = (params) => {
     if (mapView == false) {
       setmapView(true);
     } else {
@@ -123,14 +126,27 @@ const ListingsWrapper = () => {
                 </span>
                 <span className="inline-block md:hidden">Filters</span>
               </h1>
-              <span className="inline-flex md:hidden">
+              <span
+                className={
+                  !mapView ? "inline-flex items-center md:hidden" : "hidden"
+                }
+              >
                 {" "}
                 <FaMapMarkerAlt className="inline text-xl transform mr-2" />
-                <span onClick={showMap}>Map View</span>
+                <span onClick={toggleMapView}>Map View</span>
+              </span>
+              <span
+                className={
+                  mapView ? "inline-flex items-center md:hidden" : "hidden"
+                }
+              >
+                {" "}
+                <FaRegListAlt className=" inline  text-xl mr-2" />
+                <span onClick={toggleMapView}>List View</span>
               </span>
             </div>
             <div className="inline-flex items-center h-12 md:h-auto w-full md:w-auto">
-              <span className="inline-flex w-3/5  md:hidden">
+              <span className="inline-flex w-3/5 text-sm font-normal text-gray-800 md:hidden">
                 <span className="font-bold inline mr-1">{sumOfProperties}</span>
                 <LinesEllipsis
                   text={" Freetown, Sierra Leone residentials for sale"}

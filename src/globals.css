@@ -28,7 +28,7 @@
     @apply inline-flex justify-center rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-white text-sm font-bold text-gray-500 focus:outline-none active:border-transparent active:bg-gray-100;
   }
   .cardSection {
-    @apply overflow-y-scroll flex flex-col md:overflow-y-hidden h-screen col-span-9 lg:col-span-5;
+    @apply overflow-y-visible overflow-x-hidden flex flex-col md:overflow-y-hidden h-screen col-span-9 lg:col-span-5;
   }
   .cardsWrapper {
     @apply w-full md:overflow-y-scroll px-2 md:pr-0 h-full md:pl-4 flex flex-row flex-wrap;
