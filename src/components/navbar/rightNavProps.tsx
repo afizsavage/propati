@@ -118,7 +118,7 @@ const RightNavProps = (props) => {
         menuId="userBtn"
       />
       {/* <Authenticate /> */}
-      <div className=" md:hidden block absolute inset-y-0 right-0 flex items-center ">
+      <div className=" md:hidden block absolute mr-3 inset-y-0 right-0 flex items-center ">
         <div className="w-10 h-10 flex flex-col items-center justify-center">
           <span className="h-6 w-6">
             <BiSearch className="block h-full w-full text-gray-400" />

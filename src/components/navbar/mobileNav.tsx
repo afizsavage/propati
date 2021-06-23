@@ -31,8 +31,8 @@ const MobileNav = ({ menuOpen }) => {
     <div
       className={
         menuOpen
-          ? "  fixed h-full bg-white top-14 overflow-y-scroll z-50 w-full px-6 pb-10  border-t border-opacity-50 border-gray-200  "
-          : "hidden"
+          ? "mobileMenu -translate-y-100"
+          : "mobileMenu -translate-y-full"
       }
     >
       <nav>

@@ -12,11 +12,11 @@ const ToggleMobileNav = ({ menuOpen, setMenuOpen }) => {
   };
 
   return (
-    <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
+    <div className="absolute z-50 ml-3 bg-white inset-y-0 left-0 flex items-center lg:hidden">
       <button
         id="menuBtn"
         onClick={toggleMenu}
-        className=" text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white w-10 h-10 relative"
+        className=" z-50 text-gray-400 focus:outline-none w-10 h-10 relative"
         aria-expanded="false"
       >
         <span className="sr-only">Open main menu</span>
@@ -25,24 +25,24 @@ const ToggleMobileNav = ({ menuOpen, setMenuOpen }) => {
             aria-hidden="true"
             className={
               !menuOpen
-                ? "block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out -translate-y-1.5"
-                : "block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out rotate-45"
+                ? "z-50 block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out -translate-y-1.5"
+                : "z-50 block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out rotate-45"
             }
           ></span>
           <span
             aria-hidden="true"
             className={
               !menuOpen
-                ? "block absolute h-0.5 w-5 bg-current   transform transition duration-500 ease-in-out"
-                : "opacity-0"
+                ? "z-50 block absolute h-0.5 w-5 bg-current   transform transition duration-500 ease-in-out"
+                : "z-50 opacity-0"
             }
           ></span>
           <span
             aria-hidden="true"
             className={
               !menuOpen
-                ? "block absolute  h-0.5 w-5 bg-current transform  transition duration-500 ease-in-out translate-y-1.5 "
-                : "block absolute  h-0.5 w-5 bg-current transform  transition duration-500 ease-in-out -rotate-45"
+                ? "z-50 block absolute  h-0.5 w-5 bg-current transform  transition duration-500 ease-in-out translate-y-1.5 "
+                : "z-50 block absolute  h-0.5 w-5 bg-current transform  transition duration-500 ease-in-out -rotate-45"
             }
           ></span>
         </div>

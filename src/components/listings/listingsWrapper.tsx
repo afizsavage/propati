@@ -2,12 +2,8 @@ import React, { useState } from "react";
 import { AiFillCaretDown, AiOutlineUnorderedList } from "react-icons/ai";
 import { FaMapMarkerAlt, FaRegListAlt } from "react-icons/fa";
 import { RiEqualizerFill } from "react-icons/ri";
-import { IoList } from "react-icons/io5";
-import { GrList } from "react-icons/gr";
-import { BsListUl } from "react-icons/bs";
-import LinesEllipsis from "react-lines-ellipsis";
 
-import { DropDown, ItemCard } from "../utils";
+import { DropDown } from "../utils";
 import { CardSection, MapViewSection } from "../../components/listings";
 
 const items: Array<any> = [
@@ -87,7 +83,7 @@ const SortOption = ({ title }) => {
   return (
     <span
       id="sortOption"
-      className="hover:bg-gray-100 px-5 text-sm py-3 w-40 font-thin inline-block align-text-top "
+      className="hover:bg-gray-100 px-5 text-sm py-3 md:w-40 font-thin inline-block align-text-top "
     >
       {title}
       <AiFillCaretDown
@@ -114,7 +110,7 @@ const ListingsWrapper = () => {
     <div>
       <div className="w-full h-full md:overflow-hidden grid grid-cols-9">
         <section className="cardSection">
-          <div className="w-full px-6 md:px-9 py-0 md:py-4 flex flex-col-reverse md:flex-row bg-white align-middle justify-between ">
+          <div className="w-full px-6 md:px-9 absolute md:static z-20 -translate-y-full md:transform-none transition duration-500 ease-in-out transform py-0 md:py-4 flex flex-col-reverse md:flex-row bg-white align-middle justify-between ">
             <div className="h-12 justify-between inline-flex items-center  md:h-auto border-t md:border-t-0 border-b md:border-b-0 text-teal-700 font-normal cursor-pointer">
               <h1>
                 {" "}
@@ -145,18 +141,12 @@ const ListingsWrapper = () => {
                 <span onClick={toggleMapView}>List View</span>
               </span>
             </div>
-            <div className="inline-flex items-center h-12 md:h-auto w-full md:w-auto">
-              <span className="inline-flex w-3/5 text-sm font-normal text-gray-800 md:hidden">
-                <span className="font-bold inline mr-1">{sumOfProperties}</span>
-                <LinesEllipsis
-                  text={" Freetown, Sierra Leone residentials for sale"}
-                  maxLine="1"
-                  ellipsis="..."
-                  trimRight
-                  basedOn="letters"
-                />
-              </span>
-              <span className=" w-2/5 md:w-auto">
+            <div className="flex justify-between items-center h-12 md:h-auto w-full md:w-auto">
+              <h1 className="w-60 truncate text-sm font-normal text-gray-800 md:hidden">
+                <b className="font-bold inline mr-1">{sumOfProperties}</b>
+                Freetown, Sierra Leone residentials for sale
+              </h1>
+              <span className=" w-48  md:w-auto">
                 <DropDown
                   buttonText={"button"}
                   changeBtnText={true}
@@ -168,7 +158,7 @@ const ListingsWrapper = () => {
                   ]}
                   autoSelectOption={true}
                   menuId="sortBtn"
-                  styleButton="text-gray-500 py-0 "
+                  styleButton="text-right md:text-center text-gray-500 py-0 "
                   styleContent="w-40 rounded-sm right-0 origin-top-left"
                 />
               </span>
