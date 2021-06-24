@@ -27,9 +27,6 @@
   .Btn {
     @apply inline-flex justify-center rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-white text-sm font-bold text-gray-500 focus:outline-none active:border-transparent active:bg-gray-100;
   }
-  .cardSection {
-    @apply overflow-y-visible overflow-x-hidden flex flex-col md:overflow-y-hidden h-screen col-span-9 lg:col-span-5;
-  }
   .cardsWrapper {
     @apply w-full md:overflow-y-scroll px-2 md:pr-0 h-full md:pl-4 flex flex-row flex-wrap;
   }
@@ -65,11 +62,17 @@
   .input-container {
     @apply mt-6 relative w-full font-normal;
   }
+  .listings {
+    @apply overflow-y-scroll overflow-x-hidden flex flex-col md:overflow-y-hidden h-screen col-span-9 lg:col-span-5;
+  }
   .mobileMenu {
-    @apply transform md:transform-none transition z-30 duration-500 ease-in-out md:hidden fixed h-full bg-white top-14 overflow-y-scroll w-full px-6 pb-10  border-t border-opacity-50 border-gray-200;
+    @apply transform md:transform-none transition z-30 duration-500 ease-in-out md:hidden fixed h-auto bg-white top-14 overflow-y-scroll w-full px-6  border-t border-opacity-50 border-gray-200;
   }
   .mobileNavs {
     @apply text-gray-500 block py-3 text-lg font-Lato font-bold;
+  }
+  .mobileUsaLink {
+    @apply text-gray-500 block py-3 font-Lato text-base font-medium last:mb-10;
   }
   .mapSection {
     @apply hidden md:block h-full overflow-y-hidden overflow-hidden col-span-4;
@@ -88,6 +91,18 @@
   }
   .social-auth-btn {
     @apply inline-flex border justify-evenly py-1 rounded-lg w-full focus:outline-none;
+  }
+  .tMBtn {
+    @apply z-50 text-gray-400 focus:outline-none w-10 h-10 relative;
+  }
+  .tMBtnIn1 {
+    @apply z-50 block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out;
+  }
+  .tMBtnInWrapper {
+    @apply block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2;
+  }
+  .tMBWrapper {
+    @apply absolute z-50 ml-3 bg-white inset-y-0 left-0 flex items-center lg:hidden;
   }
 }
 
@@ -163,4 +178,12 @@ a {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+@media screen and (max-height: 570px) {
+  .mobileMenu {
+    height: 100vh;
+    overflow-y: scroll;
+    padding-bottom: 25px;
+  }
 }

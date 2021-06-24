@@ -18,7 +18,7 @@ const Navlinks = ({ link, title }) => {
 
 const Userlinks = ({ link, title }) => {
   return (
-    <li className="mobileNavs text-base font-medium last:mb-14">
+    <li className="mobileUsaLink">
       <Link href={link}>
         <a>{title}</a>
       </Link>
@@ -29,11 +29,8 @@ const Userlinks = ({ link, title }) => {
 const MobileNav = ({ menuOpen }) => {
   return (
     <div
-      className={
-        menuOpen
-          ? "mobileMenu -translate-y-100"
-          : "mobileMenu -translate-y-full"
-      }
+      id="mobileMenu"
+      className={menuOpen ? "mobileMenu" : "mobileMenu -translate-y-full"}
     >
       <nav>
         <ul>

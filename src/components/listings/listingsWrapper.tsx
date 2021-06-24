@@ -109,7 +109,7 @@ const ListingsWrapper = () => {
   return (
     <div>
       <div className="w-full h-full md:overflow-hidden grid grid-cols-9">
-        <section className="cardSection">
+        <section id="listings" className="listings">
           <div className="w-full px-6 md:px-9 absolute md:static z-20 -translate-y-full md:transform-none transition duration-500 ease-in-out transform py-0 md:py-4 flex flex-col-reverse md:flex-row bg-white align-middle justify-between ">
             <div className="h-12 justify-between inline-flex items-center  md:h-auto border-t md:border-t-0 border-b md:border-b-0 text-teal-700 font-normal cursor-pointer">
               <h1>

@@ -61,6 +61,7 @@ module.exports = {
       padding: ["last"],
       margin: ["last"],
       textColor: ["active"],
+      opacity: ["disabled"],
     },
   },
 };

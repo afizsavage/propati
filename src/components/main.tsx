@@ -6,7 +6,7 @@ import CategoriesSection from "./landing/categoriesSection";
 
 const Main = () => {
   return (
-    <main className="flex flex-grow flex-col">
+    <main className="flex flex-col h-full overflow-y-hidden flex-grow w-full">
       <HeroSection />
       <CategoriesSection />
       <ToggleSection />
