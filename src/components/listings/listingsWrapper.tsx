@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { AiFillCaretDown, AiOutlineUnorderedList } from "react-icons/ai";
 import { FaMapMarkerAlt, FaRegListAlt } from "react-icons/fa";
 import { RiEqualizerFill } from "react-icons/ri";
@@ -97,6 +97,19 @@ const SortOption = ({ title }) => {
 const ListingsWrapper = () => {
   let sumOfProperties = items.length;
   const [mapView, setmapView] = useState(false);
+  const prevScrollY = useRef(0);
+  const [goingUp, setGoingUp] = useState(false);
+
+  const onScroll = (e) => {
+    const currentScrollY = e.target.scrollTop;
+    if (prevScrollY.current < currentScrollY && goingUp) {
+      setGoingUp(false);
+    }
+    if (prevScrollY.current > currentScrollY && !goingUp) {
+      setGoingUp(true);
+    }
+    prevScrollY.current = currentScrollY;
+  };
 
   const toggleMapView = (params) => {
     if (mapView == false) {
@@ -109,8 +122,14 @@ const ListingsWrapper = () => {
   return (
     <div>
       <div className="w-full h-full md:overflow-hidden grid grid-cols-9">
-        <section id="listings" className="listings">
-          <div className="w-full px-6 md:px-9 absolute md:static z-20 -translate-y-full md:transform-none transition duration-500 ease-in-out transform py-0 md:py-4 flex flex-col-reverse md:flex-row bg-white align-middle justify-between ">
+        <section onScroll={onScroll} id="listings" className="listings">
+          <div
+            className={
+              goingUp === true
+                ? "filterNSortWrapper "
+                : "filterNSortWrapper -translate-y-full"
+            }
+          >
             <div className="h-12 justify-between inline-flex items-center  md:h-auto border-t md:border-t-0 border-b md:border-b-0 text-teal-700 font-normal cursor-pointer">
               <h1>
                 {" "}
