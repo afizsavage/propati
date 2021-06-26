@@ -98,7 +98,7 @@ const ListingsWrapper = () => {
   let sumOfProperties = items.length;
   const [mapView, setmapView] = useState(false);
   const prevScrollY = useRef(0);
-  const [goingUp, setGoingUp] = useState(false);
+  const [goingUp, setGoingUp] = useState(true);
 
   const onScroll = (e) => {
     const currentScrollY = e.target.scrollTop;
@@ -125,9 +125,9 @@ const ListingsWrapper = () => {
         <section onScroll={onScroll} id="listings" className="listings">
           <div
             className={
-              goingUp === true
-                ? "filterNSortWrapper "
-                : "filterNSortWrapper -translate-y-full"
+              goingUp === false
+                ? "filterNSortWrapper -translate-y-full"
+                : "filterNSortWrapper  "
             }
           >
             <div className="h-12 justify-between inline-flex items-center  md:h-auto border-t md:border-t-0 border-b md:border-b-0 text-teal-700 font-normal cursor-pointer">
