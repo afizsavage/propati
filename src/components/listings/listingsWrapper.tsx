@@ -122,7 +122,11 @@ const ListingsWrapper = () => {
   return (
     <div>
       <div className="w-full h-full md:overflow-hidden grid grid-cols-9">
-        <section onScroll={onScroll} id="listings" className="listings">
+        <section
+          onScroll={onScroll}
+          id="listings"
+          className={mapView ? " listings overflow-visible" : "listings"}
+        >
           <div
             className={
               goingUp === false
@@ -184,7 +188,7 @@ const ListingsWrapper = () => {
             </div>
           </div>
           <CardSection items={items} mapView={mapView} />
-          <span className="block h-screen w-screen overflow-y-hidden md:hidden">
+          <span className="block h-screen w-screen overflow-visible md:hidden">
             <MapViewSection
               location={location}
               mapView={mapView}

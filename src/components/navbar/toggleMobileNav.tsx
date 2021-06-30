@@ -5,8 +5,6 @@ const ToggleMobileNav = ({ menuOpen, setMenuOpen }) => {
   // toggle open and close state
   const toggleMenu = () => {
     menuOpen === false ? setMenuOpen(true) : setMenuOpen(false);
-    let body = document.body;
-    body.classList.toggle("overflow-hidden");
   };
 
   return (

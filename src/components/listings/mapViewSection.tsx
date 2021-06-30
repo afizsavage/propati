@@ -25,7 +25,7 @@ const MapViewSection = ({ location, zoomLevel, mapView }) => {
   return (
     <section className={!mapView ? " mapSection " : "col-span-9 block"}>
       <div
-        className="w-screen overflow-hidden h-screen md:w-full"
+        className="absolute bottom-0 lg:static w-screen overflow-hidden h-screen md:w-full"
         style={{ height: "91vh" }}
       >
         <GoogleMapReact
