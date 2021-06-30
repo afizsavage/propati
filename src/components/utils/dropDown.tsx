@@ -40,10 +40,12 @@ const Dropdown = (Props: DropdownProps) => {
   }
 
   // close dropdown and set selectedOption state as the list item clicked on
-  const onOptionClicked = (value) => () => {
+  async function onOptionClicked(value, b) {
+    const test = value.props.clicked;
+    (await b) === true && test ? test() : null;
     setSelectedOption(value);
     setddownOpen(false);
-  };
+  }
 
   return (
     <div ref={wrapperRef} className="w-auto cursor-pointer font-Lato">
@@ -75,8 +77,8 @@ const Dropdown = (Props: DropdownProps) => {
             {Props.listItems.map((item) => {
               return (
                 <li
-                  className="userList"
-                  onClick={onOptionClicked(item)}
+                  className="userList relative w-full h-full z-10"
+                  onClick={() => onOptionClicked(item, Props.changeBtnText)}
                   key={Math.random()}
                 >
                   {item}

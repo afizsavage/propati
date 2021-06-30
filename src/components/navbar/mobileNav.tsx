@@ -45,9 +45,9 @@ const MobileNav = ({ menuOpen }) => {
           title={
             <div className="inline-flex items-center mb-2">
               <div className="text-white  font-semibold rounded-full w-9 h-9 flex justify-center items-center bg-teal-600 mr-4">
-                AS
+                JD
               </div>
-              <span className="text-gray-800 font-semibold ">Afiz Savage</span>
+              <span className="text-gray-800 font-semibold ">John Doe</span>
             </div>
           }
         />

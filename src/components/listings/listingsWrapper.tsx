@@ -6,12 +6,12 @@ import { RiEqualizerFill } from "react-icons/ri";
 import { DropDown } from "../utils";
 import { CardSection, MapViewSection } from "../../components/listings";
 
-const items: Array<any> = [
+let items: Array<any> = [
   {
     itemName: "Nice and Quiet Apartment",
     imageSrc: "https://picsum.photos/345/180/?random",
     itemLocation: "10 Hill Cot Rd, Freetown, Sierra Leone",
-    itemPrice: "1,500",
+    itemPrice: 1500,
     beds: 2,
     baths: 2,
   },
@@ -19,7 +19,7 @@ const items: Array<any> = [
     itemName: "Detached building in a Secure Compound",
     imageSrc: "https://picsum.photos/345/180/?random",
     itemLocation: "20 Spur Loop, Freetown, Sierra Leone",
-    itemPrice: "1,300",
+    itemPrice: 1300,
     beds: 2,
     baths: 2,
   },
@@ -27,7 +27,7 @@ const items: Array<any> = [
     itemName: "Comfy Apartment, Accessible Area ",
     imageSrc: "https://picsum.photos/345/180/?random",
     itemLocation: "6B Pipeline, Juba, Freetown, Sierra Leone",
-    itemPrice: "1,200",
+    itemPrice: 1200,
     beds: 2,
     baths: 1,
   },
@@ -35,7 +35,7 @@ const items: Array<any> = [
     itemName: "Spacious Apartment at Juba",
     imageSrc: "https://picsum.photos/345/180/?random",
     itemLocation: "6,7 Signal Hill Rd, Freetown, Sierra Leone",
-    itemPrice: "1,900",
+    itemPrice: 1900,
     beds: 4,
     baths: 3,
   },
@@ -43,7 +43,7 @@ const items: Array<any> = [
     itemName: "Comfy Apartment, Accessible Area ",
     imageSrc: "https://picsum.photos/345/180/?random",
     itemLocation: "6B Pipeline, Juba, Freetown, Sierra Leone",
-    itemPrice: "1,200",
+    itemPrice: 1200,
     beds: 2,
     baths: 1,
   },
@@ -51,7 +51,7 @@ const items: Array<any> = [
     itemName: "Spacious Apartment at Juba",
     imageSrc: "https://picsum.photos/345/180/?random",
     itemLocation: "6,7 Signal Hill Rd, Freetown, Sierra Leone",
-    itemPrice: "1,900",
+    itemPrice: 1900,
     beds: 4,
     baths: 3,
   },
@@ -59,7 +59,7 @@ const items: Array<any> = [
     itemName: "Comfy Apartment, Accessible Area ",
     imageSrc: "https://picsum.photos/345/180/?random",
     itemLocation: "6B Pipeline, Juba, Freetown, Sierra Leone",
-    itemPrice: "1,200",
+    itemPrice: 1200,
     beds: 2,
     baths: 1,
   },
@@ -67,7 +67,7 @@ const items: Array<any> = [
     itemName: "Spacious Apartment at Juba",
     imageSrc: "https://picsum.photos/345/180/?random",
     itemLocation: "6,7 Signal Hill Rd, Freetown, Sierra Leone",
-    itemPrice: "1,900",
+    itemPrice: 1900,
     beds: 4,
     baths: 3,
   },
@@ -79,11 +79,11 @@ const location = {
   lng: -13.270381673488407,
 };
 
-const SortOption = ({ title }) => {
+const SortOption = ({ title, clicked }) => {
   return (
     <span
       id="sortOption"
-      className="hover:bg-gray-100 px-5 text-sm py-3 md:w-40 font-thin inline-block align-text-top "
+      className="z-0 relative hover:bg-gray-100 px-5 text-sm py-3 md:w-40 font-thin inline-block align-text-top "
     >
       {title}
       <AiFillCaretDown
@@ -92,6 +92,17 @@ const SortOption = ({ title }) => {
       />
     </span>
   );
+};
+const sortPriceMaxToMin = () => {
+  let sortedItems;
+  sortedItems = items.sort((a, b) => b.itemPrice - a.itemPrice);
+  return (items = sortedItems);
+};
+
+const sortPriceMinToMax = () => {
+  let sortedItems;
+  sortedItems = items.sort((a, b) => a.itemPrice - b.itemPrice);
+  return (items = sortedItems);
 };
 
 const ListingsWrapper = () => {
@@ -118,6 +129,9 @@ const ListingsWrapper = () => {
       setmapView(false);
     }
   };
+  function clickedItem() {
+    return console.log("clicked");
+  }
 
   return (
     <div>
@@ -174,10 +188,26 @@ const ListingsWrapper = () => {
                   buttonText={"button"}
                   changeBtnText={true}
                   listItems={[
-                    <SortOption title="Best Match" />,
-                    <SortOption title="Most Recent" />,
-                    <SortOption title="Price: Low to high" />,
-                    <SortOption title="Price: High to low" />,
+                    <SortOption
+                      // clicked={() => console.log("clicked")}
+                      title="Best Match"
+                      clicked={clickedItem}
+                    />,
+                    <SortOption
+                      // clicked={() => console.log("clicked")}
+                      title="Most Recent"
+                      clicked={clickedItem}
+                    />,
+                    <SortOption
+                      // clicked={sortPriceMinToMax}
+                      title="Price: Low to high"
+                      clicked={sortPriceMinToMax}
+                    />,
+                    <SortOption
+                      // clicked={sortPriceMaxToMin}
+                      title="Price: High to low"
+                      clicked={sortPriceMaxToMin}
+                    />,
                   ]}
                   autoSelectOption={true}
                   menuId="sortBtn"
