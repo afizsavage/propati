@@ -77,6 +77,7 @@ const Dropdown = (Props: DropdownProps) => {
             {Props.listItems.map((item) => {
               return (
                 <li
+                  id="dropDownList"
                   className=" userList relative cursor-pointer w-full h-full z-10"
                   onClick={() => onOptionClicked(item, Props.changeBtnText)}
                   key={Math.random()}

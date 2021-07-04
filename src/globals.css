@@ -175,7 +175,8 @@ input,
 select,
 a,
 #col2Filter,
-#sortOption {
+#sortOption,
+#dropDownList {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
   -webkit-user-select: none;
