@@ -14,6 +14,7 @@ let items: Array<any> = [
     itemPrice: 1500,
     beds: 2,
     baths: 2,
+    listedAt: "2014-02-10T10:50:42.389Z",
   },
   {
     itemName: "Detached building in a Secure Compound",
@@ -22,6 +23,7 @@ let items: Array<any> = [
     itemPrice: 1300,
     beds: 2,
     baths: 2,
+    listedAt: "2015-02-10T10:50:42.389Z",
   },
   {
     itemName: "Comfy Apartment, Accessible Area ",
@@ -30,6 +32,7 @@ let items: Array<any> = [
     itemPrice: 1200,
     beds: 2,
     baths: 1,
+    listedAt: "2016-02-10T10:50:42.389Z",
   },
   {
     itemName: "Spacious Apartment at Juba",
@@ -38,6 +41,7 @@ let items: Array<any> = [
     itemPrice: 1900,
     beds: 4,
     baths: 3,
+    listedAt: "2017-02-10T10:50:42.389Z",
   },
   {
     itemName: "Comfy Apartment, Accessible Area ",
@@ -46,6 +50,7 @@ let items: Array<any> = [
     itemPrice: 1200,
     beds: 2,
     baths: 1,
+    listedAt: "2018-02-10T10:50:42.389Z",
   },
   {
     itemName: "Spacious Apartment at Juba",
@@ -54,6 +59,7 @@ let items: Array<any> = [
     itemPrice: 1900,
     beds: 4,
     baths: 3,
+    listedAt: "2019-02-10T10:50:42.389Z",
   },
   {
     itemName: "Comfy Apartment, Accessible Area ",
@@ -62,6 +68,7 @@ let items: Array<any> = [
     itemPrice: 1200,
     beds: 2,
     baths: 1,
+    listedAt: "2020-02-10T10:50:42.389Z",
   },
   {
     itemName: "Spacious Apartment at Juba",
@@ -70,6 +77,7 @@ let items: Array<any> = [
     itemPrice: 1900,
     beds: 4,
     baths: 3,
+    listedAt: "2021-02-10T10:50:42.389Z",
   },
 ];
 
@@ -83,7 +91,7 @@ const SortOption = ({ title, clicked }) => {
   return (
     <span
       id="sortOption"
-      className="z-0 relative hover:bg-gray-100 px-5 text-sm py-3 md:w-40 font-thin inline-block align-text-top "
+      className="z-0 relative hover:bg-gray-100 px-5 text-sm py-3 md:w-40 font-normal md:font-thin inline-block align-text-top "
     >
       {title}
       <AiFillCaretDown
@@ -93,20 +101,11 @@ const SortOption = ({ title, clicked }) => {
     </span>
   );
 };
-const sortPriceMaxToMin = () => {
-  let sortedItems;
-  sortedItems = items.sort((a, b) => b.itemPrice - a.itemPrice);
-  return (items = sortedItems);
-};
-
-const sortPriceMinToMax = () => {
-  let sortedItems;
-  sortedItems = items.sort((a, b) => a.itemPrice - b.itemPrice);
-  return (items = sortedItems);
-};
 
 const ListingsWrapper = () => {
-  let sumOfProperties = items.length;
+  const filtered = items;
+  const [dynamicItems, setdynamicItems] = useState(filtered);
+  let sumOfProperties = dynamicItems.length;
   const [mapView, setmapView] = useState(false);
   const prevScrollY = useRef(0);
   const [goingUp, setGoingUp] = useState(true);
@@ -129,9 +128,22 @@ const ListingsWrapper = () => {
       setmapView(false);
     }
   };
-  function clickedItem() {
-    return console.log("clicked");
-  }
+  const sortPriceMaxToMin = () => {
+    let decending = dynamicItems.sort((a, b) => b.itemPrice - a.itemPrice);
+    setdynamicItems([...decending]);
+  };
+
+  const sortPriceMinToMax = () => {
+    let accending = dynamicItems.sort((a, b) => a.itemPrice - b.itemPrice);
+    setdynamicItems([...accending]);
+  };
+  const sortByBestMatch = () => {
+    setdynamicItems([...items]);
+  };
+  const sortByrecent = (params) => {
+    let recent = dynamicItems.sort((a, b) => a.listedAt - b.listedAt);
+    setdynamicItems(recent);
+  };
 
   return (
     <div>
@@ -148,7 +160,10 @@ const ListingsWrapper = () => {
                 : "filterNSortWrapper  "
             }
           >
-            <div className="h-12 justify-between inline-flex items-center  md:h-auto border-t md:border-t-0 border-b md:border-b-0 text-teal-700 font-normal cursor-pointer">
+            <div
+              id="col2Filter"
+              className="h-12 justify-between inline-flex  items-center  md:h-auto border-t md:border-t-0 border-b md:border-b-0 text-teal-700 font-normal cursor-pointer"
+            >
               <h1>
                 {" "}
                 <RiEqualizerFill className="inline text-xl transform rotate-90 mr-2" />
@@ -191,12 +206,12 @@ const ListingsWrapper = () => {
                     <SortOption
                       // clicked={() => console.log("clicked")}
                       title="Best Match"
-                      clicked={clickedItem}
+                      clicked={sortByBestMatch}
                     />,
                     <SortOption
                       // clicked={() => console.log("clicked")}
                       title="Most Recent"
-                      clicked={clickedItem}
+                      clicked={sortByrecent}
                     />,
                     <SortOption
                       // clicked={sortPriceMinToMax}
@@ -217,7 +232,7 @@ const ListingsWrapper = () => {
               </span>
             </div>
           </div>
-          <CardSection items={items} mapView={mapView} />
+          <CardSection items={dynamicItems} mapView={mapView} />
           <span className="block h-screen w-screen overflow-visible md:hidden">
             <MapViewSection
               location={location}
