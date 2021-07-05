@@ -51,9 +51,6 @@
   .gm-svpc {
     @apply left-10;
   }
-  .gmnoprint {
-    @apply pr-4 pt-10;
-  }
 
   input:focus-within ~ label {
     @apply transform  scale-75 -translate-y-6;
@@ -176,7 +173,8 @@ select,
 a,
 #col2Filter,
 #sortOption,
-#dropDownList {
+#dropDownList,
+#dropDownBtn {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
   -webkit-user-select: none;

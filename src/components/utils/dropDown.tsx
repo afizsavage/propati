@@ -51,6 +51,7 @@ const Dropdown = (Props: DropdownProps) => {
     <div ref={wrapperRef} className="w-auto cursor-pointer font-Lato">
       <div className="w-full relative">
         <button
+          id="dropDownBtn"
           type="button"
           onClick={toggleOpenNClose}
           className={"focus:outline-none w-full " + Props.styleButton}

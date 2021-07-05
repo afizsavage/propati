@@ -14,7 +14,7 @@ let items: Array<any> = [
     itemPrice: 1500,
     beds: 2,
     baths: 2,
-    listedAt: "2014-02-10T10:50:42.389Z",
+    listedAt: "July 4, 2021 21:20:13",
   },
   {
     itemName: "Detached building in a Secure Compound",
@@ -23,7 +23,7 @@ let items: Array<any> = [
     itemPrice: 1300,
     beds: 2,
     baths: 2,
-    listedAt: "2015-02-10T10:50:42.389Z",
+    listedAt: "June 16, 2021 09:22:13",
   },
   {
     itemName: "Comfy Apartment, Accessible Area ",
@@ -32,7 +32,7 @@ let items: Array<any> = [
     itemPrice: 1200,
     beds: 2,
     baths: 1,
-    listedAt: "2016-02-10T10:50:42.389Z",
+    listedAt: "July 1, 2021 22:22:13",
   },
   {
     itemName: "Spacious Apartment at Juba",
@@ -41,7 +41,7 @@ let items: Array<any> = [
     itemPrice: 1900,
     beds: 4,
     baths: 3,
-    listedAt: "2017-02-10T10:50:42.389Z",
+    listedAt: "April 28, 2021 17:22:13",
   },
   {
     itemName: "Comfy Apartment, Accessible Area ",
@@ -50,7 +50,7 @@ let items: Array<any> = [
     itemPrice: 1200,
     beds: 2,
     baths: 1,
-    listedAt: "2018-02-10T10:50:42.389Z",
+    listedAt: "April 1, 2021 07:00:13",
   },
   {
     itemName: "Spacious Apartment at Juba",
@@ -59,7 +59,7 @@ let items: Array<any> = [
     itemPrice: 1900,
     beds: 4,
     baths: 3,
-    listedAt: "2019-02-10T10:50:42.389Z",
+    listedAt: "March 9, 2021 15:22:13",
   },
   {
     itemName: "Comfy Apartment, Accessible Area ",
@@ -68,7 +68,7 @@ let items: Array<any> = [
     itemPrice: 1200,
     beds: 2,
     baths: 1,
-    listedAt: "2020-02-10T10:50:42.389Z",
+    listedAt: "March 15, 2021 09:22:13",
   },
   {
     itemName: "Spacious Apartment at Juba",
@@ -77,14 +77,14 @@ let items: Array<any> = [
     itemPrice: 1900,
     beds: 4,
     baths: 3,
-    listedAt: "2021-02-10T10:50:42.389Z",
+    listedAt: "June 10, 2021 07:22:13",
   },
 ];
 
 const location = {
   address: "8 Spur Road, Freetown",
-  lat: 8.471644482274344,
-  lng: -13.270381673488407,
+  lat: 8.46520020876784,
+  lng: -13.229434452077367,
 };
 
 const SortOption = ({ title, clicked }) => {
@@ -129,20 +129,29 @@ const ListingsWrapper = () => {
     }
   };
   const sortPriceMaxToMin = () => {
-    let decending = dynamicItems.sort((a, b) => b.itemPrice - a.itemPrice);
+    let decending = dynamicItems
+      .slice()
+      .sort((a, b) => b.itemPrice - a.itemPrice);
     setdynamicItems([...decending]);
   };
 
   const sortPriceMinToMax = () => {
-    let accending = dynamicItems.sort((a, b) => a.itemPrice - b.itemPrice);
+    let accending = dynamicItems
+      .slice()
+      .sort((a, b) => a.itemPrice - b.itemPrice);
     setdynamicItems([...accending]);
   };
   const sortByBestMatch = () => {
     setdynamicItems([...items]);
   };
   const sortByrecent = (params) => {
-    let recent = dynamicItems.sort((a, b) => a.listedAt - b.listedAt);
-    setdynamicItems(recent);
+    let recent = dynamicItems
+      .slice()
+      .sort(
+        (a, b) =>
+          new Date(b.listedAt).getTime() - new Date(a.listedAt).getTime()
+      );
+    setdynamicItems([...recent]);
   };
 
   return (
@@ -234,14 +243,10 @@ const ListingsWrapper = () => {
           </div>
           <CardSection items={dynamicItems} mapView={mapView} />
           <span className="block h-screen w-screen overflow-visible md:hidden">
-            <MapViewSection
-              location={location}
-              mapView={mapView}
-              zoomLevel={15}
-            />
+            <MapViewSection center={location} mapView={mapView} />
           </span>
         </section>
-        <MapViewSection location={location} mapView={mapView} zoomLevel={15} />
+        <MapViewSection center={location} mapView={mapView} />
       </div>
     </div>
   );

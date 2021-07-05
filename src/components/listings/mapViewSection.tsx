@@ -3,14 +3,12 @@ import GoogleMapReact from "google-map-react";
 import { BsHouse } from "react-icons/bs";
 
 const defaultMapOptions = {
-  streetViewControl: true,
+  streetViewControl: false,
   fullscreenControl: false,
-  streetViewControlOptions: {
-    position: 3,
-  },
   zoomControlOptions: {
-    position: 3,
+    position: 6,
   },
+  keyboardShortcuts: false,
 };
 
 const LocationPin = ({ text, lat, lng }) => (
@@ -21,7 +19,7 @@ const LocationPin = ({ text, lat, lng }) => (
   </div>
 );
 
-const MapViewSection = ({ location, zoomLevel, mapView }) => {
+const MapViewSection = ({ center, mapView }) => {
   return (
     <section className={!mapView ? " mapSection " : "col-span-9 block"}>
       <div
@@ -30,27 +28,22 @@ const MapViewSection = ({ location, zoomLevel, mapView }) => {
       >
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyD0NxdGbmSHZWWI1T5zYP6nCq_bxX2t110" }}
-          defaultCenter={location}
-          defaultZoom={zoomLevel}
+          defaultCenter={center}
+          defaultZoom={14}
           yesIWantToUseGoogleMapApiInternals={true}
           options={{
             ...defaultMapOptions,
-            keyboardShortcuts: false,
           }}
         >
-          <LocationPin
-            lat={location.lat}
-            lng={location.lng}
-            text={location.address}
-          />
+          {/* <LocationPin
+            lat={center.lat}
+            lng={center.lng}
+            text={center.address}
+          /> */}
         </GoogleMapReact>
       </div>
     </section>
   );
 };
-
-// const MapViewSection = () => {
-//   return <Map location={location} zoomLevel={15} />;
-// };
 
 export default MapViewSection;
