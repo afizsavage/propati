@@ -55,3 +55,10 @@ export interface ServicesProps {
   order?: string;
   padding: string;
 }
+
+export interface MarkerProps {
+  children: JSX.Element[] | JSX.Element;
+  key: any;
+  lat: any;
+  lng: any;
+}

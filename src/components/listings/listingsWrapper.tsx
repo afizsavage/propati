@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { AiFillCaretDown, AiOutlineUnorderedList } from "react-icons/ai";
+import { AiFillCaretDown } from "react-icons/ai";
 import { FaMapMarkerAlt, FaRegListAlt } from "react-icons/fa";
 import { RiEqualizerFill } from "react-icons/ri";
 
@@ -11,7 +11,9 @@ let items: Array<any> = [
     itemName: "Nice and Quiet Apartment",
     imageSrc: "https://picsum.photos/345/180/?random",
     itemLocation: "10 Hill Cot Rd, Freetown, Sierra Leone",
-    itemPrice: 1500,
+    price: 1500,
+    id: 1,
+    location: { latitude: 8.482538005549308, longitude: -13.219440315648558 },
     beds: 2,
     baths: 2,
     listedAt: "July 4, 2021 21:20:13",
@@ -20,63 +22,78 @@ let items: Array<any> = [
     itemName: "Detached building in a Secure Compound",
     imageSrc: "https://picsum.photos/345/180/?random",
     itemLocation: "20 Spur Loop, Freetown, Sierra Leone",
-    itemPrice: 1300,
+    price: 1300,
     beds: 2,
     baths: 2,
+    id: 2,
+    location: { latitude: 8.481521955793466, longitude: -13.230236206484532 },
     listedAt: "June 16, 2021 09:22:13",
   },
   {
     itemName: "Comfy Apartment, Accessible Area ",
     imageSrc: "https://picsum.photos/345/180/?random",
     itemLocation: "6B Pipeline, Juba, Freetown, Sierra Leone",
-    itemPrice: 1200,
+    price: 1200,
     beds: 2,
     baths: 1,
+    id: 3,
+    location: { latitude: 8.472586969312948, longitude: -13.270485433635288 },
     listedAt: "July 1, 2021 22:22:13",
   },
   {
     itemName: "Spacious Apartment at Juba",
     imageSrc: "https://picsum.photos/345/180/?random",
     itemLocation: "6,7 Signal Hill Rd, Freetown, Sierra Leone",
-    itemPrice: 1900,
+    price: 1900,
     beds: 4,
     baths: 3,
+    id: 4,
+    location: { latitude: 8.492955453507072, longitude: -13.26482706328113 },
     listedAt: "April 28, 2021 17:22:13",
   },
   {
     itemName: "Comfy Apartment, Accessible Area ",
     imageSrc: "https://picsum.photos/345/180/?random",
     itemLocation: "6B Pipeline, Juba, Freetown, Sierra Leone",
-    itemPrice: 1200,
+    price: 1200,
     beds: 2,
     baths: 1,
+    id: 5,
+    location: { latitude: 8.488098376385116, longitude: -13.216323588978259 },
     listedAt: "April 1, 2021 07:00:13",
   },
   {
     itemName: "Spacious Apartment at Juba",
     imageSrc: "https://picsum.photos/345/180/?random",
     itemLocation: "6,7 Signal Hill Rd, Freetown, Sierra Leone",
-    itemPrice: 1900,
+    price: 1900,
     beds: 4,
     baths: 3,
+    id: 6,
+
+    location: { latitude: 8.460810415467288, longitude: -13.25252802926803 },
     listedAt: "March 9, 2021 15:22:13",
   },
   {
     itemName: "Comfy Apartment, Accessible Area ",
     imageSrc: "https://picsum.photos/345/180/?random",
     itemLocation: "6B Pipeline, Juba, Freetown, Sierra Leone",
-    itemPrice: 1200,
+    price: 1200,
     beds: 2,
     baths: 1,
+    id: 7,
+    location: { latitude: 8.458236979641176, longitude: -13.274350480905667 },
     listedAt: "March 15, 2021 09:22:13",
   },
   {
     itemName: "Spacious Apartment at Juba",
     imageSrc: "https://picsum.photos/345/180/?random",
     itemLocation: "6,7 Signal Hill Rd, Freetown, Sierra Leone",
-    itemPrice: 1900,
+    price: 1900,
     beds: 4,
     baths: 3,
+    id: 8,
+    location: { latitude: 8.43219922270178, longitude: -13.155566177710412 },
     listedAt: "June 10, 2021 07:22:13",
   },
 ];
@@ -129,22 +146,18 @@ const ListingsWrapper = () => {
     }
   };
   const sortPriceMaxToMin = () => {
-    let decending = dynamicItems
-      .slice()
-      .sort((a, b) => b.itemPrice - a.itemPrice);
+    let decending = dynamicItems.slice().sort((a, b) => b.price - a.price);
     setdynamicItems([...decending]);
   };
 
   const sortPriceMinToMax = () => {
-    let accending = dynamicItems
-      .slice()
-      .sort((a, b) => a.itemPrice - b.itemPrice);
+    let accending = dynamicItems.slice().sort((a, b) => a.price - b.price);
     setdynamicItems([...accending]);
   };
   const sortByBestMatch = () => {
     setdynamicItems([...items]);
   };
-  const sortByrecent = (params) => {
+  const sortByrecent = () => {
     let recent = dynamicItems
       .slice()
       .sort(
@@ -243,10 +256,18 @@ const ListingsWrapper = () => {
           </div>
           <CardSection items={dynamicItems} mapView={mapView} />
           <span className="block h-screen w-screen overflow-visible md:hidden">
-            <MapViewSection center={location} mapView={mapView} />
+            <MapViewSection
+              properties={items}
+              center={location}
+              mapView={mapView}
+            />
           </span>
         </section>
-        <MapViewSection center={location} mapView={mapView} />
+        <MapViewSection
+          properties={items}
+          center={location}
+          mapView={mapView}
+        />
       </div>
     </div>
   );

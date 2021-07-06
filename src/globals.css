@@ -118,25 +118,6 @@ button > #sortOption:hover {
   background: #fff;
 }
 
-@media screen and (min-width: 799px) {
-  .google-map {
-    height: 80vh;
-  }
-
-  .map-h2 {
-    font-size: 1.3rem;
-    font-weight: 400;
-  }
-
-  .pin {
-    width: 15vw;
-  }
-
-  .pin-icon {
-    font-size: 10vw;
-  }
-}
-
 .map-h2 {
   text-transform: uppercase;
   font-size: 1rem;
@@ -184,10 +165,38 @@ a,
   user-select: none;
 }
 
+.crime-marker {
+  background: none;
+  border: none;
+}
+
+.crime-marker img {
+  width: 25px;
+}
+
 @media screen and (max-height: 570px) {
   .mobileMenu {
     height: 100vh;
     overflow-y: scroll;
     padding-bottom: 25px;
+  }
+}
+
+@media screen and (min-width: 799px) {
+  .google-map {
+    height: 80vh;
+  }
+
+  .map-h2 {
+    font-size: 1.3rem;
+    font-weight: 400;
+  }
+
+  .pin {
+    width: 15vw;
+  }
+
+  .pin-icon {
+    font-size: 10vw;
   }
 }

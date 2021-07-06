@@ -1,8 +1,8 @@
 import React from "react";
-import { AiOutlineHeart } from "react-icons/ai";
 import { IoBedOutline } from "react-icons/io5";
 import { BiBath } from "react-icons/bi";
 import LinesEllipsis from "react-lines-ellipsis";
+import { FormatPrice } from "./index";
 
 const items: Array<any> = [
   {
@@ -48,23 +48,13 @@ interface ICards {
   baths: number;
 }
 
-// Create our number formatter.
-var formatter = new Intl.NumberFormat(undefined, {
-  style: "currency",
-  currency: "USD",
-  minimumFractionDigits: 0,
-  // These options are needed to round to whole numbers if that's what you want.
-  //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
-  //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
-});
-
 export const Card = (props: ICards) => {
   return (
     <article className="w-full md:w-72 h-80 pt-2 pt-4 overflow-hidden rounded-b-md rounded-t-lg bg-white shadow-lg">
       <div className="rounded-md relative w-full px-4">
         <div className="absolute top-5 w-full px-5">
           <span className="rounded-full py-1 px-2 bg-red-400 font-bold text-lg text-white ">
-            {formatter.format(props.itemPrice)}
+            {FormatPrice.format(props.itemPrice)}
           </span>
         </div>
         <div className=" rounded-lg overflow-hidden ">
