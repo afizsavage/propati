@@ -108,7 +108,7 @@ const MapViewSection = ({ center, mapView, properties }) => {
       >
         <GoogleMapReact
           bootstrapURLKeys={{
-            key: process.env.NEXT_PUBLIC_GOOGLE_MAP__API_KEY,
+            key: "AIzaSyD0NxdGbmSHZWWI1T5zYP6nCq_bxX2t110",
           }}
           defaultCenter={center}
           defaultZoom={14}
