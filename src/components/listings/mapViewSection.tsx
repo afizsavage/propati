@@ -1,9 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import GoogleMapReact from "google-map-react";
 import useSupercluster from "use-supercluster";
 
 import { FormatPrice } from "../utils";
 import { MarkerProps } from "../../interfaces";
+import { uselistings } from "../../contexts/listings-Context";
 
 const defaultMapOptions = {
   streetViewControl: false,
@@ -21,14 +22,22 @@ const Marker = (Props: MarkerProps) => {
 const MapViewSection = ({ center, mapView, properties }) => {
   const mapRef = useRef(null);
   const [bounds, setBounds] = useState(null);
-  const [zoom, setZoom] = useState(13);
+  const [zoom, setZoom] = useState(14);
+  const { dispatch } = uselistings();
 
+  // prepare data for super cluster
   const points = properties.map((location) => ({
     type: "Feature",
     properties: {
       cluster: false,
-      locationId: location.id,
-      locationPrice: location.price,
+      id: location.id,
+      price: location.price,
+      beds: location.beds,
+      baths: location.baths,
+      listedAt: location.listedAt,
+      name: location.itemName,
+      address: location.itemLocation,
+      image: location.imageSrc,
     },
     geometry: {
       type: "Point",
@@ -43,8 +52,50 @@ const MapViewSection = ({ center, mapView, properties }) => {
     points,
     bounds,
     zoom,
+
     options: { radius: 75, maxZoom: 20 },
   });
+
+  let allProperty = clusters;
+
+  useEffect(() => {
+    let clustered = [];
+    let listings = [];
+
+    sortAllProperty();
+
+    populateListings();
+
+    function sortAllProperty() {
+      allProperty.forEach((property) => {
+        if (property.properties.cluster === true) {
+          clustered.push(property);
+        } else {
+          listings.push(property);
+        }
+      });
+    }
+
+    for (let i = 0; i < clustered.length; i++) {
+      let children = supercluster?.getChildren(clustered[i].id);
+      children.forEach((child) => {
+        if (child.properties.cluster === true) {
+          let ren = supercluster?.getChildren(child.id);
+          ren.forEach((re) =>
+            re.properties.cluster === true
+              ? clustered.push(re)
+              : listings.push(re)
+          );
+        } else {
+          listings.push(child);
+        }
+      });
+    }
+
+    function populateListings() {
+      return dispatch({ type: "add", payload: listings });
+    }
+  }, [allProperty]);
 
   return (
     <section
@@ -56,12 +107,15 @@ const MapViewSection = ({ center, mapView, properties }) => {
         style={{ height: "91vh" }}
       >
         <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyD0NxdGbmSHZWWI1T5zYP6nCq_bxX2t110" }}
+          bootstrapURLKeys={{
+            key: process.env.NEXT_PUBLIC_GOOGLE_MAP__API_KEY,
+          }}
           defaultCenter={center}
-          defaultZoom={13}
+          defaultZoom={14}
           yesIWantToUseGoogleMapApiInternals
           options={{
             ...defaultMapOptions,
+            minZoom: 14,
           }}
           onGoogleApiLoaded={({ map }) => {
             mapRef.current = map;
@@ -76,7 +130,7 @@ const MapViewSection = ({ center, mapView, properties }) => {
             ]);
           }}
         >
-          {clusters.map((cluster) => {
+          {allProperty.map((cluster) => {
             const [longitude, latitude] = cluster.geometry.coordinates;
             const {
               cluster: isCluster,
@@ -91,7 +145,7 @@ const MapViewSection = ({ center, mapView, properties }) => {
                   lng={longitude}
                 >
                   <div
-                    className="rounded-full border bg-teal-500 flex items-center justify-center border-blue-500 w-9 h-9 "
+                    className="font-semibold rounded-full border bg-teal-600 text-sm text-white flex items-center justify-center border-blue-500 w-9 h-9 "
                     onClick={() => {
                       const expansionZoom = Math.min(
                         supercluster.getClusterExpansionZoom(cluster.id),
@@ -109,14 +163,13 @@ const MapViewSection = ({ center, mapView, properties }) => {
 
             return (
               <Marker
-                key={`location-${cluster.properties.locationId}`}
+                key={`location-${cluster.properties.id}`}
                 lat={latitude}
                 lng={longitude}
               >
                 <button className="crime-marker">
-                  {/* <img src="/custody.svg" alt="location doesn't pay" /> */}
-                  <span className="block w-auto h-auto py-2 px-2 flex justify-center rounded-full items-center bg-teal-500 ">
-                    {FormatPrice.format(cluster.properties.locationPrice)}
+                  <span className="block w-auto h-auto py-2 focus:outline-none px-2 text-white font-semibold text-sm flex justify-center rounded-full items-center bg-teal-600 ">
+                    {FormatPrice.format(cluster.properties.price)}
                   </span>
                 </button>
               </Marker>

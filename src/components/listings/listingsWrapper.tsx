@@ -1,105 +1,14 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 import { FaMapMarkerAlt, FaRegListAlt } from "react-icons/fa";
 import { RiEqualizerFill } from "react-icons/ri";
 
 import { DropDown } from "../utils";
 import { CardSection, MapViewSection } from "../../components/listings";
+import { uselistings } from "../../contexts/listings-Context";
+import { items } from "./test-items";
 
-let items: Array<any> = [
-  {
-    itemName: "Nice and Quiet Apartment",
-    imageSrc: "https://picsum.photos/345/180/?random",
-    itemLocation: "10 Hill Cot Rd, Freetown, Sierra Leone",
-    price: 1500,
-    id: 1,
-    location: { latitude: 8.482538005549308, longitude: -13.219440315648558 },
-    beds: 2,
-    baths: 2,
-    listedAt: "July 4, 2021 21:20:13",
-  },
-  {
-    itemName: "Detached building in a Secure Compound",
-    imageSrc: "https://picsum.photos/345/180/?random",
-    itemLocation: "20 Spur Loop, Freetown, Sierra Leone",
-    price: 1300,
-    beds: 2,
-    baths: 2,
-    id: 2,
-    location: { latitude: 8.481521955793466, longitude: -13.230236206484532 },
-    listedAt: "June 16, 2021 09:22:13",
-  },
-  {
-    itemName: "Comfy Apartment, Accessible Area ",
-    imageSrc: "https://picsum.photos/345/180/?random",
-    itemLocation: "6B Pipeline, Juba, Freetown, Sierra Leone",
-    price: 1200,
-    beds: 2,
-    baths: 1,
-    id: 3,
-    location: { latitude: 8.472586969312948, longitude: -13.270485433635288 },
-    listedAt: "July 1, 2021 22:22:13",
-  },
-  {
-    itemName: "Spacious Apartment at Juba",
-    imageSrc: "https://picsum.photos/345/180/?random",
-    itemLocation: "6,7 Signal Hill Rd, Freetown, Sierra Leone",
-    price: 1900,
-    beds: 4,
-    baths: 3,
-    id: 4,
-    location: { latitude: 8.492955453507072, longitude: -13.26482706328113 },
-    listedAt: "April 28, 2021 17:22:13",
-  },
-  {
-    itemName: "Comfy Apartment, Accessible Area ",
-    imageSrc: "https://picsum.photos/345/180/?random",
-    itemLocation: "6B Pipeline, Juba, Freetown, Sierra Leone",
-    price: 1200,
-    beds: 2,
-    baths: 1,
-    id: 5,
-    location: { latitude: 8.488098376385116, longitude: -13.216323588978259 },
-    listedAt: "April 1, 2021 07:00:13",
-  },
-  {
-    itemName: "Spacious Apartment at Juba",
-    imageSrc: "https://picsum.photos/345/180/?random",
-    itemLocation: "6,7 Signal Hill Rd, Freetown, Sierra Leone",
-    price: 1900,
-    beds: 4,
-    baths: 3,
-    id: 6,
-
-    location: { latitude: 8.460810415467288, longitude: -13.25252802926803 },
-    listedAt: "March 9, 2021 15:22:13",
-  },
-  {
-    itemName: "Comfy Apartment, Accessible Area ",
-    imageSrc: "https://picsum.photos/345/180/?random",
-    itemLocation: "6B Pipeline, Juba, Freetown, Sierra Leone",
-    price: 1200,
-    beds: 2,
-    baths: 1,
-    id: 7,
-    location: { latitude: 8.458236979641176, longitude: -13.274350480905667 },
-    listedAt: "March 15, 2021 09:22:13",
-  },
-  {
-    itemName: "Spacious Apartment at Juba",
-    imageSrc: "https://picsum.photos/345/180/?random",
-    itemLocation: "6,7 Signal Hill Rd, Freetown, Sierra Leone",
-    price: 1900,
-    beds: 4,
-    baths: 3,
-    id: 8,
-    location: { latitude: 8.43219922270178, longitude: -13.155566177710412 },
-    listedAt: "June 10, 2021 07:22:13",
-  },
-];
-
-const location = {
-  address: "8 Spur Road, Freetown",
+const center = {
   lat: 8.46520020876784,
   lng: -13.229434452077367,
 };
@@ -120,12 +29,12 @@ const SortOption = ({ title, clicked }) => {
 };
 
 const ListingsWrapper = () => {
-  const filtered = items;
-  const [dynamicItems, setdynamicItems] = useState(filtered);
-  let sumOfProperties = dynamicItems.length;
+  const { state, dispatch } = uselistings();
   const [mapView, setmapView] = useState(false);
   const prevScrollY = useRef(0);
   const [goingUp, setGoingUp] = useState(true);
+  let listings = state.listings;
+  let sumOfProperties = listings.length;
 
   const onScroll = (e) => {
     const currentScrollY = e.target.scrollTop;
@@ -146,27 +55,37 @@ const ListingsWrapper = () => {
     }
   };
   const sortPriceMaxToMin = () => {
-    let decending = dynamicItems.slice().sort((a, b) => b.price - a.price);
-    setdynamicItems([...decending]);
+    let decending = listings
+      .slice()
+      .sort((a, b) => b.properties.price - a.properties.price);
+    dispatch({ type: "add", payload: [...decending] });
   };
 
   const sortPriceMinToMax = () => {
-    let accending = dynamicItems.slice().sort((a, b) => a.price - b.price);
-    setdynamicItems([...accending]);
+    let accending = listings
+      .slice()
+      .sort((a, b) => a.properties.price - b.properties.price);
+    dispatch({ type: "add", payload: [...accending] });
   };
   const sortByBestMatch = () => {
-    setdynamicItems([...items]);
+    dispatch({ type: "add", payload: [...state.listings] });
   };
   const sortByrecent = () => {
-    let recent = dynamicItems
+    let recent = listings
       .slice()
       .sort(
         (a, b) =>
-          new Date(b.listedAt).getTime() - new Date(a.listedAt).getTime()
+          new Date(b.properties.listedAt).getTime() -
+          new Date(a.properties.listedAt).getTime()
       );
-    setdynamicItems([...recent]);
+    dispatch({ type: "add", payload: [...recent] });
   };
 
+  useEffect(() => {
+    const screenWidth = window.innerWidth;
+
+    screenWidth <= 834 ? setmapView(true) : setmapView(false);
+  }, []);
   return (
     <div>
       <div className="w-full h-full md:overflow-hidden grid grid-cols-9">
@@ -254,20 +173,16 @@ const ListingsWrapper = () => {
               </span>
             </div>
           </div>
-          <CardSection items={dynamicItems} mapView={mapView} />
+          <CardSection mapView={mapView} />
           <span className="block h-screen w-screen overflow-visible md:hidden">
             <MapViewSection
               properties={items}
-              center={location}
+              center={center}
               mapView={mapView}
             />
           </span>
         </section>
-        <MapViewSection
-          properties={items}
-          center={location}
-          mapView={mapView}
-        />
+        <MapViewSection properties={items} center={center} mapView={mapView} />
       </div>
     </div>
   );

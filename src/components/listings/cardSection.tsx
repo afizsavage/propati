@@ -1,23 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 
 import { Card } from "../utils/itemCard";
+import { uselistings } from "../../contexts/listings-Context";
 
-const CardSection = ({ mapView, items }) => {
+const CardSection = ({ mapView }) => {
+  const { state } = uselistings();
+
   return (
     <div className={!mapView ? "cardsWrapper" : "hidden"}>
-      {items.map((item) => {
+      {state.listings.map((item) => {
         return (
-          <div className="md:px-3 md:mt-6 mx-auto md:mx-0 first:mt-24 md:first:mt-6 last:pb-40">
+          <div className="md:px-3 mt-3 md:mt-5 mx-auto md:mx-0 first:mt-24 md:first:mt-5 last:pb-40">
             <Link href="">
               <a>
                 <Card
-                  baths={item.baths}
-                  beds={item.beds}
-                  imageSrc={item.imageSrc}
-                  itemLocation={item.itemLocation}
-                  itemName={item.itemName}
-                  itemPrice={item.itemPrice}
+                  baths={item.properties.baths}
+                  beds={item.properties.beds}
+                  imageSrc={item.properties.image}
+                  itemLocation={item.properties.address}
+                  itemName={item.properties.name}
+                  itemPrice={item.properties.price}
                 />
               </a>
             </Link>
