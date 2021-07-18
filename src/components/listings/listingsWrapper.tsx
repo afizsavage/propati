@@ -110,8 +110,8 @@ const ListingsWrapper = () => {
                 <RiEqualizerFill className="inline text-xl transform rotate-90 mr-2" />
                 <span className="hidden md:inline-block">
                   <b className="font-bold">{sumOfProperties}</b> residentials{" "}
-                  <b className="font-bold">for sale </b> at Freetown, Sierra
-                  Leone
+                  <b className="font-bold">for sale </b> at selected map area in
+                  Freetown
                 </span>
                 <span className="inline-block md:hidden">Filters</span>
               </h1>

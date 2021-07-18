@@ -61,4 +61,6 @@ export interface MarkerProps {
   key: any;
   lat: any;
   lng: any;
+  mapBounds?: any;
+  handleClick?: (e: any) => void;
 }

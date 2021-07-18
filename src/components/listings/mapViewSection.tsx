@@ -5,6 +5,7 @@ import useSupercluster from "use-supercluster";
 import { FormatPrice } from "../utils";
 import { MarkerProps } from "../../interfaces";
 import { uselistings } from "../../contexts/listings-Context";
+import InfoWindow from "./map-info-window";
 
 const defaultMapOptions = {
   streetViewControl: false,
@@ -15,15 +16,23 @@ const defaultMapOptions = {
   keyboardShortcuts: false,
 };
 
-const Marker = (Props: MarkerProps) => {
+const SingleMarker = (Props: MarkerProps) => {
+  return <button onClick={Props.handleClick}>{Props.children}</button>;
+};
+
+const ClusterMarker = (Props: MarkerProps) => {
   return <>{Props.children}</>;
 };
 
 const MapViewSection = ({ center, mapView, properties }) => {
   const mapRef = useRef(null);
   const [bounds, setBounds] = useState(null);
+  const [infoIndex, setinfoIndex] = useState(null);
+  const [showInfo, setshowInfo] = useState(false);
   const [zoom, setZoom] = useState(14);
   const { dispatch } = uselistings();
+  const [mapBounding, setmapBounding] = useState(null);
+  const [markerPosition, setmarkerPosition] = useState(null);
 
   // prepare data for super cluster
   const points = properties.map((location) => ({
@@ -97,6 +106,11 @@ const MapViewSection = ({ center, mapView, properties }) => {
     }
   }, [allProperty]);
 
+  useEffect(() => {
+    let mBoumd = mapRef.current.getBoundingClientRect();
+    setmapBounding(mBoumd);
+  }, []);
+
   return (
     <section
       ref={mapRef}
@@ -130,7 +144,7 @@ const MapViewSection = ({ center, mapView, properties }) => {
             ]);
           }}
         >
-          {allProperty.map((cluster) => {
+          {allProperty.map((cluster, i) => {
             const [longitude, latitude] = cluster.geometry.coordinates;
             const {
               cluster: isCluster,
@@ -139,13 +153,13 @@ const MapViewSection = ({ center, mapView, properties }) => {
 
             if (isCluster) {
               return (
-                <Marker
+                <ClusterMarker
                   key={`cluster-${cluster.id}`}
                   lat={latitude}
                   lng={longitude}
                 >
                   <div
-                    className="font-semibold rounded-full border bg-teal-600 text-sm text-white flex items-center justify-center border-blue-500 w-9 h-9 "
+                    className=" font-semibold rounded-full border bg-teal-600 text-sm text-white flex items-center justify-center border-blue-500 w-9 h-9 "
                     onClick={() => {
                       const expansionZoom = Math.min(
                         supercluster.getClusterExpansionZoom(cluster.id),
@@ -157,22 +171,42 @@ const MapViewSection = ({ center, mapView, properties }) => {
                   >
                     {pointCount}
                   </div>
-                </Marker>
+                </ClusterMarker>
               );
             }
-
             return (
-              <Marker
+              <SingleMarker
                 key={`location-${cluster.properties.id}`}
                 lat={latitude}
                 lng={longitude}
+                handleClick={(e) => {
+                  const targetMarker = e.target.getBoundingClientRect();
+                  let mLeft = targetMarker.left - mapBounding.left;
+                  let mRight = mapBounding.right - targetMarker.right;
+                  let mBottom = mapBounding.bottom - targetMarker.bottom;
+                  let mTop = targetMarker.top - mapBounding.top;
+                  let position = {
+                    top: mTop,
+                    right: mRight,
+                    bottom: mBottom,
+                    left: mLeft,
+                  };
+                  setmarkerPosition(position);
+                  setshowInfo(true);
+                  setinfoIndex(cluster.properties.id);
+                }}
               >
-                <button className="crime-marker">
-                  <span className="block w-auto h-auto py-2 focus:outline-none px-2 text-white font-semibold text-sm flex justify-center rounded-full items-center bg-teal-600 ">
-                    {FormatPrice.format(cluster.properties.price)}
-                  </span>
-                </button>
-              </Marker>
+                <span className="inline-block w-auto h-auto py-2 px-2 text-white font-semibold text-sm flex justify-center rounded-full items-center bg-teal-600 ">
+                  {FormatPrice.format(cluster.properties.price)}
+                </span>
+                {showInfo == true && infoIndex == cluster.properties.id && (
+                  <InfoWindow
+                    targetPosition={markerPosition}
+                    property={cluster}
+                    setshowInfo={setshowInfo}
+                  />
+                )}
+              </SingleMarker>
             );
           })}
         </GoogleMapReact>

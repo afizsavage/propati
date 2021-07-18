@@ -51,7 +51,6 @@
   .gm-svpc {
     @apply left-10;
   }
-
   input:focus-within ~ label {
     @apply transform  scale-75 -translate-y-6;
   }
@@ -163,15 +162,6 @@ a,
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-
-.crime-marker {
-  background: none;
-  border: none;
-}
-
-.crime-marker img {
-  width: 25px;
 }
 
 @media screen and (max-height: 570px) {
