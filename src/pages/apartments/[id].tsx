@@ -6,16 +6,19 @@ import { FaSmoking } from "react-icons/fa";
 import { GiWaterTank, GiTap, GiSecurityGate, GiSofa } from "react-icons/gi";
 import { RiTempColdLine, RiParkingBoxLine } from "react-icons/ri";
 import { GrFormView } from "react-icons/gr";
+import { useRouter } from "next/router";
 
-import { Footer } from "../components/utils";
-import { Navbar } from "../components/navbar";
-import ImageSlider from "../components/property/imageSlider";
+ImageSlider;
 import {
   Location,
   ListingDescription,
   ApplyCard,
   SimilarItems,
-} from "../components/property";
+} from "../../components/property";
+import { Footer } from "../../components/utils";
+import { Navbar } from "../../components/navbar";
+import ImageSlider from "../../components/property/imageSlider";
+import { items } from "../../components/listings/test-items";
 
 interface ABProps {
   icon: any;
@@ -31,12 +34,12 @@ const AcitivityBtn = (props: ABProps) => {
   );
 };
 
-const ListingHeading = (params) => {
+const ListingHeading = ({ itemName, itemAddress }) => {
   return (
     <section className="flex-col font-Lato pt-6">
       <h1 className="text-3xl text-gray-700 font-semibold mb-2 ">
         {" "}
-        Residential Rental at Spur Road{" "}
+        {itemName}
       </h1>
 
       <div className="flex justify-between">
@@ -44,7 +47,7 @@ const ListingHeading = (params) => {
           <Link href="#">
             <a className="font-semibold text-gray-500 underline ">
               {" "}
-              18 Spur Road, Freetown, SL
+              {itemAddress}
             </a>
           </Link>
         </span>
@@ -83,11 +86,10 @@ const Amenities = (params) => {
   );
 };
 
-const location = {
-  address: "8 Spur Road, Freetown",
-  lat: 8.471644482274344,
-  lng: -13.270381673488407,
-};
+// const location = {
+//   lat: 8.471644482274344,
+//   lng: -13.270381673488407,
+// };
 
 const Contact = (params) => {
   return (
@@ -115,45 +117,58 @@ const Contact = (params) => {
 };
 
 const Item = (props) => {
+  const router = useRouter();
+
   return (
     <>
       <Navbar />
       <main className="flex flex-col flex-grow w-full">
-        <div className="md:px-8 lg:px-16 px-6 w-full">
-          <ListingHeading />
-          <div className="flex w-full pt-5">
-            <div className="w-3/4">
-              <div className="flex-col ">
-                <ImageSlider />
-                <div className="flex-col mb-8 pt-10">
-                  <h2 className="text-2xl font-semibold text-gray-700 mb-1">
-                    Apartment
-                  </h2>
-                  <span className="text-gray-700">
-                    3 Beds. 2 Baths. 50 m<sup>2</sup>
-                  </span>
-                </div>
-                <ListingDescription />
-                <Amenities />
-                <Location location={location} zoomLevel={15} />
-                <Contact />
-                <div className="pt-7">
-                  <span>
-                    <AcitivityBtn
-                      icon={<AiOutlineHeart className="inline mr-1 " />}
-                      title={"Save"}
-                    />
-                    <AcitivityBtn
-                      icon={<IoShareOutline className="inline mr-1 " />}
-                      title="Share"
-                    />
-                  </span>
+        {items.map((item) => {
+          if (item.id == router.query.id) {
+            return (
+              <div className="md:px-8 lg:px-16 px-6 w-full">
+                <ListingHeading
+                  itemName={item.itemName}
+                  itemAddress={item.itemLocation}
+                />
+                <div className="flex w-full pt-5">
+                  <div className="w-3/4">
+                    <div className="flex-col ">
+                      <ImageSlider />
+                      <div className="flex-col mb-8 pt-10">
+                        <h2 className="text-2xl font-semibold text-gray-700 mb-1">
+                          Apartment
+                        </h2>
+                        <span className="text-gray-700">
+                          3 Beds. 2 Baths. 50 m<sup>2</sup>
+                        </span>
+                      </div>
+                      <ListingDescription />
+                      <Amenities />
+                      <Location location={item.location} zoomLevel={15} />
+                      <Contact />
+                      <div className="pt-7">
+                        <span>
+                          <AcitivityBtn
+                            icon={<AiOutlineHeart className="inline mr-1 " />}
+                            title={"Save"}
+                          />
+                          <AcitivityBtn
+                            icon={<IoShareOutline className="inline mr-1 " />}
+                            title="Share"
+                          />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <ApplyCard itemPrice={item.price} />
                 </div>
               </div>
-            </div>
-            <ApplyCard />
-          </div>
-        </div>
+            );
+          } else {
+            return null;
+          }
+        })}
         <SimilarItems />
       </main>
       <Footer />

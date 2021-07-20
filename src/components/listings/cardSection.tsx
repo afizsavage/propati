@@ -15,7 +15,12 @@ const CardSection = ({ mapView }) => {
             key={item.properties.id}
             className="md:px-3 mt-3 md:mt-5 mx-auto md:mx-0 first:mt-24 md:first:mt-5 last:pb-40"
           >
-            <Link href="">
+            <Link
+              href={{
+                pathname: "/apartments/[id]",
+                query: { id: item.properties.id },
+              }}
+            >
               <a>
                 <Card
                   baths={item.properties.baths}

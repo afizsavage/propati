@@ -1,7 +1,6 @@
 import React from "react";
 import { IoBedOutline } from "react-icons/io5";
 import { BiBath } from "react-icons/bi";
-import LinesEllipsis from "react-lines-ellipsis";
 import { FormatPrice } from "./index";
 
 const items: Array<any> = [

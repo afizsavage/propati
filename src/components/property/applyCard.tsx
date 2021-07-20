@@ -1,7 +1,9 @@
 import React from "react";
 import SubmitBtn from "../auth/submitBtn";
+import FormatPrice from "../utils/priceFormatter";
 
-const ApplyCard = () => {
+const ApplyCard = ({ itemPrice }) => {
+  console.log(itemPrice);
   return (
     <div className="flex flex-grow flex-col pl-12">
       <div
@@ -20,7 +22,7 @@ const ApplyCard = () => {
             </div>
 
             <div className="mt-2 inline-flex justify-center text-2xl text-gray-700 font-semibold w-full">
-              <span>$1,200</span>
+              <span>{FormatPrice.format(itemPrice)}</span>
             </div>
           </div>
           <div className="w-full text-xs font-semibold py-2 inline-flex justify-center mt-5 bg-gray-100">
