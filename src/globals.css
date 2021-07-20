@@ -64,6 +64,9 @@
   .listings {
     @apply overflow-y-scroll overflow-x-hidden flex flex-col md:overflow-y-hidden h-screen col-span-9 lg:col-span-5;
   }
+  .marker {
+    @apply inline-block w-auto h-auto py-2 px-2 text-white font-semibold text-sm flex justify-center rounded-full items-center;
+  }
   .mobileMenu {
     @apply transform md:transform-none transition z-30 duration-500 ease-in-out md:hidden fixed h-auto bg-white top-14 overflow-y-scroll w-full px-6  border-t border-opacity-50 border-gray-200;
   }

@@ -81,6 +81,7 @@ const ListingsWrapper = () => {
     dispatch({ type: "add", payload: [...recent] });
   };
 
+  // get the screen width to set map view as default for mobile devices
   useEffect(() => {
     const screenWidth = window.innerWidth;
 

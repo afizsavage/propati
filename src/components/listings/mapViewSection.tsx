@@ -17,7 +17,11 @@ const defaultMapOptions = {
 };
 
 const SingleMarker = (Props: MarkerProps) => {
-  return <button onClick={Props.handleClick}>{Props.children}</button>;
+  return (
+    <button className="focus:outline-none" onClick={Props.handleClick}>
+      {Props.children}
+    </button>
+  );
 };
 
 const ClusterMarker = (Props: MarkerProps) => {
@@ -136,6 +140,7 @@ const MapViewSection = ({ center, mapView, properties }) => {
           }}
           onChange={({ zoom, bounds }) => {
             setZoom(zoom);
+            setinfoIndex(null);
             setBounds([
               bounds.nw.lng,
               bounds.se.lat,
@@ -196,7 +201,13 @@ const MapViewSection = ({ center, mapView, properties }) => {
                   setinfoIndex(cluster.properties.id);
                 }}
               >
-                <span className="inline-block w-auto h-auto py-2 px-2 text-white font-semibold text-sm flex justify-center rounded-full items-center bg-teal-600 ">
+                <span
+                  className={
+                    infoIndex == cluster.properties.id
+                      ? "marker bg-gray-800 "
+                      : "marker bg-teal-600"
+                  }
+                >
                   {FormatPrice.format(cluster.properties.price)}
                 </span>
                 {showInfo == true && infoIndex == cluster.properties.id && (
@@ -204,6 +215,7 @@ const MapViewSection = ({ center, mapView, properties }) => {
                     targetPosition={markerPosition}
                     property={cluster}
                     setshowInfo={setshowInfo}
+                    setinfoIndex={setinfoIndex}
                   />
                 )}
               </SingleMarker>

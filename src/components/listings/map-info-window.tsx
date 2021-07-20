@@ -1,11 +1,17 @@
 import React, { useEffect, useRef } from "react";
 
-import { Card } from "../utils/itemCard";
+import { MapCard } from "../utils/itemCard";
 
-const InfoWindow = ({ property, setshowInfo, targetPosition }) => {
+const InfoWindow = ({
+  property,
+  setshowInfo,
+  targetPosition,
+  setinfoIndex,
+}) => {
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef);
-  console.log("target Position", targetPosition);
+
+  positionWindow();
   function useOutsideAlerter(ref) {
     useEffect(() => {
       function handleClickOutside(event) {
@@ -19,13 +25,40 @@ const InfoWindow = ({ property, setshowInfo, targetPosition }) => {
       return () => {
         // Unbind the event listener on clean up
         document.removeEventListener("mousedown", handleClickOutside);
+        setinfoIndex(null);
       };
     }, [ref]);
   }
+  console.log("target position:", targetPosition);
+  function positionWindow() {}
 
+  useEffect(() => {
+    const screenWidth = window.innerWidth;
+    let height = wrapperRef.current.offsetHeight;
+    let width = wrapperRef.current.offsetWidth;
+    if (targetPosition.right <= width / 2) {
+      if (wrapperRef.current) {
+        wrapperRef.current.style.left = "-19rem";
+        wrapperRef.current.style.top = "-8rem";
+      }
+    } else if (targetPosition.left <= width / 2) {
+      if (wrapperRef.current) {
+        wrapperRef.current.style.left = "5.2rem";
+        wrapperRef.current.style.top = "-8rem";
+      }
+    } else if (targetPosition.bottom <= height + 55) {
+      if (wrapperRef.current) {
+        wrapperRef.current.style.top = "-19rem";
+      }
+    } else if (targetPosition.top <= height) {
+      if (wrapperRef.current) {
+        wrapperRef.current.style.top = "3rem";
+      }
+    }
+  }, []);
   return (
-    <div ref={wrapperRef} className="absolute z-10">
-      <Card
+    <div ref={wrapperRef} className="absolute top-12 -left-28  z-10">
+      <MapCard
         baths={property.properties.baths}
         beds={property.properties.beds}
         imageSrc={property.properties.image}
