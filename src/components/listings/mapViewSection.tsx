@@ -164,7 +164,7 @@ const MapViewSection = ({ center, mapView, properties }) => {
                   lng={longitude}
                 >
                   <div
-                    className=" font-semibold rounded-full border bg-teal-600 text-sm text-white flex items-center justify-center border-blue-500 w-9 h-9 "
+                    className=" font-semibold rounded-full hover:bg-gray-800 bg-teal-600 text-sm text-white flex items-center justify-center w-10 h-10 "
                     onClick={() => {
                       const expansionZoom = Math.min(
                         supercluster.getClusterExpansionZoom(cluster.id),
@@ -204,8 +204,8 @@ const MapViewSection = ({ center, mapView, properties }) => {
                 <span
                   className={
                     infoIndex == cluster.properties.id
-                      ? "marker bg-gray-800 "
-                      : "marker bg-teal-600"
+                      ? "marker bg-gray-500 "
+                      : "marker bg-teal-600 hover:bg-gray-800"
                   }
                 >
                   {FormatPrice.format(cluster.properties.price)}

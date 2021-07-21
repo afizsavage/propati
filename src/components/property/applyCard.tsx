@@ -18,19 +18,20 @@ const ApplyCard = ({ itemPrice }) => {
           <div className="px-8 pt-8">
             <div className="w-full text-center font-medium text-gray-400 text-sm">
               {" "}
-              <span>Yearly Rate</span>
+              {/* <span>Yearly Rate</span> */}
+              <span>Price</span>
             </div>
 
-            <div className="mt-2 inline-flex justify-center text-2xl text-gray-700 font-semibold w-full">
+            <div className="mt-2 mb-5 inline-flex justify-center text-2xl text-gray-700 font-semibold w-full">
               <span>{FormatPrice.format(itemPrice)}</span>
             </div>
           </div>
-          <div className="w-full text-xs font-semibold py-2 inline-flex justify-center mt-5 bg-gray-100">
+          {/* <div className="w-full text-xs font-semibold py-2 inline-flex justify-center mt-5 bg-gray-100">
             <span className="text-center">Currently Available</span>
-          </div>
+          </div> */}
 
           <SubmitBtn
-            btnText="Apply"
+            btnText="Contact Agent"
             loading={null}
             style={" bg-purple-500 hover:bg-purple-600"}
           />

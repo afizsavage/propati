@@ -56,7 +56,7 @@ export const Card = (props: ICards) => {
             {FormatPrice.format(props.itemPrice)}
           </span>
         </div>
-        <div className=" rounded-lg overflow-hidden ">
+        <div className="rounded-t-lg overflow-hidden ">
           <img
             style={{ height: "180px" }}
             alt="Placeholder"
@@ -91,7 +91,7 @@ export const Card = (props: ICards) => {
 
 export const MapCard = (props: ICards) => {
   return (
-    <article className=" w-64 md:w-72 h-72 overflow-hidden rounded-b-md rounded-t-lg bg-white shadow-lg">
+    <article className=" w-64 md:w-72 h-auto overflow-hidden rounded-b-md rounded-t-lg bg-white shadow-lg">
       <div className="rounded-md relative w-full ">
         <div className="absolute -left-20 top-5 w-full px-5">
           <span className="rounded-full py-1 px-2 bg-red-400 font-bold text-lg text-white ">
@@ -108,24 +108,24 @@ export const MapCard = (props: ICards) => {
           />
         </div>
       </div>
-
-      <div className="truncate text-sm text-gray-900 font-bold">
-        {props.itemName}
+      <div className="flex flex-col w-full py-5 text-left px-5">
+        <div className="flex justify-start mb-2  text-gray-500 font-normal text-sm">
+          <span className="inline mr-3">
+            {" "}
+            <IoBedOutline className="inline text-lg " /> {props.beds} Beds
+          </span>
+          <span className="inline">
+            {" "}
+            <BiBath className="inline text-lg " /> {props.baths} Baths
+          </span>
+        </div>
+        <div className="truncate text-sm mb-1 text-gray-800 font-bold">
+          {props.itemName}
+        </div>
+        <div className=" truncate  text-gray-500 text-sm font-medium ">
+          {props.itemLocation}
+        </div>
       </div>
-      <div className=" truncate mt-3  text-gray-500 text-sm font-medium ">
-        {props.itemLocation}
-      </div>
-
-      <footer className="flex justify-start py-2 px-4 text-gray-500 font-normal text-sm">
-        <span className="inline mr-3">
-          {" "}
-          <IoBedOutline className="inline text-lg " /> {props.beds} Beds
-        </span>
-        <span className="inline">
-          {" "}
-          <BiBath className="inline text-lg " /> {props.baths} Baths
-        </span>
-      </footer>
     </article>
   );
 };
