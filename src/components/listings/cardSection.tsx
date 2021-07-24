@@ -13,7 +13,7 @@ const CardSection = ({ mapView }) => {
         return (
           <div
             key={item.properties.id}
-            className="md:px-3 mt-3 md:mt-5 mx-auto md:mx-0 first:mt-24 md:first:mt-5 last:pb-40"
+            className="md:px-3 mt-3 md:mt-5 mx-auto md:mx-0 first:mt-24 md:first:mt-5 last:pb-40 transform ease-in-out duration-500 hover:-translate-y-4"
           >
             <Link
               href={{

@@ -30,7 +30,7 @@ const LeftNavProps = (props) => {
       <div className="hidden lg:block sm:ml-6">
         <div className="flex space-x-4">
           {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-          <Link href="/apartments">
+          <Link href="#">
             <a
               className={
                 router.pathname == "/apartments"

@@ -113,6 +113,7 @@ const MapViewSection = ({ center, mapView, properties }) => {
   useEffect(() => {
     let mBoumd = mapRef.current.getBoundingClientRect();
     setmapBounding(mBoumd);
+    console.log(mBoumd);
   }, []);
 
   return (

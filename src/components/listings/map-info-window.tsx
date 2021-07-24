@@ -46,36 +46,64 @@ const InfoWindow = ({
     const screenWidth = window.innerWidth;
     let height = wrapperRef.current.offsetHeight;
     let width = wrapperRef.current.offsetWidth;
-    if (targetPosition.top <= height / 2 && targetPosition.left <= width / 2) {
-      if (wrapperRef.current) {
-        wrapperRef.current.style.left = "5rem";
-        wrapperRef.current.style.top = "-5rem";
+    if (screenWidth <= 834) {
+      if (targetPosition.top <= width / 2) {
+        if (wrapperRef.current) {
+          wrapperRef.current.style.top = "25rem";
+          wrapperRef.current.style.left = "25rem";
+        }
       }
-    } else if (
-      targetPosition.right <= width / 2 &&
-      targetPosition.top <= height / 2
-    ) {
-      if (wrapperRef.current) {
-        wrapperRef.current.style.left = "-19rem";
-        wrapperRef.current.style.top = "-5rem";
-      }
-    } else if (targetPosition.left <= width / 2) {
-      if (wrapperRef.current) {
-        wrapperRef.current.style.left = "5.2rem";
-        wrapperRef.current.style.top = "-8.5rem";
-      }
-    } else if (targetPosition.right <= width / 2) {
-      if (wrapperRef.current) {
-        wrapperRef.current.style.left = "-19rem";
-        wrapperRef.current.style.top = "-8.5rem";
-      }
-    } else if (targetPosition.top <= height) {
-      if (wrapperRef.current) {
-        wrapperRef.current.style.top = "3rem";
-      }
-    } else if (targetPosition.bottom <= height + height / 4) {
-      if (wrapperRef.current) {
-        wrapperRef.current.style.top = "-20.5rem";
+    } else {
+      if (
+        targetPosition.top <= height / 4 &&
+        targetPosition.left <= width / 2
+      ) {
+        if (wrapperRef.current) {
+          wrapperRef.current.style.top = "3.5rem";
+          wrapperRef.current.style.left = " 0rem";
+        }
+      } else if (
+        targetPosition.top <= height / 4 &&
+        targetPosition.right <= width / 2
+      ) {
+        if (wrapperRef.current) {
+          wrapperRef.current.style.top = "0rem";
+          wrapperRef.current.style.left = " -19rem";
+        }
+      } else if (
+        targetPosition.top <= height / 2 &&
+        targetPosition.left <= width / 2
+      ) {
+        if (wrapperRef.current) {
+          wrapperRef.current.style.left = "5rem";
+          wrapperRef.current.style.top = "-5rem";
+        }
+      } else if (
+        targetPosition.right <= width / 2 &&
+        targetPosition.top <= height / 2
+      ) {
+        if (wrapperRef.current) {
+          wrapperRef.current.style.left = "-19rem";
+          wrapperRef.current.style.top = "-5rem";
+        }
+      } else if (targetPosition.left <= width / 2) {
+        if (wrapperRef.current) {
+          wrapperRef.current.style.left = "5.2rem";
+          wrapperRef.current.style.top = "-8.5rem";
+        }
+      } else if (targetPosition.right <= width / 2) {
+        if (wrapperRef.current) {
+          wrapperRef.current.style.left = "-19rem";
+          wrapperRef.current.style.top = "-8.5rem";
+        }
+      } else if (targetPosition.top <= height) {
+        if (wrapperRef.current) {
+          wrapperRef.current.style.top = "3rem";
+        }
+      } else if (targetPosition.bottom <= height + height / 4) {
+        if (wrapperRef.current) {
+          wrapperRef.current.style.top = "-20.5rem";
+        }
       }
     }
   }, []);

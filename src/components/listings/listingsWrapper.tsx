@@ -156,7 +156,7 @@ const ListingsWrapper = () => {
                       clicked={sortByrecent}
                     />,
                     <SortOption
-                      // clicked={sortPriceMinToMax}
+                      // clicked<MapViewSection properties={items} center={center} mapView={mapView} />={sortPriceMinToMax}
                       title="Price: Low to high"
                       clicked={sortPriceMinToMax}
                     />,
@@ -175,13 +175,13 @@ const ListingsWrapper = () => {
             </div>
           </div>
           <CardSection mapView={mapView} />
-          <span className="block h-screen w-screen overflow-visible md:hidden">
+          {/* <span className="block h-screen w-96 overflow-visible md:hidden">
             <MapViewSection
               properties={items}
               center={center}
               mapView={mapView}
             />
-          </span>
+          </span> */}
         </section>
         <MapViewSection properties={items} center={center} mapView={mapView} />
       </div>
