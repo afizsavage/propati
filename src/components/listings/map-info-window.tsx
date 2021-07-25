@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { MapCard } from "../utils/itemCard";
@@ -14,14 +13,13 @@ const InfoWindow = ({
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef);
 
-  positionWindow();
-
   const navigate = (id) =>
     router.push({
       pathname: "/apartments/[id]",
       query: { id },
     });
 
+  // hide info window if a click event fired outside the info window
   function useOutsideAlerter(ref) {
     useEffect(() => {
       function handleClickOutside(event) {
@@ -29,19 +27,15 @@ const InfoWindow = ({
           setshowInfo(false);
         }
       }
-
-      // Bind the event listener
       document.addEventListener("mousedown", handleClickOutside);
       return () => {
-        // Unbind the event listener on clean up
         document.removeEventListener("mousedown", handleClickOutside);
         setinfoIndex(null);
       };
     }, [ref]);
   }
-  console.log("target position:", targetPosition);
-  function positionWindow() {}
 
+  //render the info window relative to the marker position on the map
   useEffect(() => {
     const screenWidth = window.innerWidth;
     let height = wrapperRef.current.offsetHeight;
@@ -63,12 +57,44 @@ const InfoWindow = ({
           wrapperRef.current.style.left = " 0rem";
         }
       } else if (
+        targetPosition.bottom <= height / 2 &&
+        targetPosition.left <= width / 2
+      ) {
+        if (wrapperRef.current) {
+          wrapperRef.current.style.top = "-19.5rem";
+          wrapperRef.current.style.left = " 5rem";
+        }
+      } else if (
         targetPosition.top <= height / 4 &&
         targetPosition.right <= width / 2
       ) {
         if (wrapperRef.current) {
           wrapperRef.current.style.top = "0rem";
           wrapperRef.current.style.left = " -19rem";
+        }
+      } else if (
+        targetPosition.bottom <= height / 2 &&
+        targetPosition.right <= width / 2
+      ) {
+        if (wrapperRef.current) {
+          wrapperRef.current.style.left = "-19rem";
+          wrapperRef.current.style.top = "-19.5rem";
+        }
+      } else if (
+        targetPosition.bottom <= height &&
+        targetPosition.left <= width / 2
+      ) {
+        if (wrapperRef.current) {
+          wrapperRef.current.style.top = "-13rem";
+          wrapperRef.current.style.left = "5rem";
+        }
+      } else if (
+        targetPosition.bottom <= height &&
+        targetPosition.right <= width / 2
+      ) {
+        if (wrapperRef.current) {
+          wrapperRef.current.style.top = "-13rem";
+          wrapperRef.current.style.left = "-19rem";
         }
       } else if (
         targetPosition.top <= height / 2 &&
@@ -100,7 +126,7 @@ const InfoWindow = ({
         if (wrapperRef.current) {
           wrapperRef.current.style.top = "3rem";
         }
-      } else if (targetPosition.bottom <= height + height / 4) {
+      } else if (targetPosition.bottom <= height + height / 3) {
         if (wrapperRef.current) {
           wrapperRef.current.style.top = "-20.5rem";
         }

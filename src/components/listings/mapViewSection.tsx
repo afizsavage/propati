@@ -3,9 +3,9 @@ import GoogleMapReact from "google-map-react";
 import useSupercluster from "use-supercluster";
 
 import { FormatPrice } from "../utils";
-import { MarkerProps } from "../../interfaces";
 import { uselistings } from "../../contexts/listings-Context";
 import InfoWindow from "./map-info-window";
+import { SingleMarker, ClusterMarker } from "./index";
 
 const defaultMapOptions = {
   streetViewControl: false,
@@ -14,18 +14,6 @@ const defaultMapOptions = {
     position: 6,
   },
   keyboardShortcuts: false,
-};
-
-const SingleMarker = (Props: MarkerProps) => {
-  return (
-    <button className="focus:outline-none" onClick={Props.handleClick}>
-      {Props.children}
-    </button>
-  );
-};
-
-const ClusterMarker = (Props: MarkerProps) => {
-  return <>{Props.children}</>;
 };
 
 const MapViewSection = ({ center, mapView, properties }) => {
@@ -38,7 +26,7 @@ const MapViewSection = ({ center, mapView, properties }) => {
   const [mapBounding, setmapBounding] = useState(null);
   const [markerPosition, setmarkerPosition] = useState(null);
 
-  // prepare data for super cluster
+  // prepare data for supercluster
   const points = properties.map((location) => ({
     type: "Feature",
     properties: {
@@ -61,6 +49,7 @@ const MapViewSection = ({ center, mapView, properties }) => {
     },
   }));
 
+  // use superCluster hook
   const { clusters, supercluster } = useSupercluster({
     points,
     bounds,
@@ -73,12 +62,12 @@ const MapViewSection = ({ center, mapView, properties }) => {
 
   useEffect(() => {
     let clustered = [];
-    let listings = [];
+    let listings = []; // listings holds only individual points
 
     sortAllProperty();
-
     populateListings();
 
+    // loop through all the points rendered on the map
     function sortAllProperty() {
       allProperty.forEach((property) => {
         if (property.properties.cluster === true) {
@@ -89,6 +78,8 @@ const MapViewSection = ({ center, mapView, properties }) => {
       });
     }
 
+    // get children of each cluster i.e collection of points in clustered array
+    // if child is also a cluster push into clustered array else push into listings
     for (let i = 0; i < clustered.length; i++) {
       let children = supercluster?.getChildren(clustered[i].id);
       children.forEach((child) => {
@@ -105,15 +96,16 @@ const MapViewSection = ({ center, mapView, properties }) => {
       });
     }
 
+    // populate listings with listings array
     function populateListings() {
       return dispatch({ type: "add", payload: listings });
     }
   }, [allProperty]);
 
+  // get the size and position of the map
   useEffect(() => {
     let mBoumd = mapRef.current.getBoundingClientRect();
     setmapBounding(mBoumd);
-    console.log(mBoumd);
   }, []);
 
   return (
@@ -150,7 +142,7 @@ const MapViewSection = ({ center, mapView, properties }) => {
             ]);
           }}
         >
-          {allProperty.map((cluster, i) => {
+          {allProperty.map((cluster) => {
             const [longitude, latitude] = cluster.geometry.coordinates;
             const {
               cluster: isCluster,
@@ -186,6 +178,8 @@ const MapViewSection = ({ center, mapView, properties }) => {
                 lat={latitude}
                 lng={longitude}
                 handleClick={(e) => {
+                  // when clicked get the position and size of the marker
+                  // set infoWindow to show and the property id as info index
                   const targetMarker = e.target.getBoundingClientRect();
                   let mLeft = targetMarker.left - mapBounding.left;
                   let mRight = mapBounding.right - targetMarker.right;
@@ -197,6 +191,7 @@ const MapViewSection = ({ center, mapView, properties }) => {
                     bottom: mBottom,
                     left: mLeft,
                   };
+                  //
                   setmarkerPosition(position);
                   setshowInfo(true);
                   setinfoIndex(cluster.properties.id);
@@ -205,12 +200,13 @@ const MapViewSection = ({ center, mapView, properties }) => {
                 <span
                   className={
                     infoIndex == cluster.properties.id
-                      ? "marker bg-gray-500 "
-                      : "marker bg-teal-600 hover:bg-gray-800"
+                      ? "marker bg-gray-800 "
+                      : "marker bg-teal-600 hover:bg-teal-400 hover:text-black"
                   }
                 >
                   {FormatPrice.format(cluster.properties.price)}
                 </span>
+                {/* show info windo if there is an index and showInfo is true */}
                 {showInfo == true && infoIndex == cluster.properties.id && (
                   <InfoWindow
                     targetPosition={markerPosition}
