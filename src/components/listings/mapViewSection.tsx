@@ -127,6 +127,7 @@ const MapViewSection = ({ center, mapView, properties }) => {
           options={{
             ...defaultMapOptions,
             minZoom: 14,
+            clickableIcons: false,
           }}
           onGoogleApiLoaded={({ map }) => {
             mapRef.current = map;

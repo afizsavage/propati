@@ -4,7 +4,7 @@ import { FaMapMarkerAlt, FaRegListAlt } from "react-icons/fa";
 import { RiEqualizerFill } from "react-icons/ri";
 
 import { DropDown } from "../utils";
-import { CardSection, MapViewSection } from "../../components/listings";
+import { CardSection, MapViewSection, Filter } from "../../components/listings";
 import { uselistings } from "../../contexts/listings-Context";
 import { items } from "./test-items";
 
@@ -95,7 +95,7 @@ const ListingsWrapper = () => {
           id="listings"
           className={mapView ? " listings overflow-visible" : "listings"}
         >
-          <div
+          {/* <div
             className={
               goingUp === false
                 ? "filterNSortWrapper -translate-y-full"
@@ -173,8 +173,9 @@ const ListingsWrapper = () => {
                 />
               </span>
             </div>
-          </div>
-          <CardSection mapView={mapView} />
+          </div> */}
+          <Filter />
+          {/* <CardSection mapView={mapView} /> */}
           {/* <span className="block h-screen w-96 overflow-visible md:hidden">
             <MapViewSection
               properties={items}

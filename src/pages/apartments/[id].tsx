@@ -56,7 +56,7 @@ const ListingHeading = ({ itemName, itemAddress }) => {
   );
 };
 
-const amenities: Array<any> = [
+export const amenities: Array<any> = [
   { title: "Furnished", icon: <GiSofa /> },
   { title: "Smoking Allowed", icon: <FaSmoking /> },
   { title: "Tap Water", icon: <GiTap /> },
