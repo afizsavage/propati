@@ -1,32 +1,27 @@
-import React, { useState } from "react";
-import Slider, { Range } from "rc-slider";
+import React, { useState, useRef, useEffect } from "react";
+import { Range } from "rc-slider";
 import "rc-slider/assets/index.css";
 import { FormatPrice } from "../utils";
-import { GiTrumpetFlag } from "react-icons/gi";
+
 import { amenities } from "../../pages/apartments/[id]";
+import { FilterBtn } from "../../interfaces";
 
 const FilterColumn = ({ heading, children }) => {
   return (
-    <div className="mb-4 h-20">
+    <div className="mb-4 h-auto">
       <h2 className=" font-bold text-base text-white">{heading}</h2>
       <div className="w-auto h-auto">{children}</div>
     </div>
   );
 };
 
-interface FilterBtn {
-  title: string;
-  disable: boolean;
-  active: boolean;
-  width?: string;
-}
 const FilterButton = (props: FilterBtn) => {
   return (
     <button
       className={
         props.active
-          ? "typeBtn border-orange-600 " + props.width
-          : "typeBtn border-white " + props.width
+          ? "typeBtn border-orange-600  " + props.style
+          : "typeBtn border-white " + props.style
       }
       disabled={props.disable}
     >
@@ -35,10 +30,23 @@ const FilterButton = (props: FilterBtn) => {
   );
 };
 
-const Filter = () => {
+const Filter = ({ navHeight, filter }) => {
+  const filterRef = useRef(null);
   const [rangeValue, setrangeValue] = useState([0, 100000]);
+
+  useEffect(() => {
+    let windowHeight = window.innerHeight;
+    let filterHeight = windowHeight - navHeight;
+    if (filterRef.current) {
+      filterRef.current.style.height = `${filterHeight}px`;
+    }
+    console.log(`Filter: ${navHeight}`, `innerHeight ${windowHeight}`);
+  }, [navHeight]);
   return (
-    <div className="w-6/12 bg-teal-900 opacity-80 h-full flex flex-col px-3 py-10">
+    <div
+      ref={filterRef}
+      className={filter ? "filter" : "filter -translate-x-full"}
+    >
       <FilterColumn
         heading="Property Type"
         children={
@@ -91,25 +99,25 @@ const Filter = () => {
               title="1"
               active={true}
               disable={false}
-              width="w-10"
+              style="w-10"
             />
             <FilterButton
               title="2"
               active={false}
               disable={true}
-              width="w-10"
+              style="w-10"
             />
             <FilterButton
               title="3"
               active={false}
               disable={true}
-              width="w-10"
+              style="w-10"
             />
             <FilterButton
               title="4+"
               active={false}
               disable={true}
-              width="w-10"
+              style="w-10"
             />
           </span>
         }
@@ -122,31 +130,31 @@ const Filter = () => {
               title="1"
               active={true}
               disable={false}
-              width="w-10"
+              style="w-10"
             />
             <FilterButton
               title="2"
               active={false}
               disable={true}
-              width="w-10"
+              style="w-10"
             />
             <FilterButton
               title="3"
               active={false}
               disable={true}
-              width="w-10"
+              style="w-10"
             />
             <FilterButton
-              title="4+"
+              title="4"
               active={false}
               disable={true}
-              width="w-10"
+              style="w-10"
             />
             <FilterButton
               title="5+"
               active={false}
               disable={true}
-              width="w-10"
+              style="w-10"
             />
           </span>
         }
@@ -165,6 +173,25 @@ const Filter = () => {
                 </li>
               ))}
             </ul>
+          </div>
+        }
+      />
+      <FilterColumn
+        heading="Pet Policy"
+        children={
+          <div className="pt-2 block">
+            <FilterButton
+              title="Dogs Allowed"
+              active={false}
+              disable={true}
+              style="w-auto px-2"
+            />
+            <FilterButton
+              title="Cats Allowed"
+              active={false}
+              disable={true}
+              style="w-auto px-2"
+            />
           </div>
         }
       />

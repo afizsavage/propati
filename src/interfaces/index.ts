@@ -64,3 +64,10 @@ export interface MarkerProps {
   mapBounds?: any;
   handleClick?: (e: any) => void;
 }
+
+export interface FilterBtn {
+  title: string;
+  disable: boolean;
+  active: boolean;
+  style?: string;
+}

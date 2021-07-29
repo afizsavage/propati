@@ -42,6 +42,9 @@
   .footerCols {
     @apply md:w-1/4 pb-6 mb-6 sm:m-0 sm:p-0 border-gray-300 border-b sm:border-none;
   }
+  .filter {
+    @apply absolute bottom-0 py-0 overflow-y-hidden md:py-5 z-40 md:w-auto bg-teal-900  opacity-80 flex flex-col px-3 py-10 transform transition duration-500 ease-in-out;
+  }
   .filterBtn {
     @apply inline-flex justify-center w-full ring-teal-400 ring-opacity-20 rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-white text-sm font-bold text-gray-500 hover:border-transparent hover:ring-4  focus:outline-none focus:ring-4 focus:border-transparent active:shadow-none active:ring-0 active:border-gray-300;
   }

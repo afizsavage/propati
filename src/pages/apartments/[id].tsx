@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { AiOutlineHeart } from "react-icons/ai";
 import { IoShareOutline } from "react-icons/io5";
-import { FaSmoking } from "react-icons/fa";
+import { FaSmoking, FaSwimmingPool } from "react-icons/fa";
 import { GiWaterTank, GiTap, GiSecurityGate, GiSofa } from "react-icons/gi";
 import { RiTempColdLine, RiParkingBoxLine } from "react-icons/ri";
 import { GrFormView } from "react-icons/gr";
@@ -57,11 +57,13 @@ const ListingHeading = ({ itemName, itemAddress }) => {
 };
 
 export const amenities: Array<any> = [
+  { title: "Pool", icon: <FaSwimmingPool/> },
+
   { title: "Furnished", icon: <GiSofa /> },
   { title: "Smoking Allowed", icon: <FaSmoking /> },
   { title: "Tap Water", icon: <GiTap /> },
   { title: "Water Tank", icon: <GiWaterTank /> },
-  { title: "Street View", icon: <GrFormView /> },
+  // { title: "Street View", icon: <GrFormView /> },
   { title: "Parking Spot", icon: <RiParkingBoxLine /> },
   { title: "Air Conditioning", icon: <RiTempColdLine /> },
   { title: "Security Personel", icon: <GiSecurityGate /> },
