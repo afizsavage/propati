@@ -30,7 +30,7 @@ const FilterButton = (props: FilterBtn) => {
   );
 };
 
-const Filter = ({ navHeight, filter }) => {
+const Filter = ({ navHeight, filter, setFilter }) => {
   const filterRef = useRef(null);
   const [rangeValue, setrangeValue] = useState([0, 100000]);
 
@@ -45,8 +45,18 @@ const Filter = ({ navHeight, filter }) => {
   return (
     <div
       ref={filterRef}
-      className={filter ? "filter" : "filter -translate-x-full"}
+      className={
+        filter ? "filter overflow-visible" : "filter -translate-x-full"
+      }
     >
+      <button
+        onClick={() => setFilter(false)}
+        style={{ backgroundColor: "#dd6b20" }}
+        className="absolute -top-3 -right-3 bg-white h-5 w-5 rounded-full"
+      >
+        {" "}
+        c
+      </button>
       <FilterColumn
         heading="Property Type"
         children={

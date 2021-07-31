@@ -29,7 +29,8 @@ const Userlinks = ({ link, title }) => {
 const MobileNav = ({ menuOpen }) => {
   return (
     <div
-      id="mobileMenu"
+      id="m  /* border-color: transparent transparent $color-secondary transparent; */
+obileMenu"
       className={menuOpen ? "mobileMenu" : "mobileMenu -translate-y-full"}
     >
       <nav>

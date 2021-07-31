@@ -48,8 +48,8 @@ const ListingsWrapper = ({ navHeight }) => {
             setFilter={setfilter}
             setmapView={setmapView}
           />
-          <Filter filter={filter} navHeight={navHeight} />
-          <CardSection mapView={mapView} />
+          <Filter filter={filter} setFilter={setfilter} navHeight={navHeight} />
+          <CardSection filter={filter} mapView={mapView} />
           {/* <span className="block h-screen w-96 overflow-visible md:hidden">
             <MapViewSection
               properties={items}

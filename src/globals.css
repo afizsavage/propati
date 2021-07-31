@@ -28,7 +28,10 @@
     @apply inline-flex justify-center rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-white text-sm font-bold text-gray-500 focus:outline-none active:border-transparent active:bg-gray-100;
   }
   .cardsWrapper {
-    @apply w-full md:overflow-y-scroll px-2 md:pr-0 h-full md:pl-4 flex flex-row flex-wrap;
+    @apply w-full md:overflow-y-scroll transition-opacity duration-500 ease-in-out px-2 md:pr-0 h-full md:pl-4 flex flex-row flex-wrap;
+  }
+  .cardWrapper {
+    @apply md:px-3 mt-3 md:mt-2 mx-auto md:mx-0 first:mt-24 md:first:mt-5 pb-3 last:pb-40 overflow-y-hidden h-auto transform ease-in-out  duration-500 hover:-translate-y-4;
   }
   .categoryBtnActive {
     @apply mr-1 bg-gray-200 cursor-pointer py-2 px-3 rounded-lg text-black focus:outline-none;
@@ -49,7 +52,7 @@
     @apply inline-flex justify-center w-full ring-teal-400 ring-opacity-20 rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-white text-sm font-bold text-gray-500 hover:border-transparent hover:ring-4  focus:outline-none focus:ring-4 focus:border-transparent active:shadow-none active:ring-0 active:border-gray-300;
   }
   .filterNSortWrapper {
-    @apply w-full px-6 md:px-9 absolute md:static z-20 transition transform md:transform-none  duration-500 ease-in-out py-0 md:py-4 flex flex-col-reverse md:flex-row bg-white align-middle justify-between;
+    @apply w-full px-6 md:px-9 absolute md:static z-20 transition transform md:transform-none  duration-500 ease-in-out py-0 md:py-0 flex flex-col-reverse md:flex-col bg-white align-middle justify-between;
   }
   .gm-svpc {
     @apply left-10;

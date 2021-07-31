@@ -1,19 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 
 import { Card } from "../utils/itemCard";
 import { uselistings } from "../../contexts/listings-Context";
 
-const CardSection = ({ mapView }) => {
+const CardSection = ({ mapView, filter }) => {
   const { state } = uselistings();
+  useEffect(() => {
+    const wrapper = document.getElementById("cardsWrapper");
+    if (filter) {
+      wrapper.classList.add("opacity-5", "overflow-y-hidden");
+    } else {
+      wrapper.classList.remove("opacity-5", "overflow-y-hidden");
+    }
+  }, [filter]);
 
   return (
-    <div className={!mapView ? "cardsWrapper" : "hidden"}>
+    <div id="cardsWrapper" className={!mapView ? "cardsWrapper" : "hidden"}>
       {state.listings.map((item) => {
         return (
           <div
             key={item.properties.id}
-            className=" md:px-3 mt-3 md:mt-2 mx-auto md:mx-0 first:mt-24 md:first:mt-5 pb-3 last:pb-40 overflow-y-hidden h-auto transform ease-in-out  duration-500 hover:-translate-y-4"
+            className={!filter ? "cardWrapper" : "cardWrapper transform-none"}
           >
             <Link
               href={{
@@ -21,7 +29,7 @@ const CardSection = ({ mapView }) => {
                 query: { id: item.properties.id },
               }}
             >
-              <a>
+              <a className={!filter ? "cursor-pointer" : "cursor-default"}>
                 <Card
                   baths={item.properties.baths}
                   beds={item.properties.beds}

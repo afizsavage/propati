@@ -11,7 +11,7 @@ const Navbar = (params) => {
   return (
     <nav
       role="banner"
-      className="sticky top-0 z-40 bg-white  md:px-8 lg:px-16  w-auto border-white border-transparent border-b shadow"
+      className="sticky top-0 z-40 bg-white   md:px-8 lg:px-16  w-auto border-white border-transparent border-b shadow"
     >
       <div className="lg:mx-auto  z-40 w-auto">
         <div className="relative z-50 bg-white flex items-center w-full justify-between h-14 md:h-18 lg:h-20 w-full">

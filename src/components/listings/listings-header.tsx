@@ -33,7 +33,7 @@ const ListingsHeader = ({
   let listings = state.listings;
   let sumOfProperties = listings.length;
 
-  const toggleMapView = (params) => {
+  const toggleMapView = () => {
     if (mapView == false) {
       setmapView(true);
     } else {
@@ -75,62 +75,66 @@ const ListingsHeader = ({
           : "filterNSortWrapper   "
       }
     >
-      <div
-        id="col2Filter"
-        className="h-12 justify-between inline-flex  items-center  md:h-auto border-t md:border-t-0 border-b md:border-b-0 text-teal-700 font-normal cursor-pointer"
-      >
-        <h1>
-          {" "}
-          <RiEqualizerFill className="inline text-xl transform rotate-90 mr-2" />
-          <span className="hidden md:inline-block">
-            <b className="font-bold">{sumOfProperties}</b> residentials{" "}
-            <b className="font-bold">for sale </b> at selected map area in
-            Freetown
-          </span>
-          <span className="inline-block md:hidden">Filters</span>
-        </h1>
-        <span
-          className={!mapView ? "inline-flex items-center md:hidden" : "hidden"}
-        >
-          {" "}
-          <FaMapMarkerAlt className="inline text-xl transform mr-2" />
-          <span onClick={toggleMapView}>Map View</span>
-        </span>
-        <span
-          className={mapView ? "inline-flex items-center md:hidden" : "hidden"}
-        >
-          {" "}
-          <FaRegListAlt className=" inline  text-xl mr-2" />
-          <span onClick={toggleMapView}>List View</span>
-        </span>
+      <div className="hidden md:block h-9">
+        <span className="font-bold inline-block ">{sumOfProperties}</span>
       </div>
-      <div className="flex justify-between items-center h-12 md:h-auto w-full md:w-auto">
-        <h1 className="w-60 truncate text-sm font-normal text-gray-800 md:hidden">
-          <b className="font-bold inline mr-1">{sumOfProperties}</b>
-          Freetown, Sierra Leone residentials for sale
-        </h1>
-        <span className=" w-48  md:w-auto">
-          <DropDown
-            buttonText={"button"}
-            changeBtnText={true}
-            listItems={[
-              <SortOption title="Best Match" clicked={sortByBestMatch} />,
-              <SortOption title="Most Recent" clicked={sortByrecent} />,
-              <SortOption
-                title="Price: Low to high"
-                clicked={sortPriceMinToMax}
-              />,
-              <SortOption
-                title="Price: High to low"
-                clicked={sortPriceMaxToMin}
-              />,
-            ]}
-            autoSelectOption={true}
-            menuId="sortBtn"
-            styleButton="text-right md:text-center text-gray-500 py-0 "
-            styleContent="w-40 rounded-sm right-0 origin-top-left"
-          />
-        </span>
+      <div className="md:flex md:flex-row ">
+        <div
+          id="col2Filter"
+          className="h-12 justify-between inline-flex  items-center  md:h-auto border-t md:border-t-0 border-b md:border-b-0 text-teal-700 font-normal cursor-pointer"
+        >
+          <button onClick={() => setFilter(true)}>
+            {" "}
+            <RiEqualizerFill className="inline text-xl transform rotate-90 mr-2" />
+            <span className="inline-block md:hidden">Filters</span>
+          </button>
+          <span
+            className={
+              !mapView ? "inline-flex items-center md:hidden" : "hidden"
+            }
+          >
+            {" "}
+            <FaMapMarkerAlt className="inline text-xl transform mr-2" />
+            <span onClick={toggleMapView}>Map View</span>
+          </span>
+          <span
+            className={
+              mapView ? "inline-flex items-center md:hidden" : "hidden"
+            }
+          >
+            {" "}
+            <FaRegListAlt className=" inline  text-xl mr-2" />
+            <span onClick={toggleMapView}>List View</span>
+          </span>
+        </div>
+        <div className="flex justify-between items-center h-12 md:h-auto w-full md:w-auto">
+          <h1 className="w-60 truncate text-sm font-normal text-gray-800 md:hidden">
+            <b className="font-bold inline mr-1">{sumOfProperties}</b>
+            Freetown, Sierra Leone residentials for sale
+          </h1>
+          <span className=" w-48  md:w-auto">
+            <DropDown
+              buttonText={"button"}
+              changeBtnText={true}
+              listItems={[
+                <SortOption title="Best Match" clicked={sortByBestMatch} />,
+                <SortOption title="Most Recent" clicked={sortByrecent} />,
+                <SortOption
+                  title="Price: Low to high"
+                  clicked={sortPriceMinToMax}
+                />,
+                <SortOption
+                  title="Price: High to low"
+                  clicked={sortPriceMaxToMin}
+                />,
+              ]}
+              autoSelectOption={true}
+              menuId="sortBtn"
+              styleButton="text-right md:text-center text-gray-500 py-0 "
+              styleContent="w-40 rounded-sm right-0 origin-top-left"
+            />
+          </span>
+        </div>
       </div>
     </div>
   );
