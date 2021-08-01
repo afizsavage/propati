@@ -67,12 +67,22 @@ const ListingsHeader = ({
     dispatch({ type: "add", payload: [...recent] });
   };
 
+  useEffect(() => {
+    const wrapper = document.getElementById("headerWrapper");
+    if (filter) {
+      wrapper.classList.add("opacity-5");
+    } else {
+      wrapper.classList.remove("opacity-5");
+    }
+  }, [filter]);
+
   return (
     <div
+      id="headerWrapper"
       className={
         goingUp === false
-          ? "filterNSortWrapper -translate-y-full  "
-          : "filterNSortWrapper   "
+          ? "filterNSortWrapper bg-gray-200 -translate-y-full  "
+          : "filterNSortWrapper bg-gray-200  "
       }
     >
       <div className="hidden md:block h-9">
@@ -83,10 +93,13 @@ const ListingsHeader = ({
           id="col2Filter"
           className="h-12 justify-between inline-flex  items-center  md:h-auto border-t md:border-t-0 border-b md:border-b-0 text-teal-700 font-normal cursor-pointer"
         >
-          <button onClick={() => setFilter(true)}>
+          <button
+            className=" focus:outline-none px-2 py-1 bg-white rounded-full mr-3"
+            onClick={() => setFilter(true)}
+          >
             {" "}
             <RiEqualizerFill className="inline text-xl transform rotate-90 mr-2" />
-            <span className="inline-block md:hidden">Filters</span>
+            <span className="inline-block ">Filters</span>
           </button>
           <span
             className={
@@ -112,7 +125,7 @@ const ListingsHeader = ({
             <b className="font-bold inline mr-1">{sumOfProperties}</b>
             Freetown, Sierra Leone residentials for sale
           </h1>
-          <span className=" w-48  md:w-auto">
+          <span className=" w-48 md:w-auto">
             <DropDown
               buttonText={"button"}
               changeBtnText={true}
@@ -130,7 +143,7 @@ const ListingsHeader = ({
               ]}
               autoSelectOption={true}
               menuId="sortBtn"
-              styleButton="text-right md:text-center text-gray-500 py-0 "
+              styleButton="text-right md:text-center rounded-full py-1 text-gray-500 py-0 bg-white "
               styleContent="w-40 rounded-sm right-0 origin-top-left"
             />
           </span>

@@ -16,12 +16,12 @@ const CardSection = ({ mapView, filter }) => {
   }, [filter]);
 
   return (
-    <div id="cardsWrapper" className={!mapView ? "cardsWrapper" : "hidden"}>
+    <div id="cardsWrapper" className={!mapView ? "cardsWrapper " : "hidden"}>
       {state.listings.map((item) => {
         return (
           <div
             key={item.properties.id}
-            className={!filter ? "cardWrapper" : "cardWrapper transform-none"}
+            className={!filter ? "cardWrapper" : "cardWrapper  transform-none"}
           >
             <Link
               href={{

@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Range } from "rc-slider";
 import "rc-slider/assets/index.css";
 import { FormatPrice } from "../utils";
+import { IoMdClose } from "react-icons/io";
 
 import { amenities } from "../../pages/apartments/[id]";
 import { FilterBtn } from "../../interfaces";
@@ -25,7 +26,7 @@ const FilterButton = (props: FilterBtn) => {
       }
       disabled={props.disable}
     >
-      {props.title}
+      {props.value}
     </button>
   );
 };
@@ -33,6 +34,7 @@ const FilterButton = (props: FilterBtn) => {
 const Filter = ({ navHeight, filter, setFilter }) => {
   const filterRef = useRef(null);
   const [rangeValue, setrangeValue] = useState([0, 100000]);
+  const [propertyType, setpropertyType] = useState([]);
 
   useEffect(() => {
     let windowHeight = window.innerHeight;
@@ -40,7 +42,6 @@ const Filter = ({ navHeight, filter, setFilter }) => {
     if (filterRef.current) {
       filterRef.current.style.height = `${filterHeight}px`;
     }
-    console.log(`Filter: ${navHeight}`, `innerHeight ${windowHeight}`);
   }, [navHeight]);
   return (
     <div
@@ -52,18 +53,17 @@ const Filter = ({ navHeight, filter, setFilter }) => {
       <button
         onClick={() => setFilter(false)}
         style={{ backgroundColor: "#dd6b20" }}
-        className="absolute -top-3 -right-3 bg-white h-5 w-5 rounded-full"
+        className="absolute top-4 h-8 w-8  -right-4 bg-white  rounded-full"
       >
-        {" "}
-        c
+        <IoMdClose className=" inline-block text-white font-semibold align-middle" />
       </button>
       <FilterColumn
         heading="Property Type"
         children={
           <span className="w-auto h-auto block pt-2">
-            <FilterButton active={true} disable={false} title="Residentials" />
-            <FilterButton active={false} disable={true} title="Commercial" />
-            <FilterButton active={false} disable={true} title="Lands" />
+            <FilterButton active={true} disable={false} value="Residentials" />
+            <FilterButton active={false} disable={true} value="Commercial" />
+            <FilterButton active={false} disable={true} value="Lands" />
           </span>
         }
       />
@@ -76,12 +76,12 @@ const Filter = ({ navHeight, filter, setFilter }) => {
                 " - " +
                 FormatPrice.format(rangeValue[1]) +
                 "+"}
-            </span>
+            </span>{" "}
             <Range
               min={0}
               max={100000}
               defaultValue={[0, 100000]}
-              className="top-3"
+              className="top-3 "
               onChange={(value) => setrangeValue(value)}
               railStyle={{ backgroundColor: "white", opacity: "50%" }}
               trackStyle={[{ backgroundColor: " #dd6b20" }]}
@@ -106,25 +106,25 @@ const Filter = ({ navHeight, filter, setFilter }) => {
         children={
           <span className="block pt-2">
             <FilterButton
-              title="1"
+              value="1"
               active={true}
               disable={false}
               style="w-10"
             />
             <FilterButton
-              title="2"
+              value="2"
               active={false}
               disable={true}
               style="w-10"
             />
             <FilterButton
-              title="3"
+              value="3"
               active={false}
               disable={true}
               style="w-10"
             />
             <FilterButton
-              title="4+"
+              value="4+"
               active={false}
               disable={true}
               style="w-10"
@@ -137,31 +137,31 @@ const Filter = ({ navHeight, filter, setFilter }) => {
         children={
           <span className="block pt-2">
             <FilterButton
-              title="1"
+              value="1"
               active={true}
               disable={false}
               style="w-10"
             />
             <FilterButton
-              title="2"
+              value="2"
               active={false}
               disable={true}
               style="w-10"
             />
             <FilterButton
-              title="3"
+              value="3"
               active={false}
               disable={true}
               style="w-10"
             />
             <FilterButton
-              title="4"
+              value="4"
               active={false}
               disable={true}
               style="w-10"
             />
             <FilterButton
-              title="5+"
+              value="5+"
               active={false}
               disable={true}
               style="w-10"
@@ -179,7 +179,7 @@ const Filter = ({ navHeight, filter, setFilter }) => {
                   <span className="text-xl inline mr-4 p-0">
                     {amenity.icon}
                   </span>
-                  {amenity.title}
+                  {amenity.value}
                 </li>
               ))}
             </ul>
@@ -191,17 +191,26 @@ const Filter = ({ navHeight, filter, setFilter }) => {
         children={
           <div className="pt-2 block">
             <FilterButton
-              title="Dogs Allowed"
+              value="Dogs Allowed"
               active={false}
               disable={true}
               style="w-auto px-2"
             />
             <FilterButton
-              title="Cats Allowed"
+              value="Cats Allowed"
               active={false}
               disable={true}
               style="w-auto px-2"
             />
+          </div>
+        }
+      />
+      <FilterColumn
+        heading
+        children={
+          <div>
+            {" "}
+            <button style={{ backgroundColor: " #dd6b20" }}>Apply</button>{" "}
           </div>
         }
       />

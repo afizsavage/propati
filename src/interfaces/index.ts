@@ -66,7 +66,7 @@ export interface MarkerProps {
 }
 
 export interface FilterBtn {
-  title: string;
+  value: string;
   disable: boolean;
   active: boolean;
   style?: string;

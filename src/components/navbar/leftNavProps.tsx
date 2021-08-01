@@ -20,21 +20,21 @@ const LeftNavProps = (props) => {
         <Link href="/">
           <a>
             <img
-              className="hidden lg:block h-8 w-auto"
-              src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
+              className="hidden lg:block h-auto w-auto"
+              src="/images/logo.png"
               alt="Workflow"
             />
           </a>
         </Link>
       </div>
-      <div className="hidden lg:block sm:ml-6">
+      <div className="hidden lg:inline-block my-auto   sm:ml-6">
         <div className="flex space-x-4">
           {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
           <Link href="#">
             <a
               className={
                 router.pathname == "/apartments"
-                  ? "navLinks text-teal-600"
+                  ? "navLinks text-teal-600 "
                   : "navLinks "
               }
             >
@@ -45,7 +45,7 @@ const LeftNavProps = (props) => {
             <a
               className={
                 router.pathname == "/listings/listings-buy"
-                  ? "navLinks text-teal-600"
+                  ? "navLinks text-teal-600 "
                   : "navLinks "
               }
             >
