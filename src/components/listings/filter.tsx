@@ -4,8 +4,8 @@ import "rc-slider/assets/index.css";
 import { FormatPrice } from "../utils";
 import { IoMdClose } from "react-icons/io";
 
-import { amenities } from "../../pages/apartments/[id]";
 import { FilterBtn } from "../../interfaces";
+import { amenities } from "../../pages/apartments/[id]";
 
 const FilterColumn = ({ heading, children }) => {
   return (
@@ -17,14 +17,21 @@ const FilterColumn = ({ heading, children }) => {
 };
 
 const FilterButton = (props: FilterBtn) => {
+  const btnRef = useRef(null);
+  const [active, setactive] = useState(false);
+
+  function handleClick() {
+    !active ? setactive(true) : setactive(false);
+  }
+
   return (
     <button
+      onClick={() => handleClick()}
       className={
-        props.active
+        active
           ? "typeBtn border-orange-600  " + props.style
-          : "typeBtn border-white " + props.style
+          : "typeBtn border-white opacity-50 " + props.style
       }
-      disabled={props.disable}
     >
       {props.value}
     </button>
@@ -53,7 +60,11 @@ const Filter = ({ navHeight, filter, setFilter }) => {
       <button
         onClick={() => setFilter(false)}
         style={{ backgroundColor: "#dd6b20" }}
-        className="absolute top-4 h-8 w-8  -right-4 bg-white  rounded-full"
+        className={
+          filter
+            ? "absolute top-4 h-8 w-8 -right-4 bg-white focus:outline-none rounded-full"
+            : "hidden"
+        }
       >
         <IoMdClose className=" inline-block text-white font-semibold align-middle" />
       </button>
@@ -61,9 +72,9 @@ const Filter = ({ navHeight, filter, setFilter }) => {
         heading="Property Type"
         children={
           <span className="w-auto h-auto block pt-2">
-            <FilterButton active={true} disable={false} value="Residentials" />
-            <FilterButton active={false} disable={true} value="Commercial" />
-            <FilterButton active={false} disable={true} value="Lands" />
+            <FilterButton value="Residentials" />
+            <FilterButton value="Commercial" />
+            <FilterButton value="Lands" />
           </span>
         }
       />
@@ -105,30 +116,10 @@ const Filter = ({ navHeight, filter, setFilter }) => {
         heading="Bedrooms"
         children={
           <span className="block pt-2">
-            <FilterButton
-              value="1"
-              active={true}
-              disable={false}
-              style="w-10"
-            />
-            <FilterButton
-              value="2"
-              active={false}
-              disable={true}
-              style="w-10"
-            />
-            <FilterButton
-              value="3"
-              active={false}
-              disable={true}
-              style="w-10"
-            />
-            <FilterButton
-              value="4+"
-              active={false}
-              disable={true}
-              style="w-10"
-            />
+            <FilterButton value="1" style="w-10" />
+            <FilterButton value="2" style="w-10" />
+            <FilterButton value="3" style="w-10" />
+            <FilterButton value="4+" style="w-10" />
           </span>
         }
       />
@@ -136,36 +127,11 @@ const Filter = ({ navHeight, filter, setFilter }) => {
         heading="Bathrooms"
         children={
           <span className="block pt-2">
-            <FilterButton
-              value="1"
-              active={true}
-              disable={false}
-              style="w-10"
-            />
-            <FilterButton
-              value="2"
-              active={false}
-              disable={true}
-              style="w-10"
-            />
-            <FilterButton
-              value="3"
-              active={false}
-              disable={true}
-              style="w-10"
-            />
-            <FilterButton
-              value="4"
-              active={false}
-              disable={true}
-              style="w-10"
-            />
-            <FilterButton
-              value="5+"
-              active={false}
-              disable={true}
-              style="w-10"
-            />
+            <FilterButton value="1" style="w-10" />
+            <FilterButton value="2" style="w-10" />
+            <FilterButton value="3" style="w-10" />
+            <FilterButton value="4" style="w-10" />
+            <FilterButton value="5+" style="w-10" />
           </span>
         }
       />
@@ -179,7 +145,7 @@ const Filter = ({ navHeight, filter, setFilter }) => {
                   <span className="text-xl inline mr-4 p-0">
                     {amenity.icon}
                   </span>
-                  {amenity.value}
+                  <span>{amenity.title}</span>
                 </li>
               ))}
             </ul>
@@ -190,18 +156,8 @@ const Filter = ({ navHeight, filter, setFilter }) => {
         heading="Pet Policy"
         children={
           <div className="pt-2 block">
-            <FilterButton
-              value="Dogs Allowed"
-              active={false}
-              disable={true}
-              style="w-auto px-2"
-            />
-            <FilterButton
-              value="Cats Allowed"
-              active={false}
-              disable={true}
-              style="w-auto px-2"
-            />
+            <FilterButton value="Dogs Allowed" style="w-auto px-2" />
+            <FilterButton value="Cats Allowed" style="w-auto px-2" />
           </div>
         }
       />

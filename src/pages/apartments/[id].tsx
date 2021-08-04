@@ -57,7 +57,7 @@ const ListingHeading = ({ itemName, itemAddress }) => {
 };
 
 export const amenities: Array<any> = [
-  { title: "Pool", icon: <FaSwimmingPool/> },
+  { title: "Pool", icon: <FaSwimmingPool /> },
 
   { title: "Furnished", icon: <GiSofa /> },
   { title: "Smoking Allowed", icon: <FaSmoking /> },
@@ -69,7 +69,7 @@ export const amenities: Array<any> = [
   { title: "Security Personel", icon: <GiSecurityGate /> },
 ];
 
-const Amenities = (params) => {
+const Amenities = () => {
   return (
     <div className="w-full py-10 border-t border-b my-10">
       <h2 className="text-2xl font-semibold text-gray-800 mb-5 ">Amenities</h2>
@@ -87,11 +87,6 @@ const Amenities = (params) => {
     </div>
   );
 };
-
-// const location = {
-//   lat: 8.471644482274344,
-//   lng: -13.270381673488407,
-// };
 
 const Contact = (params) => {
   return (

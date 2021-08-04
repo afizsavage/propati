@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 import { MapCard } from "../utils/itemCard";
 
@@ -12,12 +13,6 @@ const InfoWindow = ({
   const router = useRouter();
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef);
-
-  const navigate = (id) =>
-    router.push({
-      pathname: "/apartments/[id]",
-      query: { id },
-    });
 
   // hide info window if a click event fired outside the info window
   function useOutsideAlerter(ref) {
@@ -134,22 +129,25 @@ const InfoWindow = ({
     }
   }, []);
   return (
-    <div
-      onClick={() => navigate(property.properties.id)}
-      ref={wrapperRef}
-      className="cursor-pointer absolute top-12 -left-28  z-10"
-    >
-      {" "}
-      <MapCard
-        baths={property.properties.baths}
-        beds={property.properties.beds}
-        imageSrc={property.properties.image}
-        itemLocation={property.properties.address}
-        itemName={property.properties.name}
-        itemPrice={property.properties.price}
-        key={property.properties.id}
-      />
-    </div>
+    <Link href={`/apartments/${property.properties.id}`} passHref>
+      <a target="_blank">
+        <div
+          ref={wrapperRef}
+          className="cursor-pointer absolute top-12 -left-28  z-10"
+        >
+          {" "}
+          <MapCard
+            baths={property.properties.baths}
+            beds={property.properties.beds}
+            imageSrc={property.properties.image}
+            itemLocation={property.properties.address}
+            itemName={property.properties.name}
+            itemPrice={property.properties.price}
+            key={property.properties.id}
+          />
+        </div>
+      </a>
+    </Link>
   );
 };
 

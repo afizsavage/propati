@@ -113,7 +113,7 @@
     @apply absolute z-50 ml-3 bg-white inset-y-0 left-0 flex items-center lg:hidden;
   }
   .typeBtn {
-    @apply bg-white mr-2 font-medium border-2 rounded border-transparent text-xs h-10 w-24 disabled:opacity-50;
+    @apply bg-white mr-2 font-medium border-2 rounded border-transparent text-xs h-10 w-24;
   }
 }
 

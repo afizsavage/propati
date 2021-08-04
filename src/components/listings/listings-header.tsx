@@ -10,7 +10,7 @@ const SortOption = ({ title, clicked }) => {
   return (
     <span
       id="sortOption"
-      className="z-0 relative hover:bg-gray-100 px-5 text-sm py-3 md:w-40 font-normal md:font-thin inline-block align-text-top "
+      className="z-0 relative hover:bg-gray-100 px-5 text-sm py-3 md:w-40 font-normal rounded-full md:font-thin inline-block align-text-top "
     >
       {title}
       <AiFillCaretDown
@@ -81,14 +81,21 @@ const ListingsHeader = ({
       id="headerWrapper"
       className={
         goingUp === false
-          ? "filterNSortWrapper bg-gray-200 -translate-y-full  "
-          : "filterNSortWrapper bg-gray-200  "
+          ? "filterNSortWrapper bg-gray-200  -translate-y-full  "
+          : "filterNSortWrapper bg-gray-200 border-b border-gray-300 border-transparent  "
       }
     >
-      <div className="hidden md:block h-9">
-        <span className="font-bold inline-block ">{sumOfProperties}</span>
+      <div className="hidden md:flex items-center h-9 text-teal-700">
+        <span className=" font-semibold inline-block text-lg  mr-2 ">
+          {sumOfProperties}
+        </span>
+        {}
+        <span className="inline-block ">
+          {" "}
+          properties for sale at selected map area in Freetown
+        </span>
       </div>
-      <div className="md:flex md:flex-row ">
+      <div className="md:flex md:flex-row  pb-3 pt-1">
         <div
           id="col2Filter"
           className="h-12 justify-between inline-flex  items-center  md:h-auto border-t md:border-t-0 border-b md:border-b-0 text-teal-700 font-normal cursor-pointer"
