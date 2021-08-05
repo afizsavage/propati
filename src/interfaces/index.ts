@@ -68,4 +68,6 @@ export interface MarkerProps {
 export interface FilterBtn {
   value: string;
   style?: string;
+  state?: any;
+  setState?: any;
 }

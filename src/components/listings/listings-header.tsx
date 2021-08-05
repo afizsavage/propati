@@ -46,7 +46,6 @@ const ListingsHeader = ({
       .sort((a, b) => b.properties.price - a.properties.price);
     dispatch({ type: "add", payload: [...decending] });
   };
-
   const sortPriceMinToMax = () => {
     let accending = listings
       .slice()
@@ -66,7 +65,6 @@ const ListingsHeader = ({
       );
     dispatch({ type: "add", payload: [...recent] });
   };
-
   useEffect(() => {
     const wrapper = document.getElementById("headerWrapper");
     if (filter) {
@@ -105,8 +103,8 @@ const ListingsHeader = ({
             onClick={() => setFilter(true)}
           >
             {" "}
+            <span className="inline-block  ">Filters</span>
             <RiEqualizerFill className="inline text-xl transform rotate-90 mr-2" />
-            <span className="inline-block ">Filters</span>
           </button>
           <span
             className={

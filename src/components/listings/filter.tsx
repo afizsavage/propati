@@ -20,10 +20,22 @@ const FilterButton = (props: FilterBtn) => {
   const btnRef = useRef(null);
   const [active, setactive] = useState(false);
 
-  function handleClick() {
-    !active ? setactive(true) : setactive(false);
-  }
+  const handleClick = () => {
+    let newFilters = [...props.state, props.value];
+    const filter = newFilters.indexOf(props.value);
 
+    if (active === true) {
+      if (filter > -1) {
+        const ewFilters = [...props.state];
+        ewFilters.splice(filter, 1);
+        props.setState(ewFilters);
+      }
+    } else {
+      props.setState(newFilters);
+    }
+
+    !active ? setactive(true) : setactive(false);
+  };
   return (
     <button
       onClick={() => handleClick()}
@@ -42,6 +54,7 @@ const Filter = ({ navHeight, filter, setFilter }) => {
   const filterRef = useRef(null);
   const [rangeValue, setrangeValue] = useState([0, 100000]);
   const [propertyType, setpropertyType] = useState([]);
+  const [bedrooms, setbedrooms] = useState([]);
 
   useEffect(() => {
     let windowHeight = window.innerHeight;
@@ -50,6 +63,9 @@ const Filter = ({ navHeight, filter, setFilter }) => {
       filterRef.current.style.height = `${filterHeight}px`;
     }
   }, [navHeight]);
+
+  console.log("property type:", propertyType);
+  console.log("bedrooms:", bedrooms);
   return (
     <div
       ref={filterRef}
@@ -72,9 +88,21 @@ const Filter = ({ navHeight, filter, setFilter }) => {
         heading="Property Type"
         children={
           <span className="w-auto h-auto block pt-2">
-            <FilterButton value="Residentials" />
-            <FilterButton value="Commercial" />
-            <FilterButton value="Lands" />
+            <FilterButton
+              state={propertyType}
+              setState={setpropertyType}
+              value="Residentials"
+            />
+            <FilterButton
+              state={propertyType}
+              setState={setpropertyType}
+              value="Commercial"
+            />
+            <FilterButton
+              state={propertyType}
+              setState={setpropertyType}
+              value="Lands"
+            />
           </span>
         }
       />
@@ -116,10 +144,30 @@ const Filter = ({ navHeight, filter, setFilter }) => {
         heading="Bedrooms"
         children={
           <span className="block pt-2">
-            <FilterButton value="1" style="w-10" />
-            <FilterButton value="2" style="w-10" />
-            <FilterButton value="3" style="w-10" />
-            <FilterButton value="4+" style="w-10" />
+            <FilterButton
+              state={bedrooms}
+              setState={setbedrooms}
+              value="1"
+              style="w-10"
+            />
+            <FilterButton
+              state={bedrooms}
+              setState={setbedrooms}
+              value="2"
+              style="w-10"
+            />
+            <FilterButton
+              state={bedrooms}
+              setState={setbedrooms}
+              value="3"
+              style="w-10"
+            />
+            <FilterButton
+              state={bedrooms}
+              setState={setbedrooms}
+              value="4+"
+              style="w-10"
+            />
           </span>
         }
       />
