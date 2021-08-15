@@ -4,8 +4,9 @@ import "rc-slider/assets/index.css";
 import { FormatPrice } from "../utils";
 import { IoMdClose } from "react-icons/io";
 
-import { FilterBtn } from "../../interfaces";
+import { AmenityFilter, FilterBtn } from "../../interfaces";
 import { amenities } from "../../pages/apartments/[id]";
+import { spawn } from "child_process";
 
 const FilterColumn = ({ heading, children }) => {
   return (
@@ -16,8 +17,26 @@ const FilterColumn = ({ heading, children }) => {
   );
 };
 
+const IconText = ({ icon, text, active }) => {
+  return (
+    <span className="inline-flex h-full">
+      <span
+        className={
+          active ? "iconBtn border-orange-600  " : "iconBtn opacity-20 "
+        }
+      >
+        <span className="">{icon}</span>
+      </span>
+      <span className="inline-flex  items-center px-2">
+        <span className="text-white text-opacity-50 font-medium text-sm">
+          {text}
+        </span>
+      </span>
+    </span>
+  );
+};
+
 const FilterButton = (props: FilterBtn) => {
-  const btnRef = useRef(null);
   const [active, setactive] = useState(false);
 
   const handleClick = () => {
@@ -35,26 +54,77 @@ const FilterButton = (props: FilterBtn) => {
     }
 
     !active ? setactive(true) : setactive(false);
+    console.log(props.icon);
   };
+
+  useEffect(() => {
+    props.icon !== undefined
+      ? console.log("not icon")
+      : console.log(props.icon);
+  }, [props.icon]);
+
   return (
-    <button
-      onClick={() => handleClick()}
-      className={
-        active
-          ? "typeBtn border-orange-600  " + props.style
-          : "typeBtn border-white opacity-50 " + props.style
-      }
-    >
-      {props.value}
-    </button>
+    <>
+      {props.icon ? (
+        <button
+          className="filterBtns border-none inline-block w-auto h-10 bg-opacity-0 border-orange-600 "
+          onClick={() => handleClick()}
+        >
+          {" "}
+          <IconText active={active} icon={props.icon} text={props.value} />
+        </button>
+      ) : (
+        <button
+          className={
+            active
+              ? "filterBtns border-orange-600 " + props.style
+              : "filterBtns border-none  opacity-40 " + props.style
+          }
+          onClick={() => handleClick()}
+        >
+          <span className="">
+            <span>{props.value}</span>
+          </span>
+        </button>
+      )}
+    </>
+  );
+};
+
+const AmenityFilters = (props: AmenityFilter) => {
+  return (
+    <div>
+      <ul className=" font-medium text-sm  grid grid-cols-2 ">
+        {amenities.map((amenity) => (
+          <li
+            key={amenities.indexOf(amenity)}
+            className="my-2 inline-flex align-middle items-center"
+          >
+            <span className="cursor-pointer">
+              <FilterButton
+                icon={amenity.icon}
+                value={amenity.title}
+                state={props.state}
+                setState={props.setState}
+                key={amenities.indexOf(amenity)}
+                style=" "
+              />
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
 const Filter = ({ navHeight, filter, setFilter }) => {
   const filterRef = useRef(null);
-  const [rangeValue, setrangeValue] = useState([0, 100000]);
+  const [priceRange, setpriceRange] = useState([0, 100000]);
   const [propertyType, setpropertyType] = useState([]);
   const [bedrooms, setbedrooms] = useState([]);
+  const [bathrooms, setbathrooms] = useState([]);
+  const [petPolicy, setpetPolicy] = useState([]);
+  const [menities, setmenities] = useState([]);
 
   useEffect(() => {
     let windowHeight = window.innerHeight;
@@ -66,6 +136,10 @@ const Filter = ({ navHeight, filter, setFilter }) => {
 
   console.log("property type:", propertyType);
   console.log("bedrooms:", bedrooms);
+  console.log("bathrooms:", bathrooms);
+  console.log("petPolicy:", petPolicy);
+  console.log("ammenities:", menities);
+
   return (
     <div
       ref={filterRef}
@@ -92,16 +166,19 @@ const Filter = ({ navHeight, filter, setFilter }) => {
               state={propertyType}
               setState={setpropertyType}
               value="Residentials"
+              style=" w-24"
             />
             <FilterButton
               state={propertyType}
               setState={setpropertyType}
               value="Commercial"
+              style=" w-24"
             />
             <FilterButton
               state={propertyType}
               setState={setpropertyType}
               value="Lands"
+              style=" w-24 "
             />
           </span>
         }
@@ -111,9 +188,9 @@ const Filter = ({ navHeight, filter, setFilter }) => {
         children={
           <>
             <span className=" text-white font-medium text-sm opacity-50">
-              {FormatPrice.format(rangeValue[0]) +
+              {FormatPrice.format(priceRange[0]) +
                 " - " +
-                FormatPrice.format(rangeValue[1]) +
+                FormatPrice.format(priceRange[1]) +
                 "+"}
             </span>{" "}
             <Range
@@ -121,7 +198,7 @@ const Filter = ({ navHeight, filter, setFilter }) => {
               max={100000}
               defaultValue={[0, 100000]}
               className="top-3 "
-              onChange={(value) => setrangeValue(value)}
+              onChange={(value) => setpriceRange(value)}
               railStyle={{ backgroundColor: "white", opacity: "50%" }}
               trackStyle={[{ backgroundColor: " #dd6b20" }]}
               handleStyle={[
@@ -175,46 +252,82 @@ const Filter = ({ navHeight, filter, setFilter }) => {
         heading="Bathrooms"
         children={
           <span className="block pt-2">
-            <FilterButton value="1" style="w-10" />
-            <FilterButton value="2" style="w-10" />
-            <FilterButton value="3" style="w-10" />
-            <FilterButton value="4" style="w-10" />
-            <FilterButton value="5+" style="w-10" />
+            <FilterButton
+              state={bathrooms}
+              setState={setbathrooms}
+              value="1"
+              style="w-10"
+            />
+            <FilterButton
+              state={bathrooms}
+              setState={setbathrooms}
+              value="2"
+              style="w-10"
+            />
+            <FilterButton
+              state={bathrooms}
+              setState={setbathrooms}
+              value="3"
+              style="w-10"
+            />
+            <FilterButton
+              state={bathrooms}
+              setState={setbathrooms}
+              value="4"
+              style="w-10"
+            />
+            <FilterButton
+              state={bathrooms}
+              setState={setbathrooms}
+              value="5+"
+              style="w-10"
+            />
           </span>
         }
       />
       <FilterColumn
         heading="Amenities"
-        children={
-          <div>
-            <ul className=" text-white font-medium text-sm opacity-50 grid grid-cols-2 ">
-              {amenities.map((amenity) => (
-                <li className="my-2 inline-flex align-middle items-center">
-                  <span className="text-xl inline mr-4 p-0">
-                    {amenity.icon}
-                  </span>
-                  <span>{amenity.title}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        }
+        children={<AmenityFilters state={menities} setState={setmenities} />}
       />
       <FilterColumn
         heading="Pet Policy"
         children={
-          <div className="pt-2 block">
-            <FilterButton value="Dogs Allowed" style="w-auto px-2" />
-            <FilterButton value="Cats Allowed" style="w-auto px-2" />
+          <div
+            className="pt-2 block
+        "
+          >
+            <FilterButton
+              state={petPolicy}
+              setState={setpetPolicy}
+              value="Dogs Allowed"
+              style="w-auto px-2 "
+            />
+            <FilterButton
+              state={petPolicy}
+              setState={setpetPolicy}
+              value="Cats Allowed"
+              style="w-auto px-2"
+            />
           </div>
         }
       />
       <FilterColumn
         heading
         children={
-          <div>
-            {" "}
-            <button style={{ backgroundColor: " #dd6b20" }}>Apply</button>{" "}
+          <div className=" w-5/6 fixed bottom-8  font-medium ">
+            <div className=" flex justify-between ">
+              <span>
+                <button className="py-1 px-2  rounded-lg ">Reset</button>{" "}
+              </span>
+              <span>
+                <button
+                  className="py-1 px-2 rounded-lg  text-white "
+                  style={{ backgroundColor: " #dd6b20" }}
+                >
+                  Apply Filter
+                </button>{" "}
+              </span>
+            </div>{" "}
           </div>
         }
       />

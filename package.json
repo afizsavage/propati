@@ -32,6 +32,7 @@
     "react-hook-form": "^6.15.5",
     "react-hooks-helper": "^1.6.0",
     "react-icons": "^4.2.0",
+    "sass": "^1.37.5",
     "supercluster": "^7.1.3",
     "swr": "^0.5.6",
     "use-supercluster": "^0.3.0"

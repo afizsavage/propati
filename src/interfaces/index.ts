@@ -70,4 +70,10 @@ export interface FilterBtn {
   style?: string;
   state?: any;
   setState?: any;
+  icon?: any;
+}
+
+export interface AmenityFilter {
+  state?: any;
+  setState?: any;
 }

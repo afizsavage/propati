@@ -103,8 +103,10 @@ const ListingsHeader = ({
             onClick={() => setFilter(true)}
           >
             {" "}
-            <span className="inline-block  ">Filters</span>
-            <RiEqualizerFill className="inline text-xl transform rotate-90 mr-2" />
+            <span className="inline-block text-sm font-normal text-gray-500 ">
+              Filters
+            </span>
+            <RiEqualizerFill className="inline text-xl transform rotate-90 ml-2" />
           </button>
           <span
             className={
