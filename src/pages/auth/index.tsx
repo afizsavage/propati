@@ -8,33 +8,33 @@ import { setAccessToken } from "../../lib/tokenKeeper";
 const SignIn = (params) => {
   const router = useRouter();
 
-  const [loginUser, { loading, error }] = useMutation(LoginUser, {
-    onCompleted({ response }) {
-      if (response && response.accessToken) {
-        setAccessToken(response);
-        // redirect to the main page
-      }
-      router.push("/");
-    },
-  });
+  // const [loginUser, { loading, error }] = useMutation(LoginUser, {
+  //   onCompleted({ response }) {
+  //     if (response && response.accessToken) {
+  //       setAccessToken(response);
+  //       // redirect to the main page
+  //     }
+  //     router.push("/");
+  //   },
+  // });
 
-  const onSubmit = async (payload: any, e: any) => {
-    e.preventDefault();
+  // const onSubmit = async (payload: any, e: any) => {
+  //   e.preventDefault();
 
-    const { email, password } = payload;
+  //   const { email, password } = payload;
 
-    loginUser({
-      variables: {
-        email: email,
-        password: password,
-      },
-    });
-  };
+  //   loginUser({
+  //     variables: {
+  //       email: email,
+  //       password: password,
+  //     },
+  //   });
+  // };
 
-  if (error) return <p>An error occurred</p>;
+  // if (error) return <p>An error occurred</p>;
 
   return (
-    <AuthLayout Children={<AuthForm onSubmit={onSubmit} loading={loading} />} />
+    <AuthLayout Children={<AuthForm onSubmit loading={false} />} />
   );
 };
 

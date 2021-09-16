@@ -7,8 +7,10 @@ export interface AUser {
   password: string;
 }
 export interface OAuthP {
-  btnText: string;
+  btnText?: string;
   btnIcon: any;
+  page?: string;
+  subText: string
 }
 export interface CUser {
   firstName: string;

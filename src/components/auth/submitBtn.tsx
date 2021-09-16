@@ -1,9 +1,21 @@
-const SubmitBtn = ({ btnText, loading, style }) => {
+interface Sub_btn {
+  page: string;
+  loading: boolean;
+  style?: string; 
+  btnText?:string;
+}
+
+const SubmitBtn = (props: Sub_btn) => {
+  var tempProps = JSON.parse(JSON.stringify(props));
+
+  {
+    props.page === "/auth" ? (tempProps.btnText = "Log in") : (tempProps.btnText = "Sign up");
+  }
   return (
-    <button type="submit" className={"authSubmitBtn  " + style}>
+    <button type="submit" className={"authSubmitBtn  " + props.style}>
       <svg
         className={
-          loading ? "animate-spin my-auto h-6 w-6 text-white" : "hidden"
+          props.loading ? "animate-spin my-auto h-6 w-6 text-white" : "hidden"
         }
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -23,7 +35,7 @@ const SubmitBtn = ({ btnText, loading, style }) => {
           d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
         ></path>
       </svg>
-      <span className={loading ? "hidden" : "my-auto static"}>{btnText}</span>
+      <span className={props.loading ? "hidden" : "my-auto static"}>{tempProps.btnText}</span>
     </button>
   );
 };

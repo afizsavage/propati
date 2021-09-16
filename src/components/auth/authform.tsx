@@ -102,8 +102,7 @@ const AuthForm = ({ onSubmit, loading }) => {
       required: "Enter Password ",
     },
   };
-
-  if (page === "/auth/sign-up") {
+  
     return (
       <div className="flex flex-grow flex-col">
         <div
@@ -114,13 +113,19 @@ const AuthForm = ({ onSubmit, loading }) => {
             <div className="p-8">
               <SocialAuth
                 btnIcon={<FcGoogle />}
-                btnText={"Sign up with Google"}
+                subText={"Google"}
+                page={page}
+              />
+              <SocialAuth
+                btnIcon={<FcGoogle />}
+                subText={"Google"}
+                page={page}
               />
               <div className="w-full text-center text-gray-400 py-4 text-sm">
                 {" "}
                 or with email
               </div>
-              <InputField
+              {page !== "/auth" && (<><InputField
                 name={"firstName"}
                 type={"text"}
                 placeholder={"First Name "}
@@ -130,7 +135,6 @@ const AuthForm = ({ onSubmit, loading }) => {
                 }
                 errors={errors.firstName}
               />
-
               <InputField
                 name={"lastName"}
                 type={"text"}
@@ -138,12 +142,12 @@ const AuthForm = ({ onSubmit, loading }) => {
                 register={register(registerOptions.lastName)}
                 label={errors.lastName ? errors.lastName.message : "Last Name"}
                 errors={errors.lastName}
-              />
+              /></>)}
               <InputField
                 name={"email"}
                 type={"email"}
                 placeholder={"Email "}
-                register={register(registerOptions.email)}
+                register={page !== "/auth" ? register(registerOptions.email): register(loginOptions.email)}
                 label={errors.email ? errors.email.message : "Email"}
                 errors={errors.email}
               />
@@ -151,64 +155,24 @@ const AuthForm = ({ onSubmit, loading }) => {
                 name={"password"}
                 type={"password"}
                 placeholder={"Password "}
-                register={register(registerOptions.password)}
+                register={page !== "/auth" ? register(registerOptions.password) : register(loginOptions.password)}
                 label={errors.password ? errors.password.message : "Password"}
                 errors={errors.password}
               />
-            </div>
-            <SubmitBtn style loading={loading} btnText="Sign up" />
-          </form>
-        </div>
-        <AuthOption authType page={page} />
-      </div>
-    );
-  } else {
-    return (
-      <div className="flex flex-grow flex-col">
-        <div
-          className="auth-card 
-        "
-        >
-          <form id="signupForm" className="" onSubmit={handleSubmit(onSubmit)}>
-            <div className="p-8">
-              <SocialAuth
-                btnIcon={<FcGoogle />}
-                btnText={"Sign up with Google"}
-              />
-              <div className="w-full text-center text-gray-400 py-4 text-sm">
-                {" "}
-                or with email
-              </div>
-              <InputField
-                name={"email"}
-                type={"email"}
-                placeholder={"Email "}
-                register={register(loginOptions.email)}
-                label={errors.email ? errors.email.message : "Email"}
-                errors={errors.email}
-              />
-              <InputField
-                name={"password"}
-                type={"password"}
-                placeholder={"Password "}
-                register={register(loginOptions.password)}
-                label={errors.password ? errors.password.message : "Password"}
-                errors={errors.password}
-              />
-              <div className="mt-4 inline-flex justify-end w-full">
-                <Link href="/auth/sign-up">
-                  <a className="auth-links">Forgot your password?</a>
+              {page === "/auth" && (<div className="mt-4 inline-flex justify-end w-full">
+              <Link href="/auth/sign-up">
+                <a className="auth-links">Forgot your password?</a>
                 </Link>
-              </div>
+              </div>)}
             </div>
-
-            <SubmitBtn style loading={loading} btnText="Sign In" />
+            <SubmitBtn loading={loading} page={page} />
           </form>
         </div>
         <AuthOption authType page={page} />
       </div>
     );
-  }
+  
+    
 };
 
 export default AuthForm;
