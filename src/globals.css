@@ -4,10 +4,10 @@
 
 @layer components {
   .auth-card {
-    @apply shadow-2xl rounded rounded-b-lg mx-auto bg-white w-full border-solid border-t-4 border-teal-500 p-0 mb-2;
+    @apply shadow-2xl rounded rounded-b-lg mx-auto bg-white w-full md:w-7/12 lg:w-5/12 border-solid border-t-4 border-teal-500 p-0 mb-2;
   }
   .auth-close-btn {
-    @apply text-gray-400 hover:text-white right-1 focus:outline-none  px-2 py-2 lg:top-8 lg:bg-white lg:rounded-full lg:right-10 lg:shadow lg:hover:bg-teal-600  duration-300 ease-in transition-colors;
+    @apply text-gray-400 hover:text-white right-1 focus:outline-none  px-2 py-2 lg:py-3 lg:px-3 lg:bg-white lg:rounded-full lg:shadow lg:hover:bg-teal-600  duration-300 ease-in transition-colors;
   }
   .auth-label {
     @apply origin-top-left w-full inline-block text-gray-400 text-lg transition-all duration-200 ease-in z-10 min-w-max;
@@ -217,9 +217,9 @@ a,
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1024px) {
   .auth-card {
-    max-width: 460px;
+    width: 460px;
   }
 }
 

@@ -104,13 +104,13 @@ const AuthForm = ({ onSubmit, loading }) => {
   };
   
     return (
-      <div className="flex flex-grow pb-12 flex-col">
+      <div className="flex flex-grow pb-12 md:pt-20 lg:pt-1 flex-col">
         <div
           className="auth-card 
         "
         >
           <form id="signupForm" className="" onSubmit={handleSubmit(onSubmit)}>
-            <div className="py-12 px-5">
+            <div className="py-12 px-5 lg:px-16 lg:py:14">
               <SocialAuth
                 btnIcon={<FcGoogle />}
                 subText={"Google"}
