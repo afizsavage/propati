@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
-
+import {AiFillFacebook, AiFillApple} from "react-icons/ai"
 import { CUser, InProps } from "../../interfaces/";
 import SocialAuth from "../../components/auth/socialAuth";
 import SubmitBtn from "./submitBtn";
@@ -104,24 +104,29 @@ const AuthForm = ({ onSubmit, loading }) => {
   };
   
     return (
-      <div className="flex flex-grow flex-col">
+      <div className="flex flex-grow pb-12 flex-col">
         <div
           className="auth-card 
         "
         >
           <form id="signupForm" className="" onSubmit={handleSubmit(onSubmit)}>
-            <div className="p-8">
+            <div className="py-12 px-5">
               <SocialAuth
                 btnIcon={<FcGoogle />}
                 subText={"Google"}
                 page={page}
               />
               <SocialAuth
-                btnIcon={<FcGoogle />}
-                subText={"Google"}
+                btnIcon={<AiFillFacebook className="fb-icon" />}
+                subText={"Facebook"}
                 page={page}
               />
-              <div className="w-full text-center text-gray-400 py-4 text-sm">
+               <SocialAuth
+                btnIcon={<AiFillApple />}
+                subText={"Apple"}
+                page={page}
+              />
+              <div className="w-full text-center text-gray-400 pt-5 pb-0 text-sm">
                 {" "}
                 or with email
               </div>

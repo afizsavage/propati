@@ -1,7 +1,7 @@
 interface Sub_btn {
   page: string;
   loading: boolean;
-  style?: string; 
+
   btnText?:string;
 }
 
@@ -12,7 +12,7 @@ const SubmitBtn = (props: Sub_btn) => {
     props.page === "/auth" ? (tempProps.btnText = "Log in") : (tempProps.btnText = "Sign up");
   }
   return (
-    <button type="submit" className={"authSubmitBtn  " + props.style}>
+    <button type="submit" className="authSubmitBtn" >
       <svg
         className={
           props.loading ? "animate-spin my-auto h-6 w-6 text-white" : "hidden"

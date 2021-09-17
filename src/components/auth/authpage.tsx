@@ -6,9 +6,12 @@ export const CloseBtn = (params) => {
   const router = useRouter();
 
   return (
-    <button onClick={() => router.push("/")} className="auth-close-btn">
+    <div className="w-full flex justify-end h-12 px-2">
+      <button onClick={() => router.push("/")} className="auth-close-btn">
       <IoMdClose className="text-3xl " />
-    </button>
+      </button>
+    </div>
+    
   );
 };
 
