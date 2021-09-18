@@ -2,11 +2,12 @@ import { IoMdClose } from "react-icons/io";
 import { useRouter } from "next/router";
 
 // Auth page close button 'redirect user to landing page'
-export const CloseBtn = (params) => {
+export const CloseBtn = () => {
   const router = useRouter();
+  let path = router.pathname === "/auth";
 
   return (
-    <div className="w-full flex justify-end h-12 lg:h-auto px-2 lg:px-7 lg:mt-8 lg:mb-44 xl:mb-0">
+    <div className={path ? "auth-close" : "auth-close xlg:absolute"}>
       <button onClick={() => router.push("/")} className="auth-close-btn">
       <IoMdClose className="text-3xl " />
       </button>
@@ -18,15 +19,17 @@ export const CloseBtn = (params) => {
 // Heading for auth page
 const Header = ({ headerText }) => {
   const router = useRouter();
+  const path = router.pathname !== "/auth";
+
 
   {
-    router.pathname !== "/auth"
+    path
       ? (headerText = "Sign Up")
       : (headerText = "Welcome Back");
   }
   return (
-    <header className="hidden lg:flex w-full text-gray-800 justify-center py-5 my-1 xl:pt-0 xl:my-0">
-      <h1 className="font-lato  text-5xl font-bold ">{headerText}</h1>
+    <header className={path ? "auth-header xlg:mt-10" : "auth-header"}>
+      <h1 className="font-lato  text-4xl font-bold ">{headerText}</h1>
     </header>
   );
 };
@@ -76,7 +79,6 @@ const AuthLayout = ({ Children }) => {
       <CloseBtn />
       <Header headerText />
       {Children}
-      
       <Footer footerText />
     </div>
   );

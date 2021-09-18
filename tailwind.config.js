@@ -48,6 +48,9 @@ module.exports = {
       zIndex: {
         "-1": "-1",
       },
+      screens: {
+        'xlg': '1200px',
+      },
     },
   },
   variants: {
