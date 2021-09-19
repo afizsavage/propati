@@ -28,7 +28,7 @@ const SignUp = () => {
   // if (error) return <p>An error occurred</p>;
 
   return (
-    <AuthLayout Children={<AuthForm onSubmit loading={false} />} />
+    <AuthLayout><AuthForm onSubmit loading={false} /></AuthLayout>
   );
 };
 

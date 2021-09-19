@@ -8,7 +8,7 @@ export const CloseBtn = () => {
 
   return (
     <div className={path ? "auth-close" : "auth-close xlg:absolute"}>
-      <button onClick={() => router.push("/")} className="auth-close-btn">
+      <button onClick={() => router.back()} className="auth-close-btn">
       <IoMdClose className="text-3xl " />
       </button>
     </div>
@@ -73,12 +73,12 @@ const Footer = ({ footerText }) => {
 };
 
 // Auth page layout
-const AuthLayout = ({ Children }) => {
+const AuthLayout = ({ children }) => {
   return (
     <div className="auth-layout">
       <CloseBtn />
       <Header headerText />
-      {Children}
+      {children}
       <Footer footerText />
     </div>
   );

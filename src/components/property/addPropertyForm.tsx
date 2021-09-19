@@ -139,22 +139,22 @@ const Submit = ({ navigation, formData }) => {
 };
 
 const CreatePropertForm = () => {
-  const [formData, setForm] = useForm(defaultData);
-  const { step, navigation } = useStep({ initialStep: 0, steps });
-  const { id } = step;
+  // const [formData, setForm] = useForm(defaultData);
+  // const { step, navigation } = useStep({ initialStep: 0, steps });
+  // const { id } = step;
 
-  const props = { formData, setForm, navigation };
+  // const props = { formData, setForm, navigation };
 
-  switch (id) {
-    case "address":
-      return <Address {...props} />;
-    case "propertyType":
-      return <PropertyType {...props} />;
-    case "submit":
-      return <Submit {...props} />;
-    default:
-      return null;
-  }
+  // switch (id) {
+  //   case "address":
+  //     return <Address {...props} />;
+  //   case "propertyType":
+  //     return <PropertyType {...props} />;
+  //   case "submit":
+  //     return <Submit {...props} />;
+  //   default:
+  //     return null;
+  // }
 };
 
 export default CreatePropertForm;

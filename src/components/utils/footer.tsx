@@ -10,9 +10,9 @@ const FooterColumns = (props: FCProps) => {
     <div>
       <h3 className="font-bold text-gray-900 text-sm mb-3">{props.heading}</h3>
       <ul className="font-normal text-sm text-gray-700">
-        {props.listitems.map((item) => {
+        {props.listitems.map((item, i) => {
           return (
-            <li className="mt-2">
+            <li key={i} className="mt-2">
               <Link href={item.link}>
                 <a>{item.text}</a>
               </Link>
@@ -38,6 +38,8 @@ const Footer = (params) => {
                   listitems={[
                     { link: "#", text: "About Us" },
                     { link: "#", text: "FAQ" },
+                    { link: "#", text: "Terms of Use" },
+                    { link: "#", text: "Privacy Policy" },
                   ]}
                 />
               </div>

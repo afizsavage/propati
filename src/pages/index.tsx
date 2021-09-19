@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Layout from "../components/layout";
+import Main from "../components/main";
 
 export default function Home() {
   return (
@@ -20,7 +21,9 @@ export default function Home() {
         />
       </Head>
       <body className="font-Lato h-full">
-        <Layout pageInfo={{ pageName: "index" }} />
+        <Layout pageInfo={{ pageName: "index" }}>
+          <Main/>
+        </Layout>
       </body>
     </>
   );

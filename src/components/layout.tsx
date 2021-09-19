@@ -1,13 +1,20 @@
 import { Navbar } from "./navbar";
 import { Footer } from "./utils";
-import Main from "./main";
 
-export default function Layout(pageInfo: any) {
+interface Layout {
+  pageInfo: any;
+  children: JSX.Element[] | JSX.Element;
+
+}
+
+const Layout = ({children}: Layout) => {
   return (
     <div className="flex flex-col min-h-screen h-full">
       <Navbar />
-      <Main />
+      {children}
       <Footer />
     </div>
   );
 }
+
+export default Layout
