@@ -1,8 +1,12 @@
 import React from "react";
-import { BsTypeH1 } from "react-icons/bs";
 
 import Layout from "../../components/layout";
-import { AddPropertyForm } from "../../components/property";
+
+const Header = (params) => {
+  return( <div className="py-6 text-gray-700 text-center">
+    <h1 className="w-full block text-lg font-bold" >Add Your Property</h1>
+  </div> )
+}
 
 const Property = () => {
   return (
@@ -10,7 +14,9 @@ const Property = () => {
     //   <AddPropertyForm />
     // </div>
     <Layout pageInfo={{ pageName: "add-property" }} >
-      <div className="flex flex-col h-full overflow-y-hidden flex-grow w-full">Check</div>
+      <div className="flex flex-col h-full overflow-y-hidden flex-grow w-full font-Lato">
+        <Header />
+      </div>
     </Layout>
 
   );
