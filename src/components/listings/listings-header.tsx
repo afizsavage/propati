@@ -10,7 +10,7 @@ const SortOption = ({ title, clicked }) => {
   return (
     <span
       id="sortOption"
-      className="z-0 relative hover:bg-gray-100 px-5 text-sm py-3 md:w-40 font-normal md:font-thin inline-block align-text-top "
+      className="z-0 relative hover:bg-gray-100 px-5 text-sm py-3 md:w-40 font-normal rounded-full md:font-thin inline-block align-text-top "
     >
       {title}
       <AiFillCaretDown
@@ -46,7 +46,6 @@ const ListingsHeader = ({
       .sort((a, b) => b.properties.price - a.properties.price);
     dispatch({ type: "add", payload: [...decending] });
   };
-
   const sortPriceMinToMax = () => {
     let accending = listings
       .slice()
@@ -66,7 +65,6 @@ const ListingsHeader = ({
       );
     dispatch({ type: "add", payload: [...recent] });
   };
-
   useEffect(() => {
     const wrapper = document.getElementById("headerWrapper");
     if (filter) {
@@ -81,14 +79,21 @@ const ListingsHeader = ({
       id="headerWrapper"
       className={
         goingUp === false
-          ? "filterNSortWrapper bg-gray-200 -translate-y-full  "
-          : "filterNSortWrapper bg-gray-200  "
+          ? "filterNSortWrapper bg-gray-200  -translate-y-full  "
+          : "filterNSortWrapper bg-gray-200 border-b border-gray-300 border-transparent  "
       }
     >
-      <div className="hidden md:block h-9">
-        <span className="font-bold inline-block ">{sumOfProperties}</span>
+      <div className="hidden md:flex items-center h-9 text-teal-700">
+        <span className=" font-semibold inline-block text-lg  mr-2 ">
+          {sumOfProperties}
+        </span>
+        {}
+        <span className="inline-block ">
+          {" "}
+          properties for sale at selected map area in Freetown
+        </span>
       </div>
-      <div className="md:flex md:flex-row ">
+      <div className="md:flex md:flex-row  pb-3 pt-1">
         <div
           id="col2Filter"
           className="h-12 justify-between inline-flex  items-center  md:h-auto border-t md:border-t-0 border-b md:border-b-0 text-teal-700 font-normal cursor-pointer"
@@ -98,8 +103,10 @@ const ListingsHeader = ({
             onClick={() => setFilter(true)}
           >
             {" "}
-            <RiEqualizerFill className="inline text-xl transform rotate-90 mr-2" />
-            <span className="inline-block ">Filters</span>
+            <span className="inline-block text-sm font-normal text-gray-500 ">
+              Filters
+            </span>
+            <RiEqualizerFill className="inline text-xl transform rotate-90 ml-2" />
           </button>
           <span
             className={

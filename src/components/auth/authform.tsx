@@ -7,15 +7,15 @@ import { CUser, InProps } from "../../interfaces/";
 import SocialAuth from "../../components/auth/socialAuth";
 import SubmitBtn from "./submitBtn";
 
-// Auth forms submit button
-
 export const InputField = (p: InProps) => {
   return (
     <div className="input-container">
       <input
         name={p.name}
         type={p.type}
-        className={"auth-input " + p.customStyle + (!p.errors ? "" : "border-red-500")}
+        className={
+          "auth-input " + p.customStyle + (!p.errors ? "" : "border-red-500")
+        }
         placeholder={p.placeholder}
         ref={p.register}
         onChange={p.onChange}
@@ -51,6 +51,7 @@ const AuthOption = ({ page, authType }) => {
   );
 };
 
+// the form use conditional rendering to render login or signup form
 const AuthForm = ({ onSubmit, loading }) => {
   const { register, errors, handleSubmit } = useForm<CUser>({
     mode: "all",

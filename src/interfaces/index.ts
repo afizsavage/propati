@@ -69,7 +69,13 @@ export interface MarkerProps {
 
 export interface FilterBtn {
   value: string;
-  disable: boolean;
-  active: boolean;
   style?: string;
+  state?: any;
+  setState?: any;
+  icon?: any;
+}
+
+export interface AmenityFilter {
+  state?: any;
+  setState?: any;
 }

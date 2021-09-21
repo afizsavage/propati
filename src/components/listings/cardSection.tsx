@@ -16,7 +16,10 @@ const CardSection = ({ mapView, filter }) => {
   }, [filter]);
 
   return (
-    <div id="cardsWrapper" className={!mapView ? "cardsWrapper " : "hidden"}>
+    <div
+      id="cardsWrapper"
+      className={!mapView ? "cardsWrapper pt-4 " : "hidden"}
+    >
       {state.listings.map((item) => {
         return (
           <div
@@ -29,7 +32,10 @@ const CardSection = ({ mapView, filter }) => {
                 query: { id: item.properties.id },
               }}
             >
-              <a className={!filter ? "cursor-pointer" : "cursor-default"}>
+              <a
+                target="_blank"
+                className={!filter ? "cursor-pointer" : "cursor-default"}
+              >
                 <Card
                   baths={item.properties.baths}
                   beds={item.properties.beds}
