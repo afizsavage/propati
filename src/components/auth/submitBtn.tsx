@@ -1,18 +1,33 @@
 interface Sub_btn {
   page: string;
   loading: boolean;
-
-  btnText?:string;
+  style?: string;
+  btnText?: string;
 }
 
 const SubmitBtn = (props: Sub_btn) => {
   var tempProps = JSON.parse(JSON.stringify(props));
 
-  {
-    props.page === "/auth" ? (tempProps.btnText = "Log in") : (tempProps.btnText = "Sign up");
+  // {
+  //   props.page === "/auth" ? (tempProps.btnText = "Log in") : (tempProps.btnText = "Sign up");
+  // }
+
+  switch (props.page) {
+    case "/auth":
+      tempProps.btnText = "Sign in";
+      break;
+
+    case "/add-property":
+      tempProps.btnText = "Continue";
+      break;
+
+    default:
+      tempProps.btnText = "Sign up";
+      break;
   }
+
   return (
-    <button type="submit" className="authSubmitBtn" >
+    <button type="submit" className={`authSubmitBtn ${props.style}`}>
       <svg
         className={
           props.loading ? "animate-spin my-auto h-6 w-6 text-white" : "hidden"
@@ -35,7 +50,9 @@ const SubmitBtn = (props: Sub_btn) => {
           d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
         ></path>
       </svg>
-      <span className={props.loading ? "hidden" : "my-auto static"}>{tempProps.btnText}</span>
+      <span className={props.loading ? "hidden" : "my-auto static"}>
+        {tempProps.btnText}
+      </span>
     </button>
   );
 };

@@ -1,7 +1,5 @@
-import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 
-import { LoginUser } from "../../graphql/mutations";
 import { AuthForm, AuthLayout } from "../../components/auth/";
 import { setAccessToken } from "../../lib/tokenKeeper";
 
