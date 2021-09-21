@@ -1,11 +1,8 @@
-// import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 
-// import { CreateUser } from "../../graphql/mutations";
 import { AuthForm, AuthLayout } from "../../components/auth/";
 
 const SignUp = () => {
-  // const [createUser, { loading, error }] = useMutation(CreateUser);
   const router = useRouter();
 
   // const onSubmit = async (data: any, e: any) => {
@@ -28,7 +25,9 @@ const SignUp = () => {
   // if (error) return <p>An error occurred</p>;
 
   return (
-    <AuthLayout><AuthForm onSubmit loading={false} /></AuthLayout>
+    <AuthLayout>
+      <AuthForm onSubmit loading={false} />
+    </AuthLayout>
   );
 };
 

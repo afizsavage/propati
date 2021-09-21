@@ -1,20 +1,8 @@
 import { useRouter } from "next/router";
 
 import { AuthForm, AuthLayout } from "../../components/auth/";
-import { setAccessToken } from "../../lib/tokenKeeper";
-
 const SignIn = (params) => {
   const router = useRouter();
-
-  // const [loginUser, { loading, error }] = useMutation(LoginUser, {
-  //   onCompleted({ response }) {
-  //     if (response && response.accessToken) {
-  //       setAccessToken(response);
-  //       // redirect to the main page
-  //     }
-  //     router.push("/");
-  //   },
-  // });
 
   // const onSubmit = async (payload: any, e: any) => {
   //   e.preventDefault();

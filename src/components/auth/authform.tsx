@@ -2,7 +2,8 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
-import {AiFillFacebook, AiFillApple} from "react-icons/ai"
+import { AiFillFacebook, AiFillApple } from "react-icons/ai";
+
 import { CUser, InProps } from "../../interfaces/";
 import SocialAuth from "../../components/auth/socialAuth";
 import SubmitBtn from "./submitBtn";
@@ -78,7 +79,8 @@ const AuthForm = ({ onSubmit, loading }) => {
     email: {
       required: "Enter Email",
       pattern: {
-        value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+        value:
+          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
         message: "Invalid Email address",
       },
     },
@@ -95,7 +97,8 @@ const AuthForm = ({ onSubmit, loading }) => {
     email: {
       required: "Enter Email",
       pattern: {
-        value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+        value:
+          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
         message: "Invalid Email address",
       },
     },
@@ -103,82 +106,92 @@ const AuthForm = ({ onSubmit, loading }) => {
       required: "Enter Password ",
     },
   };
-  
-    return (
-      <div className="flex flex-grow pb-12 md:pt-20 lg:pt-1 flex-col">
-        <div
-          className="auth-card 
+
+  return (
+    <div className="flex flex-grow pb-12 md:pt-20 lg:pt-1 flex-col">
+      <div
+        className="auth-card 
         "
-        >
-          <form id="signupForm" className="" onSubmit={handleSubmit(onSubmit)}>
-            <div className="py-12 px-5 lg:px-16 lg:py:14">
-              <SocialAuth
-                btnIcon={<FcGoogle />}
-                subText={"Google"}
-                page={page}
-              />
-              <SocialAuth
-                btnIcon={<AiFillFacebook className="fb-icon" />}
-                subText={"Facebook"}
-                page={page}
-              />
-               <SocialAuth
-                btnIcon={<AiFillApple />}
-                subText={"Apple"}
-                page={page}
-              />
-              <div className="w-full text-center text-gray-400 pt-5 pb-0 text-sm">
-                {" "}
-                or with email
-              </div>
-              {page !== "/auth" && (<><InputField
-                name={"firstName"}
-                type={"text"}
-                placeholder={"First Name "}
-                register={register(registerOptions.firstName)}
-                label={
-                  errors.firstName ? errors.firstName.message : "First Name"
-                }
-                errors={errors.firstName}
-              />
-              <InputField
-                name={"lastName"}
-                type={"text"}
-                placeholder={"Last Name "}
-                register={register(registerOptions.lastName)}
-                label={errors.lastName ? errors.lastName.message : "Last Name"}
-                errors={errors.lastName}
-              /></>)}
-              <InputField
-                name={"email"}
-                type={"email"}
-                placeholder={"Email "}
-                register={page !== "/auth" ? register(registerOptions.email): register(loginOptions.email)}
-                label={errors.email ? errors.email.message : "Email"}
-                errors={errors.email}
-              />
-              <InputField
-                name={"password"}
-                type={"password"}
-                placeholder={"Password "}
-                register={page !== "/auth" ? register(registerOptions.password) : register(loginOptions.password)}
-                label={errors.password ? errors.password.message : "Password"}
-                errors={errors.password}
-              />
-              {page === "/auth" && (<div className="mt-4 inline-flex justify-end w-full">
-              <Link href="/auth/sign-up">
-                <a className="auth-links">Forgot your password?</a>
-                </Link>
-              </div>)}
+      >
+        <form id="signupForm" className="" onSubmit={handleSubmit(onSubmit)}>
+          <div className="py-12 px-5 lg:px-16 lg:py:14">
+            <SocialAuth btnIcon={<FcGoogle />} subText={"Google"} page={page} />
+            <SocialAuth
+              btnIcon={<AiFillFacebook className="fb-icon" />}
+              subText={"Facebook"}
+              page={page}
+            />
+            <SocialAuth
+              btnIcon={<AiFillApple />}
+              subText={"Apple"}
+              page={page}
+            />
+            <div className="w-full text-center text-gray-400 pt-5 pb-0 text-sm">
+              {" "}
+              or with email
             </div>
-            <SubmitBtn loading={loading} page={page} />
-          </form>
-        </div>
-        <AuthOption authType page={page} />
+            {page !== "/auth" && (
+              <>
+                <InputField
+                  name={"firstName"}
+                  type={"text"}
+                  placeholder={"First Name "}
+                  register={register(registerOptions.firstName)}
+                  label={
+                    errors.firstName ? errors.firstName.message : "First Name"
+                  }
+                  errors={errors.firstName}
+                />
+                <InputField
+                  name={"lastName"}
+                  type={"text"}
+                  placeholder={"Last Name "}
+                  register={register(registerOptions.lastName)}
+                  label={
+                    errors.lastName ? errors.lastName.message : "Last Name"
+                  }
+                  errors={errors.lastName}
+                />
+              </>
+            )}
+            <InputField
+              name={"email"}
+              type={"email"}
+              placeholder={"Email "}
+              register={
+                page !== "/auth"
+                  ? register(registerOptions.email)
+                  : register(loginOptions.email)
+              }
+              label={errors.email ? errors.email.message : "Email"}
+              errors={errors.email}
+            />
+            <InputField
+              name={"password"}
+              type={"password"}
+              placeholder={"Password "}
+              register={
+                page !== "/auth"
+                  ? register(registerOptions.password)
+                  : register(loginOptions.password)
+              }
+              label={errors.password ? errors.password.message : "Password"}
+              errors={errors.password}
+            />
+            {page === "/auth" && (
+              <div className="mt-4 inline-flex justify-end w-full">
+                <Link href="/auth/sign-up">
+                  <a className="auth-links">Forgot your password?</a>
+                </Link>
+              </div>
+            )}
+          </div>
+          <SubmitBtn loading={loading} page={page} />
+        </form>
       </div>
-    );
-  
-    
+      <AuthOption authType page={page} />
+    </div>
+  );
 };
 
 export default AuthForm;
