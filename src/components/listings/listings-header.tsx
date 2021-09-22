@@ -6,7 +6,7 @@ import { RiEqualizerFill } from "react-icons/ri";
 import { DropDown } from "../utils";
 import { uselistings } from "../../contexts/listings-Context";
 
-const SortOption = ({ title, clicked }) => {
+export const SortOption = ({ title, clicked }) => {
   return (
     <span
       id="sortOption"

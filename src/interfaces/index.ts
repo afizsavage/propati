@@ -10,7 +10,7 @@ export interface OAuthP {
   btnText?: string;
   btnIcon: any;
   page?: string;
-  subText: string
+  subText: string;
 }
 export interface CUser {
   firstName: string;
@@ -23,8 +23,8 @@ export interface DropdownProps {
   buttonText: any;
   styleContent?: string;
   styleButton?: string;
+  styleParent?: string;
   handleOptionClick?: any;
-  label?: string;
   listItems: Array<any>;
   changeBtnText: boolean;
   menuId: string;

@@ -22,7 +22,7 @@ export default function Home() {
       </Head>
       <body className="font-Lato h-full">
         <Layout pageInfo={{ pageName: "index" }}>
-          <Main/>
+          <Main />
         </Layout>
       </body>
     </>

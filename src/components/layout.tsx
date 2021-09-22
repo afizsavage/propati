@@ -4,10 +4,9 @@ import { Footer } from "./utils";
 interface Layout {
   pageInfo: any;
   children: JSX.Element[] | JSX.Element;
-
 }
 
-const Layout = ({children}: Layout) => {
+const Layout = ({ children }: Layout) => {
   return (
     <div className="flex flex-col min-h-screen h-full">
       <Navbar />
@@ -15,6 +14,6 @@ const Layout = ({children}: Layout) => {
       <Footer />
     </div>
   );
-}
+};
 
-export default Layout
+export default Layout;

@@ -48,7 +48,10 @@ const Dropdown = (Props: DropdownProps) => {
   }
 
   return (
-    <div ref={wrapperRef} className="w-auto cursor-pointer font-Lato">
+    <div
+      ref={wrapperRef}
+      className={`w-auto cursor-pointer font-Lato ${Props.styleParent}`}
+    >
       <div className="w-full relative">
         <button
           id="dropDownBtn"

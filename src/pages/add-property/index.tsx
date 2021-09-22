@@ -1,10 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
+import { AiFillCaretDown } from "react-icons/ai";
 
 import { SubmitBtn } from "../../components/auth";
 import { InputField } from "../../components/auth/authform";
 import Layout from "../../components/layout";
+import { DropDown } from "../../components/utils";
+import { SortOption } from "../../components/listings/listings-header";
 
 const Header = (params) => {
   return (
@@ -40,6 +43,40 @@ interface AddProperty {
   name: string;
 }
 
+const FormDropdown = (params) => {
+  return (
+    <div className="input-container">
+      <DropDown
+        buttonText={
+          <span className="w-full h-full flex justify-end items-center ">
+            <AiFillCaretDown
+              id="sort"
+              className="text-lg ml-2 text-teal-600 font-bold inline"
+            />
+          </span>
+        }
+        changeBtnText={true}
+        listItems={[
+          <SortOption
+            title="Best Match"
+            clicked={() => console.log("clicked")}
+          />,
+          <SortOption
+            title="Most Recent"
+            clicked={() => console.log("clicked")}
+          />,
+        ]}
+        autoSelectOption={false}
+        menuId="sortBtn"
+        styleButton="focus:border-teal-700 border-b border-opacity-50 border-gray-400 h-full block"
+        styleContent="rounded-sm right-0 origin-top-left w-full"
+        styleParent="absolute bottom-0 w-full"
+      />
+      <span className="auth-label">Type</span>
+    </div>
+  );
+};
+
 const AddForm = ({ loading, onSubmit }) => {
   const router = useRouter();
   const path = "/add-property";
@@ -71,6 +108,7 @@ const AddForm = ({ loading, onSubmit }) => {
               type="text"
               label={"Unit# (optional)"}
             />
+            <FormDropdown />
           </div>
           <div></div>
         </div>
