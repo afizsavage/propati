@@ -18,11 +18,15 @@
   .auth-header {
     @apply hidden lg:flex w-full text-gray-800 justify-center py-5 my-1 xlg:pt-0 xlg:my-0;
   }
+  .auth-input {
+    @apply text-lg text-gray-800 focus:border-teal-700 border-b border-opacity-50 appearance-none transition-colors duration-200 ease-in border-gray-400 absolute inline-block p-0 bg-transparent w-full focus:outline-none z-20  bottom-0 placeholder-gray-500 placeholder-opacity-0;
+  }
   .auth-label {
     @apply origin-top-left w-full inline-block text-gray-400 text-lg transition-all duration-200 ease-in z-10 min-w-max;
   }
-  .auth-input {
-    @apply text-lg text-gray-800 focus:border-teal-700 border-b border-opacity-50 appearance-none transition-colors duration-200 ease-in border-gray-400 absolute inline-block p-0 bg-transparent w-full focus:outline-none z-20  bottom-0 placeholder-gray-500 placeholder-opacity-0;
+  .auth-input:focus-within ~ .auth-label,
+  .auth-input:not(:placeholder-shown) ~ .auth-label {
+    @apply transform scale-75 -translate-y-6;
   }
   .authSubmitBtn {
     @apply inline-flex justify-center  duration-300 ease-in transition bg-teal-600 hover:bg-teal-700 text-2xl font-semibold text-white px-3 h-16 rounded-b-lg w-full focus:outline-none;
@@ -51,6 +55,18 @@
   .dropdownMenu {
     @apply z-20 text-gray-700 absolute mt-3 w-60 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5;
   }
+  .drop-select {
+    @apply text-lg text-gray-800 focus:border-teal-700 border-b border-opacity-50 appearance-none transition-colors duration-200 ease-in border-gray-400 absolute inline-block p-0 bg-transparent w-full focus:outline-none z-20  bottom-0 placeholder-gray-500 placeholder-opacity-0;
+  }
+  .drop-label {
+    @apply origin-top-left w-full inline-block text-gray-400 text-lg transition-all duration-200 ease-in z-10 min-w-max;
+  }
+  .drop-select:focus-within ~ .drop-label {
+    @apply transform  scale-75 -translate-y-6;
+  }
+  .drop-selected ~ .drop-label {
+    @apply transform  scale-75 -translate-y-6;
+  }
   .footerCols {
     @apply md:w-1/4 pb-6 mb-6 sm:m-0 sm:p-0 border-gray-300 border-b sm:border-none;
   }
@@ -71,13 +87,6 @@
   }
   .iconBtn {
     @apply bg-white rounded flex items-center justify-center w-10 border text-xl;
-  }
-  input:focus-within ~ label {
-    @apply transform  scale-75 -translate-y-6;
-  }
-  input:focus-within ~ label,
-  input:not(:placeholder-shown) ~ label {
-    @apply transform scale-75 -translate-y-6;
   }
   .input-container {
     @apply mt-9 relative w-full font-normal;
@@ -114,6 +123,9 @@
   }
   .social-auth-btn {
     @apply inline-flex border border-gray-300 justify-evenly py-1 rounded-lg w-full focus:outline-none;
+  }
+  .select-option {
+    @apply z-0 relative hover:bg-gray-100 px-5 text-sm py-3 md:w-40 font-normal rounded-full md:font-thin inline-block align-text-top;
   }
   .tMBtn {
     @apply z-50 text-gray-400 focus:outline-none w-10 h-10 relative;

@@ -7,7 +7,7 @@ import { SubmitBtn } from "../../components/auth";
 import { InputField } from "../../components/auth/authform";
 import Layout from "../../components/layout";
 import { DropDown } from "../../components/utils";
-import { SortOption } from "../../components/listings/listings-header";
+import { SelectOption } from "../../components/listings/listings-header";
 
 const Header = (params) => {
   return (
@@ -57,22 +57,24 @@ const FormDropdown = (params) => {
         }
         changeBtnText={true}
         listItems={[
-          <SortOption
+          <SelectOption
             title="Best Match"
             clicked={() => console.log("clicked")}
+            customStyle="w-full flex justify-between"
           />,
-          <SortOption
+          <SelectOption
             title="Most Recent"
             clicked={() => console.log("clicked")}
+            customStyle="w-full flex justify-between"
           />,
         ]}
         autoSelectOption={false}
         menuId="sortBtn"
         styleButton="focus:border-teal-700 border-b border-opacity-50 border-gray-400 h-full block"
         styleContent="rounded-sm right-0 origin-top-left w-full"
-        styleParent="absolute bottom-0 w-full"
+        styleParent="drop-select bottom-0 w-full"
       />
-      <span className="auth-label">Type</span>
+      <span className="drop-label">Type</span>
     </div>
   );
 };

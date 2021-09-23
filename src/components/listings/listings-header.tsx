@@ -6,12 +6,15 @@ import { RiEqualizerFill } from "react-icons/ri";
 import { DropDown } from "../utils";
 import { uselistings } from "../../contexts/listings-Context";
 
-export const SortOption = ({ title, clicked }) => {
+interface SOProps {
+  title: string;
+  clicked: any;
+  customStyle?: string;
+}
+
+export const SelectOption = ({ title, clicked, customStyle }: SOProps) => {
   return (
-    <span
-      id="sortOption"
-      className="z-0 relative hover:bg-gray-100 px-5 text-sm py-3 md:w-40 font-normal rounded-full md:font-thin inline-block align-text-top "
-    >
+    <span id="sortOption" className={`select-option ${customStyle}`}>
       {title}
       <AiFillCaretDown
         id="sort"
@@ -137,13 +140,13 @@ const ListingsHeader = ({
               buttonText={"button"}
               changeBtnText={true}
               listItems={[
-                <SortOption title="Best Match" clicked={sortByBestMatch} />,
-                <SortOption title="Most Recent" clicked={sortByrecent} />,
-                <SortOption
+                <SelectOption title="Best Match" clicked={sortByBestMatch} />,
+                <SelectOption title="Most Recent" clicked={sortByrecent} />,
+                <SelectOption
                   title="Price: Low to high"
                   clicked={sortPriceMinToMax}
                 />,
-                <SortOption
+                <SelectOption
                   title="Price: High to low"
                   clicked={sortPriceMaxToMin}
                 />,
