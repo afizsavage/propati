@@ -71,7 +71,7 @@ const Dropdown = (Props: DropdownProps) => {
           id={Props.menuId}
           className={
             ddownOpen
-              ? "dropdownMenu overflow-hidden " + Props.styleContent
+              ? `dropdownMenu overflow-hidden ${Props.styleContent}`
               : "hidden"
           }
         >

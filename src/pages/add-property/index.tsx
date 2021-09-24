@@ -58,12 +58,22 @@ const FormDropdown = (params) => {
         changeBtnText={true}
         listItems={[
           <SelectOption
-            title="Best Match"
+            title="Apartment"
             clicked={() => console.log("clicked")}
             customStyle="w-full flex justify-between"
           />,
           <SelectOption
-            title="Most Recent"
+            title="Duplex"
+            clicked={() => console.log("clicked")}
+            customStyle="w-full flex justify-between"
+          />,
+          <SelectOption
+            title="Bungalow"
+            clicked={() => console.log("clicked")}
+            customStyle="w-full flex justify-between"
+          />,
+          <SelectOption
+            title="Single-Room"
             clicked={() => console.log("clicked")}
             customStyle="w-full flex justify-between"
           />,
@@ -71,7 +81,7 @@ const FormDropdown = (params) => {
         autoSelectOption={false}
         menuId="sortBtn"
         styleButton="focus:border-teal-700 border-b border-opacity-50 border-gray-400 h-full block"
-        styleContent="rounded-sm right-0 origin-top-left w-full"
+        styleContent="rounded-sm absolute bottom-0 w-full"
         styleParent="drop-select bottom-0 w-full"
       />
       <span className="drop-label">Type</span>
