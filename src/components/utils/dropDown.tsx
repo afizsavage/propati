@@ -39,12 +39,21 @@ const Dropdown = (Props: DropdownProps) => {
     }, [ref]);
   }
 
+  useEffect(() => {
+    // run this function for any time the Dropdown open or close
+    ddownOpenState(Props.trackOptionsDisplay);
+  }, [ddownOpen]);
+
   // close dropdown and set selectedOption state as the list item clicked on
   async function onOptionClicked(value, b) {
     const test = value.props.clicked;
     (await b) === true && test ? test() : null;
     setSelectedOption(value);
     setddownOpen(false);
+  }
+
+  function ddownOpenState(args) {
+    args ? args() : null;
   }
 
   return (

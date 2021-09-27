@@ -112,6 +112,9 @@
   .navLinks {
     @apply text-gray-600  hover:text-teal-600 px-3 py-2 text-base font-semibold font-Lato;
   }
+  .no-scroll {
+    @apply fixed top-0 overflow-hidden;
+  }
   .primeBtn {
     @apply py-3 px-4 bg-teal-500 bg-center transition duration-700 text-white text-sm font-bold rounded-lg shadow-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-opacity-75;
   }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { AiFillCaretDown } from "react-icons/ai";
@@ -44,6 +44,14 @@ interface AddProperty {
 }
 
 const FormDropdown = (params) => {
+  function toggleScroll() {
+    let root = document.getElementsByTagName("html")[0];
+    let dropdownMenu = document.getElementById("typeDropdown");
+    dropdownMenu.classList.contains("hidden")
+      ? root.classList.remove("no-scroll")
+      : (root.className += "no-scroll");
+  }
+
   return (
     <div className="input-container">
       <DropDown
@@ -79,10 +87,11 @@ const FormDropdown = (params) => {
           />,
         ]}
         autoSelectOption={false}
-        menuId="sortBtn"
+        menuId="typeDropdown"
         styleButton="focus:border-teal-700 border-b border-opacity-50 border-gray-400 h-full block"
         styleContent="rounded-sm absolute bottom-0 w-full"
         styleParent="drop-select bottom-0 w-full"
+        trackOptionsDisplay={() => toggleScroll()}
       />
       <span className="drop-label">Type</span>
     </div>

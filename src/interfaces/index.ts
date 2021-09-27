@@ -29,6 +29,7 @@ export interface DropdownProps {
   changeBtnText: boolean;
   menuId: string;
   autoSelectOption?: boolean;
+  trackOptionsDisplay?: any;
 }
 export interface FCProps {
   heading: string;
