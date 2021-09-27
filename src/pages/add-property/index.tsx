@@ -12,7 +12,7 @@ import { SelectOption } from "../../components/listings/listings-header";
 const Header = (params) => {
   return (
     <div className="py-6 text-gray-700 text-center w-2/4 mx-auto">
-      <h1 className="w-full block text-lg font-bold">Add Your Property</h1>
+      <h1 className="w-full block text-xl font-bold">Add Your Property</h1>
       <h3 className=" text-base text-gray-400 mt-2 font-medium">
         Rent your property to blah blah blah of the blah
       </h3>
@@ -68,28 +68,28 @@ const FormDropdown = (params) => {
           <SelectOption
             title="Apartment"
             clicked={() => console.log("clicked")}
-            customStyle="w-full flex justify-between"
+            customStyle="w-full flex justify-between text-xl"
           />,
           <SelectOption
             title="Duplex"
             clicked={() => console.log("clicked")}
-            customStyle="w-full flex justify-between"
+            customStyle="w-full flex justify-between text-xl"
           />,
           <SelectOption
             title="Bungalow"
             clicked={() => console.log("clicked")}
-            customStyle="w-full flex justify-between"
+            customStyle="w-full flex justify-between text-xl"
           />,
           <SelectOption
             title="Single-Room"
             clicked={() => console.log("clicked")}
-            customStyle="w-full flex justify-between"
+            customStyle="w-full flex justify-between text-xl"
           />,
         ]}
         autoSelectOption={false}
         menuId="typeDropdown"
         styleButton="focus:border-teal-700 border-b border-opacity-50 border-gray-400 h-full block"
-        styleContent="rounded-sm absolute bottom-0 w-full"
+        styleContent="rounded-sm absolute bottom-0 h-24 h-56 w-full py-0"
         styleParent="drop-select bottom-0 w-full"
         trackOptionsDisplay={() => toggleScroll()}
       />
