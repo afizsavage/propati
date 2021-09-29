@@ -167,12 +167,16 @@ button > .itemContent {
   background-color: #dd6b20;
 }
 
+#dropDownList > .h-sxty {
+  height: 60px;
+}
+
 .fb-icon {
   color: #3b5998;
 }
 
-#dropDownList > .h-sxty {
-  height: 60px;
+.h-cus {
+  max-height: 248px;
 }
 .map-h2 {
   text-transform: uppercase;

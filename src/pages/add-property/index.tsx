@@ -48,7 +48,7 @@ const OptionToSelect = ({ title, handleClick }) => {
     <SelectOption
       title={title}
       clicked={handleClick}
-      customStyle="w-full flex justify-between h-sxty items-center text-xl"
+      customStyle="w-full flex justify-between rounded-none h-sxty items-center text-xl"
     />
   );
 };
@@ -69,6 +69,7 @@ const FormDropdown = (params) => {
     { title: "Duplex", onClick: handleClick },
     { title: "House", onClick: handleClick },
     { title: "Room", onClick: handleClick },
+    { title: "Town House", onClick: handleClick },
   ];
 
   return (
@@ -95,7 +96,7 @@ const FormDropdown = (params) => {
         autoSelectOption={false}
         menuId="typeDropdown"
         styleButton="focus:border-teal-700 border-b border-opacity-50 border-gray-400 h-full block"
-        styleContent="rounded-sm absolute bottom-0 h-24 h-56 w-full py-0"
+        styleContent="rounded-sm absolute bottom-0 h-cus w-full transform scale-x-110 py-0 overflow-y-scroll"
         styleParent="drop-select bottom-0 w-full"
         trackOptionsDisplay={() => toggleScroll()}
       />
