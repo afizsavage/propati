@@ -43,6 +43,16 @@ interface AddProperty {
   name: string;
 }
 
+const OptionToSelect = ({ title, handleClick }) => {
+  return (
+    <SelectOption
+      title={title}
+      clicked={handleClick}
+      customStyle="w-full flex justify-between h-sxty items-center text-xl"
+    />
+  );
+};
+
 const FormDropdown = (params) => {
   function toggleScroll() {
     let root = document.getElementsByTagName("html")[0];
@@ -51,6 +61,15 @@ const FormDropdown = (params) => {
       ? root.classList.remove("no-scroll")
       : (root.className += "no-scroll");
   }
+  const handleClick = (params) => {
+    console.log("clicked");
+  };
+  const options = [
+    { title: "Apartment", onClick: handleClick },
+    { title: "Duplex", onClick: handleClick },
+    { title: "House", onClick: handleClick },
+    { title: "Room", onClick: handleClick },
+  ];
 
   return (
     <div className="input-container">
@@ -64,28 +83,15 @@ const FormDropdown = (params) => {
           </span>
         }
         changeBtnText={true}
-        listItems={[
-          <SelectOption
-            title="Apartment"
-            clicked={() => console.log("clicked")}
-            customStyle="w-full flex justify-between text-xl"
-          />,
-          <SelectOption
-            title="Duplex"
-            clicked={() => console.log("clicked")}
-            customStyle="w-full flex justify-between text-xl"
-          />,
-          <SelectOption
-            title="Bungalow"
-            clicked={() => console.log("clicked")}
-            customStyle="w-full flex justify-between text-xl"
-          />,
-          <SelectOption
-            title="Single-Room"
-            clicked={() => console.log("clicked")}
-            customStyle="w-full flex justify-between text-xl"
-          />,
-        ]}
+        listItems={options.map((item) => {
+          return (
+            <OptionToSelect
+              title={item.title}
+              handleClick={item.onClick}
+              key={options.indexOf(item)}
+            />
+          );
+        })}
         autoSelectOption={false}
         menuId="typeDropdown"
         styleButton="focus:border-teal-700 border-b border-opacity-50 border-gray-400 h-full block"
