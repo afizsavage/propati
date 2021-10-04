@@ -145,6 +145,24 @@
   .tMBWrapper {
     @apply absolute z-50 ml-3 bg-white inset-y-0 left-0 flex items-center lg:hidden;
   }
+  .select {
+    @apply text-sm relative inline-block focus:outline-none focus:ring-2 ring-offset-green-600  box-border py-1 px-2 bg-gray-200 w-auto border-black border-2 rounded-sm cursor-pointer;
+  }
+  .select .active {
+    @apply outline-none ring-offset-green-600 ring-2;
+  }
+  .select .value {
+    @apply inline-block w-full overflow-hidden whitespace-nowrap overflow-ellipsis align-top;
+  }
+  .select .optList {
+    @apply absolute top-full left-0 z-20 list-none m-0 p-0 box-border min-w-full h-auto overflow-y-auto overflow-x-hidden border-2 border-t rounded-sm shadow-md bg-gray-200;
+  }
+  .select .option {
+    @apply py-1 px-2 hover:bg-black hover:text-white;
+  }
+  .select .highlight {
+    @apply bg-black text-white;
+  }
 }
 
 button > #sortOption {

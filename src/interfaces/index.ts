@@ -24,7 +24,6 @@ export interface DropdownProps {
   styleContent?: string;
   styleButton?: string;
   styleParent?: string;
-  handleOptionClick?: any;
   listItems: Array<any>;
   changeBtnText: boolean;
   menuId: string;

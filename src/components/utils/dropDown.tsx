@@ -111,3 +111,84 @@ const Dropdown = (Props: DropdownProps) => {
 };
 
 export default Dropdown;
+
+export const CustomDropdown = (params) => {
+  const [ddownOpen, setddownOpen] = useState(false);
+  const selectRef = useRef(null);
+  const [value, setvalue] = useState(null);
+
+  const options = ["Cherry", "Lemon", "Banana", "Strawberry", "Apple"];
+  const toggleOpenNClose = () => {
+    ddownOpen === false ? setddownOpen(true) : setddownOpen(false);
+  };
+
+  function activateSelect(e) {
+    if (e.target.classList.contains("active")) return;
+    e.target.classList.add("active");
+  }
+
+  function handleClickOutside(e) {
+    if (selectRef.current && !selectRef.current.contains(e.target)) {
+      setddownOpen(false);
+      if (!selectRef.current.classList.contains("active")) return;
+      selectRef.current.classList.remove("active");
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [selectRef]);
+
+  function updateValue(e) {
+    setvalue(e.target.innerHTML);
+    setddownOpen(false);
+  }
+
+  function keyboardUpdate(e) {
+    let length = options.length;
+
+    if (e.keyCode === 40 && options.indexOf(value) < length - 1) {
+      setvalue(options[length - 1]);
+    }
+  }
+
+  const OptionItem = ({ option }) => {
+    return (
+      <li
+        onClick={(e) => updateValue(e)}
+        className={value === option ? "option bg-black text-white" : "option"}
+      >
+        {option}
+      </li>
+    );
+  };
+
+  return (
+    <>
+      <div
+        ref={selectRef}
+        tabIndex={1}
+        className="select"
+        onFocus={(e) => activateSelect(e)}
+        onClick={() => toggleOpenNClose()}
+        onKeyUp={(e) => keyboardUpdate(e)}
+      >
+        {/* <!-- This container will be used to display the current value of the control --> */}
+        <span className="value">{value !== null ? value : "Cherry"}</span>
+
+        <ul
+          id="optionsList"
+          className={ddownOpen ? "optList" : "optList hidden"}
+        >
+          {options.map((option) => {
+            return <OptionItem option={option} />;
+          })}
+        </ul>
+      </div>
+    </>
+  );
+};
