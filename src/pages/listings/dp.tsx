@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import ListingsWrapper from "../../components/listings/listingsWrapper";
 import { Navbar } from "../../components/navbar";
 import { DropDown } from "../../components/utils";
-import { CustomDropdown } from "../../components/utils/dropDown";
+import { CustomSelect } from "../../components/utils/dropDown";
 import { ListingsProvider } from "../../contexts/listings-Context";
 
 const ListingsBuy = () => {
@@ -14,7 +14,7 @@ const ListingsBuy = () => {
         listItems={["Cherry", "Lemon", "Banana", "Strawberry", "Apple"]}
         menuId="optList"
       />
-      <CustomDropdown />
+      <CustomSelect />
     </div>
   );
 };

@@ -112,15 +112,25 @@ const Dropdown = (Props: DropdownProps) => {
 
 export default Dropdown;
 
-export const CustomDropdown = (params) => {
+export const CustomSelect = (params) => {
   const [ddownOpen, setddownOpen] = useState(false);
   const selectRef = useRef(null);
   const [value, setvalue] = useState(null);
+  let index = 0;
 
   const options = ["Cherry", "Lemon", "Banana", "Strawberry", "Apple"];
   const toggleOpenNClose = () => {
     ddownOpen === false ? setddownOpen(true) : setddownOpen(false);
   };
+
+  function deactivateSelect() {
+    if (selectRef.current && !selectRef.current.classList.contains("active")) {
+      return;
+    }
+
+    setddownOpen(false);
+    selectRef.current.classList.remove("active");
+  }
 
   function activateSelect(e) {
     if (e.target.classList.contains("active")) return;
@@ -129,19 +139,9 @@ export const CustomDropdown = (params) => {
 
   function handleClickOutside(e) {
     if (selectRef.current && !selectRef.current.contains(e.target)) {
-      setddownOpen(false);
-      if (!selectRef.current.classList.contains("active")) return;
-      selectRef.current.classList.remove("active");
+      deactivateSelect();
     }
   }
-
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      // Unbind the event listener on clean up
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [selectRef]);
 
   function updateValue(e) {
     setvalue(e.target.innerHTML);
@@ -150,11 +150,34 @@ export const CustomDropdown = (params) => {
 
   function keyboardUpdate(e) {
     let length = options.length;
+    if (e.keyCode === 27) {
+      deactivateSelect();
+    } else {
+      if (e.keyCode === 40 && index < length - 1) {
+        index++;
+      }
 
-    if (e.keyCode === 40 && options.indexOf(value) < length - 1) {
-      setvalue(options[length - 1]);
+      if (e.keyCode === 38 && index > 0) {
+        index--;
+      }
+
+      setvalue(options[index]);
     }
   }
+
+  useEffect(() => {
+    setvalue(options[0]);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  useEffect(() => {
+    // setindex(options.indexOf(value));
+    index = options.indexOf(value);
+  }, [value]);
 
   const OptionItem = ({ option }) => {
     return (
