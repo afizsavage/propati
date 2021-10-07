@@ -4,3 +4,4 @@ export { default as ItemCard } from "./itemCard";
 export { default as SocialIcons } from "./socialIcons";
 export { default as AppTab } from "./appTab";
 export { default as FormatPrice } from "./priceFormatter";
+export { default as CustomSelect } from "./custom_select";
