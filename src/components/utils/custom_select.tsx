@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 
 interface SelectProps {
   selectStyle?: string;
+  optionsStyle?: string;
 }
 
 const CustomSelect = (props: SelectProps) => {
@@ -11,7 +12,7 @@ const CustomSelect = (props: SelectProps) => {
   let index = 0;
 
   const options = ["Cherry", "Lemon", "Banana", "Strawberry", "Apple"];
-  const toggleOpenNClose = () => {
+  const handleClick = () => {
     ddownOpen === false ? setddownOpen(true) : setddownOpen(false);
     selectRef.current && selectRef.current.classList.contains("active")
       ? null
@@ -61,7 +62,7 @@ const CustomSelect = (props: SelectProps) => {
   }
 
   useEffect(() => {
-    setvalue(options[0]);
+    // setvalue(options[0]);
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       // Unbind the event listener on clean up
@@ -105,19 +106,27 @@ const CustomSelect = (props: SelectProps) => {
       </select>
       <div
         ref={selectRef}
-        tabIndex={5}
-        className={`select ${props.selectStyle}`}
+        tabIndex={0}
+        className={
+          value
+            ? `select drop-selected ${props.selectStyle}`
+            : `select ${props.selectStyle}`
+        }
         onFocus={(e) => activateSelect(e)}
-        onClick={() => toggleOpenNClose()}
+        onClick={() => handleClick()}
         onKeyUp={(e) => keyboardUpdate(e)}
         onBlur={() => deactivateSelect()}
         role="listbox"
       >
-        <span className="value">{value !== null ? value : "Cherry"}</span>
+        <span className="value">{value}</span>
 
         <ul
           id="optionsList"
-          className={ddownOpen ? "optList" : "optList hidden"}
+          className={
+            ddownOpen
+              ? `optList ${props.optionsStyle}`
+              : `optList hidden ${props.optionsStyle}`
+          }
           role="presentation"
         >
           {options.map((option) => {

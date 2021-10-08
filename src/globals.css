@@ -155,7 +155,7 @@
     @apply inline-block w-full overflow-hidden whitespace-nowrap overflow-ellipsis align-top;
   }
   .select .optList {
-    @apply absolute top-full left-0 z-20 list-none m-0 p-0 box-border min-w-full h-auto overflow-y-auto overflow-x-hidden border-2 border-t rounded-sm shadow-md bg-gray-200;
+    @apply absolute top-full left-0 z-20 list-none m-0 p-0 box-border min-w-full h-auto overflow-y-auto overflow-x-hidden border-2 border-t rounded-sm shadow-md;
   }
   .select .option {
     @apply py-1 px-2 hover:bg-black hover:text-white;

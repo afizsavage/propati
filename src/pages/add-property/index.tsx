@@ -126,7 +126,10 @@ const CusomizedSelect = (params) => {
 
   return (
     <div className="input-container">
-      <CustomSelect selectStyle="absolute w-full border-0 border-b focus:border-teal-700 border-opacity-50 border-gray-400" />
+      <CustomSelect
+        selectStyle="absolute w-full border-0 border-b focus:border-teal-700 border-opacity-50 border-gray-400"
+        optionsStyle="rounded-sm absolute bg-white h-cus w-full transform scale-x-110 py-0 overflow-y-scroll"
+      />
       <span className="drop-label">Type</span>
     </div>
   );
@@ -163,8 +166,8 @@ const AddForm = ({ loading, onSubmit }) => {
               type="text"
               label={"Unit# (optional)"}
             />
-            {/* <FormDropdown />
-            <CusomizedSelect /> */}
+            <FormDropdown />
+            <CusomizedSelect />
           </div>
           <div></div>
         </div>
