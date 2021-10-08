@@ -1,6 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 
-const CustomSelect = (params) => {
+interface SelectProps {
+  selectStyle?: string;
+}
+
+const CustomSelect = (props: SelectProps) => {
   const [ddownOpen, setddownOpen] = useState(false);
   const selectRef = useRef(null);
   const [value, setvalue] = useState(null);
@@ -36,7 +40,6 @@ const CustomSelect = (params) => {
 
   function updateValue(e) {
     setvalue(e.target.innerHTML);
-    // e.target.setAttribute("aria-selected", "true");
     setddownOpen(false);
   }
 
@@ -67,7 +70,6 @@ const CustomSelect = (params) => {
   }, []);
 
   useEffect(() => {
-    // setindex(options.indexOf(value));
     index = options.indexOf(value);
   }, [value]);
 
@@ -94,17 +96,23 @@ const CustomSelect = (params) => {
 
   return (
     <>
+      <select className="hidden" name="myFruit">
+        <option>Cherry</option>
+        <option>Lemon</option>
+        <option>Banana</option>
+        <option>Strawberry</option>
+        <option>Apple</option>
+      </select>
       <div
         ref={selectRef}
-        tabIndex={1}
-        className="select"
+        tabIndex={5}
+        className={`select ${props.selectStyle}`}
         onFocus={(e) => activateSelect(e)}
         onClick={() => toggleOpenNClose()}
         onKeyUp={(e) => keyboardUpdate(e)}
         onBlur={() => deactivateSelect()}
         role="listbox"
       >
-        {/* <!-- This container will be used to display the current value of the control --> */}
         <span className="value">{value !== null ? value : "Cherry"}</span>
 
         <ul

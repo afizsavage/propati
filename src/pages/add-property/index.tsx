@@ -6,7 +6,7 @@ import { AiFillCaretDown } from "react-icons/ai";
 import { SubmitBtn } from "../../components/auth";
 import { InputField } from "../../components/auth/authform";
 import Layout from "../../components/layout";
-import { DropDown } from "../../components/utils";
+import { CustomSelect, DropDown } from "../../components/utils";
 import { SelectOption } from "../../components/listings/listings-header";
 
 const Header = (params) => {
@@ -105,6 +105,33 @@ const FormDropdown = (params) => {
   );
 };
 
+const CusomizedSelect = (params) => {
+  function toggleScroll() {
+    let root = document.getElementsByTagName("html")[0];
+    let dropdownMenu = document.getElementById("typeDropdown");
+    dropdownMenu.classList.contains("hidden")
+      ? root.classList.remove("no-scroll")
+      : (root.className += "no-scroll");
+  }
+  const handleClick = (params) => {
+    console.log("clicked");
+  };
+  const options = [
+    { title: "Apartment", onClick: handleClick },
+    { title: "Duplex", onClick: handleClick },
+    { title: "House", onClick: handleClick },
+    { title: "Room", onClick: handleClick },
+    { title: "Town House", onClick: handleClick },
+  ];
+
+  return (
+    <div className="input-container">
+      <CustomSelect selectStyle="absolute w-full border-0 border-b focus:border-teal-700 border-opacity-50 border-gray-400" />
+      <span className="drop-label">Type</span>
+    </div>
+  );
+};
+
 const AddForm = ({ loading, onSubmit }) => {
   const router = useRouter();
   const path = "/add-property";
@@ -136,7 +163,8 @@ const AddForm = ({ loading, onSubmit }) => {
               type="text"
               label={"Unit# (optional)"}
             />
-            <FormDropdown />
+            {/* <FormDropdown />
+            <CusomizedSelect /> */}
           </div>
           <div></div>
         </div>

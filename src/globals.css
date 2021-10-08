@@ -146,7 +146,7 @@
     @apply absolute z-50 ml-3 bg-white inset-y-0 left-0 flex items-center lg:hidden;
   }
   .select {
-    @apply text-sm relative inline-block focus:outline-none focus:ring-2 ring-offset-green-600  box-border py-1 px-2 bg-gray-200 w-auto border-black border-2 rounded-sm cursor-pointer;
+    @apply text-sm relative inline-block focus:outline-none  box-border py-1 px-2 w-auto border-black border rounded-sm cursor-pointer;
   }
   .select .active {
     @apply outline-none ring-offset-green-600 ring-2;
