@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
-import { AiFillCaretDown } from "react-icons/ai";
 
 import { SubmitBtn } from "../../components/auth";
 import { InputField } from "../../components/auth/authform";
 import Layout from "../../components/layout";
 import { CustomSelect, DropDown } from "../../components/utils";
-import { SelectOption } from "../../components/listings/listings-header";
 
 const Header = (params) => {
   return (
@@ -43,86 +41,15 @@ interface AddProperty {
   name: string;
 }
 
-const OptionToSelect = ({ title, handleClick }) => {
-  return (
-    <SelectOption
-      title={title}
-      clicked={handleClick}
-      customStyle="w-full flex justify-between rounded-none h-sxty items-center text-xl"
-    />
-  );
-};
-
-const FormDropdown = (params) => {
-  function toggleScroll() {
-    let root = document.getElementsByTagName("html")[0];
-    let dropdownMenu = document.getElementById("typeDropdown");
-    dropdownMenu.classList.contains("hidden")
-      ? root.classList.remove("no-scroll")
-      : (root.className += "no-scroll");
-    console.log("called");
-  }
-  const handleClick = (params) => {
-    console.log("clicked");
-  };
-  const options = [
-    { title: "Apartment", onClick: handleClick },
-    { title: "Duplex", onClick: handleClick },
-    { title: "House", onClick: handleClick },
-    { title: "Room", onClick: handleClick },
-    { title: "Town House", onClick: handleClick },
-  ];
-
-  return (
-    <div className="input-container">
-      <DropDown
-        buttonText={
-          <span className="w-full h-full flex justify-end items-center ">
-            <AiFillCaretDown
-              id="sort"
-              className="text-lg ml-2 text-teal-600 font-bold inline"
-            />
-          </span>
-        }
-        changeBtnText={true}
-        listItems={options.map((item) => {
-          return (
-            <OptionToSelect
-              title={item.title}
-              handleClick={item.onClick}
-              key={options.indexOf(item)}
-            />
-          );
-        })}
-        autoSelectOption={false}
-        menuId="typeDropdown"
-        styleButton="focus:border-teal-700 border-b border-opacity-50 border-gray-400 h-full block"
-        styleContent="rounded-sm absolute bottom-0 h-cus w-full transform scale-x-110 py-0 overflow-y-scroll"
-        styleParent="drop-select bottom-0 w-full"
-        trackOptionsDisplay={() => toggleScroll()}
-      />
-      <span className="drop-label">Type</span>
-    </div>
-  );
-};
-
 const CusomizedSelect = (params) => {
-  const handleClick = (params) => {
-    console.log("clicked");
-  };
-  const options = [
-    { title: "Apartment", onClick: handleClick },
-    { title: "Duplex", onClick: handleClick },
-    { title: "House", onClick: handleClick },
-    { title: "Room", onClick: handleClick },
-    { title: "Town House", onClick: handleClick },
-  ];
+  const options = ["Apartment", "Duplex", "Detached", "Bungalow", "Room"];
 
   return (
     <div className="input-container">
       <CustomSelect
         selectStyle="border-b focus:border-teal-700 border-opacity-50 border-gray-400 border-opacity-50 appearance-none transition-colors duration-200 ease-in"
         optionsStyle="rounded-sm absolute bg-white h-cus w-full transform scale-x-110 py-0 overflow-y-scroll"
+        options={options}
       />
       <span className="drop-label">Type</span>
     </div>
@@ -160,7 +87,6 @@ const AddForm = ({ loading, onSubmit }) => {
               type="text"
               label={"Unit# (optional)"}
             />
-            {/* <FormDropdown /> */}
             <CusomizedSelect />
           </div>
           <div></div>

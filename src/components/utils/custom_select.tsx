@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 interface SelectProps {
   selectStyle?: string;
   optionsStyle?: string;
+  options: Array<string>;
 }
 
 const OptionItem = ({ option, value, handleClick }) => {
@@ -37,7 +38,7 @@ const CustomSelect = (props: SelectProps) => {
   const [value, setvalue] = useState(null);
   let index = 0;
 
-  const options = ["Cherry", "Lemon", "Banana", "Strawberry", "Apple"];
+  // const options = ["Cherry", "Lemon", "Banana", "Strawberry", "Apple"];
   const handleClick = () => {
     ddownOpen === false ? setddownOpen(true) : setddownOpen(false);
     selectRef.current && selectRef.current.classList.contains("active")
@@ -71,7 +72,7 @@ const CustomSelect = (props: SelectProps) => {
   }
 
   function keyboardUpdate(e) {
-    let length = options.length;
+    let length = props.options.length;
     if (e.keyCode === 27) {
       deactivateSelect();
     } else {
@@ -83,7 +84,17 @@ const CustomSelect = (props: SelectProps) => {
         index--;
       }
 
-      setvalue(options[index]);
+      setvalue(props.options[index]);
+    }
+  }
+
+  function disallowKeyboardScroll(e) {
+    if (e.keyCode === 40) {
+      e.preventDefault();
+    }
+
+    if (e.keyCode === 38) {
+      e.preventDefault();
     }
   }
 
@@ -105,7 +116,7 @@ const CustomSelect = (props: SelectProps) => {
   }, []);
 
   useEffect(() => {
-    index = options.indexOf(value);
+    index = props.options.indexOf(value);
   }, [value]);
 
   useEffect(() => {
@@ -134,6 +145,7 @@ const CustomSelect = (props: SelectProps) => {
         onClick={() => handleClick()}
         onKeyUp={(e) => keyboardUpdate(e)}
         onBlur={() => deactivateSelect()}
+        onKeyDown={(e) => disallowKeyboardScroll(e)}
         role="listbox"
       >
         <span className="value">{value}</span>
@@ -147,7 +159,7 @@ const CustomSelect = (props: SelectProps) => {
           }
           role="presentation"
         >
-          {options.map((option) => {
+          {props.options.map((option) => {
             return (
               <OptionItem
                 option={option}
