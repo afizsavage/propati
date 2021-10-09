@@ -5,9 +5,35 @@ interface SelectProps {
   optionsStyle?: string;
 }
 
+const OptionItem = ({ option, value, handleClick }) => {
+  const optionRef = useRef(null);
+
+  useEffect(() => {
+    if (optionRef.current && optionRef.current.innerHTML === value) {
+      optionRef.current.setAttribute("aria-selected", "true");
+    }
+  }, [value]);
+  return (
+    <li
+      ref={optionRef}
+      onClick={(e) => handleClick(e)}
+      className={
+        value === option
+          ? "px-5 h-sxty flex items-center text-teal-700"
+          : "px-5 flex align-middle h-sxty items-center"
+      }
+      role="option"
+      aria-selected={false}
+    >
+      {option}
+    </li>
+  );
+};
+
 const CustomSelect = (props: SelectProps) => {
   const [ddownOpen, setddownOpen] = useState(false);
   const selectRef = useRef(null);
+  const listRef = useRef(null);
   const [value, setvalue] = useState(null);
   let index = 0;
 
@@ -61,6 +87,14 @@ const CustomSelect = (props: SelectProps) => {
     }
   }
 
+  function toggleScroll() {
+    let root = document.getElementsByTagName("html")[0];
+    let dropdownMenu = listRef.current;
+    dropdownMenu.classList.contains("hidden")
+      ? root.classList.remove("no-scroll")
+      : (root.className += "no-scroll");
+  }
+
   useEffect(() => {
     // setvalue(options[0]);
     document.addEventListener("mousedown", handleClickOutside);
@@ -74,26 +108,10 @@ const CustomSelect = (props: SelectProps) => {
     index = options.indexOf(value);
   }, [value]);
 
-  const OptionItem = ({ option }) => {
-    const optionRef = useRef(null);
-
-    useEffect(() => {
-      if (optionRef.current && optionRef.current.innerHTML === value) {
-        optionRef.current.setAttribute("aria-selected", "true");
-      }
-    }, [value]);
-    return (
-      <li
-        ref={optionRef}
-        onClick={(e) => updateValue(e)}
-        className={value === option ? "option bg-black text-white" : "option"}
-        role="option"
-        aria-selected={false}
-      >
-        {option}
-      </li>
-    );
-  };
+  useEffect(() => {
+    // run this function for any time the Dropdown open or close
+    toggleScroll();
+  }, [ddownOpen]);
 
   return (
     <>
@@ -121,7 +139,7 @@ const CustomSelect = (props: SelectProps) => {
         <span className="value">{value}</span>
 
         <ul
-          id="optionsList"
+          ref={listRef}
           className={
             ddownOpen
               ? `optList ${props.optionsStyle}`
@@ -130,7 +148,13 @@ const CustomSelect = (props: SelectProps) => {
           role="presentation"
         >
           {options.map((option) => {
-            return <OptionItem option={option} />;
+            return (
+              <OptionItem
+                option={option}
+                value={value}
+                handleClick={updateValue}
+              />
+            );
           })}
         </ul>
       </div>

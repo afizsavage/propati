@@ -60,6 +60,7 @@ const FormDropdown = (params) => {
     dropdownMenu.classList.contains("hidden")
       ? root.classList.remove("no-scroll")
       : (root.className += "no-scroll");
+    console.log("called");
   }
   const handleClick = (params) => {
     console.log("clicked");
@@ -106,13 +107,6 @@ const FormDropdown = (params) => {
 };
 
 const CusomizedSelect = (params) => {
-  function toggleScroll() {
-    let root = document.getElementsByTagName("html")[0];
-    let dropdownMenu = document.getElementById("typeDropdown");
-    dropdownMenu.classList.contains("hidden")
-      ? root.classList.remove("no-scroll")
-      : (root.className += "no-scroll");
-  }
   const handleClick = (params) => {
     console.log("clicked");
   };
@@ -127,7 +121,7 @@ const CusomizedSelect = (params) => {
   return (
     <div className="input-container">
       <CustomSelect
-        selectStyle="absolute w-full border-0 border-b focus:border-teal-700 border-opacity-50 border-gray-400"
+        selectStyle="border-b focus:border-teal-700 border-opacity-50 border-gray-400 border-opacity-50 appearance-none transition-colors duration-200 ease-in"
         optionsStyle="rounded-sm absolute bg-white h-cus w-full transform scale-x-110 py-0 overflow-y-scroll"
       />
       <span className="drop-label">Type</span>

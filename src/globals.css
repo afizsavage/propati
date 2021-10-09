@@ -61,9 +61,9 @@
   .drop-label {
     @apply origin-top-left w-full inline-block text-gray-400 text-xl transition-all duration-200 ease-in z-10 min-w-max;
   }
-  .drop-select:focus-within ~ .drop-label {
+  /* .drop-select:focus-within ~ .drop-label {
     @apply transform  scale-75 -translate-y-6;
-  }
+  } */
   .drop-selected ~ .drop-label {
     @apply transform  scale-75 -translate-y-6;
   }
@@ -118,6 +118,9 @@
   .no-scroll {
     @apply fixed top-0 overflow-hidden;
   }
+  .optList {
+    @apply absolute top-full left-0 z-20 list-none m-0 p-0 box-border min-w-full h-auto overflow-y-auto overflow-x-hidden border-2 border-t rounded-sm shadow-md py-1;
+  }
   .primeBtn {
     @apply py-3 px-4 bg-teal-500 bg-center transition duration-700 text-white text-sm font-bold rounded-lg shadow-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-opacity-75;
   }
@@ -146,20 +149,15 @@
     @apply absolute z-50 ml-3 bg-white inset-y-0 left-0 flex items-center lg:hidden;
   }
   .select {
-    @apply text-sm relative inline-block focus:outline-none  box-border py-1 px-2 w-auto border-black border rounded-sm cursor-pointer;
+    @apply text-xl font-Lato text-gray-700 absolute inline-block focus:outline-none  box-border h-full w-full cursor-pointer;
   }
   .select .active {
     @apply outline-none ring-offset-green-600 ring-2;
   }
   .select .value {
-    @apply inline-block w-full overflow-hidden whitespace-nowrap overflow-ellipsis align-top;
+    @apply w-full;
   }
-  .select .optList {
-    @apply absolute top-full left-0 z-20 list-none m-0 p-0 box-border min-w-full h-auto overflow-y-auto overflow-x-hidden border-2 border-t rounded-sm shadow-md;
-  }
-  .select .option {
-    @apply py-1 px-2 hover:bg-black hover:text-white;
-  }
+
   .select .highlight {
     @apply bg-black text-white;
   }
@@ -185,7 +183,7 @@ button > .itemContent {
   background-color: #dd6b20;
 }
 
-#dropDownList > .h-sxty {
+.h-sxty {
   height: 60px;
 }
 
