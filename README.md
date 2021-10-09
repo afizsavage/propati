@@ -16,19 +16,19 @@ This project is currently in development.
 
 ### Cloning the Repository.
 
-1.  First, navigate to the directory that you would like to clone the repository into using commands like
+1.  Firstly open a terminal, navigate to the directory that you would like to clone the repository into using commands like:
 
-    - cd: to change your working directory.
-    - cd ../ to "go back" a level in your directory tree.
+    - `cd /pathname` to change your working directory.
+    - `cd ../` to "go back" a level in your directory tree.
 
 2.  Next, clone the remote repository and create a local copy on your machine using this command:
 
-    - git clone https://github.com/afizsavage/finder
+    - `git clone https://github.com/afizsavage/propati`
 
 3.  Now you can see the contents of the remote repository on your machine by moving into the newly cloned directory:
 
-    - cd finder
-    - ls -la
+    - `cd propati`
+    - `ls -la`
 
 ### 🧐 File Structure.
 
@@ -52,9 +52,9 @@ A quick look at the top-level files and directories you'll see in the project.
 
 #### Available Scripts
 
-In the project directory, you can run:
+In the project directory, you can run th following commands:
 
-**yarn dev**
+`yarn dev`
 
 Runs the app in the development mode.
 Open http://localhost:3000 to view it in the browser.
@@ -62,15 +62,14 @@ Open http://localhost:3000 to view it in the browser.
 The page will reload if you make edits.
 You will also see any lint errors in the console.
 
-**yarn build**
+`yarn build`
 
 Builds the app for production to the build folder.
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.
-Your app is ready to be deployed!
 
-**yarn start**
+`yarn start`
 
 Start the application in production mode. The application should be compiled with `yarn build` first.
 
