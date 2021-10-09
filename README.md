@@ -1,6 +1,12 @@
 # Propati
 
-Propati is a web application for finding goods and services online.
+Propati is a real-estate marketplace that provides rental and price negotiation services to tenants, landlords and agents. This repo contains the code and assets for the front-end/UI of the application.
+
+## Core Technologies
+
+- Tailwind v2
+- Next.js v10
+- React v17
 
 ## Project Status
 
@@ -11,16 +17,18 @@ This project is currently in development.
 ### Cloning the Repository.
 
 1.  First, navigate to the directory that you would like to clone the repository into using commands like
+
     - cd: to change your working directory.
     - cd ../ to "go back" a level in your directory tree.
+
 2.  Next, clone the remote repository and create a local copy on your machine using this command:
 
-- git clone https://github.com/afizsavage/finder
+    - git clone https://github.com/afizsavage/finder
 
-3. Now you can see the contents of the remote repository on your machine by moving into the newly cloned directory:
+3.  Now you can see the contents of the remote repository on your machine by moving into the newly cloned directory:
 
-- cd finder
-- ls -la
+    - cd finder
+    - ls -la
 
 ### 🧐 File Structure.
 
@@ -28,17 +36,17 @@ A quick look at the top-level files and directories you'll see in the project.
 
     ├── .nexts
     ├── node_modules
-    ├── pages
     ├── public
-    ├── styles
-    ├── .gitignore
-    ├── next-env.d.ts
-    ├── package.json
-    ├── postcss.config.js
-    ├── README.md
-    ├── tailwind.config.json
-    ├── tsconfig.json
-    └── yarn.lock
+    ├── src
+        ├── .gitignore
+        ├── next-env.d.ts
+        ├── next.config.js
+        ├── package.json
+        ├── postcss.config.js
+        ├── README.md
+        ├── tailwind.config.json
+        ├── tsconfig.json
+        └── yarn.lock
 
 ### Run Application
 
