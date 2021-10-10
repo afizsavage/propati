@@ -10,18 +10,22 @@ const CustomSelect = (props: SelectProps) => {
   const [value, setvalue] = useState(null);
   let index = 0;
 
+  // conditionally open or close custom-select
+  // always activate custom-select when this function is called
   const handleClick = () => {
     ddownOpen === false ? setddownOpen(true) : setddownOpen(false);
     selectRef.current && selectRef.current.classList.contains("active")
       ? null
       : selectRef.current.classList.add("active");
+    if (value === null) {
+      setvalue(props.options[0]);
+    }
   };
 
   const deactivateSelect = () => {
     if (selectRef.current && !selectRef.current.classList.contains("active")) {
       return;
     }
-
     setddownOpen(false);
     selectRef.current.classList.remove("active");
   };
@@ -31,6 +35,7 @@ const CustomSelect = (props: SelectProps) => {
     e.target.classList.add("active");
   };
 
+  // called when a click event happens outside the custom-select element
   const handleClickOutside = (e) => {
     if (selectRef.current && !selectRef.current.contains(e.target)) {
       deactivateSelect();
@@ -42,7 +47,8 @@ const CustomSelect = (props: SelectProps) => {
     setddownOpen(false);
   };
 
-  const toggleScroll = () => {
+  // prevent page from scrolling when the select's options list is being displayed
+  const togglePageScroll = () => {
     let root = document.getElementsByTagName("html")[0];
     let dropdownMenu = listRef.current;
     dropdownMenu.classList.contains("hidden")
@@ -50,8 +56,11 @@ const CustomSelect = (props: SelectProps) => {
       : (root.className += "no-scroll");
   };
 
+  // update custom-select value with up and down arrow keys
   const keyboardUpdate = (e) => {
     let length = props.options.length;
+
+    // deactivate custom-select if the `esc` key is pressed
     if (e.keyCode === 27) {
       deactivateSelect();
     } else {
@@ -86,15 +95,15 @@ const CustomSelect = (props: SelectProps) => {
     };
   }, []);
 
+  // index should always keep track of the current select uption
+  // index is used to set value with the arrow up or down keys
   useEffect(() => {
     index = props.options.indexOf(value);
   }, [value]);
 
   useEffect(() => {
-    toggleScroll();
+    togglePageScroll();
   }, [ddownOpen]);
-
-  // prevent page from scrolling when the select's options list is being displayed
 
   return (
     <>
