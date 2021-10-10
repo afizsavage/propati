@@ -1,36 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
+import { SelectProps } from "../../interfaces";
+import { OptionItem } from "../property";
 
-interface SelectProps {
-  selectStyle?: string;
-  optionsStyle?: string;
-  options: Array<string>;
-}
-
-const OptionItem = ({ option, value, handleClick }) => {
-  const optionRef = useRef(null);
-
-  useEffect(() => {
-    if (optionRef.current && optionRef.current.innerHTML === value) {
-      optionRef.current.setAttribute("aria-selected", "true");
-    }
-  }, [value]);
-  return (
-    <li
-      ref={optionRef}
-      onClick={(e) => handleClick(e)}
-      className={
-        value === option
-          ? "px-5 h-sxty flex items-center text-teal-700"
-          : "px-5 flex align-middle h-sxty items-center"
-      }
-      role="option"
-      aria-selected={false}
-    >
-      {option}
-    </li>
-  );
-};
-
+// This is a generic custom select form-control
 const CustomSelect = (props: SelectProps) => {
   const [ddownOpen, setddownOpen] = useState(false);
   const selectRef = useRef(null);
@@ -38,7 +10,6 @@ const CustomSelect = (props: SelectProps) => {
   const [value, setvalue] = useState(null);
   let index = 0;
 
-  // const options = ["Cherry", "Lemon", "Banana", "Strawberry", "Apple"];
   const handleClick = () => {
     ddownOpen === false ? setddownOpen(true) : setddownOpen(false);
     selectRef.current && selectRef.current.classList.contains("active")
@@ -46,32 +17,40 @@ const CustomSelect = (props: SelectProps) => {
       : selectRef.current.classList.add("active");
   };
 
-  function deactivateSelect() {
+  const deactivateSelect = () => {
     if (selectRef.current && !selectRef.current.classList.contains("active")) {
       return;
     }
 
     setddownOpen(false);
     selectRef.current.classList.remove("active");
-  }
+  };
 
-  function activateSelect(e) {
+  const activateSelect = (e) => {
     if (e.target.classList.contains("active")) return;
     e.target.classList.add("active");
-  }
+  };
 
-  function handleClickOutside(e) {
+  const handleClickOutside = (e) => {
     if (selectRef.current && !selectRef.current.contains(e.target)) {
       deactivateSelect();
     }
-  }
+  };
 
-  function updateValue(e) {
+  const updateValue = (e) => {
     setvalue(e.target.innerHTML);
     setddownOpen(false);
-  }
+  };
 
-  function keyboardUpdate(e) {
+  const toggleScroll = () => {
+    let root = document.getElementsByTagName("html")[0];
+    let dropdownMenu = listRef.current;
+    dropdownMenu.classList.contains("hidden")
+      ? root.classList.remove("no-scroll")
+      : (root.className += "no-scroll");
+  };
+
+  const keyboardUpdate = (e) => {
     let length = props.options.length;
     if (e.keyCode === 27) {
       deactivateSelect();
@@ -86,9 +65,9 @@ const CustomSelect = (props: SelectProps) => {
 
       setvalue(props.options[index]);
     }
-  }
+  };
 
-  function disallowKeyboardScroll(e) {
+  const disallowKeyboardScroll = (e) => {
     if (e.keyCode === 40) {
       e.preventDefault();
     }
@@ -96,18 +75,10 @@ const CustomSelect = (props: SelectProps) => {
     if (e.keyCode === 38) {
       e.preventDefault();
     }
-  }
+  };
 
-  function toggleScroll() {
-    let root = document.getElementsByTagName("html")[0];
-    let dropdownMenu = listRef.current;
-    dropdownMenu.classList.contains("hidden")
-      ? root.classList.remove("no-scroll")
-      : (root.className += "no-scroll");
-  }
-
+  // deactivate custom select when a click event happens anywhere else in the document
   useEffect(() => {
-    // setvalue(options[0]);
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       // Unbind the event listener on clean up
@@ -120,12 +91,15 @@ const CustomSelect = (props: SelectProps) => {
   }, [value]);
 
   useEffect(() => {
-    // run this function for any time the Dropdown open or close
     toggleScroll();
   }, [ddownOpen]);
 
+  // prevent page from scrolling when the select's options list is being displayed
+
   return (
     <>
+      {/* native select to keep track of custom select 
+    value and to submit data with other native form controls */}
       <select className="hidden" name="myFruit">
         <option>Cherry</option>
         <option>Lemon</option>
@@ -133,6 +107,8 @@ const CustomSelect = (props: SelectProps) => {
         <option>Strawberry</option>
         <option>Apple</option>
       </select>
+
+      {/* CUSTOM SELECT */}
       <div
         ref={selectRef}
         tabIndex={0}

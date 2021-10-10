@@ -79,3 +79,9 @@ export interface AmenityFilter {
   state?: any;
   setState?: any;
 }
+
+export interface SelectProps {
+  selectStyle?: string;
+  optionsStyle?: string;
+  options: Array<string>;
+}
