@@ -35,7 +35,7 @@
     @apply transition-all border-0 border-teal-600 hover:border-b duration-200 text-sm ease-out text-teal-600;
   }
   .auth-layout {
-    @apply bg-gray-100 font-Lato flex flex-col min-h-screen overflow-y-scroll w-screen;
+    @apply bg-gray-100 font-Lato flex flex-col min-h-screen overflow-y-scroll w-full overflow-x-hidden;
   }
   .Btn {
     @apply inline-flex justify-center rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-white text-sm font-bold text-gray-500 focus:outline-none active:border-transparent active:bg-gray-100;

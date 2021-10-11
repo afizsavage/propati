@@ -108,7 +108,7 @@ const AuthForm = ({ onSubmit, loading }) => {
   };
 
   return (
-    <div className="flex flex-grow pb-12 md:pt-20 lg:pt-1 flex-col">
+    <div className="flex flex-grow pb-12 xlg:pb-10 md:pt-20 lg:pt-1 flex-col">
       <div
         className="auth-card 
         "

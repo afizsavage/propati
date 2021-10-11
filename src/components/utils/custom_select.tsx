@@ -109,13 +109,16 @@ const CustomSelect = (props: SelectProps) => {
     <>
       {/* native select to keep track of custom select 
     value and to submit data with other native form controls */}
-      <select className="hidden" name="myFruit">
+      {/* <select
+        className="absolute h-0 overflow-hidden -left-full "
+        name="myFruit"
+      >
         <option>Cherry</option>
         <option>Lemon</option>
         <option>Banana</option>
         <option>Strawberry</option>
         <option>Apple</option>
-      </select>
+      </select> */}
 
       {/* CUSTOM SELECT */}
       <div

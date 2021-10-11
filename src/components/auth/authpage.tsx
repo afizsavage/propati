@@ -7,12 +7,11 @@ export const CloseBtn = () => {
   let path = router.pathname === "/auth";
 
   return (
-    <div className={path ? "auth-close" : "auth-close xlg:absolute"}>
+    <div className={path ? "auth-close " : "auth-close xlg:fixed"}>
       <button onClick={() => router.back()} className="auth-close-btn">
-      <IoMdClose className="text-3xl " />
+        <IoMdClose className="text-3xl " />
       </button>
     </div>
-    
   );
 };
 
@@ -21,14 +20,11 @@ const Header = ({ headerText }) => {
   const router = useRouter();
   const path = router.pathname !== "/auth";
 
-
   {
-    path
-      ? (headerText = "Sign Up")
-      : (headerText = "Welcome Back");
+    path ? (headerText = "Sign Up") : (headerText = "Welcome Back");
   }
   return (
-    <header className={path ? "auth-header xlg:mt-10" : "auth-header"}>
+    <header className={path ? "auth-header xlg:mt-8" : "auth-header"}>
       <h1 className="font-lato  text-4xl font-bold ">{headerText}</h1>
     </header>
   );
@@ -40,7 +36,7 @@ const Footer = ({ footerText }) => {
   const path = router.pathname === "/auth";
 
   return (
-    <footer className="flex justify-center pb-8">
+    <footer className="flex justify-center pb-7">
       <div className="self-center sm:inline text-sm text-gray-400">
         <span className="transition duration-300 ease-in">
           {/* Render footer text according to the page route */}
