@@ -6,157 +6,207 @@
   .amenity-icon {
     @apply bg-white py-2 px-2 text-black text-xl inline mr-4 p-0;
   }
+
   .auth-card {
     @apply shadow-2xl rounded rounded-b-lg mx-auto bg-white w-full md:w-7/12 lg:w-5/12 border-solid border-t-4 border-teal-500 p-0 mb-2;
   }
+
   .auth-close {
     @apply w-full flex justify-end h-12 lg:h-auto px-2 lg:px-7 lg:mt-8 lg:mb-44 xlg:mb-0;
   }
+
   .auth-close-btn {
     @apply text-gray-400 hover:text-white right-1 focus:outline-none  px-2 py-2 lg:py-3 lg:px-3 lg:bg-white lg:rounded-full lg:shadow lg:hover:bg-teal-600  duration-300 ease-in transition-colors;
   }
+
   .auth-header {
     @apply hidden lg:flex w-full text-gray-800 justify-center py-5 my-1 xlg:pt-0 xlg:my-0;
   }
+
   .auth-input {
     @apply text-xl text-gray-800 focus:border-teal-700 border-b border-opacity-50 appearance-none transition-colors duration-200 ease-in border-gray-400 absolute inline-block p-0 bg-transparent w-full focus:outline-none z-20  bottom-0 placeholder-gray-500 placeholder-opacity-0;
   }
+
   .auth-label {
     @apply origin-top-left w-full inline-block text-gray-400 text-xl transition-all duration-200 ease-in z-10 min-w-max;
   }
+
   .auth-input:focus-within ~ .auth-label,
   .auth-input:not(:placeholder-shown) ~ .auth-label {
     @apply transform scale-75 -translate-y-6;
   }
+
   .authSubmitBtn {
     @apply inline-flex justify-center  duration-300 ease-in transition bg-teal-600 hover:bg-teal-700 text-2xl font-semibold text-white px-3 h-16 rounded-b-lg w-full focus:outline-none;
   }
+
   .auth-links {
     @apply transition-all border-0 border-teal-600 hover:border-b duration-200 text-sm ease-out text-teal-600;
   }
+
   .auth-layout {
     @apply bg-gray-100 font-Lato flex flex-col min-h-screen overflow-y-scroll w-full overflow-x-hidden;
   }
+
   .Btn {
     @apply inline-flex justify-center rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-white text-sm font-bold text-gray-500 focus:outline-none active:border-transparent active:bg-gray-100;
   }
+
   .cardsWrapper {
     @apply w-full bg-gray-200 md:overflow-y-scroll transition-opacity duration-500 ease-in-out px-2 md:pr-0 h-full md:pl-4 flex flex-row flex-wrap;
   }
+
   .cardWrapper {
     @apply md:px-3 mt-3 md:mt-2 mx-auto md:mx-0 first:mt-24 md:first:mt-2 pb-3 last:pb-40 overflow-y-hidden h-auto transform ease-in-out  duration-500 hover:-translate-y-4;
   }
+
   .categoryBtnActive {
     @apply mr-1 bg-gray-200 cursor-pointer py-2 px-3 rounded-lg text-black focus:outline-none;
   }
+
   .categoryBtn {
     @apply mr-1 cursor-pointer py-2 px-3 rounded-lg text-gray-600 focus:outline-none hover:text-black;
   }
+
   .dropdownMenu {
     @apply z-20 text-gray-700 absolute mt-3 w-60 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5;
   }
+
   .drop-select {
     @apply text-lg text-gray-800 focus:border-teal-700 border-b border-opacity-50 appearance-none transition-colors duration-200 ease-in border-gray-400 absolute inline-block p-0 bg-transparent w-full focus:outline-none z-20  bottom-0 placeholder-gray-500 placeholder-opacity-0;
   }
+
   .drop-label {
     @apply origin-top-left w-full inline-block text-gray-400 text-xl transition-all duration-200 ease-in z-10 min-w-max;
   }
+
   /* .drop-select:focus-within ~ .drop-label {
     @apply transform  scale-75 -translate-y-6;
   } */
   .drop-selected ~ .drop-label {
     @apply transform  scale-75 -translate-y-6;
   }
+
   .footerCols {
     @apply md:w-1/4 pb-6 mb-6 sm:m-0 sm:p-0 border-gray-300 border-b sm:border-none;
   }
+
   .filter {
     @apply absolute bottom-0 overflow-y-hidden md:py-5 z-40 md:w-auto bg-teal-900  opacity-80 flex flex-col px-3 py-10 transform transition duration-500 ease-in-out;
   }
+
   .filterBtn {
     @apply inline-flex justify-center w-full ring-teal-400 ring-opacity-20 rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-white text-sm font-bold text-gray-500 hover:border-transparent hover:ring-4  focus:outline-none focus:ring-4 focus:border-transparent active:shadow-none active:ring-0 active:border-gray-300;
   }
+
   .filterBtns {
     @apply focus:outline-none h-10 mr-2 bg-white rounded border;
   }
+
   .filterNSortWrapper {
     @apply w-full px-6 md:px-9 absolute md:static z-20 transition transform md:transform-none  duration-500 ease-in-out py-0 md:py-0 flex flex-col-reverse md:flex-col bg-white align-middle justify-between;
   }
+
   .gm-svpc {
     @apply left-10;
   }
+
   .iconBtn {
     @apply bg-white rounded flex items-center justify-center w-10 border text-xl;
   }
+
   .input-container {
     @apply mt-9 relative w-full font-normal;
   }
+
   .listings {
     @apply overflow-y-scroll overflow-x-hidden flex flex-col md:overflow-y-hidden h-screen col-span-9 lg:col-span-5;
   }
+
   li > span #sort {
     @apply hidden;
   }
+
   .marker {
     @apply w-auto h-auto py-2 px-2 text-white font-semibold text-sm flex justify-center rounded-full items-center;
   }
+
   .mobileMenu {
     @apply transform md:transform-none transition z-30 duration-500 ease-in-out md:hidden fixed h-auto bg-white top-14 overflow-y-scroll w-full px-6  border-t border-opacity-50 border-gray-200;
   }
+
   .mobileNavs {
     @apply text-gray-500 block py-3 text-lg font-Lato font-bold;
   }
+
   .mobileUsaLink {
     @apply text-gray-500 block py-3 font-Lato text-base font-medium last:mb-10;
   }
+
   .mapSection {
     @apply hidden md:block h-full overflow-y-hidden overflow-hidden col-span-4;
   }
+
   .navLinks {
     @apply text-gray-600  hover:text-teal-600 px-3 py-2 text-base font-semibold font-Lato;
   }
+
   .no-scroll {
     @apply fixed top-0 overflow-hidden;
   }
+
   .optList {
     @apply absolute top-full left-0 z-20 list-none m-0 p-0 box-border min-w-full h-auto overflow-y-auto overflow-x-hidden border-2 border-t rounded-sm shadow-md py-1;
   }
+
   .primeBtn {
     @apply py-3 px-4 bg-teal-500 bg-center transition duration-700 text-white text-sm font-bold rounded-lg shadow-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-opacity-75;
   }
+
   .prop-type {
     @apply py-2 px-3 rounded-lg text-gray-600 focus:outline-none;
   }
+
   .rc-slider {
     @apply top-5;
   }
+
   .social-auth-btn {
     @apply inline-flex border border-gray-300 justify-evenly py-1 rounded-lg w-full focus:outline-none;
   }
+
   .select-option {
     @apply z-0 relative hover:bg-gray-100 px-5 text-sm py-3 md:w-40 font-normal rounded-full md:font-thin inline-block align-text-top;
   }
+
   .tMBtn {
     @apply z-50 text-gray-400 focus:outline-none w-10 h-10 relative;
   }
+
   .tMBtnIn1 {
     @apply z-50 block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out;
   }
+
   .tMBtnInWrapper {
     @apply block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2;
   }
+
   .tMBWrapper {
     @apply absolute z-50 ml-3 bg-white inset-y-0 left-0 flex items-center lg:hidden;
   }
+
   .select {
     @apply text-xl font-Lato text-gray-700 absolute inline-block focus:outline-none  box-border h-full w-full cursor-pointer;
   }
-  .select:after {
+
+  .select::after {
     @apply text-teal-600 text-sm;
   }
+
   .select .active {
     @apply outline-none ring-offset-green-600 ring-2;
   }
+
   .select .value {
     @apply w-full;
   }
@@ -166,8 +216,8 @@
   }
 }
 
-.select:after {
-  content: "▼"; /* We use the unicode character U+25BC; make sure to set a charset meta tag */
+.select::after {
+  content: '▼'; /* We use the unicode character U+25BC; make sure to set a charset meta tag */
   position: absolute;
   z-index: 1; /* This will be important to keep the arrow from overlapping the list of options */
   top: 0;
@@ -213,6 +263,7 @@ button > .itemContent {
 .h-cus {
   max-height: 248px;
 }
+
 .map-h2 {
   text-transform: uppercase;
   font-size: 1rem;
@@ -220,18 +271,21 @@ button > .itemContent {
   padding-left: 10px;
   text-align: center;
 }
+
 .react-multiple-carousel__arrow {
   z-index: 30 !important;
 }
+
 .userList:nth-child(-n + 3) {
   font-weight: bolder;
 }
+
 .snap-x {
   scroll-snap-type: x mandatory;
-
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
+
 .snap-start {
   scroll-snap-align: start;
 }
@@ -242,7 +296,6 @@ input,
 select,
 a,
 #col2Filter,
-#sortOption,
 #dropDownList,
 #dropDownBtn {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
