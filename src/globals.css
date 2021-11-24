@@ -148,7 +148,7 @@
   }
 
   .navLinks {
-    @apply text-gray-600  hover:text-teal-600 px-3 py-2 text-base font-semibold font-Lato;
+    @apply text-white hover:text-orange px-3 py-2 text-base font-semibold font-Lato;
   }
 
   .no-scroll {
@@ -312,6 +312,9 @@ a,
   box-shadow: 0 0 0 5px #dd6b20 !important;
 }
 
+.gradient {
+  background: linear-gradient(300deg, #283443 60%, #8e959d);
+}
 /* @media screen and (max-height: 570px) {
   .mobileMenu {
     height: 100vh;

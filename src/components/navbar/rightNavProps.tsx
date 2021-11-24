@@ -1,10 +1,10 @@
-import Link from "next/link";
-import React from "react";
-import { BiMenu, BiSearch } from "react-icons/bi";
-import { GrSearch } from "react-icons/gr";
+import Link from 'next/link';
+import React from 'react';
+import { BiMenu, BiSearch } from 'react-icons/bi';
+// import { GrSearch } from 'react-icons/gr';
 
-import { DropDown as UserButton } from "../utils/";
-import AuthButtons from "./authLinks";
+// import { DropDown as UserButton } from '../utils/';
+import AuthButtons from './authLinks';
 
 type TUserOptions = {
   title: string;
@@ -27,38 +27,38 @@ const UserPill = (params) => {
 const userOptions: Array<TUserOptions> = [
   {
     // itemValue => 0
-    title: "Messages",
-    hyperLink: "/messages/",
+    title: 'Messages',
+    hyperLink: '/messages/',
   },
   {
     // itemValue => 1
-    title: "Properties",
-    hyperLink: "#",
+    title: 'Properties',
+    hyperLink: '#',
   },
   {
     // itemValue => 2
-    title: "Pay Rent",
-    hyperLink: "#",
+    title: 'Pay Rent',
+    hyperLink: '#',
   },
   {
     // itemValue => 3
-    title: "Switch to Landord",
-    hyperLink: "#",
+    title: 'Switch to Landord',
+    hyperLink: '#',
   },
   {
     // itemValue => 4
-    title: "Account Settings",
-    hyperLink: "/account/settings",
+    title: 'Account Settings',
+    hyperLink: '/account/settings',
   },
   {
     // itemValue => 5
-    title: "Help",
-    hyperLink: "#",
+    title: 'Help',
+    hyperLink: '#',
   },
   {
     // itemValue => 6
-    title: "Logout",
-    hyperLink: "#",
+    title: 'Logout',
+    hyperLink: '#',
   },
 ];
 
@@ -74,33 +74,32 @@ const UserOptionsList = (option) => {
 };
 
 // return an array of the JSX link component
-let options = userOptions.map(UserOptionsList);
+// let options = userOptions.map(UserOptionsList);
 
 // create property button
-const AddPropertyBtn = (params) => {
-  return (
-    <div className="mr-5 hidden md:inline w-auto my-auto ">
-      {" "}
-      <Link href="/property">
-        <a className="bg-white hover:bg-teal-400 text-sm font-bold rounded-full font-Lato w-auto h-10 px-3 flex justify-center items-center">
-          Add Property
-        </a>
-      </Link>{" "}
-    </div>
-  );
-};
+// const AddPropertyBtn = (params) => {
+//   return (
+//     <div className="mr-5 hidden md:inline w-auto my-auto ">
+//       {' '}
+//       <Link href="/property">
+//         <a className="bg-white hover:bg-teal-400 text-sm font-bold rounded-full font-Lato w-auto h-10 px-3 flex justify-center items-center">
+//           Add Property
+//         </a>
+//       </Link>{' '}
+//     </div>
+//   );
+// };
 
-const Authenticate = (params) => {
+const Authenticate = () => {
   return (
     <>
-      {" "}
-      <AuthButtons href={"auth"} children={"Sign In"} />
-      <div className="ml-3 lg:ml-0 hidden lg:block relative text-base">
-        <div>
-          <span>|</span>
-          <AuthButtons href={"auth/sign-up"} children={"Sign Up"} />
-        </div>
-      </div>
+      {' '}
+      <AuthButtons href={'auth'} children={'Login'} />
+      <AuthButtons
+        href={'auth/sign-up'}
+        children={'Sign Up'}
+        custom="bg-orange border-none"
+      />
     </>
   );
 };
@@ -109,15 +108,7 @@ const Authenticate = (params) => {
 const RightNavProps = (props) => {
   return (
     <div className="absolute inset-y-0 right-0 flex items-center  sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-      <AddPropertyBtn />
-      <UserButton
-        buttonText={<UserPill />}
-        styleContent="rounded-xl right-0 origin-top-left"
-        listItems={options}
-        changeBtnText={false}
-        menuId="userBtn"
-      />
-      {/* <Authenticate /> */}
+      <Authenticate />
       <div className=" md:hidden absolute mr-3 inset-y-0 right-0 flex items-center ">
         <div className="w-10 h-10 flex flex-col items-center justify-center">
           <span className="h-6 w-6">

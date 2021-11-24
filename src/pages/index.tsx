@@ -1,6 +1,6 @@
-import Head from "next/head";
-import Layout from "../components/layout";
-import Main from "../components/main";
+import Head from 'next/head';
+import Layout from '../components/layout';
+import Main from '../components/main';
 
 export default function Home() {
   return (
@@ -14,14 +14,14 @@ export default function Home() {
         <meta name="application-name" content="Propati" />
         <title>Propati</title>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-          href="https://fonts.googleapis.com/css2?family=Lato:wght@100..900"
-          rel="stylesheet "
+          href="https://fonts.googleapis.com/css2?family=Lato:wght@100..900&family=Noto+Serif:wght@100..900&display=swap"
+          rel="stylesheet"
         />
       </Head>
       <body className="font-Lato h-full">
-        <Layout pageInfo={{ pageName: "index" }}>
+        <Layout pageInfo={{ pageName: 'index' }}>
           <Main />
         </Layout>
       </body>

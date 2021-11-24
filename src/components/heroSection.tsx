@@ -1,21 +1,28 @@
-const HeroSection = (params) => {
+const HeroSection = () => {
   return (
-    <div className="md:h-100 h-auto bg-gray-100 grid w-full ">
-      <div className="grid grid-cols-1 md:grid-cols-7 lg:grid-cols-2 md:px-8 lg:px-16 px-6 py-10 md:py-0 ">
-        <div className="my-auto h-80 md:h-auto md:col-span-3 lg:col-span-1">
-          <h1 className="font-Oswald mx-auto text-center md:text-left text-2xl md:text-3xl lg:text-5xl md:leading-tight lg:leading-tight text-gray-800 font-extrabold">
-            Your ideal buying and renting solution
-          </h1>
-          <p className="py-4"></p>
-          <div className="flex justify-center  md:justify-start w-full">
-            <a href="#" className="primeBtn">
-              List Rental
-            </a>
+    <section className="md:h-200 gradient flex flex-col items-center justify-center w-full ">
+      <h1 className="text-6xl text-white font-Noto">
+        Finding a home should be easy.
+      </h1>
+      <div className="my-4">
+        <div className="bg-white flex overflow-hidden rounded-full h-20">
+          <div className="h-full w-64 px-7 py-0 flex flex-col hover:bg-gray-200 justify-center">
+            <label
+              htmlFor="location"
+              className="block font-semibold text-gray-400"
+            >
+              City/Address
+            </label>
+            <input
+              id="location"
+              name="location"
+              type="text"
+              className="focus:outline-none bg-transparent text-gray-800 font-bold capitalize active:outline-none"
+            />
           </div>
         </div>
-        <div className="bg-center h-96 md:h-auto md:col-span-4 lg:col-span-1 order-first md:order-2 bg-hero-image bg-contain bg-no-repeat"></div>
       </div>
-    </div>
+    </section>
   );
 };
 

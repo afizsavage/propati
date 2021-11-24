@@ -1,7 +1,7 @@
-import React from "react";
-import { useRouter } from "next/router";
+import React from 'react';
+import { useRouter } from 'next/router';
 
-const AuthenticateButtons = ({ href, children }) => {
+const AuthenticateButtons = ({ href, children, custom = '' }) => {
   const router = useRouter();
 
   const handleClick = (e) => {
@@ -11,7 +11,7 @@ const AuthenticateButtons = ({ href, children }) => {
   return (
     <a
       href={href}
-      className="p-2 sm:py-2 sm:px-3 navLinks font-medium"
+      className={`text-white py-4 flex items-center justify-center border h-9 w-24 rounded-full font-semibold ml-5 ${custom}`}
       onClick={handleClick}
     >
       {children}

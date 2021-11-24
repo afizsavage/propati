@@ -1,8 +1,8 @@
-import React from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import React from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-const LeftNavProps = (props) => {
+const LeftNavProps = () => {
   const router = useRouter();
 
   return (
@@ -17,7 +17,7 @@ const LeftNavProps = (props) => {
             />
           </a>
         </Link>
-        <Link href="/">
+        {/* <Link href="/">
           <a>
             <img
               className="hidden lg:block h-auto w-auto"
@@ -25,17 +25,17 @@ const LeftNavProps = (props) => {
               alt="Workflow"
             />
           </a>
-        </Link>
+        </Link> */}
       </div>
-      <div className="hidden lg:inline-block my-auto   sm:ml-6">
+      <div className="hidden lg:inline-block my-auto mx-auto sm:ml-6">
         <div className="flex space-x-4">
           {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
           <Link href="#">
             <a
               className={
-                router.pathname == "/apartments"
-                  ? "navLinks text-teal-600 "
-                  : "navLinks "
+                router.pathname == '/apartments'
+                  ? 'navLinks text-orange '
+                  : 'navLinks '
               }
             >
               Rent
@@ -44,9 +44,9 @@ const LeftNavProps = (props) => {
           <Link href="/listings/listings-buy">
             <a
               className={
-                router.pathname == "/listings/listings-buy"
-                  ? "navLinks text-teal-600 "
-                  : "navLinks "
+                router.pathname == '/listings/listings-buy'
+                  ? 'navLinks text-orange'
+                  : 'navLinks'
               }
             >
               Buy

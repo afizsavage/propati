@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import HeroSection from "./heroSection";
-import { ToggleSection } from "./landing";
-import CategoriesSection from "./landing/categoriesSection";
+import HeroSection from './heroSection';
+import { ToggleSection } from './landing';
+import CategoriesSection from './landing/categoriesSection';
 
 const Main = () => {
   return (
