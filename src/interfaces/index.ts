@@ -84,4 +84,5 @@ export interface SelectProps {
   selectStyle?: string;
   optionsStyle?: string;
   options: Array<string>;
+  setValue?: boolean;
 }

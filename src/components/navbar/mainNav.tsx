@@ -11,7 +11,7 @@ const Navbar = (params) => {
   return (
     <header
       role="banner"
-      className="fixed top-0 z-40 bg-transparent h-auto md:px-8 lg:px-20 w-full border-transparent"
+      className="sticky lg:fixed top-0 z-40 bg-transparent h-auto md:px-8 lg:px-20 w-full border-transparent"
     >
       <div className="lg:mx-auto z-40 w-auto">
         <div className="relative z-50 flex items-center justify-between h-14 md:h-18 lg:h-20 w-full">

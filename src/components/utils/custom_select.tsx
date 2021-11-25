@@ -1,6 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
-import { SelectProps } from "../../interfaces";
-import { OptionItem } from "../property";
+import React, { useState, useRef, useEffect } from 'react';
+import { SelectProps } from '../../interfaces';
+import { OptionItem } from '../property';
+import { CgArrowsV } from 'react-icons/cg';
 
 // This is a generic custom select form-control
 const CustomSelect = (props: SelectProps) => {
@@ -14,25 +15,25 @@ const CustomSelect = (props: SelectProps) => {
   // always activate custom-select when this function is called
   const handleClick = () => {
     ddownOpen === false ? setddownOpen(true) : setddownOpen(false);
-    selectRef.current && selectRef.current.classList.contains("active")
+    selectRef.current && selectRef.current.classList.contains('active')
       ? null
-      : selectRef.current.classList.add("active");
+      : selectRef.current.classList.add('active');
     if (value === null) {
       setvalue(props.options[0]);
     }
   };
 
   const deactivateSelect = () => {
-    if (selectRef.current && !selectRef.current.classList.contains("active")) {
+    if (selectRef.current && !selectRef.current.classList.contains('active')) {
       return;
     }
     setddownOpen(false);
-    selectRef.current.classList.remove("active");
+    selectRef.current.classList.remove('active');
   };
 
   const activateSelect = (e) => {
-    if (e.target.classList.contains("active")) return;
-    e.target.classList.add("active");
+    if (e.target.classList.contains('active')) return;
+    e.target.classList.add('active');
   };
 
   // called when a click event happens outside the custom-select element
@@ -49,11 +50,11 @@ const CustomSelect = (props: SelectProps) => {
 
   // prevent page from scrolling when the select's options list is being displayed
   const togglePageScroll = () => {
-    let root = document.getElementsByTagName("html")[0];
+    let root = document.getElementsByTagName('html')[0];
     let dropdownMenu = listRef.current;
-    dropdownMenu.classList.contains("hidden")
-      ? root.classList.remove("no-scroll")
-      : (root.className += "no-scroll");
+    dropdownMenu.classList.contains('hidden')
+      ? root.classList.remove('no-scroll')
+      : (root.className += 'no-scroll');
   };
 
   // update custom-select value with up and down arrow keys
@@ -86,41 +87,27 @@ const CustomSelect = (props: SelectProps) => {
     }
   };
 
+  useEffect(() => {
+    props.setValue ? setvalue(props.options[0]) : null;
+  }, []);
+
   // deactivate custom select when a click event happens anywhere else in the document
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
       // Unbind the event listener on clean up
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
-  // index should always keep track of the current select uption
+  // index should always keep track of the current selected option
   // index is used to set value with the arrow up or down keys
   useEffect(() => {
     index = props.options.indexOf(value);
   }, [value]);
 
-  useEffect(() => {
-    togglePageScroll();
-  }, [ddownOpen]);
-
   return (
     <>
-      {/* native select to keep track of custom select 
-    value and to submit data with other native form controls */}
-      {/* <select
-        className="absolute h-0 overflow-hidden -left-full "
-        name="myFruit"
-      >
-        <option>Cherry</option>
-        <option>Lemon</option>
-        <option>Banana</option>
-        <option>Strawberry</option>
-        <option>Apple</option>
-      </select> */}
-
-      {/* CUSTOM SELECT */}
       <div
         ref={selectRef}
         tabIndex={0}
@@ -136,8 +123,8 @@ const CustomSelect = (props: SelectProps) => {
         onKeyDown={(e) => disallowKeyboardScroll(e)}
         role="listbox"
       >
-        <span className="value">{value}</span>
-
+        <span className="value">{value}</span>{' '}
+        <CgArrowsV className="inline text-lg" />
         <ul
           ref={listRef}
           className={

@@ -1,17 +1,17 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import { useRouter } from "next/router";
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/router';
 
-import { SubmitBtn } from "../auth";
-import { InputField } from "../auth/authform";
-import { CustomSelect } from "../utils";
+import { SubmitBtn } from '../auth';
+import { InputField } from '../auth/authform';
+import { CustomSelect } from '../utils';
 
 interface AddProperty {
   name: string;
 }
 
 const CusomizedSelect = (params) => {
-  const options = ["Apartment", "Duplex", "Detached", "Bungalow", "Room"];
+  const options = ['Apartment', 'Duplex', 'Detached', 'Bungalow', 'Room'];
 
   return (
     <div className="input-container">
@@ -27,10 +27,10 @@ const CusomizedSelect = (params) => {
 
 const AddForm = ({ loading, onSubmit }) => {
   const router = useRouter();
-  const path = "/add-property";
+  const path = '/add-property';
 
   const { register, errors, handleSubmit } = useForm<AddProperty>({
-    mode: "all",
+    mode: 'all',
   });
 
   return (
@@ -39,22 +39,22 @@ const AddForm = ({ loading, onSubmit }) => {
         <div>
           <div>
             <InputField
-              name={"name"}
+              name={'name'}
               placeholder="Property Name"
               type="text"
-              label={"Property Name"}
+              label={'Property Name'}
             />
             <InputField
-              name={"address"}
-              placeholder={"Address"}
+              name={'address'}
+              placeholder={'Address'}
               type="text"
-              label={"Address"}
+              label={'Address'}
             />
             <InputField
-              name={"unit"}
-              placeholder={"Unit"}
+              name={'unit'}
+              placeholder={'Unit'}
               type="text"
-              label={"Unit# (optional)"}
+              label={'Unit# (optional)'}
             />
             <CusomizedSelect />
           </div>

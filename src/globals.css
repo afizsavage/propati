@@ -199,9 +199,9 @@
     @apply text-xl font-Lato text-gray-700 absolute inline-block focus:outline-none  box-border h-full w-full cursor-pointer;
   }
 
-  .select::after {
+  /* .select::after {
     @apply text-teal-600 text-sm;
-  }
+  } */
 
   .select .active {
     @apply outline-none ring-offset-green-600 ring-2;
@@ -216,10 +216,10 @@
   }
 }
 
-.select::after {
-  content: '▼'; /* We use the unicode character U+25BC; make sure to set a charset meta tag */
+/* .select::after {
+  content: '▼';
   position: absolute;
-  z-index: 1; /* This will be important to keep the arrow from overlapping the list of options */
+  z-index: 1;
   top: 0;
   right: 0;
   height: 80%;
@@ -230,7 +230,7 @@
   border-radius: 0 0.1em 0.1em 0;
   background-color: #fff;
   text-align: center;
-}
+} */
 
 button > #sortOption {
   padding: 0;
