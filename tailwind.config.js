@@ -39,6 +39,7 @@ module.exports = {
       colors: (theme) => ({
         teal: colors.teal,
         orange: '#ea9a3e',
+        sprite: '#283443',
       }),
       fontSize: {
         '4xl': '2.50rem',
