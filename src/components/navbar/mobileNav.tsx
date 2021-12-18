@@ -1,6 +1,6 @@
-import React from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import React from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Navlinks = ({ link, title }) => {
   const router = useRouter();
@@ -8,7 +8,7 @@ const Navlinks = ({ link, title }) => {
   return (
     <li className="mobileNavs">
       <Link href={link}>
-        <a className={router.pathname == link ? " text-teal-600" : ""}>
+        <a className={router.pathname == link ? ' text-teal-600' : ''}>
           {title}
         </a>
       </Link>
@@ -31,7 +31,7 @@ const MobileNav = ({ menuOpen }) => {
     <div
       id="m  /* border-color: transparent transparent $color-secondary transparent; */
 obileMenu"
-      className={menuOpen ? "mobileMenu" : "mobileMenu -translate-y-full"}
+      className={menuOpen ? 'mobileMenu' : 'mobileMenu -translate-y-full'}
     >
       <nav>
         <ul>

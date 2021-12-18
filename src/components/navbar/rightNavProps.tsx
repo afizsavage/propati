@@ -92,7 +92,7 @@ const UserOptionsList = (option) => {
 
 const Authenticate = () => {
   return (
-    <>
+    <div className="hidden md:inline-flex">
       {' '}
       <AuthButtons href={'auth'} children={'Login'} />
       <AuthButtons
@@ -100,21 +100,21 @@ const Authenticate = () => {
         children={'Sign Up'}
         custom="bg-orange border-none"
       />
-    </>
+    </div>
   );
 };
 
 // right side of the navigation bar components
-const RightNavProps = (props) => {
+const RightNavProps = () => {
   return (
     <div className="absolute inset-y-0 right-0 flex items-center  sm:static sm:inset-auto sm:ml-6 sm:pr-0">
       <Authenticate />
       <div className=" md:hidden absolute mr-3 inset-y-0 right-0 flex items-center ">
-        <div className="w-10 h-10 flex flex-col items-center justify-center">
-          <span className="h-6 w-6">
-            <BiSearch className="block h-full w-full text-gray-400" />
-          </span>
-        </div>
+        <AuthButtons
+          href={'auth'}
+          children={'Login'}
+          custom="border-none text-orange w-auto mr-2 ml-0"
+        />
       </div>
     </div>
   );
